@@ -1,6 +1,6 @@
 'use client'
 
-import { useParams, usePathname, useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { Avatar, Select, SelectItem } from '@nextui-org/react'
 import { useEffect, useState } from 'react'
 
@@ -34,22 +34,21 @@ const locales: Locale[] = [
 
 const LocaleSwitcher = () => {
   const pathname = usePathname()
-  const params = useParams()
   const [locale, setLocale] = useState<Locale>(locales[0])
   const router = useRouter()
   const redirectedPathname = (locale: string) => {
-    console.log(pathname)
     const segments = pathname.split('/')
     segments[1] = locale
     router.push(segments.join('/'))
   }
 
   useEffect(() => {
-    setLocale(locales.find((locale) => locale.key === params.locale)!)
-  }, [params.locale])
+    const segments = pathname.split('/')
+    setLocale(locales.find((locale) => locale.key === segments[1])!)
+  }, [pathname])
 
   const handleSelectLocale = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.value && e.target.value !== params.locale) {
+    if (e.target.value && e.target.value !== locale.key) {
       setLocale(locales.find((locale) => locale.key === e.target.value)!)
       redirectedPathname(e.target.value)
     }
@@ -62,20 +61,12 @@ const LocaleSwitcher = () => {
       aria-label='Language switcher'
       selectedKeys={[locale!.key]}
       onChange={handleSelectLocale}
-      size='sm'
-    >
+      size='sm'>
       {(locale) => (
         <SelectItem
           key={locale.key}
           value={locale.key}
-          startContent={
-            <Avatar
-              alt={locale.country}
-              className='h-3 w-3'
-              src={locale.icon}
-            />
-          }
-        >
+          startContent={<Avatar alt={locale.country} className='h-3 w-3' src={locale.icon} />}>
           {locale.label}
         </SelectItem>
       )}

@@ -1,0 +1,10 @@
+{
+  "homePage": {
+    "deployButtonLabel": "Déploies maintenant"
+  },
+  "notFound": {
+    "title": "Page Introuvable",
+    "subtitle": "Désolé, la page que vous recherchez n'existe pas.",
+    "buttonLabel": "Retour à l'Accueil"
+  }
+}
