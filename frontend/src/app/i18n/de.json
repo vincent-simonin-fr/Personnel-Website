@@ -1,0 +1,10 @@
+{
+  "homePage": {
+    "deployButtonLabel": "Jetzt entfalten"
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "subtitle": "Entschuldigung, die gesuchte Seite existiert nicht.",
+    "buttonLabel": "Zurück zur Startseite"
+  }
+}

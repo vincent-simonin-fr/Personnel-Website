@@ -4,6 +4,29 @@
 
 This is the frontend of the Yuno IT project. It is a Next.js application that uses the NextUI library for the UI components.
 
+## Environment
+
+The project is built using Node.js and npm. It requires a recent version of Node.js to run.
+
+Environment variables are used to configure the application. The following envirnment are available:
+
+- Development (default)
+- Test
+- Production
+
+Following NODE_ENV environment variable is used to set the environment:
+
+- NODE_ENV=development `next dev`
+- NODE_ENV=test, when running tests with Jest for example
+- NODE_ENV=production `next build && next start`
+
+## Prerequisites
+
+Before you can start using the project, you need to have the following installed:
+
+- Node.js (version 22 or higher)
+- npm (version 10 or higher)
+
 ## Getting Started
 
 To get started with the project, follow these steps:

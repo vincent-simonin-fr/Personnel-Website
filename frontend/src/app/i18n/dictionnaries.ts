@@ -4,6 +4,11 @@ export type Dictionary = {
   homePage: {
     deployButtonLabel: string
   }
+  notFound: {
+    title: string
+    subtitle: string
+    buttonLabel: string
+  }
 }
 
 const dictionaries: Record<string, () => Promise<Dictionary>> = {
@@ -13,9 +18,5 @@ const dictionaries: Record<string, () => Promise<Dictionary>> = {
 }
 
 export const getDictionary = async (locale: string) => {
-  return locale == 'fr'
-    ? dictionaries.fr()
-    : locale == 'de'
-    ? dictionaries.de()
-    : dictionaries.en() // Default to English
+  return locale == 'fr' ? dictionaries.fr() : locale == 'de' ? dictionaries.de() : dictionaries.en() // Default to English
 }
