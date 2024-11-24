@@ -1,0 +1,10 @@
+{
+  "homePage": {
+    "deployButtonLabel": "Deploy now"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "subtitle": "Sorry, the page you're looking for does not exist.",
+    "buttonLabel": "Return to Home"
+  }
+}

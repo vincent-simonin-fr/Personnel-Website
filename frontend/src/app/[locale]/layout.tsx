@@ -1,9 +1,11 @@
+'use server-only'
+
 import type { Metadata } from 'next'
 import { Providers } from '../providers'
 import localFont from 'next/font/local'
 import '../globals.css'
-import LocaleSwitcher from 'components/LocaleSwitcher'
-import { ThemeSwitcher } from 'components/ThemeSwitcher'
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -25,7 +27,7 @@ export async function generateStaticParams() {
   return [{ locale: 'en-US' }, { locale: 'de' }, { locale: 'fr' }]
 }
 
-const RootLayout = async ({
+const LocaleLayout = async ({
   children,
   params,
 }: Readonly<{
@@ -37,21 +39,17 @@ const RootLayout = async ({
   return (
     // Initial theme is dark
     <html className={'dark'} lang={locale} style={{ colorScheme: 'dark' }}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>
-          <div>
-            <nav className='flex items-center justify-end gap-4 p-4 sm:p-6'>
-              <LocaleSwitcher />
-              <ThemeSwitcher />
-            </nav>
+          <main>
+            <Header />
             {children}
-          </div>
+            <Footer />
+          </main>
         </Providers>
       </body>
     </html>
   )
 }
 
-export default RootLayout
+export default LocaleLayout
