@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation'
 import { Avatar, Select, SelectItem } from '@nextui-org/react'
 import { useEffect, useState } from 'react'
+import { LanguageIcon } from '@heroicons/react/24/outline'
 
 type Locale = {
   key: string
@@ -61,6 +62,7 @@ const LocaleSwitcher = () => {
       aria-label='Language switcher'
       selectedKeys={[locale!.key]}
       onChange={handleSelectLocale}
+      startContent={<LanguageIcon className='h-6 w-6' />}
       size='sm'>
       {(locale) => (
         <SelectItem
