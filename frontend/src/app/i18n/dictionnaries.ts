@@ -1,5 +1,3 @@
-import 'server-only'
-
 export type Dictionary = {
   homePage: {
     deployButtonLabel: string
@@ -18,5 +16,8 @@ const dictionaries: Record<string, () => Promise<Dictionary>> = {
 }
 
 export const getDictionary = async (locale: string) => {
+  // const promise  = locale == 'fr' ? dictionaries.fr() : locale == 'de' ? dictionaries.de() : dictionaries.en() // Default to English
+  // const dico = await promise
+  console.log('getDictionary', locale)
   return locale == 'fr' ? dictionaries.fr() : locale == 'de' ? dictionaries.de() : dictionaries.en() // Default to English
 }
