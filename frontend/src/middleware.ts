@@ -11,9 +11,7 @@ export function middleware(req: NextRequest) {
 
   if (!hasLocale) {
     const defaultLocale = 'en-US'
-    return NextResponse.redirect(
-      new URL(`/${defaultLocale}${pathname}`, req.url)
-    )
+    return NextResponse.redirect(new URL(`/${defaultLocale}${pathname}`, req.url))
   }
 
   return NextResponse.next()

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is the frontend of the Yuno IT project. It is a Next.js application that uses the NextUI library for the UI components.
+This is the frontend of the Yuno IT project. It is a Next.js application that uses the HeroUI library for the UI components.
 
 ## Environment
 
