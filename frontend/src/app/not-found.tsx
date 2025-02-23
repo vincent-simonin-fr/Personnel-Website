@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Loading from 'components/client/Loading'
+import FuzzyText from 'components/FuzzyText'
 
 const NotFound = () => {
   const [locale, setLocale] = useState<string>()
@@ -29,7 +30,10 @@ const NotFound = () => {
 
   return (
     <Loading isLoading={isLoading} isError={isError} error={error}>
-      <div className='flex h-[calc(100vh-60px)] flex-col items-center justify-center'>
+      <div className='flex h-[calc(100vh-60px)] flex-col items-center justify-center gap-y-4'>
+        <FuzzyText baseIntensity={0.2} fontSize='15vw'>
+          404
+        </FuzzyText>
         <h1 className='text-balance text-center text-4xl font-bold'>{dict?.notFound.title}</h1>
         <p className='text-balance text-center text-2xl'>{dict?.notFound.subtitle}</p>
         <Link className='text mt-10 text-xl hover:underline hover:opacity-[0.7]' href='/'>

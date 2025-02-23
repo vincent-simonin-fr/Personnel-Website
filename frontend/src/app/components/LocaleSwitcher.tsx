@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname, useRouter } from 'next/navigation'
-import { Avatar, Select, SelectItem } from '@nextui-org/react'
+import { Avatar, Select, SelectItem } from '@heroui/react'
 import { useEffect, useState } from 'react'
 import { LanguageIcon } from '@heroicons/react/24/outline'
 
@@ -57,7 +57,7 @@ const LocaleSwitcher = () => {
 
   return (
     <Select
-      className='flex max-w-32 items-center justify-center gap-2 rounded-full border border-solid border-transparent px-4 text-sm transition-colors sm:h-5 sm:px-5 sm:text-base'
+      className='flex max-w-36 items-center justify-center gap-2 rounded-full border border-solid border-transparent px-4 text-sm transition-colors sm:h-5 sm:px-5 sm:text-base'
       items={locales}
       aria-label='Language switcher'
       selectedKeys={[locale!.key]}
@@ -67,7 +67,6 @@ const LocaleSwitcher = () => {
       {(locale) => (
         <SelectItem
           key={locale.key}
-          value={locale.key}
           startContent={<Avatar alt={locale.country} className='h-3 w-3' src={locale.icon} />}>
           {locale.label}
         </SelectItem>
