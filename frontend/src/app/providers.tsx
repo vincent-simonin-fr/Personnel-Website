@@ -1,9 +1,10 @@
 'use client'
 
-import { NextUIProvider } from '@nextui-org/react'
+import { HeroUIProvider } from '@heroui/react'
 import { isServer, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { useEffect, useState } from 'react'
+import { GlobalContextProvider } from './contexts/GlobalContext'
 
 function makeQueryClient() {
   return new QueryClient({
@@ -52,12 +53,14 @@ export function Providers({ children }: { children: React.ReactNode }) {
   if (!mounted) return <div /> // Affiche rien jusqu'à ce que le composant soit monté
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <NextUIProvider>
-        <NextThemesProvider attribute='class' defaultTheme='dark' storageKey='theme'>
-          {children}
-        </NextThemesProvider>
-      </NextUIProvider>
-    </QueryClientProvider>
+    <GlobalContextProvider>
+      <QueryClientProvider client={queryClient}>
+        <HeroUIProvider>
+          <NextThemesProvider attribute='class' defaultTheme='dark' storageKey='theme'>
+            {children}
+          </NextThemesProvider>
+        </HeroUIProvider>
+      </QueryClientProvider>
+    </GlobalContextProvider>
   )
 }
