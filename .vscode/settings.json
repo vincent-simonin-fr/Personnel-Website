@@ -1,10 +1,10 @@
 {
-  "editor.acceptSuggestionOnEnter": true,
+  "editor.acceptSuggestionOnEnter": "off",
   "editor.quickSuggestions": {
-    "other": false,
+    "other": true,
     "comments": false,
     "strings": false
   },
-  "editor.quickSuggestionsDelay": 300,
-  "cSpell.words": ["heroui"]
+  "editor.quickSuggestionsDelay": 0,
+  "cSpell.words": ["Cartographie", "heroui", "Yuno"]
 }

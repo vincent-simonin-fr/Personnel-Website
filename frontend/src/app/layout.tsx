@@ -1,31 +1,27 @@
 'use server-only'
 
-import Footer from 'components/Footer'
-import Header from 'components/Header'
-import localFont from 'next/font/local'
-import './globals.css'
-import { Providers } from './providers'
-
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-})
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-})
+import Footer from 'components/shape/Footer'
+import Header from 'components/shape/Header'
+import 'styles/globals.css'
+import { Providers } from '../providers/providers'
+import { Bounce, ToastContainer } from 'react-toastify'
+import { geistSans, geistMono, fontMono, fontSans, soehneKraftig } from 'config/fonts'
+import css from 'styled-jsx/css'
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <html className={'dark'} lang={'en-US'} style={{ colorScheme: 'dark' }}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${soehneKraftig.className} antialiased *:text-primary`}>
         <Providers>
-          <main>
+          <main className='flex min-h-screen w-screen flex-col items-center justify-center'>
             <Header />
             {children}
             <Footer />
+            <ToastContainer
+              theme='dark'
+              toastClassName={`${soehneKraftig.className}`}
+              transition={Bounce}
+            />
           </main>
         </Providers>
       </body>

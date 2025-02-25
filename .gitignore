@@ -40,5 +40,5 @@ yarn-error.log*
 next-env.d.ts
 
 bi/*
-
+my-heroui-app/*
 deployment-architecture-v2.jpg

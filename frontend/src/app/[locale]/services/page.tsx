@@ -1,3 +1,5 @@
+'use client'
+
 type ServicesProps = object
 
 const Services = ({}: ServicesProps) => {
