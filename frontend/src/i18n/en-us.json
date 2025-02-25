@@ -1,0 +1,95 @@
+{
+  "homePage": {
+    "deployButtonLabel": "Deploy now"
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "title": "Home",
+      "to": "/"
+    },
+    {
+      "label": "Services",
+      "title": "Our Services",
+      "to": "/services"
+    },
+    {
+      "label": "Tech Labs",
+      "title": "Technology Labs",
+      "to": "/labs",
+      "items": [
+        {
+          "label": "Geographic Information System",
+          "title": "GIS Solutions",
+          "to": "/labs/gis"
+        },
+        {
+          "label": "Business Intelligence",
+          "title": "BI Solutions",
+          "to": "/labs/bi"
+        },
+        {
+          "label": "Artificial Intelligence",
+          "title": "AI Solutions",
+          "to": "/labs/ai"
+        },
+        {
+          "label": "Blockchain",
+          "title": "Web3 & Blockchain",
+          "to": "/labs/blockchain"
+        }
+      ]
+    }
+  ],
+  "notFound": {
+    "title": "Page Not Found",
+    "subtitle": "Sorry, the page you're looking for does not exist.",
+    "buttonLabel": "Return to Home"
+  },
+  "presentation": {
+    "description": "Full Stack Developer and Azure Cloud Developer, expert in IT and new technologies.",
+    "services": [
+      {
+        "title": "Full Stack Development",
+        "description": "Design and implementation of high-performance, secure, and scalable web and mobile applications using the latest technologies."
+      },
+      {
+        "title": "Software Design and Analysis",
+        "description": "In-depth analysis of needs, drafting of technical and functional specifications, and design of custom software solutions."
+      },
+      {
+        "title": "Project Industrialization",
+        "description": "Implementation of CI/CD pipelines, automation of tests and deployments, and management of development environments for continuous and reliable delivery."
+      },
+      {
+        "title": "Evolutionary and Corrective Maintenance",
+        "description": "Continuous monitoring and improvement of applications, bug fixing, and adding new features to meet changing user needs."
+      },
+      {
+        "title": "Business Applications and Communication Sites",
+        "description": "Development of specific business applications and communication websites to improve the visibility and efficiency of companies."
+      },
+      {
+        "title": "Training and Coaching",
+        "description": "Training on .NET and React.js technologies, efficient software design, object-oriented programming, PostgreSQL and MongoDB databases. Personalized follow-up and step-by-step learning for all levels."
+      }
+    ]
+  },
+  "contactForm": {
+    "title": "To Contact Me",
+    "firstNameLabel": "First name",
+    "lastNameLabel": "Last name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "submitButton": "Send message",
+    "resetButton": "Clear",
+    "firstNameError": "Please enter a valid first name",
+    "lastNameError": "Please enter a valid last name",
+    "emailError": "Please enter a valid email",
+    "messageError": "Please enter a message",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastNamePlaceholder": "Enter your last name",
+    "emailPlaceholder": "Enter your email",
+    "messagePlaceholder": "Enter your message"
+  }
+}

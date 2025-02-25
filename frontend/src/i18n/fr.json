@@ -1,0 +1,95 @@
+{
+  "homePage": {
+    "deployButtonLabel": "Déploies maintenant"
+  },
+  "navigation": [
+    {
+      "label": "Accueil",
+      "title": "Accueil",
+      "to": "/"
+    },
+    {
+      "label": "Services",
+      "title": "Mes Services",
+      "to": "/services"
+    },
+    {
+      "label": "Tech Labs",
+      "title": "Laboratoires Technologiques",
+      "to": "/labs",
+      "items": [
+        {
+          "label": "Système d'Information Géographique",
+          "title": "Solutions SIG",
+          "to": "/labs/gis"
+        },
+        {
+          "label": "Business Intelligence",
+          "title": "Solutions BI",
+          "to": "/labs/bi"
+        },
+        {
+          "label": "Intelligence Artificielle",
+          "title": "Solutions IA",
+          "to": "/labs/ai"
+        },
+        {
+          "label": "Blockchain",
+          "title": "Web3 & Blockchain",
+          "to": "/labs/blockchain"
+        }
+      ]
+    }
+  ],
+  "notFound": {
+    "title": "Page Introuvable",
+    "subtitle": "Désolé, la page que vous recherchez n'existe pas.",
+    "buttonLabel": "Retour à l'Accueil"
+  },
+  "presentation": {
+    "description": "Développeur Full Stack et Développeur Azure Cloud, expert en informatique et nouvelles technologies.",
+    "services": [
+      {
+        "title": "Développement Full Stack",
+        "description": "Conception et réalisation d'applications web et mobiles performantes, sécurisées et évolutives, utilisant les technologies les plus récentes."
+      },
+      {
+        "title": "Études et Conception Logicielle",
+        "description": "Analyse approfondie des besoins, rédaction de spécifications techniques et fonctionnelles, et conception de solutions logicielles sur mesure."
+      },
+      {
+        "title": "Industrialisation de Projet",
+        "description": "Mise en place de pipelines CI/CD, automatisation des tests et des déploiements, et gestion des environnements de développement pour une livraison continue et fiable."
+      },
+      {
+        "title": "Maintenance Évolutive et Corrective",
+        "description": "Suivi et amélioration continue des applications, correction des bugs, et ajout de nouvelles fonctionnalités pour répondre aux besoins changeants des utilisateurs."
+      },
+      {
+        "title": "Applications Métiers et Sites de Communication",
+        "description": "Développement d'applications métiers spécifiques et de sites web de communication pour améliorer la visibilité et l'efficacité des entreprises."
+      },
+      {
+        "title": "Formation et Coaching",
+        "description": "Formation sur les technologies .NET et React.js, conception logicielle efficace, programmation orientée objet, bases de données PostgreSQL et MongoDB. Apprentissage par étape avec suivi personnalisé pour tous niveaux."
+      }
+    ]
+  },
+  "contactForm": {
+    "title": "Me Contacter",
+    "firstNameLabel": "Prénom",
+    "lastNameLabel": "Nom",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "submitButton": "Envoyer",
+    "resetButton": "Réinitialiser",
+    "firstNameError": "Veuillez entrer un prénom valide",
+    "lastNameError": "Veuillez entrer un nom valide",
+    "emailError": "Veuillez entrer un email valide",
+    "messageError": "Veuillez entrer un message",
+    "firstNamePlaceholder": "Entrez votre prénom",
+    "lastNamePlaceholder": "Entrez votre nom",
+    "emailPlaceholder": "Entrez votre email",
+    "messagePlaceholder": "Entrez votre message"
+  }
+}

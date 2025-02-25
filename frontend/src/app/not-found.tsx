@@ -1,32 +1,16 @@
 'use client'
 
-import BouncingHand from 'components/BouncingHand'
+import BouncingHand from 'components/ui/BouncingHand'
 import Link from 'next/link'
-import { getDictionary } from './i18n/dictionnaries'
-import { useQuery } from '@tanstack/react-query'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import Loading from 'components/client/Loading'
-import FuzzyText from 'components/FuzzyText'
+import { useEffect } from 'react'
+import Loading from 'components/loading/Loading'
+import FuzzyText from 'components/ui/FuzzyText'
+import { useGlobalContext } from 'hooks/useGlobalContext'
 
 const NotFound = () => {
-  const [locale, setLocale] = useState<string>()
-  const path = usePathname()
+  const { dictionary: dict, isLoading: isLoading, isError, error } = useGlobalContext()
 
-  const {
-    data: dict,
-    isLoading,
-    isError,
-    error,
-  } = useQuery({
-    queryKey: ['dictionary', locale],
-    queryFn: () => getDictionary(locale!),
-  })
-
-  useEffect(() => {
-    const segments = path.split('/')
-    setLocale(segments[1])
-  }, [path])
+  useEffect(() => {}, [dict])
 
   return (
     <Loading isLoading={isLoading} isError={isError} error={error}>
@@ -36,7 +20,10 @@ const NotFound = () => {
         </FuzzyText>
         <h1 className='text-balance text-center text-4xl font-bold'>{dict?.notFound.title}</h1>
         <p className='text-balance text-center text-2xl'>{dict?.notFound.subtitle}</p>
-        <Link className='text mt-10 text-xl hover:underline hover:opacity-[0.7]' href='/'>
+        <Link
+          className='text mt-10 text-xl hover:underline hover:opacity-[0.7]'
+          href='/'
+          rel='noopener noreferrer'>
           {dict?.notFound.buttonLabel} <BouncingHand />
         </Link>
       </div>

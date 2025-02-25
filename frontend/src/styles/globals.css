@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --foreground-rgb: 0, 0, 0;
+
+  --color-bg-light: #ffffff;
+  --color-bg-dark: #1a1a1a;
+  --color-text-light: #000000;
+  --color-text-dark: #ffffff;
+  --color-border-light: #e2e8f0;
+  --color-border-dark: #4a5568;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --foreground-rgb: 255, 255, 255;
+
+    --color-bg: var(--color-bg-dark);
+    --color-text: var(--color-text-dark);
+    --color-border: var(--color-border-dark);
+  }
+}
+
+html {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Fallback for browsers that don't support view() timeline */
+@supports not (animation-timeline: view()) {
+  .showAndHideOnView {
+    opacity: 0.3;
+    transform: scale(0.7);
+    transition:
+      opacity 1s ease-in-out,
+      transform 1s ease-in-out;
+    will-change: opacity, transform;
+  }
+
+  .showAndHideOnView.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .showAndHideOnView.hiden {
+    opacity: 0.3;
+    transform: scale(0.7);
+  }
+}
+
+/* Modern browsers including Safari */
+@supports (animation-timeline: view()) {
+  .showAndHideOnView {
+    animation:
+      show linear,
+      hide linear;
+    animation-duration: 1ms;
+    animation-fill-mode: none;
+    animation-timeline: view();
+    animation-range: entry-crossing, exit-crossing;
+  }
+}
