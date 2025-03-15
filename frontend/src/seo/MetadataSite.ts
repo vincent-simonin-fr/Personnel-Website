@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
   locale: 'fr_FR',
-  url: 'https://vincent-simonin.com',
+  url: 'https://www.dev.vincentsimonin.fr',
   siteName: 'Vincent Simonin',
   images: [
     {
@@ -16,13 +16,10 @@ const defaultOpenGraph: Metadata['openGraph'] = {
 }
 
 export const MetadataSite: Metadata = {
-  metadataBase: new URL('https://vincent-simonin.com'),
-  title: {
-    default: 'Vincent Simonin - Full Stack Developer & Azure Cloud Expert',
-    template: '%s | Vincent Simonin',
-  },
+  metadataBase: new URL('https://www.dev.vincentsimonin.fr'),
+  title: 'Vincent Simonin - Full Stack Developer & Azure Cloud Expert',
   description:
-    "Expert en développement Full Stack et Cloud Azure, spécialisé dans la création d'applications web modernes et évolutives.",
+    'Discover Vincent Simonin, a Full Stack and Cloud Azure expert, specializing in modern, scalable web applications. Explore his innovative design and development methods.',
   keywords: [
     'Full Stack Developer',
     'Azure Cloud',
@@ -38,7 +35,7 @@ export const MetadataSite: Metadata = {
     ...defaultOpenGraph,
     title: 'Vincent Simonin - Full Stack Developer & Azure Cloud Expert',
     description:
-      "Expert en développement Full Stack et Cloud Azure, spécialisé dans la création d'applications web modernes et évolutives.",
+      'Discover Vincent Simonin, a Full Stack and Cloud Azure expert, specializing in modern, scalable web applications. Explore his innovative design and development methods.',
   },
   twitter: {
     card: 'summary_large_image',
@@ -58,21 +55,21 @@ export const MetadataSite: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://vincent-simonin.com',
+    canonical: 'https://www.dev.vincentsimonin.fr/fr',
     languages: {
-      'en-US': 'https://vincent-simonin.com/en-US',
-      fr: 'https://vincent-simonin.com/fr',
-      de: 'https://vincent-simonin.com/de',
+      'en-US': 'https://www.dev.vincentsimonin.fr/en-US',
+      fr: 'https://www.dev.vincentsimonin.fr/fr',
+      de: 'https://www.dev.vincentsimonin.fr/de',
     },
   },
-  verification: {
-    // TODO: Add your Google site verification code here
-    google: 'your-google-site-verification',
-  },
+  // verification: {
+  //   // TODO: Add your Google site verification code here
+  //   // google: 'your-google-site-verification',
+  // },
   authors: [
     {
       name: 'Vincent Simonin',
-      url: 'https://vincent-simonin.com',
+      url: 'https://www.dev.vincentsimonin.fr',
     },
   ],
 }
@@ -81,7 +78,7 @@ export const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Vincent Simonin',
-  url: 'https://vincent-simonin.com',
+  url: 'https://www.dev.vincentsimonin.fr',
   jobTitle: 'Full Stack Developer & Azure Cloud Expert',
   alumniOf: {
     '@type': 'Organization',
@@ -99,7 +96,8 @@ export const jsonLd = {
     '.Net platform',
   ],
   image: 'https://vincent-simonin.com/images/profile.jpg',
-  description: 'Full Stack Developer & Azure Cloud Expert',
+  description:
+    'Discover Vincent Simonin, a Full Stack and Cloud Azure expert, specializing in modern, scalable web applications. Explore his innovative design and development methods.',
   sameAs: ['https://github.com/vincent-simonin-fr', 'https://www.linkedin.com/in/vincentsimonin'],
   worksFor: {
     '@type': 'Organization',
