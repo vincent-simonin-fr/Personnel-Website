@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useTheme } from 'next-themes'
+import { siteConfig } from 'config/site'
 
 interface FuzzyTextProps {
   children: React.ReactNode
@@ -26,7 +27,7 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    color = theme === 'dark' ? '#94a3b8' : '#DD62ED'
+    color = theme === 'dark' ? '#94a3b8' : siteConfig.color.hex
     let animationFrameId: number
     let isCancelled = false
     const canvas = canvasRef.current

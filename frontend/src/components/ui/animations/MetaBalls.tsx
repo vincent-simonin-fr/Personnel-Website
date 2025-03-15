@@ -212,7 +212,7 @@ const MetaBalls: React.FC<MetaBallsProps> = ({
       renderer.setSize(width * dpr, height * dpr)
       gl.canvas.style.width = '100%'
       gl.canvas.style.height = 'auto'
-      gl.canvas.style.aspectRatio = '3/4'
+      gl.canvas.style.aspectRatio = '1/1'
       program.uniforms.iResolution.value.set(gl.canvas.width, gl.canvas.height, 0)
     }
     window.addEventListener('resize', resize)
