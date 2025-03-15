@@ -1,5 +1,7 @@
 {
   "homePage": {
+    "title": "Startseite",
+    "description": "Full Stack Entwickler und Azure Cloud Entwickler, Experte für IT und neue Technologien.",
     "deployButtonLabel": "Jetzt entfalten"
   },
   "navigation": [
@@ -47,11 +49,11 @@
     "buttonLabel": "Zurück zur Startseite"
   },
   "presentation": {
-    "description": "Full Stack Entwickler und Azure Cloud Entwickler, Experte für IT und neue Technologien.",
+    "description": "Full stack entwickler und Azure cloud entwickler, Experte für IT und neue Technologien.",
     "services": [
       {
-        "title": "Full Stack Entwicklung",
-        "description": "Design und Implementierung von leistungsstarken, sicheren und skalierbaren Web- und mobilen Anwendungen mit den neuesten Technologien."
+        "title": "Full stack entwicklung",
+        "description": "Design und Implementierung von leistungsstarken, sicheren und skalierbaren Web- und mobilen Anwendungen mit den neuesten Technologien. Ich arbeite mit Microsoft-Technologien, Azure Cloud, der .Net-Plattform und React.js. Während meiner Ausbildung begann ich mich für Softwarequalität und Wartbarkeit zu interessieren, ein Fragezeichen, das Hunderte von anderen aufgeworfen hat."
       },
       {
         "title": "Softwaredesign und -analyse",
@@ -59,7 +61,7 @@
       },
       {
         "title": "Projektindustrialisierung",
-        "description": "Implementierung von CI/CD-Pipelines, Automatisierung von Tests und Bereitstellungen sowie Verwaltung von Entwicklungsumgebungen für eine kontinuierliche und zuverlässige Lieferung."
+        "description": "Implementierung von CI/CD-Pipelines, Automatisierung von Tests und Bereitstellungen sowie Verwaltung von Entwicklungsumgebungen für eine kontinuierliche und zuverlässige Lieferung. Ich entwerfe und entwickle Projekte, die Sicherheit von Anfang an integrieren, indem ich DevSecOps-Methoden anwende."
       },
       {
         "title": "Evolutive und Korrektive Wartung",
@@ -90,6 +92,8 @@
     "firstNamePlaceholder": "Geben Sie Ihren Vornamen",
     "lastNamePlaceholder": "Geben Sie Ihren Nachnamen",
     "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse",
-    "messagePlaceholder": "Geben Sie Ihre Nachricht"
+    "messagePlaceholder": "Geben Sie Ihre Nachricht",
+    "successMessage": "Ihre Nachricht wurde erfolgreich gesendet",
+    "errorMessage": "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten"
   }
 }

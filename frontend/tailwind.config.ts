@@ -9,10 +9,31 @@ export default {
     './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    screens: {
+      sm: '640px',
+      // => @media (min-width: 640px) { ... }
+
+      md: '674px',
+      // => @media (min-width: 768px) { ... }
+
+      lg: '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      xl: '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
+    },
     extend: {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+      },
+      fontSize: {
+        'body-sm': '.750rem',
+        'body-lg': '1rem',
+        body: '.875rem',
       },
     },
   },
@@ -28,8 +49,8 @@ export default {
         },
         borderWidth: {
           small: '1px', // border-small
-          medium: '1px', // border-medium
-          large: '2px', // border-large
+          medium: '2px', // border-medium
+          large: '3px', // border-large
         },
       },
       themes: {
@@ -59,23 +80,43 @@ export default {
           },
         },
         dark: {
-          // extend: 'dark', // <- inherit default values from dark theme
           colors: {
             background: '#0a0a0a',
             foreground: '#ededed',
             primary: {
-              50: '#0f172a', // '#f8fafc',
-              100: '#1e293b', // '#f1f5f9',
-              200: '#334155', // '#e2e8f0',
-              300: '#475569', // '#cbd5e1',
-              400: '#64748b', // '#94a3b8',
-              500: '#94a3b8', // '#64748b',
-              600: '#cbd5e1', // '#475569',
-              700: '#e2e8f0', // '#334155',
-              800: '#f1f5f9', // '#1e293b',
-              900: '#f8fafc', // '#0f172a',
+              50: '#f8fafc', // '#0f172a', //
+              100: '#f1f5f9', // '#1e293b', //
+              200: '#e2e8f0', // '#334155', //
+              300: '#cbd5e1', // '#475569', //
+              400: '#94a3b8', // '#64748b', //
+              500: '#64748b', // '#94a3b8', //
+              600: '#475569', // '#cbd5e1', //
+              700: '#334155', // '#e2e8f0', //
+              800: '#1e293b', // '#f1f5f9', //
+              900: '#0f172a', // '#f8fafc', //
               DEFAULT: '#94a3b8',
               foreground: '#ededed',
+            },
+            focus: '#F182F6',
+          },
+        },
+        light: {
+          colors: {
+            background: '#f1f5f9',
+            foreground: '#1e293b',
+            primary: {
+              50: '#0f172a',
+              100: '#1e293b',
+              200: '#334155',
+              300: '#475569',
+              400: '#64748b',
+              500: '#94a3b8',
+              600: '#cbd5e1',
+              700: '#e2e8f0',
+              800: '#f1f5f9',
+              900: '#f8fafc',
+              DEFAULT: '#475569',
+              foreground: '#cbd5e1',
             },
             focus: '#F182F6',
           },

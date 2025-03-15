@@ -26,11 +26,7 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    console.log('theme', theme)
     color = theme === 'dark' ? '#94a3b8' : '#DD62ED'
-    const main = document.querySelector('main')!
-    const test = window.getComputedStyle(main).color
-    console.log(test)
     let animationFrameId: number
     let isCancelled = false
     const canvas = canvasRef.current
@@ -69,29 +65,37 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
       const offCtx = offscreen.getContext('2d')
       if (!offCtx) return
 
+      // Configure text settings
       offCtx.font = `${fontWeight} ${fontSizeStr} ${computedFontFamily}`
       offCtx.textBaseline = 'alphabetic'
-      const metrics = offCtx.measureText(text)
 
+      // Get text measurements
+      const metrics = offCtx.measureText(text)
       const actualLeft = metrics.actualBoundingBoxLeft ?? 0
       const actualRight = metrics.actualBoundingBoxRight ?? metrics.width
       const actualAscent = metrics.actualBoundingBoxAscent ?? numericFontSize
       const actualDescent = metrics.actualBoundingBoxDescent ?? numericFontSize * 0.2
 
+      // Calculate dimensions
       const textBoundingWidth = Math.ceil(actualLeft + actualRight)
       const tightHeight = Math.ceil(actualAscent + actualDescent)
-
-      const extraWidthBuffer = 10
+      const extraWidthBuffer = 5
       const offscreenWidth = textBoundingWidth + extraWidthBuffer
 
+      // Set canvas dimensions
       offscreen.width = offscreenWidth
       offscreen.height = tightHeight
 
+      // Set text position
       const xOffset = extraWidthBuffer / 2
+
+      // Configure context styles
       offCtx.font = `${fontWeight} ${fontSizeStr} ${computedFontFamily}`
       offCtx.textBaseline = 'alphabetic'
       offCtx.fillStyle = color
       offCtx.strokeStyle = color
+
+      // Draw text
       offCtx.fillText(text, xOffset - actualLeft, actualAscent)
 
       const horizontalMargin = 50
@@ -201,7 +205,7 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
     theme,
   ])
 
-  return <canvas ref={canvasRef} />
+  return <canvas ref={canvasRef} className='h-auto max-h-28 w-full' />
 }
 
 export default FuzzyText
