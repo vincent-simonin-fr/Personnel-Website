@@ -104,6 +104,22 @@ const ContactForm = ({}: ContactFormProps) => {
     }
   }
 
+  const labelClassnames = 'group-data-[filled-within=true]:text-primary-50'
+  const inputWrapperClassnames = [
+    'rounded-xl',
+    'border-1',
+    'bg-primary-900',
+    'border-primary-600',
+    `focus-within:ring-fuchsia-600`,
+    'focus-within:ring-1',
+    'focus-within:ring-offset-0',
+    'focus-within:border-transparent',
+    `group-data-[focus-visible=true]:ring-fuchsia-600`,
+    'group-data-[focus-visible=true]:ring-1',
+    'group-data-[focus-visible=true]:ring-offset-0',
+    'group-data-[focus-visible=true]:border-transparent',
+  ]
+
   return (
     <div className='flex w-full max-w-md flex-col items-start'>
       <h2 className={`${hankenGrotesk600.className} mb-4 text-2xl`}>
@@ -111,7 +127,14 @@ const ContactForm = ({}: ContactFormProps) => {
       </h2>
       <Form
         className='flex w-full max-w-md flex-col gap-4'
-        onReset={() => {}}
+        onReset={() => {
+          setUserInput({
+            firstName: '',
+            lastName: '',
+            email: '',
+            message: '',
+          })
+        }}
         onSubmit={handleSubmit}>
         <div className='flex w-full gap-4'>
           <Input
@@ -120,8 +143,8 @@ const ContactForm = ({}: ContactFormProps) => {
             type='text'
             className='flex-1'
             classNames={{
-              label: 'group-data-[filled-within=true]:text-primary-50',
-              inputWrapper: 'rounded-xl border-1 bg-primary-900 border-primary-50',
+              label: labelClassnames,
+              inputWrapper: inputWrapperClassnames,
             }}
             labelPlacement='outside'
             name='firstName'
@@ -137,8 +160,8 @@ const ContactForm = ({}: ContactFormProps) => {
             type='text'
             className='flex-1'
             classNames={{
-              label: 'group-data-[filled-within=true]:text-primary-50',
-              inputWrapper: 'rounded-xl border-1 bg-primary-900 border-primary-50',
+              label: labelClassnames,
+              inputWrapper: inputWrapperClassnames,
             }}
             labelPlacement='outside'
             name='lastName'
@@ -155,8 +178,8 @@ const ContactForm = ({}: ContactFormProps) => {
           type='email'
           className='w-full'
           classNames={{
-            label: 'group-data-[filled-within=true]:text-primary-50',
-            inputWrapper: 'rounded-xl border-1 bg-primary-900 border-primary-50',
+            label: labelClassnames,
+            inputWrapper: inputWrapperClassnames,
           }}
           labelPlacement='outside'
           name='email'
@@ -174,8 +197,8 @@ const ContactForm = ({}: ContactFormProps) => {
           maxRows={5}
           className='w-full'
           classNames={{
-            label: 'group-data-[filled-within=true]:text-primary-50',
-            inputWrapper: 'rounded-xl border-1 bg-primary-900 border-primary-50',
+            label: labelClassnames,
+            inputWrapper: inputWrapperClassnames,
           }}
           labelPlacement='outside'
           name='message'
@@ -187,15 +210,15 @@ const ContactForm = ({}: ContactFormProps) => {
         />
         <div className='flex gap-2'>
           <Button
-            className='rounded-2xl border-1 border-primary-50 bg-primary-900'
+            className='rounded-full bg-primary-50 text-primary-900'
             isLoading={isDisabled}
             isDisabled={isDisabled}
             type='submit'>
             {dictionary?.contactForm.submitButton}
           </Button>
-          {/* <Button isDisabled={isDisabled} color='primary' type='reset' variant='flat'>
+          <Button className='rounded-full' isDisabled={isDisabled} type='reset' variant='flat'>
             {dictionary?.contactForm.resetButton}
-          </Button> */}
+          </Button>
         </div>
         {/* {action && (
           <div className='text-small text-default-500'>

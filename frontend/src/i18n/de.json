@@ -2,7 +2,20 @@
   "homePage": {
     "title": "Startseite",
     "description": "Full Stack Entwickler und Azure Cloud Entwickler, Experte für IT und neue Technologien.",
-    "deployButtonLabel": "Jetzt entfalten"
+    "deployButtonLabel": "Jetzt entfalten",
+    "firstScreen": {
+      "salutation": "Hallo zusammen,",
+      "hook": {
+        "one": "Ich bin ein ",
+        "two": "Problemlöser ",
+        "three": "& ",
+        "four": "kreativer Entwickler",
+        "five": ","
+      },
+      "firstLine": "Moderne Webanwendungen entwerfen und entwickeln",
+      "secondLine": "für digitale Kommunikation oder Geschäftssysteme."
+    },
+    "labelButtonToSkills": "Meine Kompetenzen"
   },
   "navigation": [
     {
@@ -11,8 +24,8 @@
       "to": "/"
     },
     {
-      "label": "Dienstleistungen",
-      "title": "Unsere Dienstleistungen",
+      "label": "Kompetenzen",
+      "title": "Meine Kompetenzen",
       "to": "/services"
     },
     {
@@ -41,6 +54,11 @@
           "to": "/labs/blockchain"
         }
       ]
+    },
+    {
+      "label": "Kontakt",
+      "title": "Mich kontaktieren",
+      "to": "/contact"
     }
   ],
   "notFound": {

@@ -2,8 +2,9 @@ import type { NextConfig } from 'next'
 
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline';
-    style-src 'self' 'unsafe-inline';
+    connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com;
+    frame-src 'self' https://vercel.live;
+    style-src 'self';
     img-src 'self' blob: data:;
     font-src 'self';
     object-src 'none';
@@ -51,6 +52,11 @@ const securityHeaders: { key: string; value: string }[] = [
 const nextConfig: NextConfig = {
   output: 'standalone',
   compiler: {},
+  // i18n: {
+  //   locales: ['fr', 'en-US', 'de'],
+  //   defaultLocale: 'fr',
+  // },
+  crossOrigin: 'anonymous',
   async headers() {
     return [
       {
