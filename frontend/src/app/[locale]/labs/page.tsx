@@ -1,7 +1,7 @@
 import Button from 'components/ui/Button'
-import Starfield from 'components/ui/Starfields'
+import Starfield from 'components/ui/animations/Starfields'
 
-const Labs = async ({ params }: { params: Promise<{ slug: string }> }) => {
+const Labs = () => {
   return (
     <div className='w-screen'>
       <Starfield

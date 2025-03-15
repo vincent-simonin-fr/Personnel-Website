@@ -1,5 +1,6 @@
 import { useSprings, animated, SpringConfig } from '@react-spring/web'
 import { useEffect, useRef, useState } from 'react'
+import * as React from 'react'
 
 interface SplitTextProps {
   text?: string
@@ -13,6 +14,8 @@ interface SplitTextProps {
   textAlign?: 'left' | 'right' | 'center' | 'justify' | 'start' | 'end'
   onLetterAnimationComplete?: () => void
 }
+
+const Letter = ({ children }: { children: string }) => <>{children}</>
 
 const SplitText: React.FC<SplitTextProps> = ({
   text = '',
@@ -31,6 +34,7 @@ const SplitText: React.FC<SplitTextProps> = ({
   const [inView, setInView] = useState(false)
   const ref = useRef<HTMLParagraphElement>(null)
   const animatedCount = useRef(0)
+  const AnimatedSpan = animated('span')
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -71,7 +75,7 @@ const SplitText: React.FC<SplitTextProps> = ({
   )
 
   return (
-    <p
+    <div
       ref={ref}
       className={`split-parent inline overflow-hidden ${className}`}
       style={{ textAlign, whiteSpace: 'normal', wordWrap: 'break-word' }}>
@@ -80,20 +84,19 @@ const SplitText: React.FC<SplitTextProps> = ({
           {word.map((letter, letterIndex) => {
             const index =
               words.slice(0, wordIndex).reduce((acc, w) => acc + w.length, 0) + letterIndex
-
             return (
-              <animated.span
+              <AnimatedSpan
                 key={index}
                 style={springs[index] as unknown as React.CSSProperties}
                 className='inline-block transform transition-opacity will-change-transform'>
                 {letter}
-              </animated.span>
+              </AnimatedSpan>
             )
           })}
           <span style={{ display: 'inline-block', width: '0.3em' }}>&nbsp;</span>
         </span>
       ))}
-    </p>
+    </div>
   )
 }
 
