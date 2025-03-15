@@ -1,5 +1,3 @@
-import { delay } from 'src/utils/debugUtils'
-
 export type MenuItem = {
   label: string
   title: string
@@ -9,6 +7,8 @@ export type MenuItem = {
 
 export type Dictionary = {
   homePage: {
+    title: string
+    description: string
     deployButtonLabel: string
   }
   navigation: MenuItem[]
@@ -40,6 +40,8 @@ export type Dictionary = {
     lastNamePlaceholder: string
     emailPlaceholder: string
     messagePlaceholder: string
+    successMessage: string
+    errorMessage: string
   }
 }
 
@@ -52,6 +54,5 @@ const dictionaries: Record<string, () => Promise<Dictionary>> = {
 export const getDictionary = async (locale: string) => {
   // const promise  = locale == 'fr' ? dictionaries.fr() : locale == 'de' ? dictionaries.de() : dictionaries.en() // Default to English
   // const dico = await promise
-  await delay(300)
   return locale == 'fr' ? dictionaries.fr() : locale == 'de' ? dictionaries.de() : dictionaries.en() // Default to English
 }

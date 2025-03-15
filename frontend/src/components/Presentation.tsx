@@ -1,19 +1,19 @@
 'use client'
 
-import { useGlobalContext } from 'hooks/useGlobalContext'
+import { useAppContext } from 'hooks/useAppContext'
 import React, { useEffect } from 'react'
 
 // TODO: Handle loading and error states
 const Presentation = () => {
-  const { dictionary: dict } = useGlobalContext()
+  const { dictionary } = useAppContext()
 
-  useEffect(() => {}, [dict])
+  useEffect(() => {}, [dictionary])
 
   return (
-    <div className='container mx-auto px-4 py-12'>
+    <div className='container mx-auto'>
       <div className='mx-auto grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
-        {dict &&
-          dict.presentation.services.map((service, index) => (
+        {dictionary &&
+          dictionary.presentation.services.map((service, index) => (
             <div
               key={index}
               className='duration-800 transform rounded-lg border border-primary p-6 shadow-lg shadow-primary transition-shadow ease-in-out hover:scale-[1.01] hover:shadow-xl hover:shadow-primary'>
