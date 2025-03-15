@@ -27,7 +27,7 @@ const KeyframeCssOnView = ({ children, cssClass, rootMargin = '-10%' }: Keyframe
   }, [isIntersecting])
 
   return (
-    <div ref={ref} className={`relative w-full px-16 ${cssClass}`}>
+    <div ref={ref} className={`relative w-full ${cssClass}`}>
       {children}
     </div>
   )

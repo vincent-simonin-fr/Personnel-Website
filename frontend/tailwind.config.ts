@@ -13,7 +13,7 @@ export default {
       sm: '640px',
       // => @media (min-width: 640px) { ... }
 
-      md: '674px',
+      md: '768px',
       // => @media (min-width: 768px) { ... }
 
       lg: '1024px',
@@ -26,10 +26,6 @@ export default {
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
-      colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-      },
       fontSize: {
         'body-sm': '.750rem',
         'body-lg': '1rem',
@@ -84,20 +80,20 @@ export default {
             background: '#0a0a0a',
             foreground: '#ededed',
             primary: {
-              50: '#f8fafc', // '#0f172a', //
-              100: '#f1f5f9', // '#1e293b', //
-              200: '#e2e8f0', // '#334155', //
-              300: '#cbd5e1', // '#475569', //
-              400: '#94a3b8', // '#64748b', //
-              500: '#64748b', // '#94a3b8', //
-              600: '#475569', // '#cbd5e1', //
-              700: '#334155', // '#e2e8f0', //
-              800: '#1e293b', // '#f1f5f9', //
-              900: '#0f172a', // '#f8fafc', //
-              DEFAULT: '#94a3b8',
-              foreground: '#ededed',
+              50: '#f6f6f6', // '#f8fafc', // '#0f172a', //
+              100: '#E7E7E7', // '#f1f5f9', // '#1e293b', //
+              200: '#B0B0B0', // '#e2e8f0', // '#334155', //
+              300: '#888888', // '#cbd5e1', // '#475569', //
+              400: '#6D6D6D', // '#94a3b8', // '#64748b', //
+              500: '#5D5D5D', //'#64748b', // '#94a3b8', //
+              600: '#4F4F4F', // '#475569', // '#cbd5e1', //
+              700: '#454545', // '#334155', // '#e2e8f0', //
+              800: '#3D3D3D', // '#1e293b', // '#f1f5f9', //
+              900: '#1B1B1B', //'#0f172a', // '#f8fafc', //
+              DEFAULT: '#B0B0B0',
+              foreground: '#f6f6f6',
             },
-            focus: '#F182F6',
+            focus: '#3D3D3D',
           },
         },
         light: {
