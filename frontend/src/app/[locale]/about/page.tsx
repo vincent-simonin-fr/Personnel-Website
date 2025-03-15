@@ -1,7 +1,5 @@
 'use client'
 
-import ScheduleCallLink from 'components/ScheduleCallLink'
-
 type AboutProps = object
 
 const About = ({}: AboutProps) => {

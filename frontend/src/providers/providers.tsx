@@ -4,7 +4,7 @@ import { HeroUIProvider } from '@heroui/react'
 import { isServer, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { GlobalContextProvider } from '../contexts/GlobalContext'
+import { AppContextProvider } from '../contexts/AppContext'
 import { useRouter } from 'next/navigation'
 
 // Only if using TypeScript
@@ -63,7 +63,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <GlobalContextProvider>
+      <AppContextProvider>
         <HeroUIProvider navigate={router.push}>
           <NextThemesProvider
             attribute='class'
@@ -73,7 +73,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             {children}
           </NextThemesProvider>
         </HeroUIProvider>
-      </GlobalContextProvider>
+      </AppContextProvider>
     </QueryClientProvider>
   )
 }

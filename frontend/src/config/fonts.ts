@@ -1,6 +1,8 @@
 import { Fira_Code as FontMono, Inter as FontSans } from 'next/font/google'
 import localFont from 'next/font/local'
 
+// https://fonts.google.com/specimen/Schibsted+Grotesk?query=grotesk
+
 export const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans',

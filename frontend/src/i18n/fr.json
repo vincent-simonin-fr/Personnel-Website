@@ -1,5 +1,7 @@
 {
   "homePage": {
+    "title": "Page d'accueil",
+    "description": "Développeur Full Stack et Développeur Azure Cloud, expert en informatique et nouvelles technologies.",
     "deployButtonLabel": "Déploies maintenant"
   },
   "navigation": [
@@ -51,7 +53,7 @@
     "services": [
       {
         "title": "Développement Full Stack",
-        "description": "Conception et réalisation d'applications web et mobiles performantes, sécurisées et évolutives, utilisant les technologies les plus récentes."
+        "description": "Conception et réalisation d'applications web et mobiles performantes, sécurisées et évolutives, utilisant les technologies les plus récentes. Je travaille avec les technologies Microsoft, le cloud Azure, la plateforme .Net et React.js. Au cours de ma formation, je me suis intéressé à la qualité et à la maintenabilité des logiciels, un point d'interrogation qui en a soulevé des centaines d'autres."
       },
       {
         "title": "Études et Conception Logicielle",
@@ -59,7 +61,7 @@
       },
       {
         "title": "Industrialisation de Projet",
-        "description": "Mise en place de pipelines CI/CD, automatisation des tests et des déploiements, et gestion des environnements de développement pour une livraison continue et fiable."
+        "description": "Mise en place de pipelines CI/CD, automatisation des tests et des déploiements, et gestion des environnements de développement pour une livraison continue et fiable. Je conçois et développe des projets en intégrant la sécurité dès les premières étapes grâce aux méthodologies DevSecOps."
       },
       {
         "title": "Maintenance Évolutive et Corrective",
@@ -90,6 +92,8 @@
     "firstNamePlaceholder": "Entrez votre prénom",
     "lastNamePlaceholder": "Entrez votre nom",
     "emailPlaceholder": "Entrez votre email",
-    "messagePlaceholder": "Entrez votre message"
+    "messagePlaceholder": "Entrez votre message",
+    "successMessage": "Votre message a bien été envoyé. Merci !",
+    "errorMessage": "Une erreur s'est produite. Veuillez réessayer."
   }
 }
