@@ -2,7 +2,20 @@
   "homePage": {
     "title": "Page d'accueil",
     "description": "Développeur Full Stack et Développeur Azure Cloud, expert en informatique et nouvelles technologies.",
-    "deployButtonLabel": "Déploies maintenant"
+    "deployButtonLabel": "Déploies maintenant",
+    "firstScreen": {
+      "salutation": "Bonjour à tous,",
+      "hook": {
+        "one": "Je suis un ",
+        "two": "solutionneur de problèmes ",
+        "three": "& un ",
+        "four": "développeur créatif",
+        "five": ","
+      },
+      "firstLine": "Concevoir et développer des applications web modernes",
+      "secondLine": "pour la communication digitale ou les systèmes d'entreprise."
+    },
+    "labelButtonToSkills": "Mes compétences"
   },
   "navigation": [
     {
@@ -11,8 +24,8 @@
       "to": "/"
     },
     {
-      "label": "Services",
-      "title": "Mes Services",
+      "label": "Compétences",
+      "title": "Mes Compétences",
       "to": "/services"
     },
     {
@@ -41,6 +54,11 @@
           "to": "/labs/blockchain"
         }
       ]
+    },
+    {
+      "label": "Contact",
+      "title": "Me contacter",
+      "to": "/contact"
     }
   ],
   "notFound": {
@@ -53,10 +71,10 @@
     "services": [
       {
         "title": "Développement Full Stack",
-        "description": "Conception et réalisation d'applications web et mobiles performantes, sécurisées et évolutives, utilisant les technologies les plus récentes. Je travaille avec les technologies Microsoft, le cloud Azure, la plateforme .Net et React.js. Au cours de ma formation, je me suis intéressé à la qualité et à la maintenabilité des logiciels, un point d'interrogation qui en a soulevé des centaines d'autres."
+        "description": "Conception et réalisation d'applications web performantes, sécurisées et évolutives, utilisant les technologies les plus récentes. Je travaille avec la plus part des technologies Microsoft, que ce soit les services Azure, ou la plateforme de développement .Net, ainsi qu'avec l'environnement React.js pour la présentation. Au cours de ma formation, je me suis intéressé à la qualité et à la maintenabilité des logiciels, un point d'interrogation qui m'a permis de développer une approche permettant de garder la maîtrise des coûts d'une application."
       },
       {
-        "title": "Études et Conception Logicielle",
+        "title": "Étude et Conception Logicielle",
         "description": "Analyse approfondie des besoins, rédaction de spécifications techniques et fonctionnelles, et conception de solutions logicielles sur mesure."
       },
       {
