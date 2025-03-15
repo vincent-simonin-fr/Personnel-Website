@@ -1,5 +1,7 @@
 {
   "homePage": {
+    "title": "Home page",
+    "description": "Full Stack Developer and Azure Cloud Developer, expert in IT and new technologies.",
     "deployButtonLabel": "Deploy now"
   },
   "navigation": [
@@ -51,7 +53,7 @@
     "services": [
       {
         "title": "Full Stack Development",
-        "description": "Design and implementation of high-performance, secure, and scalable web and mobile applications using the latest technologies."
+        "description": "Design and implementation of high-performance, secure, and scalable web and mobile applications using the latest technologies. I work with Microsoft technologies, Azure cloud, the .Net platform and React.js. During my training, I became interested in software quality and maintainability, a question mark that raised hundreds of others."
       },
       {
         "title": "Software Design and Analysis",
@@ -59,7 +61,7 @@
       },
       {
         "title": "Project Industrialization",
-        "description": "Implementation of CI/CD pipelines, automation of tests and deployments, and management of development environments for continuous and reliable delivery."
+        "description": "Implementation of CI/CD pipelines, automation of tests and deployments, and management of development environments for continuous and reliable delivery. I design and develop projects integrating security from the earliest stages using DevSecOps methodologies."
       },
       {
         "title": "Evolutionary and Corrective Maintenance",
@@ -90,6 +92,8 @@
     "firstNamePlaceholder": "Enter your first name",
     "lastNamePlaceholder": "Enter your last name",
     "emailPlaceholder": "Enter your email",
-    "messagePlaceholder": "Enter your message"
+    "messagePlaceholder": "Enter your message",
+    "successMessage": "Your message has been sent successfully",
+    "errorMessage": "An error occurred while sending the message"
   }
 }
