@@ -16,6 +16,7 @@ type AppContextProps = {
   isError: boolean
   error: Error | null
   is404: boolean
+  nonce: string
   setUser: (user: User) => void
   setLoading: (loading: boolean) => void
   setLocale: (locale: string) => void
@@ -30,6 +31,7 @@ const AppContext = React.createContext<AppContextProps>({
   isError: false,
   error: null,
   is404: false,
+  nonce: '',
   setUser: () => {},
   setLoading: () => {},
   setLocale: () => {},
@@ -46,6 +48,7 @@ const AppContextProvider = (props: AppContextProviderProps) => {
   const [isLoading, setIsLoading] = useState(true)
   const [currentLocale, setCurrentLocale] = useState(props.locale)
   const [is404, setIs404] = useState(false)
+  const [nonce, setNonce] = useState('')
 
   const {
     data: dictionary,
@@ -67,6 +70,7 @@ const AppContextProvider = (props: AppContextProviderProps) => {
         isError: isError,
         error: error,
         is404: is404,
+        nonce: nonce,
         setUser: setCurrentUser,
         setLoading: setIsLoading,
         setLocale: setCurrentLocale,

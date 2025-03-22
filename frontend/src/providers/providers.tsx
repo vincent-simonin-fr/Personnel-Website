@@ -74,7 +74,7 @@ export function Providers({ children, locale }: ProvidersProps) {
             attribute='class'
             defaultTheme='dark'
             storageKey='theme'
-            themes={['dark', 'light', 'purple-dark']}>
+            themes={['dark', 'light']}>
             {children}
           </NextThemesProvider>
         </HeroUIProvider>
