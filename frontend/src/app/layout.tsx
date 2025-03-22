@@ -31,18 +31,18 @@ export const viewport: Viewport = {
 const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {
   const headersList = await headers()
   const locale = headersList.get('x-locale') || 'fr' // Défaut à 'fr' si pas de locale trouvée
-  // const nonce = headersList.get('x-nonce')!
+  const nonce = headersList.get('x-nonce')!
 
-  console.info('Server loading', locale)
+  console.info('Loading root layout', locale)
 
   return (
-    <html className={'dark'} lang={locale} style={{ colorScheme: 'dark' }}>
+    <html className={'dark'} lang={locale}>
       <Head>
-        {/* <Script
+        <Script
           src='https://www.googletagmanager.com/gtag/js'
           strategy='afterInteractive'
           nonce={nonce}
-        /> */}
+        />
         <Script
           id='schema-jsonld'
           type='application/ld+json'
