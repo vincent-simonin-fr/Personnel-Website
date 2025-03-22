@@ -24,19 +24,19 @@ const locales: Locale[] = [
     key: 'en-US',
     label: 'en',
     country: 'United States',
-    icon: 'https://flagcdn.com/us.svg',
+    icon: 'icons/us.svg',
   },
   {
     key: 'fr',
     label: 'fr',
     country: 'France',
-    icon: 'https://flagcdn.com/fr.svg',
+    icon: 'icons/fr.svg',
   },
   {
     key: 'de',
     label: 'de',
     country: 'Germany',
-    icon: 'https://flagcdn.com/de.svg',
+    icon: 'icons/de.svg',
   },
 ]
 

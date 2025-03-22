@@ -47,15 +47,21 @@ const securityHeaders: { key: string; value: string }[] = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
   },
+  {
+    key: 'Cross-Origin-Opener-Policy',
+    value: 'same-origin-allow-popups',
+  },
+  {
+    key: 'Cross-Origin-Embedder-Policy',
+    value: 'require-corp',
+  },
 ]
 
 const nextConfig: NextConfig = {
   output: 'standalone',
+  reactStrictMode: true,
+  productionBrowserSourceMaps: true,
   compiler: {},
-  // i18n: {
-  //   locales: ['fr', 'en-US', 'de'],
-  //   defaultLocale: 'fr',
-  // },
   crossOrigin: 'anonymous',
   async headers() {
     return [

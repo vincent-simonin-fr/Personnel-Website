@@ -10,7 +10,6 @@ const FadeInOnAppear = ({ children }: FadeInOnAppearProps) => {
     ref: transRef,
     from: { opacity: 0, scale: 1.1, transform: 'translateY(42px)', display: 'none' },
     enter: { opacity: 1, scale: 1, transform: 'translateY(0px)', display: 'block' },
-    leave: { opacity: 1, scale: 1, transform: 'translateY(0px)', display: 'block' },
     config: {
       duration: 1000,
       easing: (t) => easings.easeInOutCubic(t),

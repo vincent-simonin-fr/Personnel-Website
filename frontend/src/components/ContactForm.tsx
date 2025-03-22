@@ -73,7 +73,6 @@ const ContactForm = ({}: ContactFormProps) => {
 
       // TODO Text I18n
       const res = await emailjs.send(serviceID, templateID, emailParams, userID)
-
       if (res.status === 200) {
         toast.success(CustomToast, {
           theme: theme,
@@ -141,12 +140,14 @@ const ContactForm = ({}: ContactFormProps) => {
             required
             isDisabled={isDisabled}
             type='text'
+            autoComplete='given-name'
             className='flex-1'
             classNames={{
               label: labelClassnames,
               inputWrapper: inputWrapperClassnames,
             }}
             labelPlacement='outside'
+            id='firstname'
             name='firstName'
             placeholder={' '}
             value={userInput.firstName}
@@ -158,12 +159,14 @@ const ContactForm = ({}: ContactFormProps) => {
             required
             isDisabled={isDisabled}
             type='text'
+            autoComplete='family-name'
             className='flex-1'
             classNames={{
               label: labelClassnames,
               inputWrapper: inputWrapperClassnames,
             }}
             labelPlacement='outside'
+            id='lastname'
             name='lastName'
             placeholder={' '}
             value={userInput.lastName}
@@ -176,12 +179,14 @@ const ContactForm = ({}: ContactFormProps) => {
           required
           isDisabled={isDisabled}
           type='email'
+          autoComplete='email'
           className='w-full'
           classNames={{
             label: labelClassnames,
             inputWrapper: inputWrapperClassnames,
           }}
           labelPlacement='outside'
+          id='email'
           name='email'
           placeholder={' '}
           value={userInput.email}
@@ -201,6 +206,7 @@ const ContactForm = ({}: ContactFormProps) => {
             inputWrapper: inputWrapperClassnames,
           }}
           labelPlacement='outside'
+          id='message'
           name='message'
           placeholder={' '}
           value={userInput.message}
