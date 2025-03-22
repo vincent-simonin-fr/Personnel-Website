@@ -20,10 +20,10 @@ export function middleware(req: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
   const cspHeader = `
     default-src 'self';
-    connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com;
-    script-src 'self' 'nonce-${nonce}' 'unsafe-eval' 'unsafe-inline' https://vercel.live;
-    frame-src 'self' https://vercel.live;
-    style-src 'self' 'nonce-${nonce}';
+    connect-src https: 'self' https://cdn.jsdelivr.net https://unpkg.com;
+    script-src https: 'self' 'nonce-${nonce}' 'wasm-unsafe-eval' 'unsafe-inline' 'strict-dynamic';
+    frame-src 'self';
+    style-src https: 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
     font-src 'self';
     object-src 'none';
@@ -35,8 +35,8 @@ export function middleware(req: NextRequest) {
   const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, ' ').trim()
 
   const requestHeaders = new Headers(req.headers)
-  requestHeaders.set('x-nonce', nonce)
 
+  requestHeaders.set('x-nonce', nonce)
   requestHeaders.set('Content-Security-Policy', contentSecurityPolicyHeaderValue)
 
   // Check the origin from the request
@@ -98,55 +98,4 @@ export function middleware(req: NextRequest) {
 // Configuration pour que le middleware s'applique à toutes les routes
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
-}
-
-// CSP headers here is set based on Next.js recommendations:
-// https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy
-export const createCspHeaders = (nonce: string) => {
-  const defaultsCSPHeaders = `
-    style-src 'self';
-    font-src 'self';
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
-    block-all-mixed-content;
-    upgrade-insecure-requests;
-  `
-
-  // when environment is preview enable unsafe-inline scripts for vercel preview feedback/comments feature
-  // and whitelist vercel's domains based on:
-  // https://vercel.com/docs/workflow-collaboration/comments/specialized-usage#using-a-content-security-policy
-  // and white-list vitals.vercel-insights
-  // based on: https://vercel.com/docs/speed-insights#content-security-policy
-  if (process.env?.VERCEL_ENV === 'preview') {
-    return `
-      ${defaultsCSPHeaders}
-      default-src 'none';
-      script-src 'self' https://vercel.live/ https://vercel.com 'unsafe-inline';
-      connect-src 'self' https://vercel.live/ https://vercel.com https://vitals.vercel-insights.com https://sockjs-mt1.pusher.com/ wss://ws-mt1.pusher.com/;
-      img-src 'self' https://vercel.live/ https://vercel.com https://sockjs-mt1.pusher.com/ data: blob:;
-      frame-src 'self' https://vercel.live/ https://vercel.com;
-      `
-  }
-
-  // for production environment white-list vitals.vercel-insights
-  // based on: https://vercel.com/docs/speed-insights#content-security-policy
-  if (process.env.NODE_ENV === 'production') {
-    return `
-      ${defaultsCSPHeaders}
-      default-src 'none';
-      script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-      img-src 'self' blob: data:;
-      connect-src 'self' https://vitals.vercel-insights.com;
-      `
-  }
-
-  // for dev environment enable unsafe-eval for hot-reload
-  return `
-    ${defaultsCSPHeaders}
-    default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval';
-    img-src 'self' blob: data:;
-  `
 }

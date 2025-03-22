@@ -85,7 +85,7 @@ const Header = ({}: HeaderProps) => {
 
         <NavbarContent className='hidden gap-4 sm:flex' justify='start'>
           <NavbarBrand>
-            <Link color='primary' href={`/${locale}`} passHref>
+            <Link color='primary' href={`/${locale}`}>
               <AppLogo />
               <p className={`hidden text-xl sm:block`}>{siteConfig.name}</p>
             </Link>
@@ -100,8 +100,7 @@ const Header = ({}: HeaderProps) => {
                     <Link
                       className={`${item.to.endsWith(pathname) ? classLinkActive : ''}`}
                       color='primary'
-                      href={`/${locale}/${item.to}`}
-                      passHref>
+                      href={`/${locale}${item.to}`}>
                       {item.label}
                     </Link>
                   </NavbarItem>
