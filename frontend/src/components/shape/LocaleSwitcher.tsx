@@ -78,18 +78,16 @@ const LocaleSwitcher = () => {
         selectionMode='single'
         selectedKeys={[locale]}>
         {(locale) => (
-          <li aria-label={`${locale.country} language`}>
-            <DropdownItem
-              key={locale.key}
-              textValue={locale.key}
-              onPress={() => handleSelectLocale(locale.key)}
-              aria-label={`${locale.country} language`}>
-              <span className='flex items-center justify-start gap-3'>
-                <Avatar alt={locale.country} className='h-5 w-5' src={locale.icon} />
-                <span className='align-middle text-lg'>{locale.label}</span>
-              </span>
-            </DropdownItem>
-          </li>
+          <DropdownItem
+            key={locale.key}
+            textValue={locale.key}
+            onPress={() => handleSelectLocale(locale.key)}
+            aria-label={`${locale.country} language`}>
+            <span className='flex items-center justify-start gap-3'>
+              <Avatar alt={locale.country} className='h-5 w-5' src={locale.icon} />
+              <span className='align-middle text-lg'>{locale.label}</span>
+            </span>
+          </DropdownItem>
         )}
       </DropdownMenu>
     </Dropdown>
