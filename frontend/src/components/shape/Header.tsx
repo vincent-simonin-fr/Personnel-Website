@@ -28,33 +28,35 @@ import ChevronDownSvg from 'components/ui/svg/ChevronDownSvg'
 
 type HeaderProps = object
 
+const classLinkActive = 'text-fuchsia-600'
+
 const Header = ({}: HeaderProps) => {
-  const [locale, setLocale] = useState<string>('en-US')
   const [pathname, setPathname] = useState<string>('')
   const [pathSegments, setPathSegments] = useState<string[]>([])
   const path = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const classLinkActive = 'text-fuchsia-600'
+
   const { scrollYProgress } = useScroll()
-  const minWidth = '624px'
+  const minWidth = '640px'
   // const minWidthTwClass = `md:min-w-[${minWidth}]`
   const isMobile = useMediaQuery(`(max-width: ${minWidth})`)
 
-  const context = useAppContext()
-  const { dictionary } = useAppContext()
+  const { is404 } = useAppContext()
+  const { dictionary, locale } = useAppContext()
 
   useEffect(() => {
+    // TODO handle case where fr = '/'
     const segments = path.split('/')
     setPathSegments(segments)
-    setLocale(segments[1])
     setPathname(segments[2] ? segments[2] : '/')
-  }, [path, setIsMenuOpen, dictionary])
+  }, [setIsMenuOpen, path])
 
   const handleLinkClick = () => {
     setIsMenuOpen(false)
   }
 
   const AnimatedDiv = animated('div')
+
   const width = useSpring({
     width: scrollYProgress.to((y) => (isMobile ? '100vw' : `${80 - y * 43 * 3}vw`)),
     config: { tension: 280, friction: 50 },
@@ -62,12 +64,12 @@ const Header = ({}: HeaderProps) => {
 
   return (
     <AnimatedDiv
-      className={`sticky top-0 z-50 min-w-full border-b-red-600 md:min-w-[624px]`}
+      className={`sticky top-0 z-50 h-14 w-full sm:min-w-[640px] md:min-w-[640px]`}
       style={width}>
       <Navbar
-        className={`w-full *:max-w-full ${isMenuOpen ? 'mt-0 h-16 rounded-none bg-black' : 'mt-2 h-12 rounded-full'}`}
+        className={`h-12 w-full bg-transparent transition-transform-colors-opacity *:max-w-full ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? 'backdrop-blur-none backdrop-saturate-100 data-[menu-open=true]:backdrop-blur-none' : ''}`}
         isMenuOpen={isMenuOpen}
-        onMenuOpenChange={setIsMenuOpen}>
+        onMenuOpenChange={() => setIsMenuOpen(!isMenuOpen)}>
         <NavbarContent className='sm:hidden' justify='start'>
           <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} />
         </NavbarContent>
@@ -82,33 +84,30 @@ const Header = ({}: HeaderProps) => {
         </NavbarContent>
 
         <NavbarContent className='hidden gap-4 sm:flex' justify='start'>
-          <NavbarBrand onClick={() => console.log(context)}>
-            <Link color='primary' href={`/${locale}`} passHref>
+          <NavbarBrand>
+            <Link color='primary' href={`/${locale}`}>
               <AppLogo />
               <p className={`hidden text-xl sm:block`}>{siteConfig.name}</p>
             </Link>
           </NavbarBrand>
 
           {dictionary &&
-            dictionary.navigation
-              .filter((item) => !item.items)
-              .map((item) => (
-                <NavbarItem key={item.to} isActive={item.to.endsWith(pathname)}>
-                  {/* TODO : transition duration-1000 ease-in-out hover:underline */}
-                  <Link
-                    className={`${item.to.endsWith(pathname) ? classLinkActive : ''}`}
-                    color='primary'
-                    href={`/${locale}/${item.to}`}
-                    passHref>
-                    {item.label}
-                  </Link>
-                </NavbarItem>
-              ))}
+            dictionary.navigation.map((item) => {
+              if (!item.items) {
+                return (
+                  <NavbarItem key={item.to} isActive={item.to.endsWith(pathname)}>
+                    {/* TODO : transition duration-1000 ease-in-out hover:underline */}
+                    <Link
+                      className={`${item.to.endsWith(pathname) ? classLinkActive : ''}`}
+                      color='primary'
+                      href={`/${locale}${item.to}`}>
+                      {item.label}
+                    </Link>
+                  </NavbarItem>
+                )
+              }
 
-          {dictionary &&
-            dictionary.navigation
-              .filter((item) => item.items)
-              .map((item) => (
+              return (
                 <Dropdown
                   key={item.to}
                   classNames={{
@@ -145,15 +144,16 @@ const Header = ({}: HeaderProps) => {
                     ))}
                   </DropdownMenu>
                 </Dropdown>
-              ))}
+              )
+            })}
         </NavbarContent>
 
         <NavbarContent as='div' className='items-center' justify='end'>
-          {!context.is404 && <LocaleSwitcher />}
+          {!is404 && <LocaleSwitcher />}
           <ThemeSwitcher />
         </NavbarContent>
 
-        <NavbarMenu className='*:text-primary'>
+        <NavbarMenu className='top-0 min-h-screen bg-transparent pt-16 backdrop-blur-lg backdrop-saturate-150 *:text-primary'>
           {dictionary &&
             dictionary.navigation.map((item, index) => {
               return (
@@ -190,6 +190,7 @@ const Header = ({}: HeaderProps) => {
             })}
         </NavbarMenu>
       </Navbar>
+      {/* {isMenuOpen && <div className='h-4 bg-foreground'></div>} */}
     </AnimatedDiv>
   )
 }
