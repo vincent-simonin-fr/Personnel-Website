@@ -1,4 +1,3 @@
-import { siteConfig } from 'config/site'
 import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
@@ -6,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Vincent Simonin',
     short_name: 'VS',
     description: 'Personal website of Vincent Simonin, Software Engineer & Azure Cloud Developer',
-    start_url: siteConfig.url,
+    start_url: 'https://www.dev.vincentsimonin.fr/',
     display: 'standalone',
     categories: [
       'Full Stack Developer',
@@ -18,8 +17,8 @@ export default function manifest(): MetadataRoute.Manifest {
       'Cloud Architecture',
       'Software Engineering',
     ],
-    background_color: '#fff',
-    theme_color: '#fff',
+    background_color: '#000',
+    theme_color: '#000',
     icons: [
       {
         src: '/favicons/favicon.ico',
