@@ -62,25 +62,34 @@ const LocaleSwitcher = () => {
   return (
     <Dropdown aria-label='Language switcher' className='min-w-min'>
       <DropdownTrigger>
-        <Button className='min-w-8 px-2' color='primary' radius='full' variant='light'>
+        <Button
+          className='min-w-8 px-2'
+          name='open-language-menu'
+          color='primary'
+          radius='full'
+          variant='light'
+          aria-label='Open language menu'>
           <LanguageSvg size={24} />
         </Button>
       </DropdownTrigger>
       <DropdownMenu
-        aria-label='Language switcher'
+        aria-label='Language menu'
         items={locales}
         selectionMode='single'
         selectedKeys={[locale]}>
         {(locale) => (
-          <DropdownItem
-            key={locale.key}
-            textValue={locale.key}
-            onPress={() => handleSelectLocale(locale.key)}>
-            <span className='flex items-center justify-start gap-3'>
-              <Avatar alt={locale.country} className='h-5 w-5' src={locale.icon} />
-              <span className='align-middle text-lg'>{locale.label}</span>
-            </span>
-          </DropdownItem>
+          <li aria-label={`${locale.country} language`}>
+            <DropdownItem
+              key={locale.key}
+              textValue={locale.key}
+              onPress={() => handleSelectLocale(locale.key)}
+              aria-label={`${locale.country} language`}>
+              <span className='flex items-center justify-start gap-3'>
+                <Avatar alt={locale.country} className='h-5 w-5' src={locale.icon} />
+                <span className='align-middle text-lg'>{locale.label}</span>
+              </span>
+            </DropdownItem>
+          </li>
         )}
       </DropdownMenu>
     </Dropdown>
