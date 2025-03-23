@@ -28,7 +28,7 @@ type RivePlayerProps = {
 }
 
 // Set a custom WASM URL from the local public folder
-RuntimeLoader.setWasmUrl('/rive.wasm')
+RuntimeLoader.setWasmUrl('/rive/rive.wasm')
 
 const RivePlayer = ({
   src,

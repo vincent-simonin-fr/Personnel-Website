@@ -49,7 +49,7 @@ const HomePage = () => {
           <FadeInOnAppear>
             <div className='w-[84vw] py-8 sm:px-2'>
               <div className='flex items-center pb-8 text-xl'>
-                <span className={`${colorText} mr-1`}>
+                <span className={`mr-1 text-fuchsia-600`}>
                   <HandSvg />
                 </span>
                 {dictionary?.homePage.firstScreen.salutation}
@@ -57,11 +57,13 @@ const HomePage = () => {
               <div
                 className={`${hankenGrotesk.className} text-pretty text-3xl md:text-4xl lg:text-5xl`}>
                 {dictionary?.homePage.firstScreen.hook.one}
-                <span className={`${colorText}`}>
+                <span className={`text-fuchsia-600`}>
                   {dictionary?.homePage.firstScreen.hook.two}
                 </span>{' '}
                 {dictionary?.homePage.firstScreen.hook.three}
-                <span className={`${colorText}`}>{dictionary?.homePage.firstScreen.hook.four}</span>
+                <span className={`text-fuchsia-600`}>
+                  {dictionary?.homePage.firstScreen.hook.four}
+                </span>
                 {dictionary?.homePage.firstScreen.hook.five}
               </div>
               <hr className='my-4 h-[2px] w-1/2 bg-primary-500' />
@@ -129,8 +131,8 @@ const HomePage = () => {
             <section className={`${commonSectionClasses} md:flex-row-reverse`}>
               <div className={commonImageContainerClasses}>
                 <Waves
-                  lineColor={theme === 'dark' ? 'white' : 'black'}
-                  className='rounded-3xl border-3 border-fuchsia-600'
+                  lineColor={theme === 'dark' ? '#c026d3' : '#c026d3'}
+                  className='rounded-3xl border-1 border-fuchsia-600'
                   waveSpeedX={0.0175}
                   waveSpeedY={0.005}
                   waveAmpX={32}
@@ -225,7 +227,7 @@ const HomePage = () => {
               fill
               style={{ objectFit: 'cover' }}
               sizes='80vw'
-              priority
+              loading='lazy'
             />
           </div>
           <div className='absolute inset-0 flex items-center justify-center md:justify-end md:pr-32'>
