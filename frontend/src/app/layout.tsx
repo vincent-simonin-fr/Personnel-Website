@@ -5,27 +5,17 @@ import Header from 'components/shape/Header'
 import 'styles/globals.css'
 import { Providers } from '../providers/providers'
 import { Bounce, ToastContainer } from 'react-toastify'
-import { jsonLd, MetadataSite } from 'src/seo/MetadataSite'
-import type { Viewport } from 'next'
+import { jsonLd, MetadataSite, ViewportSite } from 'src/seo/MetadataSite'
 import Script from 'next/script'
 import Head from 'next/head'
 import { Hanken_Grotesk } from 'next/font/google'
 import { headers } from 'next/headers'
-import { getDictionary } from './[locale]/dictionaries'
 
 const hankenGrotesk = Hanken_Grotesk({ subsets: ['latin'] })
 
 export const metadata = MetadataSite
 
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-  colorScheme: 'dark',
-  // Also supported but less commonly used
-  // interactiveWidget: 'resizes-visual',
-}
+export const viewport = ViewportSite
 
 // fr or en-US or de
 const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {

@@ -1,4 +1,19 @@
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
+
+export const ViewportSite: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+  ],
+  colorScheme: 'dark',
+  viewportFit: 'cover',
+  // Also supported but less commonly used
+  // interactiveWidget: 'resizes-visual',
+}
 
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
