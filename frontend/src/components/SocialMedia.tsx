@@ -23,7 +23,8 @@ const SocialMedia = ({ delay = 0, noDelay = false }: SocialMediaProps) => {
             key='github'
             href={siteConfig.links.github}
             target='_blank'
-            rel='noopener noreferrer'>
+            rel='noopener noreferrer'
+            aria-label='Github link'>
             <GithubSvg size={size} className='text-primary' />
           </Link>
         </div>
@@ -34,14 +35,15 @@ const SocialMedia = ({ delay = 0, noDelay = false }: SocialMediaProps) => {
             key='linkedin'
             href={siteConfig.links.linkedin}
             target='_blank'
-            rel='noopener noreferrer'>
+            rel='noopener noreferrer'
+            aria-label='Linkedin link'>
             <LinkedinSvg size={size} className='text-primary' />
           </Link>
         </div>
       </FadeInWhenVisible>
       <FadeInWhenVisible delay={noDelay ? 0 : 0.4 + delay}>
         <div className='transition-transform duration-300 hover:scale-110'>
-          <Link key='email' href={siteConfig.links.email}>
+          <Link key='email' href={siteConfig.links.email} aria-label='Email link'>
             <EmailSvg size={size} className='text-primary' />
           </Link>
         </div>
