@@ -29,7 +29,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
     <html className={'dark'} lang={locale}>
       <Head>
         <Script
-          src='https://www.googletagmanager.com/gtag/js'
+          src='https://www.googletagmanager.com/gtag/js?id=GTM-NKBC7G3V'
           strategy='afterInteractive'
           nonce={nonce}
         />

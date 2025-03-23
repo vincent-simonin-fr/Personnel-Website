@@ -25,7 +25,7 @@ const Contact = ({}: ContactProps) => {
           fill
           style={{ objectFit: 'cover' }}
           sizes='80vw'
-          priority
+          loading='lazy'
         />
       </div>
       <div className='absolute inset-0 flex items-center justify-center md:justify-end md:pr-32'>
