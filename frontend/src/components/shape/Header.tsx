@@ -100,7 +100,8 @@ const Header = ({}: HeaderProps) => {
                     <Link
                       className={`${item.to.endsWith(pathname) ? classLinkActive : ''}`}
                       color='primary'
-                      href={`/${locale}${item.to}`}>
+                      href={`/${locale}${item.to}`}
+                      aria-label={`${item.label} link`}>
                       {item.label}
                     </Link>
                   </NavbarItem>
@@ -138,7 +139,8 @@ const Header = ({}: HeaderProps) => {
                         color='primary'
                         className={subItem.to.endsWith(pathSegments[3]) ? classLinkActive : ''}
                         key={subItem.to}
-                        href={`/${locale}/${subItem.to}`}>
+                        href={`/${locale}/${subItem.to}`}
+                        aria-label={`${item.label} link`}>
                         {subItem.label}
                       </DropdownItem>
                     ))}
@@ -165,6 +167,7 @@ const Header = ({}: HeaderProps) => {
                       className={`w-full ${item.to.endsWith(pathname) ? classLinkActive : ''}`}
                       href={`/${locale}/${item.to}`}
                       onClick={handleLinkClick}
+                      aria-label={`${item.label} link`}
                       passHref>
                       {item.label}
                     </Link>
@@ -179,6 +182,7 @@ const Header = ({}: HeaderProps) => {
                             className={`w-90 ml-4 ${subItem.to.endsWith(pathSegments[3]) ? classLinkActive : ''}`}
                             href={`/${locale}/${subItem.to}`}
                             onClick={handleLinkClick}
+                            aria-label={`${item.label} link`}
                             passHref>
                             {subItem.label}
                           </Link>

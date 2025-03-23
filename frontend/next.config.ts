@@ -13,12 +13,8 @@ const cspHeader = `
     frame-ancestors 'none';
     upgrade-insecure-requests;`
 
-// CSP can cause without certificate SSL
+// CSP is set in middleware for use of nonce
 const securityHeaders: { key: string; value: string }[] = [
-  // {
-  //   key: 'Content-Security-Policy',
-  //   value: cspHeader.replace(/\n/g, ''),
-  // },
   {
     key: 'X-DNS-Prefetch-Control',
     value: 'on',
@@ -55,6 +51,10 @@ const securityHeaders: { key: string; value: string }[] = [
     key: 'Cross-Origin-Embedder-Policy',
     value: 'require-corp',
   },
+  {
+    key: 'Cache-Control',
+    value: 'public, max-age=60, stale-while-revalidate=300',
+  },
 ]
 
 const nextConfig: NextConfig = {
@@ -72,5 +72,11 @@ const nextConfig: NextConfig = {
     ]
   },
 }
+
+// For build optimization, produce report when npm run build
+// To use change below export default withBundleAnalyzer(nextConfig)
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 export default nextConfig
