@@ -1,4 +1,11 @@
-import { StateMachineInput, useRive, useStateMachineInput } from '@rive-app/react-canvas'
+'use-client'
+
+import {
+  RuntimeLoader,
+  StateMachineInput,
+  useRive,
+  useStateMachineInput,
+} from '@rive-app/react-canvas'
 import { useEffect } from 'react'
 import { useIntersectionObserver } from 'usehooks-ts'
 
@@ -20,7 +27,10 @@ type RivePlayerProps = {
   }
 }
 
-export const RivePlayer = ({
+// Set a custom WASM URL from the local public folder
+RuntimeLoader.setWasmUrl('/rive.wasm')
+
+const RivePlayer = ({
   src,
   stateMachines,
   autoplay = false,
@@ -64,9 +74,11 @@ export const RivePlayer = ({
   }, [isIntersecting, inputs.enter, inputs.exit])
 
   return (
-    <div ref={ref} className='relative mx-auto w-full max-w-4xl'>
+    <div ref={ref} className='relative mx-auto w-full'>
       <RiveComponent
-        className='aspect-[1/1] h-[50vh] max-h-[600px] w-full object-contain'
+        width={240}
+        height={240}
+        className='aspect-[1/1] h-full w-full object-contain'
         {...(actions.onMouseEnter && {
           onMouseEnter: () => actions.onMouseEnter?.(rive, inputs),
         })}
@@ -80,3 +92,5 @@ export const RivePlayer = ({
     </div>
   )
 }
+
+export default RivePlayer

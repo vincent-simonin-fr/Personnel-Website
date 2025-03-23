@@ -42,7 +42,12 @@ function getQueryClient() {
   }
 }
 
-export function Providers({ children }: { children: React.ReactNode }) {
+type ProvidersProps = {
+  children: React.ReactNode
+  locale: string
+}
+
+export function Providers({ children, locale }: ProvidersProps) {
   // L'état qui gère l'initialisation du thème côté client
   const [mounted, setMounted] = useState(false)
 
@@ -63,13 +68,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AppContextProvider>
+      <AppContextProvider locale={locale}>
         <HeroUIProvider navigate={router.push}>
           <NextThemesProvider
             attribute='class'
             defaultTheme='dark'
             storageKey='theme'
-            themes={['dark', 'light', 'purple-dark']}>
+            themes={['dark', 'light']}>
             {children}
           </NextThemesProvider>
         </HeroUIProvider>

@@ -2,8 +2,9 @@ import type { NextConfig } from 'next'
 
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline';
-    style-src 'self' 'unsafe-inline';
+    connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com;
+    frame-src 'self' https://vercel.live;
+    style-src 'self';
     img-src 'self' blob: data:;
     font-src 'self';
     object-src 'none';
@@ -46,11 +47,22 @@ const securityHeaders: { key: string; value: string }[] = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
   },
+  {
+    key: 'Cross-Origin-Opener-Policy',
+    value: 'same-origin-allow-popups',
+  },
+  {
+    key: 'Cross-Origin-Embedder-Policy',
+    value: 'require-corp',
+  },
 ]
 
 const nextConfig: NextConfig = {
   output: 'standalone',
+  reactStrictMode: true,
+  productionBrowserSourceMaps: true,
   compiler: {},
+  crossOrigin: 'anonymous',
   async headers() {
     return [
       {

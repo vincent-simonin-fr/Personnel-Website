@@ -2,11 +2,12 @@
 
 import BouncingHand from 'components/ui/animations/BouncingHand'
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { lazy, useEffect } from 'react'
 import Loading from 'components/loading/Loading'
 import FuzzyText from 'components/ui/animations/FuzzyText'
 import { useAppContext } from 'hooks/useAppContext'
-import { RivePlayer } from 'components/ui/RivePlayer'
+
+const RivePlayer = lazy(() => import('components/ui/animations/RivePlayer'))
 
 const NotFound = () => {
   const { dictionary, isLoading, isError, error, setIs404 } = useAppContext()

@@ -2,7 +2,20 @@
   "homePage": {
     "title": "Home page",
     "description": "Full Stack Developer and Azure Cloud Developer, expert in IT and new technologies.",
-    "deployButtonLabel": "Deploy now"
+    "deployButtonLabel": "Deploy now",
+    "firstScreen": {
+      "salutation": "Hi everyone,",
+      "hook": {
+        "one": "I'm a ",
+        "two": "problem solver ",
+        "three": "& ",
+        "four": "creative developer",
+        "five": ","
+      },
+      "firstLine": "Crafting and building modern web applications",
+      "secondLine": "for digital communication or business system."
+    },
+    "labelButtonToSkills": "My skills"
   },
   "navigation": [
     {
@@ -11,8 +24,8 @@
       "to": "/"
     },
     {
-      "label": "Services",
-      "title": "Our Services",
+      "label": "Skills",
+      "title": "My Skills",
       "to": "/services"
     },
     {
@@ -41,6 +54,11 @@
           "to": "/labs/blockchain"
         }
       ]
+    },
+    {
+      "label": "Contact",
+      "title": "Contact Me",
+      "to": "/contact"
     }
   ],
   "notFound": {
