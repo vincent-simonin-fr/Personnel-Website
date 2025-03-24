@@ -16,7 +16,7 @@ const Presentation = () => {
           dictionary.presentation.services.map((service, index) => (
             <div
               key={index}
-              className='duration-800 transform rounded-lg border border-primary p-6 shadow-lg shadow-primary transition-shadow ease-in-out hover:scale-[1.01] hover:shadow-xl hover:shadow-primary'>
+              className='border-primary shadow-primary hover:shadow-primary transform rounded-lg border p-6 shadow-md transition-shadow duration-800 ease-in-out hover:scale-[1.01] hover:shadow-lg'>
               <h2 className='mb-4 text-2xl font-semibold'>{service.title}</h2>
               <div className='text-base'>{service.description}</div>
             </div>

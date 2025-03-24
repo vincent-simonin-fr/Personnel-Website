@@ -12,7 +12,6 @@ const UsaSvg = ({ size = 24, ...props }: UsaSvgProps) => {
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 130 120'
       {...props}>
-      <path fill='#D8D8D8' d='M-200 -1350H1980V350H-200z' />
       <path fill='#DC4437' d='M0 0H130V13.3H0z' />
       <path fill='#DC4437' d='M0 26.7H130V40H0z' />
       <path fill='#DC4437' d='M0 80H130V93.3H0z' />

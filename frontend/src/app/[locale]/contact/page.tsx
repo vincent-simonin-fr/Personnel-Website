@@ -26,11 +26,10 @@ const Contact = ({}: ContactProps) => {
           style={{ objectFit: 'cover' }}
           sizes='80vw'
           loading='lazy'
-          priority
         />
       </div>
       <div className='absolute inset-0 flex items-center justify-center md:justify-end md:pr-32'>
-        <div className='max-w-md rounded-large bg-background p-6 text-primary-50 md:w-1/2'>
+        <div className='rounded-large bg-background text-primary-50 max-w-md p-6 md:w-1/2'>
           <ContactForm />
         </div>
       </div>

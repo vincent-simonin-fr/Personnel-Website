@@ -40,7 +40,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </Head>
-      <body className={`${hankenGrotesk.className} antialiased *:text-primary`}>
+      <body className={`${hankenGrotesk.className} *:text-primary antialiased`}>
         <Providers locale={locale}>
           <main className='flex min-h-screen w-screen flex-col items-center justify-center'>
             <Header />

@@ -55,7 +55,7 @@ const HomePage = () => {
                 {dictionary?.homePage.firstScreen.salutation}
               </div>
               <div
-                className={`${hankenGrotesk.className} text-pretty text-3xl md:text-4xl lg:text-5xl`}>
+                className={`${hankenGrotesk.className} text-3xl text-pretty md:text-4xl lg:text-5xl`}>
                 {dictionary?.homePage.firstScreen.hook.one}
                 <span className={`text-fuchsia-600`}>
                   {dictionary?.homePage.firstScreen.hook.two}
@@ -66,18 +66,18 @@ const HomePage = () => {
                 </span>
                 {dictionary?.homePage.firstScreen.hook.five}
               </div>
-              <hr className='my-4 h-[2px] w-1/2 bg-primary-500' />
-              <div className='text-pretty text-3xl md:text-4xl lg:text-5xl'>
+              <hr className='bg-primary-500 my-4 h-[2px] w-1/2' />
+              <div className='text-3xl text-pretty md:text-4xl lg:text-5xl'>
                 {dictionary?.homePage.firstScreen.firstLine}
               </div>
-              <div className='text-pretty text-3xl md:text-4xl lg:text-5xl'>
+              <div className='text-3xl text-pretty md:text-4xl lg:text-5xl'>
                 {dictionary?.homePage.firstScreen.secondLine}
               </div>
               <div className='mt-8 flex w-full items-center justify-between'>
                 <SocialMedia noDelay />
                 <FadeInWhenVisible delay={0}>
                   <Button
-                    className='rounded-full bg-primary-50 text-primary-900'
+                    className='bg-primary-50 text-primary-900 rounded-full px-4 py-2'
                     as={Link}
                     href='/services'
                     variant='solid'>
@@ -228,11 +228,10 @@ const HomePage = () => {
               style={{ objectFit: 'cover' }}
               sizes='80vw'
               loading='lazy'
-              priority
             />
           </div>
           <div className='absolute inset-0 flex items-center justify-center md:justify-end md:pr-32'>
-            <div className='max-w-md rounded-large bg-background p-6 text-primary-50 md:w-1/2'>
+            <div className='rounded-large bg-background text-primary-50 max-w-md p-6 md:w-1/2'>
               {/*backdrop-blur-2xl*/}
               <ContactForm />
             </div>

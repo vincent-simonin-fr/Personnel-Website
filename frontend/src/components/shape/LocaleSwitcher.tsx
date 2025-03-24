@@ -11,6 +11,10 @@ import {
 } from '@heroui/react'
 import { useAppContext } from 'hooks/useAppContext'
 import LanguageSvg from 'components/ui/svg/LanguageSvg'
+import FranceSvg from 'components/ui/svg/FranceSvg'
+import { JSX } from 'react'
+import UsaSvg from 'components/ui/svg/UsaSvg'
+import GermanySvg from 'components/ui/svg/GermanySvg'
 
 type Locale = {
   key: string
@@ -59,8 +63,26 @@ const LocaleSwitcher = () => {
     router.push(path(newLocale))
   }
 
+  const getFlag = (locale: string): JSX.Element | null => {
+    switch (locale) {
+      case 'en-US':
+        return <UsaSvg size={16} />
+      case 'fr':
+        return <FranceSvg size={16} />
+      case 'de':
+        return <GermanySvg size={16} />
+      default:
+        return null
+    }
+  }
+
   return (
-    <Dropdown aria-label='Language switcher' className='min-w-min'>
+    <Dropdown
+      aria-label='Language switcher'
+      className=''
+      classNames={{
+        content: 'bg-primary-900 rounded-xl border-1 border-primary-500',
+      }}>
       <DropdownTrigger>
         <Button
           className='min-w-8 px-2'
@@ -84,7 +106,7 @@ const LocaleSwitcher = () => {
             onPress={() => handleSelectLocale(locale.key)}
             aria-label={`${locale.country} language`}>
             <span className='flex items-center justify-start gap-3'>
-              <Avatar alt={locale.country} className='h-5 w-5' src={locale.icon} />
+              {getFlag(locale.key)}
               <span className='align-middle text-lg'>{locale.label}</span>
             </span>
           </DropdownItem>
