@@ -15,7 +15,7 @@
       "firstLine": "Concevoir et développer des applications web modernes",
       "secondLine": "pour la communication digitale ou les systèmes d'entreprise."
     },
-    "labelButtonToSkills": "Mes compétences"
+    "labelButtonToProjects": "Projets"
   },
   "navigation": [
     {
@@ -24,9 +24,9 @@
       "to": "/"
     },
     {
-      "label": "Compétences",
-      "title": "Mes Compétences",
-      "to": "/services"
+      "label": "Projets",
+      "title": "Projets",
+      "to": "/projects"
     },
     {
       "label": "Tech Labs",
@@ -54,11 +54,6 @@
           "to": "/labs/blockchain"
         }
       ]
-    },
-    {
-      "label": "Contact",
-      "title": "Me contacter",
-      "to": "/contact"
     }
   ],
   "notFound": {

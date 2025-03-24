@@ -1,13 +1,14 @@
 'use-client'
 
 import {
-  RuntimeLoader,
   StateMachineInput,
   useRive,
   useStateMachineInput,
 } from '@rive-app/react-canvas'
 import { useEffect } from 'react'
 import { useIntersectionObserver } from 'usehooks-ts'
+
+// (globalThis as any).__RIVE_ESM__ = true;
 
 type Inputs = {
   click: StateMachineInput | null
@@ -28,7 +29,7 @@ type RivePlayerProps = {
 }
 
 // Set a custom WASM URL from the local public folder
-RuntimeLoader.setWasmUrl('/rive/rive.wasm')
+// RuntimeLoader.setWasmUrl('/rive/rive.wasm')
 
 const RivePlayer = ({
   src,
@@ -78,7 +79,7 @@ const RivePlayer = ({
       <RiveComponent
         width={240}
         height={240}
-        className='aspect-[1/1] h-full w-full object-contain'
+        className='aspect-square h-full w-full object-contain'
         {...(actions.onMouseEnter && {
           onMouseEnter: () => actions.onMouseEnter?.(rive, inputs),
         })}

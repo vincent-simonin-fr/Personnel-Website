@@ -37,7 +37,7 @@ const Header = ({}: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const { scrollYProgress } = useScroll()
-  const minWidth = '640px'
+  const minWidth = '675px'
   // const minWidthTwClass = `md:min-w-[${minWidth}]`
   const isMobile = useMediaQuery(`(max-width: ${minWidth})`)
 
@@ -64,21 +64,23 @@ const Header = ({}: HeaderProps) => {
 
   return (
     <AnimatedDiv
-      className={`sticky top-0 z-50 h-14 w-full sm:min-w-[640px] md:min-w-[640px]`}
+      className={`sticky top-0 z-50 h-14 w-full sm:min-w-[675px] md:min-w-[675px]`}
       style={width}>
-      <Navbar
-        className={`h-12 w-full bg-transparent transition-transform-colors-opacity *:max-w-full ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? 'backdrop-blur-none backdrop-saturate-100 data-[menu-open=true]:backdrop-blur-none' : ''}`}
+      {/* <Navbar
+        className={`transition-transform-colors-opacity h-12 w-full bg-transparent *:max-w-full ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? 'backdrop-blur-none backdrop-saturate-100 data-[menu-open=true]:backdrop-blur-none' : ''}`}
         isMenuOpen={isMenuOpen}
-        onMenuOpenChange={() => setIsMenuOpen(!isMenuOpen)}>
-        <NavbarContent className='sm:hidden' justify='start'>
-          <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} />
-        </NavbarContent>
+        onMenuOpenChange={() => setIsMenuOpen(!isMenuOpen)}> */}
 
-        <NavbarContent className='pr-3 sm:hidden' justify='start'>
+      <Navbar
+        className={`transition-transform-colors-opacity mt-1 h-10 w-full bg-transparent text-nowrap *:max-w-full ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? 'backdrop-blur-none backdrop-saturate-100 data-[menu-open=true]:backdrop-blur-none' : ''}`}
+        isMenuOpen={isMenuOpen}
+        onMenuOpenChange={setIsMenuOpen}>
+        <NavbarContent className='pr-3 sm:hidden'>
+          <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} />
           <NavbarBrand>
-            <Link color='primary' href={`/${locale}`} passHref>
+            <Link color='primary' href={`/${locale}`}>
               <AppLogo />
-              <p className='hidden sm:block'>{siteConfig.name}</p>
+              <p className={`hidden text-xl sm:block`}>{siteConfig.name}</p>
             </Link>
           </NavbarBrand>
         </NavbarContent>
@@ -90,7 +92,8 @@ const Header = ({}: HeaderProps) => {
               <p className={`hidden text-xl sm:block`}>{siteConfig.name}</p>
             </Link>
           </NavbarBrand>
-
+        </NavbarContent>
+        <NavbarContent className='hidden gap-4 sm:flex' justify='center'>
           {dictionary &&
             dictionary.navigation.map((item) => {
               if (!item.items) {
@@ -112,17 +115,17 @@ const Header = ({}: HeaderProps) => {
                 <Dropdown
                   key={item.to}
                   classNames={{
-                    content: 'bg-primary-900',
+                    base: 'bg-primary-900 rounded-xl border-1 border-primary-500',
                   }}>
                   <NavbarItem>
                     <DropdownTrigger>
                       <Button
                         disableRipple
-                        className={`bg-transparent p-0 data-[hover=true]:bg-transparent ${item.to.endsWith(pathname) ? classLinkActive : ''}`}
+                        className={`flex p-0 ${item.to.endsWith(pathname) ? classLinkActive : ''}`}
                         color='primary'
                         endContent={<ChevronDownSvg size={16} />}
                         radius='sm'
-                        variant='light'>
+                        variant='faded'>
                         {item.label}
                       </Button>
                     </DropdownTrigger>
@@ -130,16 +133,14 @@ const Header = ({}: HeaderProps) => {
                   <DropdownMenu
                     aria-label='Yuno-IT TechLabs'
                     className='w-[340px]'
-                    color='primary'
                     itemClasses={{
                       base: 'gap-4',
                     }}>
                     {item.items!.map((subItem) => (
                       <DropdownItem
-                        color='primary'
                         className={subItem.to.endsWith(pathSegments[3]) ? classLinkActive : ''}
                         key={subItem.to}
-                        href={`/${locale}/${subItem.to}`}
+                        href={`/${locale}${subItem.to}`}
                         aria-label={`${item.label} link`}>
                         {subItem.label}
                       </DropdownItem>
@@ -155,7 +156,7 @@ const Header = ({}: HeaderProps) => {
           <ThemeSwitcher />
         </NavbarContent>
 
-        <NavbarMenu className='top-0 min-h-screen bg-transparent pt-16 backdrop-blur-lg backdrop-saturate-150 *:text-primary'>
+        <NavbarMenu className='*:text-primary top-0 min-h-screen bg-transparent pt-16 backdrop-blur-lg backdrop-saturate-150'>
           {dictionary &&
             dictionary.navigation.map((item, index) => {
               return (
@@ -165,7 +166,7 @@ const Header = ({}: HeaderProps) => {
                       key={item.to}
                       color='primary'
                       className={`w-full ${item.to.endsWith(pathname) ? classLinkActive : ''}`}
-                      href={`/${locale}/${item.to}`}
+                      href={`/${locale}${item.to}`}
                       onClick={handleLinkClick}
                       aria-label={`${item.label} link`}
                       passHref>
@@ -179,8 +180,8 @@ const Header = ({}: HeaderProps) => {
                           <Link
                             key={subItem.to}
                             color='primary'
-                            className={`w-90 ml-4 ${subItem.to.endsWith(pathSegments[3]) ? classLinkActive : ''}`}
-                            href={`/${locale}/${subItem.to}`}
+                            className={`ml-4 w-90 ${subItem.to.endsWith(pathSegments[3]) ? classLinkActive : ''}`}
+                            href={`/${locale}${subItem.to}`}
                             onClick={handleLinkClick}
                             aria-label={`${item.label} link`}
                             passHref>

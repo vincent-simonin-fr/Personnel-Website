@@ -1,16 +1,13 @@
 'use client'
 
 import { usePathname, useRouter } from 'next/navigation'
-import {
-  Avatar,
-  Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from '@heroui/react'
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react'
 import { useAppContext } from 'hooks/useAppContext'
 import LanguageSvg from 'components/ui/svg/LanguageSvg'
+import FranceSvg from 'components/ui/svg/FranceSvg'
+import { JSX } from 'react'
+import UsaSvg from 'components/ui/svg/UsaSvg'
+import GermanySvg from 'components/ui/svg/GermanySvg'
 
 type Locale = {
   key: string
@@ -21,16 +18,16 @@ type Locale = {
 
 const locales: Locale[] = [
   {
-    key: 'en-US',
-    label: 'en',
-    country: 'United States',
-    icon: 'icons/us.svg',
-  },
-  {
     key: 'fr',
     label: 'fr',
     country: 'France',
     icon: 'icons/fr.svg',
+  },
+  {
+    key: 'en-US',
+    label: 'en',
+    country: 'United States',
+    icon: 'icons/us.svg',
   },
   {
     key: 'de',
@@ -59,8 +56,25 @@ const LocaleSwitcher = () => {
     router.push(path(newLocale))
   }
 
+  const getFlag = (locale: string): JSX.Element | null => {
+    switch (locale) {
+      case 'en-US':
+        return <UsaSvg size={16} />
+      case 'fr':
+        return <FranceSvg size={16} />
+      case 'de':
+        return <GermanySvg size={16} />
+      default:
+        return <FranceSvg size={20} />
+    }
+  }
+
   return (
-    <Dropdown aria-label='Language switcher' className='min-w-min'>
+    <Dropdown
+      aria-label='Language switcher'
+      classNames={{
+        base: 'bg-primary-900 rounded-xl border-1 border-primary-500',
+      }}>
       <DropdownTrigger>
         <Button
           className='min-w-8 px-2'
@@ -73,6 +87,7 @@ const LocaleSwitcher = () => {
         </Button>
       </DropdownTrigger>
       <DropdownMenu
+        disallowEmptySelection
         aria-label='Language menu'
         items={locales}
         selectionMode='single'
@@ -84,7 +99,7 @@ const LocaleSwitcher = () => {
             onPress={() => handleSelectLocale(locale.key)}
             aria-label={`${locale.country} language`}>
             <span className='flex items-center justify-start gap-3'>
-              <Avatar alt={locale.country} className='h-5 w-5' src={locale.icon} />
+              {getFlag(locale.key)}
               <span className='align-middle text-lg'>{locale.label}</span>
             </span>
           </DropdownItem>

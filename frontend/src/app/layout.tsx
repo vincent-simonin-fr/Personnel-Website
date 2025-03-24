@@ -2,10 +2,10 @@
 
 import Footer from 'components/shape/Footer'
 import Header from 'components/shape/Header'
-import 'styles/globals.css'
+import 'styles/global.css'
 import { Providers } from '../providers/providers'
 import { Bounce, ToastContainer } from 'react-toastify'
-import { jsonLd, MetadataSite, ViewportSite } from 'src/seo/MetadataSite'
+import { jsonLd, MetadataSite, ViewportSite } from '../seo/MetadataSite'
 import Script from 'next/script'
 import Head from 'next/head'
 import { Hanken_Grotesk } from 'next/font/google'
@@ -23,7 +23,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   const locale = headersList.get('x-locale') || 'fr' // Défaut à 'fr' si pas de locale trouvée
   const nonce = headersList.get('x-nonce')!
 
-  console.info('Loading root layout', locale)
+  // console.info('Loading root layout', locale)
 
   return (
     <html className={'dark'} lang={locale}>
@@ -40,7 +40,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </Head>
-      <body className={`${hankenGrotesk.className} antialiased *:text-primary`}>
+      <body className={`${hankenGrotesk.className} *:text-primary antialiased`}>
         <Providers locale={locale}>
           <main className='flex min-h-screen w-screen flex-col items-center justify-center'>
             <Header />

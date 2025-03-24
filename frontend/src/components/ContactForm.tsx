@@ -22,7 +22,7 @@ type UserInput = {
 
 const CustomToast = ({ closeToast, toastProps, isPaused, data }: ToastContentProps<ReactNode>) => {
   return (
-    <div className={`${hankenGrotesk.className} flex flex-col pl-8 text-primary-300`}>
+    <div className={`${hankenGrotesk.className} text-primary-300 flex flex-col pl-8`}>
       {/* <div className='absolute -left-12 top-1/2 z-10 grid size-20 -translate-y-1/2 place-items-center rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'>
         smile
       </div> */}
@@ -80,7 +80,7 @@ const ContactForm = ({}: ContactFormProps) => {
           autoClose: 4000,
           data: dictionary?.contactForm.successMessage,
           className:
-            'shadow-lg text-inherit rounded-lg flex items-center bg-primary-900 max-w-[96vw]',
+            'shadow-md text-inherit rounded-lg flex items-center bg-primary-900 max-w-[96vw]',
         })
         setUserInput({
           firstName: '',
@@ -96,7 +96,7 @@ const ContactForm = ({}: ContactFormProps) => {
         autoClose: 4000,
         data: dictionary?.contactForm.errorMessage,
         className:
-          'shadow-lg text-inherit rounded-lg flex items-center bg-primary-900 max-w-[96vw]',
+          'shadow-md text-inherit rounded-lg flex items-center bg-primary-900 max-w-[96vw]',
       })
     } finally {
       setIsDisabled(false)
@@ -112,12 +112,16 @@ const ContactForm = ({}: ContactFormProps) => {
     `focus-within:ring-fuchsia-600`,
     'focus-within:ring-1',
     'focus-within:ring-offset-0',
-    'focus-within:border-transparent',
-    `group-data-[focus-visible=true]:ring-fuchsia-600`,
-    'group-data-[focus-visible=true]:ring-1',
-    'group-data-[focus-visible=true]:ring-offset-0',
-    'group-data-[focus-visible=true]:border-transparent',
+    'focus-within:border-none',
+    'group-data-[focus=true]:ring-0',
+    'group-data-[focus=true]:ring-offset-0',
+    'group-data-[focus-visible=true]:border-none',
+    'group-data-[focus-visible=true]:ring-0',
+    'group-data-[focus-visible=true]:ring-offset-0'
   ]
+
+  const classZ =
+    'rounded-xl border-1 bg-primary-900 border-primary-600 focus-within:ring-fuchsia-600 focus-within:ring-1 focus-within:ring-offset-0 focus-within:border-transparent group-data-[focus=true]:ring-fuchsia-600 group-data-[focus=true]:ring-1 group-data-[focus=true]:ring-offset-0 group-data-[focus=true]:border-transparent'
 
   return (
     <div className='flex w-full max-w-md flex-col items-start'>
@@ -137,26 +141,26 @@ const ContactForm = ({}: ContactFormProps) => {
         onSubmit={handleSubmit}>
         <div className='flex w-full gap-4'>
           <Input
-            required
+            isRequired
             isDisabled={isDisabled}
             type='text'
             autoComplete='given-name'
-            className='flex-1'
+            className='flex-1 group-data-[focus-visible=true]:border-none group-data-[focus-visible=true]:ring-0 group-data-[focus-visible=true]:ring-offset-0 group-data-[focus-within=true]:border-none group-data-[focus-within=true]:ring-0 group-data-[focus-within=true]:ring-offset-0'
             classNames={{
               label: labelClassnames,
               inputWrapper: inputWrapperClassnames,
+              innerWrapper: 'group-data-[focus-visible=true]:border-none group-data-[focus-visible=true]:ring-0 group-data-[focus-visible=true]:ring-offset-0 group-data-[focus-within=true]:border-none group-data-[focus-within=true]:ring-0 group-data-[focus-within=true]:ring-offset-0',
             }}
-            labelPlacement='outside'
             id='firstname'
             name='firstName'
-            placeholder={' '}
             value={userInput.firstName}
             onChange={(e) => handleChange(e)}
             label={dictionary?.contactForm.firstNameLabel}
+            labelPlacement='outside-top'
             errorMessage={dictionary?.contactForm.firstNameError}
           />
           <Input
-            required
+            isRequired
             isDisabled={isDisabled}
             type='text'
             autoComplete='family-name'
@@ -165,18 +169,17 @@ const ContactForm = ({}: ContactFormProps) => {
               label: labelClassnames,
               inputWrapper: inputWrapperClassnames,
             }}
-            labelPlacement='outside'
             id='lastname'
             name='lastName'
-            placeholder={' '}
             value={userInput.lastName}
             onChange={handleChange}
             label={dictionary?.contactForm.lastNameLabel}
+            labelPlacement='outside-top'
             errorMessage={dictionary?.contactForm.lastNameError}
           />
         </div>
         <Input
-          required
+          isRequired
           isDisabled={isDisabled}
           type='email'
           autoComplete='email'
@@ -185,17 +188,17 @@ const ContactForm = ({}: ContactFormProps) => {
             label: labelClassnames,
             inputWrapper: inputWrapperClassnames,
           }}
-          labelPlacement='outside'
+          variant='faded'
           id='email'
           name='email'
-          placeholder={' '}
           value={userInput.email}
           onChange={handleChange}
           label={dictionary?.contactForm.emailLabel}
+          labelPlacement='outside-top'
           errorMessage={dictionary?.contactForm.emailError}
         />
         <Textarea
-          required
+          isRequired
           isDisabled={isDisabled}
           type='text'
           minRows={3}
@@ -205,18 +208,17 @@ const ContactForm = ({}: ContactFormProps) => {
             label: labelClassnames,
             inputWrapper: inputWrapperClassnames,
           }}
-          labelPlacement='outside'
           id='message'
           name='message'
-          placeholder={' '}
           value={userInput.message}
           onChange={handleChange}
           label={dictionary?.contactForm.messageLabel}
+          labelPlacement='outside-top'
           errorMessage={dictionary?.contactForm.messageError}
         />
         <div className='flex gap-2'>
           <Button
-            className='rounded-full bg-primary-50 text-primary-900'
+            className='bg-primary-50 text-primary-900 rounded-full px-4 py-1.5'
             isLoading={isDisabled}
             isDisabled={isDisabled}
             type='submit'>

@@ -24,7 +24,7 @@ export type Dictionary = {
       firstLine: string
       secondLine: string
     }
-    labelButtonToSkills: string
+    labelButtonToProjects: string
   }
   navigation: MenuItem[]
   notFound: {
