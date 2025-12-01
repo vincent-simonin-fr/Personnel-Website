@@ -1,7 +1,6 @@
 'use server-only'
 
 import Footer from 'components/shape/Footer'
-import Header from 'components/shape/Header'
 import 'styles/global.css'
 import { Providers } from '../providers/providers'
 import { Bounce, ToastContainer } from 'react-toastify'
@@ -10,6 +9,7 @@ import Script from 'next/script'
 import Head from 'next/head'
 import { Hanken_Grotesk } from 'next/font/google'
 import { headers } from 'next/headers'
+import { AppHead } from 'components/shape/AppHead'
 
 const hankenGrotesk = Hanken_Grotesk({ subsets: ['latin'] })
 
@@ -43,7 +43,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
       <body className={`${hankenGrotesk.className} *:text-primary antialiased`}>
         <Providers locale={locale}>
           <main className='flex min-h-screen w-screen flex-col items-center justify-center'>
-            <Header />
+            <AppHead />
             {children}
             <Footer />
             <ToastContainer

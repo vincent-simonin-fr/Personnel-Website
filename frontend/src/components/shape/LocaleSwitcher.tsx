@@ -72,16 +72,15 @@ const LocaleSwitcher = () => {
   return (
     <Dropdown
       aria-label='Language switcher'
-      classNames={{
-        base: 'bg-primary-900 rounded-xl border-1 border-primary-500',
-      }}>
+      // classNames={{
+      //   base: 'bg-primary-900 rounded-xl border-1 border-primary-500',
+      // }}
+    >
       <DropdownTrigger>
         <Button
           className='min-w-8 px-2'
           name='open-language-menu'
-          color='primary'
-          radius='full'
-          variant='light'
+          variant='ghost'
           aria-label='Open language menu'>
           <LanguageSvg size={24} />
         </Button>

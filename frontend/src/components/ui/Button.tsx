@@ -7,19 +7,17 @@ type ButtonProps = {
   onPress?: () => void
   className?: string
   type?: 'button' | 'submit' | 'reset'
-  variant?: 'flat' | 'solid' | 'bordered' | 'light' | 'faded' | 'shadow' | 'ghost' | undefined
-  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'default' | undefined
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger' | undefined
 }
 
-const Button = ({ children, onPress, type = 'button', variant, color }: ButtonProps) => {
+const Button = ({ children, onPress, type = 'button', variant }: ButtonProps) => {
   return (
     <div>
       <HeroButton
         className='flex h-6 items-center justify-center gap-2 rounded-full px-4 text-sm transition-colors sm:h-8 sm:px-5 sm:text-base'
         type={type}
         onPress={onPress}
-        variant={variant}
-        color={color}>
+        variant={variant}>
         {children}
       </HeroButton>
     </div>

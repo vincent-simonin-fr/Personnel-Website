@@ -1,6 +1,6 @@
 'use client'
 
-import { HeroUIProvider } from '@heroui/react'
+import { RouterProvider } from '@heroui/react'
 import { isServer, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { useEffect, useState } from 'react'
@@ -67,9 +67,9 @@ export function Providers({ children, locale }: ProvidersProps) {
   if (!mounted) return <div /> // Affiche rien jusqu'à ce que le composant soit monté
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <AppContextProvider locale={locale}>
-        <HeroUIProvider navigate={router.push}>
+    <RouterProvider navigate={router.push}>
+      <QueryClientProvider client={queryClient}>
+        <AppContextProvider locale={locale}>
           <NextThemesProvider
             attribute='class'
             defaultTheme='dark'
@@ -77,8 +77,8 @@ export function Providers({ children, locale }: ProvidersProps) {
             themes={['dark', 'light']}>
             {children}
           </NextThemesProvider>
-        </HeroUIProvider>
-      </AppContextProvider>
-    </QueryClientProvider>
+        </AppContextProvider>
+      </QueryClientProvider>
+    </RouterProvider>
   )
 }

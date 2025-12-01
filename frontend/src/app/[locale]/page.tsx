@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { useAppContext } from 'hooks/useAppContext'
 import Image from 'next/image'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import { Hanken_Grotesk } from 'next/font/google'
 import { Button } from '@heroui/react'
 import { lazy } from 'react'
@@ -76,13 +76,11 @@ const HomePage = () => {
               <div className='mt-8 flex w-full items-center justify-between'>
                 <SocialMedia noDelay />
                 <FadeInWhenVisible delay={0}>
-                  <Button
-                    className='bg-primary-50 text-primary-900 rounded-full px-4 py-2'
-                    as={Link}
-                    href='/services'
-                    variant='solid'>
-                    {dictionary?.homePage.labelButtonToProjects}
-                  </Button>
+                  <NextLink href='/projects' className='inline-flex'>
+                    <Button className='text-primary-900 rounded-full px-4 py-2' variant='primary'>
+                      {dictionary?.homePage.labelButtonToProjects}
+                    </Button>
+                  </NextLink>
                 </FadeInWhenVisible>
               </div>
             </div>

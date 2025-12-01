@@ -25,10 +25,9 @@ const Footer = ({}: FooterProps) => {
           <FadeInWhenVisible delay={0.6}>
             <Button
               className='border-primary bg-background text-primary hover:shadow-primary border-2 p-1.5 transition-transform duration-700 ease-in-out hover:scale-90 hover:shadow-2xs'
-              radius='full'
               isIconOnly
               aria-label='Scroll to top'
-              color='primary'
+              variant='primary'
               onPress={scrollToTop}>
               <ArrowUpSvg />
             </Button>

@@ -1,12 +1,13 @@
 'use client'
 
-import { Form, Input, Button, Textarea } from '@heroui/react'
+import { Form, Button, TextArea, Label, FieldError, TextField } from '@heroui/react'
 import { toast, ToastContentProps } from 'react-toastify' // For notifications
 import emailjs from '@emailjs/browser'
 import { ReactNode, SyntheticEvent, useEffect, useState } from 'react'
 import { useAppContext } from 'hooks/useAppContext'
 import { useTheme } from 'next-themes'
 import { Hanken_Grotesk } from 'next/font/google'
+import Input from 'components/ui/Input'
 
 const hankenGrotesk = Hanken_Grotesk({ subsets: ['latin'] })
 const hankenGrotesk600 = Hanken_Grotesk({ subsets: ['latin'], weight: '600' })
@@ -117,7 +118,7 @@ const ContactForm = ({}: ContactFormProps) => {
     'group-data-[focus=true]:ring-offset-0',
     'group-data-[focus-visible=true]:border-none',
     'group-data-[focus-visible=true]:ring-0',
-    'group-data-[focus-visible=true]:ring-offset-0'
+    'group-data-[focus-visible=true]:ring-offset-0',
   ]
 
   const classZ =
@@ -142,89 +143,85 @@ const ContactForm = ({}: ContactFormProps) => {
         <div className='flex w-full gap-4'>
           <Input
             isRequired
-            isDisabled={isDisabled}
+            isDisabled
             type='text'
             autoComplete='given-name'
             className='flex-1 group-data-[focus-visible=true]:border-none group-data-[focus-visible=true]:ring-0 group-data-[focus-visible=true]:ring-offset-0 group-data-[focus-within=true]:border-none group-data-[focus-within=true]:ring-0 group-data-[focus-within=true]:ring-offset-0'
-            classNames={{
-              label: labelClassnames,
-              inputWrapper: inputWrapperClassnames,
-              innerWrapper: 'group-data-[focus-visible=true]:border-none group-data-[focus-visible=true]:ring-0 group-data-[focus-visible=true]:ring-offset-0 group-data-[focus-within=true]:border-none group-data-[focus-within=true]:ring-0 group-data-[focus-within=true]:ring-offset-0',
-            }}
+            // classNames={{
+            //   label: labelClassnames,
+            //   inputWrapper: inputWrapperClassnames,
+            //   innerWrapper:
+            //     'group-data-[focus-visible=true]:border-none group-data-[focus-visible=true]:ring-0 group-data-[focus-visible=true]:ring-offset-0 group-data-[focus-within=true]:border-none group-data-[focus-within=true]:ring-0 group-data-[focus-within=true]:ring-offset-0',
+            // }}
             id='firstname'
             name='firstName'
             value={userInput.firstName}
-            onChange={(e) => handleChange(e)}
+            handleChange={(e) => handleChange(e)}
             label={dictionary?.contactForm.firstNameLabel}
-            labelPlacement='outside-top'
             errorMessage={dictionary?.contactForm.firstNameError}
           />
           <Input
             isRequired
-            isDisabled={isDisabled}
+            isDisabled
             type='text'
             autoComplete='family-name'
             className='flex-1'
-            classNames={{
-              label: labelClassnames,
-              inputWrapper: inputWrapperClassnames,
-            }}
+            // classNames={{
+            //   label: labelClassnames,
+            //   inputWrapper: inputWrapperClassnames,
+            // }}
             id='lastname'
             name='lastName'
             value={userInput.lastName}
-            onChange={handleChange}
+            handleChange={handleChange}
             label={dictionary?.contactForm.lastNameLabel}
-            labelPlacement='outside-top'
             errorMessage={dictionary?.contactForm.lastNameError}
           />
         </div>
         <Input
           isRequired
-          isDisabled={isDisabled}
+          isDisabled
           type='email'
           autoComplete='email'
           className='w-full'
-          classNames={{
-            label: labelClassnames,
-            inputWrapper: inputWrapperClassnames,
-          }}
-          variant='faded'
+          // classNames={{
+          //   label: labelClassnames,
+          //   inputWrapper: inputWrapperClassnames,
+          // }}
           id='email'
           name='email'
           value={userInput.email}
-          onChange={handleChange}
+          handleChange={handleChange}
           label={dictionary?.contactForm.emailLabel}
-          labelPlacement='outside-top'
           errorMessage={dictionary?.contactForm.emailError}
         />
-        <Textarea
-          isRequired
-          isDisabled={isDisabled}
-          type='text'
-          minRows={3}
-          maxRows={5}
-          className='w-full'
-          classNames={{
-            label: labelClassnames,
-            inputWrapper: inputWrapperClassnames,
-          }}
-          id='message'
-          name='message'
-          value={userInput.message}
-          onChange={handleChange}
-          label={dictionary?.contactForm.messageLabel}
-          labelPlacement='outside-top'
-          errorMessage={dictionary?.contactForm.messageError}
-        />
+        <div className='flex flex-col gap-2'>
+          <Label>{dictionary?.contactForm.messageLabel}</Label>
+          <TextArea
+            required
+            disabled={isDisabled}
+            rows={4}
+            className='w-full'
+            // classNames={{
+            //   label: labelClassnames,
+            //   inputWrapper: inputWrapperClassnames,
+            // }}
+            id='message'
+            name='message'
+            value={userInput.message}
+            onChange={handleChange}
+          />
+          <FieldError>{dictionary?.contactForm.messageError}</FieldError>
+        </div>
         <div className='flex gap-2'>
           <Button
             className='bg-primary-50 text-primary-900 rounded-full px-4 py-1.5'
-            isLoading={isDisabled}
+            isPending={isDisabled}
             isDisabled={isDisabled}
             type='submit'>
             {dictionary?.contactForm.submitButton}
           </Button>
-          <Button className='rounded-full' isDisabled={isDisabled} type='reset' variant='flat'>
+          <Button className='rounded-full' isDisabled={isDisabled} type='reset' variant='secondary'>
             {dictionary?.contactForm.resetButton}
           </Button>
         </div>
