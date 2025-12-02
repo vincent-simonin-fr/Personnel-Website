@@ -24,16 +24,16 @@ type Locale = {
 
 const locales: Locale[] = [
   {
-    key: 'en-US',
-    label: 'en',
-    country: 'United States',
-    icon: 'icons/us.svg',
-  },
-  {
     key: 'fr',
     label: 'fr',
     country: 'France',
     icon: 'icons/fr.svg',
+  },
+  {
+    key: 'en-US',
+    label: 'en',
+    country: 'United States',
+    icon: 'icons/us.svg',
   },
   {
     key: 'de',
