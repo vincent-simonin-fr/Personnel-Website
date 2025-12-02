@@ -1,8 +1,15 @@
 'use-client'
 
-import { StateMachineInput, useRive, useStateMachineInput } from '@rive-app/react-canvas'
+import {
+  RuntimeLoader,
+  StateMachineInput,
+  useRive,
+  useStateMachineInput,
+} from '@rive-app/react-canvas'
 import { useEffect } from 'react'
 import { useIntersectionObserver } from 'usehooks-ts'
+
+RuntimeLoader.setWasmUrl('rive/rive.wasm')
 
 type Inputs = {
   click: StateMachineInput | null

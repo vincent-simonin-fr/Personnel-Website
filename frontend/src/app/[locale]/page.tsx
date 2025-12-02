@@ -11,10 +11,15 @@ import { lazy } from 'react'
 import Loading from 'components/loading/Loading'
 import { siteConfig } from 'config/site'
 
+import dynamic from 'next/dynamic'
+
+const RivePlayer = dynamic(() => import('components/ui/animations/RivePlayer'), {
+  ssr: false,
+})
+
 const FadeInWhenVisible = lazy(() => import('components/ui/animations/FadeInWhenVisible'))
 const KeyframeCssOnView = lazy(() => import('components/ui/animations/KeyframeCssOnView'))
 const FadeInOnAppear = lazy(() => import('components/ui/animations/FadeInOnAppear'))
-const RivePlayer = lazy(() => import('components/ui/animations/RivePlayer'))
 const MetaBalls = lazy(() => import('components/ui/animations/MetaBalls'))
 const LetterGlitch = lazy(() => import('components/ui/animations/LetterGlitch'))
 const ContactForm = lazy(() => import('components/ContactForm'))
@@ -79,7 +84,7 @@ const HomePage = () => {
                   <Button
                     className='rounded-full bg-primary-50 text-primary-900'
                     as={Link}
-                    href='/services'
+                    href='/projects'
                     variant='solid'>
                     {dictionary?.homePage.labelButtonToSkills}
                   </Button>
