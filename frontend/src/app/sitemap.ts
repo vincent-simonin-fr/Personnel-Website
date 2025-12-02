@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     {
-      url: `${siteConfig.url}/services`,
+      url: `${siteConfig.url}/projects`,
       lastModified: new Date(),
     },
     {

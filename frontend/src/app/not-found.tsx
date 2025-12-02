@@ -7,7 +7,11 @@ import Loading from 'components/loading/Loading'
 import FuzzyText from 'components/ui/animations/FuzzyText'
 import { useAppContext } from 'hooks/useAppContext'
 
-const RivePlayer = lazy(() => import('components/ui/animations/RivePlayer'))
+import dynamic from 'next/dynamic'
+
+const RivePlayer = dynamic(() => import('components/ui/animations/RivePlayer'), {
+  ssr: false,
+})
 
 const NotFound = () => {
   const { dictionary, isLoading, isError, error, setIs404 } = useAppContext()
