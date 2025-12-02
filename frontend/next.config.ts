@@ -6,6 +6,18 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   compiler: {},
   crossOrigin: 'anonymous',
+  compress: true,
+  async headers() {
+    return [
+      {
+        source: '/rive/:path*',
+        headers: [
+          { key: 'Content-Type', value: 'application/wasm' },
+          { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
+        ],
+      },
+    ]
+  },
 }
 
 // For build optimization, produce report when npm run build

@@ -38,6 +38,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
           type='application/ld+json'
           strategy='afterInteractive'
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          nonce={nonce}
         />
       </Head>
       <body className={`${hankenGrotesk.className} antialiased *:text-primary`}>

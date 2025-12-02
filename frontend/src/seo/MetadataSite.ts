@@ -18,8 +18,10 @@ export const ViewportSite: Viewport = {
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
   locale: 'fr_FR',
-  url: 'https://dev.vincentsimonin.fr',
+  url: 'https://www.dev.vincentsimonin.fr',
   siteName: 'Vincent Simonin',
+  description:
+    'Discover Vincent Simonin, a Full Stack and Cloud Azure expert, specializing in modern, scalable web applications. Explore his innovative design and development methods.',
   images: [
     {
       url: '/images/og-image.jpg',
@@ -110,10 +112,13 @@ export const jsonLd = {
     'React',
     '.Net platform',
   ],
-  image: 'https://vincent-simonin.com/images/profile.jpg',
+  image: 'https://www.dev.vincent-simonin.com/images/profile.jpg',
   description:
     'Discover Vincent Simonin, a Full Stack and Cloud Azure expert, specializing in modern, scalable web applications. Explore his innovative design and development methods.',
-  sameAs: ['https://github.com/vincent-simonin-fr', 'https://www.linkedin.com/in/vincentsimonin'],
+  sameAs: [
+    'https://github.com/vincent-simonin-fr',
+    'https://www.dev.linkedin.com/in/vincentsimonin',
+  ],
   worksFor: {
     '@type': 'Organization',
     name: 'Best Company',
