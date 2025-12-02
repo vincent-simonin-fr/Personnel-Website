@@ -15,7 +15,7 @@
       "firstLine": "Crafting and building modern web applications",
       "secondLine": "for digital communication or business system."
     },
-    "labelButtonToSkills": "My skills"
+    "labelButtonToSkills": "Projects"
   },
   "navigation": [
     {
@@ -24,9 +24,9 @@
       "to": "/"
     },
     {
-      "label": "Skills",
-      "title": "My Skills",
-      "to": "/services"
+      "label": "Projects",
+      "title": "Projects",
+      "to": "/projects"
     },
     {
       "label": "Tech Labs",
@@ -54,11 +54,6 @@
           "to": "/labs/blockchain"
         }
       ]
-    },
-    {
-      "label": "Contact",
-      "title": "Contact Me",
-      "to": "/contact"
     }
   ],
   "notFound": {

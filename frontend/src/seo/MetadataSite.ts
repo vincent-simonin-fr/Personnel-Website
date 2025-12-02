@@ -18,7 +18,7 @@ export const ViewportSite: Viewport = {
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
   locale: 'fr_FR',
-  url: 'https://www.dev.vincentsimonin.fr',
+  url: 'https://dev.vincentsimonin.fr',
   siteName: 'Vincent Simonin',
   images: [
     {

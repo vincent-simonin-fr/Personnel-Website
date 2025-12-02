@@ -146,6 +146,7 @@ const ContactForm = ({}: ContactFormProps) => {
               label: labelClassnames,
               inputWrapper: inputWrapperClassnames,
             }}
+            size='sm'
             labelPlacement='outside'
             id='firstname'
             name='firstName'
@@ -165,6 +166,7 @@ const ContactForm = ({}: ContactFormProps) => {
               label: labelClassnames,
               inputWrapper: inputWrapperClassnames,
             }}
+            size='sm'
             labelPlacement='outside'
             id='lastname'
             name='lastName'
@@ -185,6 +187,7 @@ const ContactForm = ({}: ContactFormProps) => {
             label: labelClassnames,
             inputWrapper: inputWrapperClassnames,
           }}
+          size='sm'
           labelPlacement='outside'
           id='email'
           name='email'
@@ -205,6 +208,7 @@ const ContactForm = ({}: ContactFormProps) => {
             label: labelClassnames,
             inputWrapper: inputWrapperClassnames,
           }}
+          size='sm'
           labelPlacement='outside'
           id='message'
           name='message'
