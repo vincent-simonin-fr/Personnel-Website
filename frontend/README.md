@@ -57,12 +57,6 @@ npm run dev
 
 5. Open your browser and navigate to `http://localhost:3000`.
 
-## Contributing
+## Rive player
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on the GitHub repository.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-
-Dans le cadre de la création d'un site vitrine d'un développeur full stack et développeur azure cloud, doté d'une expertise informatique et des nouvelles technologies. Génère moi un composant de présentation commercialle, proposant des services de développement, d'études et de conception logicielle, d'industrialisation de projet, de maintenance évolutive et corrective pour des applications métiers mais aussi pour des sites de communication. Commence par améliorer ce prompt, tu peux reformuler les différentes parties, la présentation doit être originale et mettre en valeur les termes importants
+[lien](https://www.youtube.com/watch?v=MVEAfl-3LKo)

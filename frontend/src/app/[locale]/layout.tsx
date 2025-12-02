@@ -10,10 +10,10 @@ type LocaleLayoutProps = {
 }
 
 const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
-  const locale = (await params).locale
-  const dictionary = await getDictionary(locale)
+  // const locale = (await params).locale
+  // const dictionary = await getDictionary(locale)
 
-  console.info('Loading main layout', locale, dictionary)
+  // console.info('Loading main layout', locale, dictionary)
 
   return (
     <>

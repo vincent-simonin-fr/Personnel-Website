@@ -37,8 +37,10 @@ const Header = ({}: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const { scrollYProgress } = useScroll()
+
   const minWidth = '640px'
-  // const minWidthTwClass = `md:min-w-[${minWidth}]`
+  const headerWidthVw = 76
+
   const isMobile = useMediaQuery(`(max-width: ${minWidth})`)
 
   const { is404 } = useAppContext()
@@ -58,16 +60,16 @@ const Header = ({}: HeaderProps) => {
   const AnimatedDiv = animated('div')
 
   const width = useSpring({
-    width: scrollYProgress.to((y) => (isMobile ? '100vw' : `${80 - y * 43 * 3}vw`)),
+    width: scrollYProgress.to((y) => (isMobile ? '100vw' : `${headerWidthVw - y * 43 * 3}vw`)),
     config: { tension: 280, friction: 50 },
   })
 
   return (
     <AnimatedDiv
-      className={`sticky top-0 z-50 h-14 w-full sm:min-w-[640px] md:min-w-[640px]`}
+      className={`sticky top-0 z-50 h-12 w-full sm:min-w-[640px] md:min-w-[640px]`}
       style={width}>
       <Navbar
-        className={`h-12 w-full bg-transparent transition-transform-colors-opacity *:max-w-full ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? 'backdrop-blur-none backdrop-saturate-100 data-[menu-open=true]:backdrop-blur-none' : ''}`}
+        className={`h-10 w-full bg-transparent transition-transform-colors-opacity *:max-w-full ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? 'backdrop-blur-none backdrop-saturate-100 data-[menu-open=true]:backdrop-blur-none' : ''}`}
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={() => setIsMenuOpen(!isMenuOpen)}>
         <NavbarContent className='sm:hidden' justify='start'>
@@ -83,14 +85,16 @@ const Header = ({}: HeaderProps) => {
           </NavbarBrand>
         </NavbarContent>
 
-        <NavbarContent className='hidden gap-4 sm:flex' justify='start'>
+        <NavbarContent className='hidden gap-4 sm:flex' justify='center'>
           <NavbarBrand>
             <Link color='primary' href={`/${locale}`}>
               <AppLogo />
               <p className={`hidden text-xl sm:block`}>{siteConfig.name}</p>
             </Link>
           </NavbarBrand>
+        </NavbarContent>
 
+        <NavbarContent className='hidden gap-4 sm:flex' justify='end'>
           {dictionary &&
             dictionary.navigation.map((item) => {
               if (!item.items) {

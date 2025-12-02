@@ -5,7 +5,7 @@ import Header from 'components/shape/Header'
 import 'styles/globals.css'
 import { Providers } from '../providers/providers'
 import { Bounce, ToastContainer } from 'react-toastify'
-import { jsonLd, MetadataSite, ViewportSite } from 'src/seo/MetadataSite'
+import { jsonLd, MetadataSite, ViewportSite } from 'seo/MetadataSite'
 import Script from 'next/script'
 import Head from 'next/head'
 import { Hanken_Grotesk } from 'next/font/google'
@@ -23,7 +23,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   const locale = headersList.get('x-locale') || 'fr' // Défaut à 'fr' si pas de locale trouvée
   const nonce = headersList.get('x-nonce')!
 
-  console.info('Loading root layout', locale)
+  // console.info('Loading root layout', locale)
 
   return (
     <html className={'dark'} lang={locale}>

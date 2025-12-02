@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import React, { ReactNode, useState } from 'react'
-import { Dictionary, getDictionary } from 'src/app/[locale]/dictionaries'
+import { Dictionary, getDictionary } from '../app/[locale]/dictionaries'
 
 type User = {
   id?: string

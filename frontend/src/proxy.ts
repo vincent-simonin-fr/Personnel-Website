@@ -58,7 +58,7 @@ const securityHeaders: { key: string; value: string }[] = [
 // Langues supportées
 const locales = ['en-US', 'fr', 'de']
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   // Not considering request to api
   if (
     req.nextUrl.pathname.startsWith('/_next') ||

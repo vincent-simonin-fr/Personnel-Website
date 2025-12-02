@@ -1,11 +1,6 @@
 'use-client'
 
-import {
-  RuntimeLoader,
-  StateMachineInput,
-  useRive,
-  useStateMachineInput,
-} from '@rive-app/react-canvas'
+import { StateMachineInput, useRive, useStateMachineInput } from '@rive-app/react-canvas'
 import { useEffect } from 'react'
 import { useIntersectionObserver } from 'usehooks-ts'
 
@@ -28,7 +23,7 @@ type RivePlayerProps = {
 }
 
 // Set a custom WASM URL from the local public folder
-RuntimeLoader.setWasmUrl('/rive/rive.wasm')
+// RuntimeLoader.setWasmUrl('/rive/rive.wasm')
 
 const RivePlayer = ({
   src,
