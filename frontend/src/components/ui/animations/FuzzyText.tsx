@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useTheme } from 'next-themes'
-import { siteConfig } from 'config/site'
+import { siteConfig } from '../../../../config/site'
 
 interface FuzzyTextProps {
   children: React.ReactNode

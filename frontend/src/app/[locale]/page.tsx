@@ -9,7 +9,7 @@ import { Hanken_Grotesk } from 'next/font/google'
 import { Button } from '@heroui/react'
 import { lazy } from 'react'
 import Loading from 'components/loading/Loading'
-import { siteConfig } from 'config/site'
+import { siteConfig } from '../../../config/site'
 
 import dynamic from 'next/dynamic'
 
@@ -17,8 +17,12 @@ const RivePlayer = dynamic(() => import('components/ui/animations/RivePlayer'), 
   ssr: false,
 })
 
-const FadeInWhenVisible = lazy(() => import('components/ui/animations/FadeInWhenVisible'))
-const KeyframeCssOnView = lazy(() => import('components/ui/animations/KeyframeCssOnView'))
+const FadeInWhenVisible = lazy(
+  () => import('components/ui/animations/FadeInWhenVisible'),
+)
+const KeyframeCssOnView = lazy(
+  () => import('components/ui/animations/KeyframeCssOnView'),
+)
 const FadeInOnAppear = lazy(() => import('components/ui/animations/FadeInOnAppear'))
 const MetaBalls = lazy(() => import('components/ui/animations/MetaBalls'))
 const LetterGlitch = lazy(() => import('components/ui/animations/LetterGlitch'))
@@ -33,7 +37,7 @@ const hankenGrotesk = Hanken_Grotesk({ subsets: ['latin'], weight: '600' })
 const colorText = 'text-fuchsia-600'
 
 const HomePage = () => {
-  const { dictionary, isLoading, isError, error } = useAppContext()
+  const { locale, dictionary, isLoading, isError, error } = useAppContext()
   const { theme } = useTheme()
 
   const commonSectionClasses = 'flex w-[84vw] flex-col items-center gap-8 md:gap-4'
@@ -44,8 +48,10 @@ const HomePage = () => {
     'relative flex w-full min-h-[14rem] items-center justify-center md:w-1/3'
 
   useEffect(() => {
-    if (dictionary) document.title = dictionary.navigation[0].title
-  }, [dictionary])
+    if (dictionary?.navigation?.[0]?.title) {
+      document.title = dictionary.navigation[0].title
+    }
+  }, [locale])
 
   return (
     <Loading isLoading={isLoading} isError={isError} error={error}>
@@ -84,7 +90,7 @@ const HomePage = () => {
                   <Button
                     className='rounded-full bg-primary-50 text-primary-900'
                     as={Link}
-                    href='/projects'
+                    href={`/${locale}/projects`}
                     variant='solid'>
                     {dictionary?.homePage.labelButtonToSkills}
                   </Button>
@@ -103,7 +109,9 @@ const HomePage = () => {
         </section>
 
         <div className='relative mb-6 w-[84vw] space-y-8 sm:space-y-2'>
-          <div id='presentation' className='flex flex-col items-center justify-center gap-28'>
+          <div
+            id='presentation'
+            className='flex flex-col items-center justify-center gap-28'>
             <section className={`${commonSectionClasses} md:flex-row`}>
               <div className={commonImageContainerClasses}>
                 <div className='aspect-[1/1] max-h-[240px] scale-125'>
@@ -122,12 +130,15 @@ const HomePage = () => {
                 </div>
               </div>
               <div className={commonTextContainerClasses}>
-                <div className={commonTitleClasses}>Étude et conception logicielle</div>
+                <div className={commonTitleClasses}>
+                  Étude et conception logicielle
+                </div>
                 <div className={commonDescriptionClasses}>
-                  Cruciale pour garantir le succès d'un projet, cette phase débute par un recueil
-                  des besoins. Une étude approfondie du domaine métier, visant à acquérir une
-                  parfaite compréhension des problématiques, permet de structurer le projet de
-                  manière efficiente. Bien menée cette étape assure de créer des solutions
+                  Cruciale pour garantir le succès d'un projet, cette phase débute
+                  par un recueil des besoins. Une étude approfondie du domaine
+                  métier, visant à acquérir une parfaite compréhension des
+                  problématiques, permet de structurer le projet de manière
+                  efficiente. Bien menée cette étape assure de créer des solutions
                   logicielles sur mesure, perfomante et fiable.
                 </div>
               </div>
@@ -152,11 +163,12 @@ const HomePage = () => {
               <div className={`${commonTextContainerClasses} md:mr-4`}>
                 <div className={`${commonTitleClasses} text-end`}>Agilité</div>
                 <div className={`${commonDescriptionClasses} text-end`}>
-                  Les méthodologies agiles favorisent une adaptation rapide aux changements et une
-                  livraison continue de valeur. Un suivi de projet efficace implique une
-                  communication transparente, des réunions régulières. La combinaison de l'agilité
-                  et d'un suivi rigoureux permet d'optimiser la productivité, la qualité et la
-                  qualité des livrables.
+                  Les méthodologies agiles favorisent une adaptation rapide aux
+                  changements et une livraison continue de valeur. Un suivi de projet
+                  efficace implique une communication transparente, des réunions
+                  régulières. La combinaison de l'agilité et d'un suivi rigoureux
+                  permet d'optimiser la productivité, la qualité et la qualité des
+                  livrables.
                 </div>
               </div>
             </section>
@@ -174,13 +186,15 @@ const HomePage = () => {
               <div className={commonTextContainerClasses}>
                 <div className={commonTitleClasses}>Développement</div>
                 <div className={commonDescriptionClasses}>
-                  La réalisation d'une application de qualité est le fruit de la créativité et d'une
-                  recherche permanente de l'excellence. La maîtrise technique permet de construire
-                  une solution performante, fiable et évolutive. Le numérique est essentiel pour les
-                  entreprises, mais un logiciel représente souvent un investissement important. Un
-                  développement de qualité, respectant les bonnes pratiques, assure une maîtrise des
-                  coûts tout au long du cycle de vie de l'application et une durabilité accrue.
-                  Cette approche garantit non seulement un retour sur investissement optimal, mais
+                  La réalisation d'une application de qualité est le fruit de la
+                  créativité et d'une recherche permanente de l'excellence. La
+                  maîtrise technique permet de construire une solution performante,
+                  fiable et évolutive. Le numérique est essentiel pour les
+                  entreprises, mais un logiciel représente souvent un investissement
+                  important. Un développement de qualité, respectant les bonnes
+                  pratiques, assure une maîtrise des coûts tout au long du cycle de
+                  vie de l'application et une durabilité accrue. Cette approche
+                  garantit non seulement un retour sur investissement optimal, mais
                   aussi une adaptabilité aux besoins futurs de l'entreprise.
                 </div>
               </div>
@@ -212,12 +226,13 @@ const HomePage = () => {
               <div className={commonTextContainerClasses}>
                 <div className={`${commonTitleClasses} text-end`}>Innovation</div>
                 <div className={`${commonDescriptionClasses} text-end`}>
-                  La capacité à innover et à adopter rapidement de nouvelles technologies est un
-                  facteur clé de succès dans le développement logiciel. Cette agilité technologique
-                  permet de maintenir un avantage concurrentiel dans un marché en constante
-                  évolution. De plus, elle offre la possibilité de répondre de manière proactive aux
-                  attentes croissantes des consommateurs, en proposant des solutions toujours plus
-                  avancées et adaptées à leurs besoins.
+                  La capacité à innover et à adopter rapidement de nouvelles
+                  technologies est un facteur clé de succès dans le développement
+                  logiciel. Cette agilité technologique permet de maintenir un
+                  avantage concurrentiel dans un marché en constante évolution. De
+                  plus, elle offre la possibilité de répondre de manière proactive
+                  aux attentes croissantes des consommateurs, en proposant des
+                  solutions toujours plus avancées et adaptées à leurs besoins.
                 </div>
               </div>
             </section>

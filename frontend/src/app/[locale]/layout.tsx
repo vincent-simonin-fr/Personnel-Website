@@ -1,6 +1,5 @@
 import { WebVitals } from 'components/WebVitals'
-import { ReactNode } from 'react'
-import { getDictionary } from './dictionaries'
+import { ReactNode, Suspense } from 'react'
 
 type LocaleLayoutProps = {
   children: ReactNode
@@ -16,10 +15,12 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
   // console.info('Loading main layout', locale, dictionary)
 
   return (
+    // <Suspense fallback={null}>
     <>
       {/* <WebVitals /> */}
       {children}
     </>
+    // </Suspense>
   )
 }
 

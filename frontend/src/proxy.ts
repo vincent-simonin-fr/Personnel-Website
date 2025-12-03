@@ -69,19 +69,22 @@ export function proxy(req: NextRequest) {
   }
 
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
+  const isDev = process.env.NODE_ENV === 'development'
+
   const cspHeader = `
     default-src 'self';
-    connect-src https: 'self' https://cdn.jsdelivr.net https://unpkg.com;
-    script-src https: 'self' 'nonce-${nonce}' 'wasm-unsafe-eval' 'unsafe-inline' 'strict-dynamic';
+    connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://dev.vincentsimonin.fr;
+    script-src 'self' 'nonce-${nonce}' 'wasm-unsafe-eval' ${isDev ? "'unsafe-eval' 'unsafe-inline'" : 'strict-dynamic'} ;
     frame-src 'self';
-    style-src https: 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
-    font-src 'self';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' blob: data: https:;
+    font-src 'self' data:;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
-    upgrade-insecure-requests;`
+    upgrade-insecure-requests;
+    block-all-mixed-content;`
   // Replace newline characters and spaces
   const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, ' ').trim()
   const requestHeaders = new Headers(req.headers)

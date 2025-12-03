@@ -5,6 +5,10 @@ export const metadata = {
 description: 'Presentation of professional projects in which I have participated',
 }
 
+https://medium.com/@kyle_23362/achieving-a-perfect-100-google-lighthouse-audit-score-with-next-js-b92795a0fd49
+
+https://www.youtube.com/watch?v=TvrQnBDIDpI
+
 ---
 
 # 🔥 Pourquoi ton import est énorme ?

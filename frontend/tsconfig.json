@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,24 +19,14 @@
       }
     ],
     "paths": {
-      "components/*": [
-        "./src/components/*"
-      ],
-      "hooks/*": [
-        "./src/hooks/*"
-      ],
-      "i18n/*": [
-        "./src/i18n/*"
-      ],
-      "styles/*": [
-        "./src/styles/*"
-      ],
-      "seo/*": [
-        "./src/seo/*"
-      ],
-      "config/*": [
-        "./src/config/*"
-      ]
+      "components/*": ["./src/components/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "i18n/*": ["./i18n/*"],
+      "styles/*": ["./src/styles/*"],
+      "seo/*": ["./seo/*"],
+      "config/*": ["./config/*"],
+      "types": ["./src/types/index"],
+      "actions": ["./src/app/actions/actions"]
     }
   },
   "include": [
@@ -52,7 +38,5 @@
     "src/components/ui/animations/hyperspeed/index.jsx",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

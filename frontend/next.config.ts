@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   compiler: {},
   crossOrigin: 'anonymous',
   compress: true,
+  devIndicators: false,
   async headers() {
     return [
       {
@@ -20,6 +21,7 @@ const nextConfig: NextConfig = {
   },
 }
 
+// https://nextjs.org/docs/app/guides/package-bundling
 // For build optimization, produce report when npm run build
 // To use change below export default withBundleAnalyzer(nextConfig)
 // const withBundleAnalyzer = require('@next/bundle-analyzer')({
@@ -27,3 +29,4 @@ const nextConfig: NextConfig = {
 // })
 
 export default nextConfig
+// export default withBundleAnalyzer(nextConfig)

@@ -4,7 +4,7 @@ import { Button } from '@heroui/react'
 import SocialMedia from 'components/SocialMedia'
 import FadeInWhenVisible from 'components/ui/animations/FadeInWhenVisible'
 import ArrowUpSvg from 'components/ui/svg/ArrowUpSvg'
-import { siteConfig } from 'config/site'
+import { siteConfig } from '../../../config/site'
 import { useMediaQuery } from 'usehooks-ts'
 
 type FooterProps = object
