@@ -4,7 +4,7 @@ import { HeroUIProvider } from '@heroui/react'
 import { isServer, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { AppContextProvider } from '../contexts/AppContext'
+import { AppContextProvider } from './appContextProvider'
 import { useRouter } from 'next/navigation'
 
 // Only if using TypeScript

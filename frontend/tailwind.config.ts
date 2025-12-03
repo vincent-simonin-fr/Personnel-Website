@@ -78,7 +78,7 @@ export default {
         dark: {
           colors: {
             background: '#0a0a0a',
-            foreground: '#ededed',
+            foreground: '#ffffff',
             primary: {
               50: '#f6f6f6', // '#f8fafc', // '#0f172a', //
               100: '#E7E7E7', // '#f1f5f9', // '#1e293b', //

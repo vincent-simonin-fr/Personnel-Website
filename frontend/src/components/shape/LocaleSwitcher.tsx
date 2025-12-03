@@ -2,7 +2,6 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import {
-  Avatar,
   Button,
   Dropdown,
   DropdownItem,
@@ -14,6 +13,8 @@ import LanguageSvg from 'components/ui/svg/LanguageSvg'
 import UsaSvg from 'components/ui/svg/UsaSvg'
 import FranceSvg from 'components/ui/svg/FranceSvg'
 import GermanySvg from 'components/ui/svg/GermanySvg'
+import { setLocaleCookie } from '../../app/actions/actions'
+import { useTransition } from 'react'
 
 type Locale = {
   key: string
@@ -47,6 +48,7 @@ const LocaleSwitcher = () => {
   const pathname = usePathname()
   const router = useRouter()
   const { locale, setLocale } = useAppContext()
+  const [isPending, startTransition] = useTransition()
 
   const path = (locale: string) => {
     const segments = pathname.split('/')
@@ -54,12 +56,19 @@ const LocaleSwitcher = () => {
     return segments.join('/')
   }
 
-  const handleSelectLocale = (newLocale: string) => {
-    if (newLocale === locale) return
+  const handleSelectLocale = async (newLocale: string) => {
+    console.log('Current locale:', locale, 'New locale:', newLocale)
+    if (newLocale === locale || isPending) {
+      console.log('No locale change needed')
+      return
+    }
 
-    setLocale(newLocale)
-    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`
-    router.push(path(newLocale))
+    startTransition(async () => {
+      console.log('Switching locale to', newLocale)
+      setLocale(newLocale)
+      await setLocaleCookie(newLocale)
+      router.push(path(newLocale))
+    })
   }
 
   const getFlag = (locale: string) => {
@@ -92,12 +101,12 @@ const LocaleSwitcher = () => {
         aria-label='Language menu'
         items={locales}
         selectionMode='single'
-        selectedKeys={[locale]}>
+        selectedKeys={[locale]}
+        onAction={(key) => handleSelectLocale(String(key))}>
         {(locale) => (
           <DropdownItem
             key={locale.key}
             textValue={locale.key}
-            onPress={() => handleSelectLocale(locale.key)}
             aria-label={`${locale.country} language`}>
             <div className='flex items-center justify-start gap-3'>
               {getFlag(locale.key)}

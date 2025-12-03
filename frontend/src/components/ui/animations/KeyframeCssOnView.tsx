@@ -16,7 +16,6 @@ const KeyframeCssOnView = ({ children, cssClass, rootMargin = '-10%' }: Keyframe
   useEffect(() => {
     // Use for animation rendered on Safari & Firefox
     if (!CSS.supports('animation-timeline: view()')) {
-      console.log(isIntersecting)
       entry?.target.classList.toggle('visible', entry.isIntersecting)
       if (!isIntersecting) {
         entry?.target.classList.add('hiden')

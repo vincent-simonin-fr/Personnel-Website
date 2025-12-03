@@ -1,6 +1,5 @@
-import { useQuery } from '@tanstack/react-query'
-import React, { ReactNode, useState } from 'react'
-import { Dictionary, getDictionary } from '../app/[locale]/dictionaries'
+import { createContext } from 'react'
+import { Dictionary } from 'types'
 
 type User = {
   id?: string
@@ -23,7 +22,7 @@ type AppContextProps = {
   setIs404: (is404: boolean) => void
 }
 
-const AppContext = React.createContext<AppContextProps>({
+const AppContext = createContext<AppContextProps>({
   user: {},
   locale: 'fr',
   dictionary: undefined,
@@ -38,47 +37,4 @@ const AppContext = React.createContext<AppContextProps>({
   setIs404: () => {},
 })
 
-type AppContextProviderProps = {
-  children: ReactNode
-  locale: string
-}
-
-const AppContextProvider = (props: AppContextProviderProps) => {
-  const [currentUser, setCurrentUser] = useState({})
-  const [isLoading, setIsLoading] = useState(true)
-  const [currentLocale, setCurrentLocale] = useState(props.locale)
-  const [is404, setIs404] = useState(false)
-  const [nonce, setNonce] = useState('')
-
-  const {
-    data: dictionary,
-    isLoading: isDictionaryLoading,
-    isError,
-    error,
-  } = useQuery({
-    queryKey: ['dictionary', currentLocale],
-    queryFn: () => getDictionary(currentLocale),
-    enabled: !!currentLocale,
-  })
-  return (
-    <AppContext.Provider
-      value={{
-        user: currentUser,
-        locale: currentLocale,
-        dictionary: dictionary,
-        isLoading: isLoading && isDictionaryLoading,
-        isError: isError,
-        error: error,
-        is404: is404,
-        nonce: nonce,
-        setUser: setCurrentUser,
-        setLoading: setIsLoading,
-        setLocale: setCurrentLocale,
-        setIs404: setIs404,
-      }}>
-      {props.children}
-    </AppContext.Provider>
-  )
-}
-
-export { AppContextProvider, AppContext }
+export { AppContext }
