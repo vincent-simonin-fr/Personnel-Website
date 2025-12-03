@@ -21,7 +21,7 @@ import AppLogo from './AppLogo'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useAppContext } from 'hooks/useAppContext'
-import { siteConfig } from 'config/site'
+import { siteConfig } from '../../../config/site'
 import { useScroll, useSpring, animated } from '@react-spring/web'
 import { useMediaQuery } from 'usehooks-ts'
 import ChevronDownSvg from 'components/ui/svg/ChevronDownSvg'
@@ -47,11 +47,10 @@ const Header = ({}: HeaderProps) => {
   const { dictionary, locale } = useAppContext()
 
   useEffect(() => {
-    // TODO handle case where fr = '/'
     const segments = path.split('/')
     setPathSegments(segments)
     setPathname(segments[2] ? segments[2] : '/')
-  }, [setIsMenuOpen, path])
+  }, [path])
 
   const handleLinkClick = () => {
     setIsMenuOpen(false)
@@ -77,21 +76,25 @@ const Header = ({}: HeaderProps) => {
         </NavbarContent>
 
         <NavbarContent className='pr-3 sm:hidden' justify='start'>
-          <NavbarBrand>
-            <Link color='primary' href={`/${locale}`} passHref>
-              <AppLogo />
-              <p className='hidden sm:block'>{siteConfig.name}</p>
-            </Link>
-          </NavbarBrand>
+          <NavbarItem>
+            <NavbarBrand>
+              <Link color='primary' href={`/${locale}`} passHref>
+                <AppLogo />
+                <p className='hidden sm:block'>{siteConfig.name}</p>
+              </Link>
+            </NavbarBrand>
+          </NavbarItem>
         </NavbarContent>
 
         <NavbarContent className='hidden gap-4 sm:flex' justify='center'>
-          <NavbarBrand>
-            <Link color='primary' href={`/${locale}`}>
-              <AppLogo />
-              <p className={`hidden text-xl sm:block`}>{siteConfig.name}</p>
-            </Link>
-          </NavbarBrand>
+          <NavbarItem>
+            <NavbarBrand>
+              <Link color='primary' href={`/${locale}`}>
+                <AppLogo />
+                <p className={`hidden text-xl sm:block`}>{siteConfig.name}</p>
+              </Link>
+            </NavbarBrand>
+          </NavbarItem>
         </NavbarContent>
 
         <NavbarContent className='hidden gap-4 sm:flex' justify='end'>
@@ -143,7 +146,7 @@ const Header = ({}: HeaderProps) => {
                         color='primary'
                         className={subItem.to.endsWith(pathSegments[3]) ? classLinkActive : ''}
                         key={subItem.to}
-                        href={`/${locale}/${subItem.to}`}
+                        href={`/${locale}${subItem.to}`}
                         aria-label={`${item.label} link`}>
                         {subItem.label}
                       </DropdownItem>
@@ -169,7 +172,7 @@ const Header = ({}: HeaderProps) => {
                       key={item.to}
                       color='primary'
                       className={`w-full ${item.to.endsWith(pathname) ? classLinkActive : ''}`}
-                      href={`/${locale}/${item.to}`}
+                      href={`/${locale}${item.to}`}
                       onClick={handleLinkClick}
                       aria-label={`${item.label} link`}
                       passHref>
@@ -184,7 +187,7 @@ const Header = ({}: HeaderProps) => {
                             key={subItem.to}
                             color='primary'
                             className={`w-90 ml-4 ${subItem.to.endsWith(pathSegments[3]) ? classLinkActive : ''}`}
-                            href={`/${locale}/${subItem.to}`}
+                            href={`/${locale}${subItem.to}`}
                             onClick={handleLinkClick}
                             aria-label={`${item.label} link`}
                             passHref>

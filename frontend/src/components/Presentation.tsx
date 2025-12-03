@@ -1,7 +1,7 @@
 'use client'
 
 import { useAppContext } from 'hooks/useAppContext'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 // TODO: Handle loading and error states
 const Presentation = () => {

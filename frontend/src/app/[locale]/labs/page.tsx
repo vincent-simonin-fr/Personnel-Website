@@ -6,14 +6,14 @@ import { useTheme } from 'next-themes'
 import { useEffect } from 'react'
 
 const Labs = () => {
-  const { dictionary } = useAppContext()
+  const { dictionary, locale } = useAppContext()
   const { theme } = useTheme()
 
   useEffect(() => {
-    if (dictionary) {
+    if (dictionary?.navigation?.[2]?.title) {
       document.title = dictionary.navigation[2].title
     }
-  }, [dictionary])
+  }, [locale])
 
   return (
     <div className='relative -mt-16 w-screen'>

@@ -125,6 +125,7 @@ const ContactForm = ({}: ContactFormProps) => {
         {dictionary?.contactForm.title}
       </h2>
       <Form
+        id='contact-form'
         className='flex w-full max-w-md flex-col gap-4'
         onReset={() => {
           setUserInput({

@@ -1,4 +1,4 @@
-import { siteConfig } from 'config/site'
+import { siteConfig } from '../../config/site'
 import { MetadataRoute } from 'next'
 
 // let Items = Array.from({ length: 10 }, (_v,i) => ({   url: `${SITE_URL}/read/${i+1}`, lastModified: new Date() }));

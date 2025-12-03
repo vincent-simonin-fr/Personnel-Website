@@ -1,5 +1,3 @@
-import { cache } from 'react'
-
 export type MenuItem = {
   label: string
   title: string
@@ -33,6 +31,7 @@ export type Dictionary = {
     buttonLabel: string
   }
   presentation: {
+    introduction: string
     description: string
     services: {
       title: string
@@ -59,13 +58,3 @@ export type Dictionary = {
     errorMessage: string
   }
 }
-
-const dictionaries: Record<string, () => Promise<Dictionary>> = {
-  en: () => import('i18n/en-us.json').then((module) => module.default),
-  fr: () => import('i18n/fr.json').then((module) => module.default),
-  de: () => import('i18n/de.json').then((module) => module.default),
-}
-
-export const getDictionary = cache(async (locale: string): Promise<Dictionary> => {
-  return locale == 'fr' ? dictionaries.fr() : locale == 'de' ? dictionaries.de() : dictionaries.en() // Default to English
-})
