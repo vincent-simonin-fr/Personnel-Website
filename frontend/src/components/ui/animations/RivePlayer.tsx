@@ -49,20 +49,23 @@ const RivePlayer = ({
     rootMargin: rootMargin,
   })
 
-  const configureStateMachine = (): Inputs => {
+  const useConfigureStateMachine = (): Inputs => {
     const inputs: Inputs = {
       click: null,
       enter: null,
       exit: null,
     }
-    if (actions.onClick) inputs.click = useStateMachineInput(rive, stateMachines, 'click')
-    if (actions.onMouseEnter) inputs.enter = useStateMachineInput(rive, stateMachines, 'enter')
-    if (actions.onMouseLeave) inputs.exit = useStateMachineInput(rive, stateMachines, 'exit')
+    if (actions.onClick)
+      inputs.click = useStateMachineInput(rive, stateMachines, 'click')
+    if (actions.onMouseEnter)
+      inputs.enter = useStateMachineInput(rive, stateMachines, 'enter')
+    if (actions.onMouseLeave)
+      inputs.exit = useStateMachineInput(rive, stateMachines, 'exit')
 
     return inputs
   }
 
-  const inputs: Inputs = configureStateMachine()
+  const inputs: Inputs = useConfigureStateMachine()
 
   // Déclencher l'animation quand l'élément entre dans la vue
   useEffect(() => {

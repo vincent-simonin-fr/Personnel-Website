@@ -19,7 +19,7 @@ import LocaleSwitcher from './LocaleSwitcher'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import AppLogo from './AppLogo'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useAppContext } from 'hooks/useAppContext'
 import { siteConfig } from '../../../config/site'
 import { useScroll, useSpring, animated } from '@react-spring/web'
@@ -30,10 +30,12 @@ type HeaderProps = object
 
 const classLinkActive = 'text-fuchsia-600'
 
+const AnimatedDiv = animated('div')
+
 const Header = ({}: HeaderProps) => {
-  const [pathname, setPathname] = useState<string>('')
-  const [pathSegments, setPathSegments] = useState<string[]>([])
   const path = usePathname()
+  const segments = path.split('/')
+  const pathname = segments[2] ?? '/'
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const { scrollYProgress } = useScroll()
@@ -46,20 +48,14 @@ const Header = ({}: HeaderProps) => {
   const { is404 } = useAppContext()
   const { dictionary, locale } = useAppContext()
 
-  useEffect(() => {
-    const segments = path.split('/')
-    setPathSegments(segments)
-    setPathname(segments[2] ? segments[2] : '/')
-  }, [path])
-
   const handleLinkClick = () => {
     setIsMenuOpen(false)
   }
 
-  const AnimatedDiv = animated('div')
-
   const width = useSpring({
-    width: scrollYProgress.to((y) => (isMobile ? '100vw' : `${headerWidthVw - y * 43 * 3}vw`)),
+    width: scrollYProgress.to((y) =>
+      isMobile ? '100vw' : `${headerWidthVw - y * 43 * 3}vw`,
+    ),
     config: { tension: 280, friction: 50 },
   })
 
@@ -144,7 +140,9 @@ const Header = ({}: HeaderProps) => {
                     {item.items!.map((subItem) => (
                       <DropdownItem
                         color='primary'
-                        className={subItem.to.endsWith(pathSegments[3]) ? classLinkActive : ''}
+                        className={
+                          subItem.to.endsWith(segments[3]) ? classLinkActive : ''
+                        }
                         key={subItem.to}
                         href={`/${locale}${subItem.to}`}
                         aria-label={`${item.label} link`}>
@@ -186,7 +184,7 @@ const Header = ({}: HeaderProps) => {
                           <Link
                             key={subItem.to}
                             color='primary'
-                            className={`w-90 ml-4 ${subItem.to.endsWith(pathSegments[3]) ? classLinkActive : ''}`}
+                            className={`w-90 ml-4 ${subItem.to.endsWith(segments[3]) ? classLinkActive : ''}`}
                             href={`/${locale}${subItem.to}`}
                             onClick={handleLinkClick}
                             aria-label={`${item.label} link`}

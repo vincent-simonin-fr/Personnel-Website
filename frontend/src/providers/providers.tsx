@@ -4,8 +4,9 @@ import { HeroUIProvider } from '@heroui/react'
 import { isServer, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { AppContextProvider } from './appContextProvider'
+
 import { useRouter } from 'next/navigation'
+import { AppContextProvider } from './AppContextProvider'
 
 // Only if using TypeScript
 declare module '@react-types/shared' {
@@ -60,6 +61,7 @@ export function Providers({ children, locale }: ProvidersProps) {
 
   // Utilisez useEffect pour activer le rendu côté client uniquement
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
   }, [])
 

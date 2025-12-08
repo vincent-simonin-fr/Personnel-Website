@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { FC, useEffect, useRef } from 'react'
 import { Renderer, Program, Mesh, Triangle, Color } from 'ogl'
 
 interface ThreadsProps {
@@ -125,7 +125,7 @@ void main() {
 }
 `
 
-const Threads: React.FC<ThreadsProps> = ({
+const Threads: FC<ThreadsProps> = ({
   color = [1, 1, 1],
   amplitude = 1,
   distance = 0,
@@ -153,7 +153,11 @@ const Threads: React.FC<ThreadsProps> = ({
       uniforms: {
         iTime: { value: 0 },
         iResolution: {
-          value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height),
+          value: new Color(
+            gl.canvas.width,
+            gl.canvas.height,
+            gl.canvas.width / gl.canvas.height,
+          ),
         },
         uColor: { value: new Color(...color) },
         uAmplitude: { value: amplitude },
@@ -174,7 +178,7 @@ const Threads: React.FC<ThreadsProps> = ({
     window.addEventListener('resize', resize)
     resize()
 
-    let currentMouse = [0.5, 0.5]
+    const currentMouse = [0.5, 0.5]
     let targetMouse = [0.5, 0.5]
 
     function handleMouseMove(e: MouseEvent) {
