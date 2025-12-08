@@ -60,3 +60,7 @@ npm run dev
 ## Rive player
 
 [lien](https://www.youtube.com/watch?v=MVEAfl-3LKo)
+
+## Reacts Bits
+
+[lien](https://reactbits.dev)

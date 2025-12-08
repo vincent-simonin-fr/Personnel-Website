@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { ReactNode, useEffect, useMemo, useState } from 'react'
+import { ReactNode, useMemo, useState } from 'react'
 import { getDictionaryFromAPI } from 'actions'
 import { AppContext } from '../contexts/AppContext'
 
@@ -9,7 +9,6 @@ type AppContextProviderProps = {
 }
 
 const AppContextProvider = ({ children, locale }: AppContextProviderProps) => {
-  const [currentUser, setCurrentUser] = useState({})
   const [isLoading, setIsLoading] = useState(true)
   const [currentLocale, setCurrentLocale] = useState(locale)
   const [is404, setIs404] = useState(false)
@@ -29,17 +28,6 @@ const AppContextProvider = ({ children, locale }: AppContextProviderProps) => {
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
   })
-
-  useEffect(() => {
-    if (locale !== currentLocale) {
-      setCurrentLocale(locale)
-    }
-  }, [locale])
-  // Mémoïser les sous-groupes
-  const userMemo = useMemo(
-    () => ({ user: currentUser, setUser: setCurrentUser }),
-    [currentUser],
-  )
 
   const dictionaryMemo = useMemo(
     () => ({
@@ -66,11 +54,10 @@ const AppContextProvider = ({ children, locale }: AppContextProviderProps) => {
   // Combination
   const value = useMemo(
     () => ({
-      ...userMemo,
       ...dictionaryMemo,
       ...uiStateMemo,
     }),
-    [userMemo, dictionaryMemo, uiStateMemo],
+    [dictionaryMemo, uiStateMemo],
   )
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>
