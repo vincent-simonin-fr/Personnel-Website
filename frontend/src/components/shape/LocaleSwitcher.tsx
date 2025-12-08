@@ -15,13 +15,7 @@ import FranceSvg from 'components/ui/svg/FranceSvg'
 import GermanySvg from 'components/ui/svg/GermanySvg'
 import { setLocaleCookie } from '../../app/actions/actions'
 import { useTransition } from 'react'
-
-type Locale = {
-  key: string
-  label: string
-  country: string
-  icon: string
-}
+import { Locale } from 'types'
 
 const locales: Locale[] = [
   {
@@ -57,14 +51,9 @@ const LocaleSwitcher = () => {
   }
 
   const handleSelectLocale = async (newLocale: string) => {
-    console.log('Current locale:', locale, 'New locale:', newLocale)
-    if (newLocale === locale || isPending) {
-      console.log('No locale change needed')
-      return
-    }
+    if (newLocale === locale || isPending) return
 
     startTransition(async () => {
-      console.log('Switching locale to', newLocale)
       setLocale(newLocale)
       await setLocaleCookie(newLocale)
       router.push(path(newLocale))

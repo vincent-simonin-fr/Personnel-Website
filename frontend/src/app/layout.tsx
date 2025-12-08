@@ -3,7 +3,7 @@
 import Footer from 'components/shape/Footer'
 import Header from 'components/shape/Header'
 import 'styles/globals.css'
-import { Providers } from '../providers/providers'
+import { Providers } from '../providers/Providers'
 import { Bounce, ToastContainer } from 'react-toastify'
 import { jsonLd, MetadataSite, ViewportSite } from '../../seo/MetadataSite'
 import Script from 'next/script'

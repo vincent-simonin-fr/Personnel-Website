@@ -131,15 +131,15 @@ const HomePage = () => {
               </div>
               <div className={commonTextContainerClasses}>
                 <div className={commonTitleClasses}>
-                  Étude et conception logicielle
+                  {`Étude et conception logicielle`}
                 </div>
                 <div className={commonDescriptionClasses}>
-                  Cruciale pour garantir le succès d'un projet, cette phase débute
+                  {`Cruciale pour garantir le succès d'un projet, cette phase débute
                   par un recueil des besoins. Une étude approfondie du domaine
                   métier, visant à acquérir une parfaite compréhension des
                   problématiques, permet de structurer le projet de manière
                   efficiente. Bien menée cette étape assure de créer des solutions
-                  logicielles sur mesure, perfomante et fiable.
+                  logicielles sur mesure, perfomante et fiable.`}
                 </div>
               </div>
             </section>
@@ -163,12 +163,12 @@ const HomePage = () => {
               <div className={`${commonTextContainerClasses} md:mr-4`}>
                 <div className={`${commonTitleClasses} text-end`}>Agilité</div>
                 <div className={`${commonDescriptionClasses} text-end`}>
-                  Les méthodologies agiles favorisent une adaptation rapide aux
+                  {`Les méthodologies agiles favorisent une adaptation rapide aux
                   changements et une livraison continue de valeur. Un suivi de projet
                   efficace implique une communication transparente, des réunions
                   régulières. La combinaison de l'agilité et d'un suivi rigoureux
                   permet d'optimiser la productivité, la qualité et la qualité des
-                  livrables.
+                  livrables.`}
                 </div>
               </div>
             </section>
@@ -186,7 +186,7 @@ const HomePage = () => {
               <div className={commonTextContainerClasses}>
                 <div className={commonTitleClasses}>Développement</div>
                 <div className={commonDescriptionClasses}>
-                  La réalisation d'une application de qualité est le fruit de la
+                  {`La réalisation d'une application de qualité est le fruit de la
                   créativité et d'une recherche permanente de l'excellence. La
                   maîtrise technique permet de construire une solution performante,
                   fiable et évolutive. Le numérique est essentiel pour les
@@ -195,7 +195,7 @@ const HomePage = () => {
                   pratiques, assure une maîtrise des coûts tout au long du cycle de
                   vie de l'application et une durabilité accrue. Cette approche
                   garantit non seulement un retour sur investissement optimal, mais
-                  aussi une adaptabilité aux besoins futurs de l'entreprise.
+                  aussi une adaptabilité aux besoins futurs de l'entreprise.`}
                 </div>
               </div>
             </section>
@@ -226,13 +226,13 @@ const HomePage = () => {
               <div className={commonTextContainerClasses}>
                 <div className={`${commonTitleClasses} text-end`}>Innovation</div>
                 <div className={`${commonDescriptionClasses} text-end`}>
-                  La capacité à innover et à adopter rapidement de nouvelles
+                  {`La capacité à innover et à adopter rapidement de nouvelles
                   technologies est un facteur clé de succès dans le développement
                   logiciel. Cette agilité technologique permet de maintenir un
                   avantage concurrentiel dans un marché en constante évolution. De
                   plus, elle offre la possibilité de répondre de manière proactive
                   aux attentes croissantes des consommateurs, en proposant des
-                  solutions toujours plus avancées et adaptées à leurs besoins.
+                  solutions toujours plus avancées et adaptées à leurs besoins.`}
                 </div>
               </div>
             </section>

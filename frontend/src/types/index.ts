@@ -1,3 +1,9 @@
+export type User = {
+  id?: string
+  email?: string
+  name?: string
+}
+
 export type MenuItem = {
   label: string
   title: string
@@ -57,4 +63,11 @@ export type Dictionary = {
     successMessage: string
     errorMessage: string
   }
+}
+
+export type Locale = {
+  key: string
+  label: string
+  country: string
+  icon: string
 }
