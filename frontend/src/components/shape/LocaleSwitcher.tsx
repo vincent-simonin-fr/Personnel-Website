@@ -1,5 +1,3 @@
-'use client'
-
 import { usePathname, useRouter } from 'next/navigation'
 import {
   Button,
@@ -8,14 +6,14 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from '@heroui/react'
-import { useAppContext } from 'hooks/useAppContext'
 import LanguageSvg from 'components/ui/svg/LanguageSvg'
 import UsaSvg from 'components/ui/svg/UsaSvg'
 import FranceSvg from 'components/ui/svg/FranceSvg'
 import GermanySvg from 'components/ui/svg/GermanySvg'
-import { setLocaleCookie } from '../../app/actions/actions'
-import { useTransition } from 'react'
+import { setLocaleCookie } from 'actions'
 import { Locale } from 'types'
+import { useState } from 'react'
+import { useLocaleContext } from 'hooks/useLocaleContext'
 
 const locales: Locale[] = [
   {
@@ -25,7 +23,7 @@ const locales: Locale[] = [
     icon: 'icons/fr.svg',
   },
   {
-    key: 'en-US',
+    key: 'en-us',
     label: 'en',
     country: 'United States',
     icon: 'icons/us.svg',
@@ -39,10 +37,10 @@ const locales: Locale[] = [
 ]
 
 const LocaleSwitcher = () => {
-  const pathname = usePathname()
   const router = useRouter()
-  const { locale, setLocale } = useAppContext()
-  const [isPending, startTransition] = useTransition()
+  const pathname = usePathname()
+  const { dictionary } = useLocaleContext()
+  const [currentLocale, setCurrentLocale] = useState(dictionary.locale)
 
   const path = (locale: string) => {
     const segments = pathname.split('/')
@@ -51,18 +49,15 @@ const LocaleSwitcher = () => {
   }
 
   const handleSelectLocale = async (newLocale: string) => {
-    if (newLocale === locale || isPending) return
-
-    startTransition(async () => {
-      setLocale(newLocale)
-      await setLocaleCookie(newLocale)
-      router.push(path(newLocale))
-    })
+    if (newLocale === currentLocale) return
+    setCurrentLocale(newLocale)
+    await setLocaleCookie(newLocale)
+    router.push(path(newLocale))
   }
 
   const getFlag = (locale: string) => {
     switch (locale) {
-      case 'en-US':
+      case 'en-us':
         return <UsaSvg size={20} />
       case 'fr':
         return <FranceSvg size={20} />
@@ -90,7 +85,7 @@ const LocaleSwitcher = () => {
         aria-label='Language menu'
         items={locales}
         selectionMode='single'
-        selectedKeys={[locale]}
+        selectedKeys={[currentLocale]}
         onAction={(key) => handleSelectLocale(String(key))}>
         {(locale) => (
           <DropdownItem

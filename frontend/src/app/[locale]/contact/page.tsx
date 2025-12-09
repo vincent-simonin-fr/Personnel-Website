@@ -1,20 +1,20 @@
 'use client'
 
 import ContactForm from 'components/ContactForm'
-import { useAppContext } from 'hooks/useAppContext'
 import { useEffect } from 'react'
 import Image from 'next/image'
+import { useLocaleContext } from 'hooks/useLocaleContext'
 
 type ContactProps = object
 
 const Contact = ({}: ContactProps) => {
-  const { dictionary } = useAppContext()
+  const { dictionary } = useLocaleContext()
 
   useEffect(() => {
     if (dictionary) {
       document.title = dictionary.navigation[3].title
     }
-  }, [dictionary])
+  }, [])
 
   return (
     <div className='flex h-[calc(100vh-56px)] w-full flex-col items-center justify-center'>

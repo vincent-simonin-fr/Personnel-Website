@@ -21,10 +21,11 @@ import AppLogo from './AppLogo'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { useAppContext } from 'hooks/useAppContext'
-import { siteConfig } from '../../../config/site'
+import { siteConfig } from 'config/site'
 import { useScroll, useSpring, animated } from '@react-spring/web'
 import { useMediaQuery } from 'usehooks-ts'
 import ChevronDownSvg from 'components/ui/svg/ChevronDownSvg'
+import { useLocaleContext } from 'hooks/useLocaleContext'
 
 type HeaderProps = object
 
@@ -46,7 +47,9 @@ const Header = ({}: HeaderProps) => {
   const isMobile = useMediaQuery(`(max-width: ${minWidth})`)
 
   const { is404 } = useAppContext()
-  const { dictionary, locale } = useAppContext()
+  const { dictionary } = useLocaleContext()
+
+  const locale = dictionary.locale
 
   const handleLinkClick = () => {
     setIsMenuOpen(false)

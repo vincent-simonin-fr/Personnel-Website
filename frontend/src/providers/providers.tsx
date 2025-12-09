@@ -6,6 +6,8 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { useEffect, useState } from 'react'
 
 import { useRouter } from 'next/navigation'
+import { Dictionary } from 'types'
+import { LocaleContextProvider } from './LocaleContextProvider'
 import { AppContextProvider } from './AppContextProvider'
 
 // Only if using TypeScript
@@ -70,17 +72,15 @@ export function Providers({ children, locale }: ProvidersProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AppContextProvider locale={locale}>
-        <HeroUIProvider navigate={router.push}>
-          <NextThemesProvider
-            attribute='class'
-            defaultTheme='dark'
-            storageKey='theme'
-            themes={['dark', 'light']}>
-            {children}
-          </NextThemesProvider>
-        </HeroUIProvider>
-      </AppContextProvider>
+      <HeroUIProvider navigate={router.push}>
+        <NextThemesProvider
+          attribute='class'
+          defaultTheme='dark'
+          storageKey='theme'
+          themes={['dark', 'light']}>
+          <AppContextProvider>{children}</AppContextProvider>
+        </NextThemesProvider>
+      </HeroUIProvider>
     </QueryClientProvider>
   )
 }

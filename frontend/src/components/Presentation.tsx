@@ -1,11 +1,11 @@
 'use client'
 
-import { useAppContext } from 'hooks/useAppContext'
+import { useLocaleContext } from 'hooks/useLocaleContext'
 import { useEffect } from 'react'
 
 // TODO: Handle loading and error states
 const Presentation = () => {
-  const { dictionary } = useAppContext()
+  const { dictionary } = useLocaleContext()
 
   useEffect(() => {}, [dictionary])
 

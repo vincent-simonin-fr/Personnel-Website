@@ -3,10 +3,10 @@
 import { Form, Input, Button, Textarea } from '@heroui/react'
 import { toast, ToastContentProps } from 'react-toastify' // For notifications
 import emailjs from '@emailjs/browser'
-import { ReactNode, SyntheticEvent, useEffect, useState } from 'react'
-import { useAppContext } from 'hooks/useAppContext'
+import { ChangeEvent, ReactNode, SyntheticEvent, useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 import { Hanken_Grotesk } from 'next/font/google'
+import { useLocaleContext } from 'hooks/useLocaleContext'
 
 const hankenGrotesk = Hanken_Grotesk({ subsets: ['latin'] })
 const hankenGrotesk600 = Hanken_Grotesk({ subsets: ['latin'], weight: '600' })
@@ -20,9 +20,15 @@ type UserInput = {
   message: string
 }
 
-const CustomToast = ({ closeToast, toastProps, isPaused, data }: ToastContentProps<ReactNode>) => {
+const CustomToast = ({
+  closeToast,
+  toastProps,
+  isPaused,
+  data,
+}: ToastContentProps<ReactNode>) => {
   return (
-    <div className={`${hankenGrotesk.className} flex flex-col pl-8 text-primary-300`}>
+    <div
+      className={`${hankenGrotesk.className} flex flex-col pl-8 text-primary-300`}>
       {/* <div className='absolute -left-12 top-1/2 z-10 grid size-20 -translate-y-1/2 place-items-center rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'>
         smile
       </div> */}
@@ -41,14 +47,12 @@ const ContactForm = ({}: ContactFormProps) => {
     email: '',
     message: '',
   })
-  const { dictionary } = useAppContext()
+  const { dictionary } = useLocaleContext()
   const [isDisabled, setIsDisabled] = useState<boolean>(false)
 
-  useEffect(() => {}, [dictionary])
-
-  const handleChange = (e: SyntheticEvent) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.preventDefault()
-    const { name, value } = e.target as HTMLInputElement | HTMLTextAreaElement
+    const { name, value } = e.target
     setUserInput({
       ...userInput,
       [name]: value,
@@ -78,7 +82,7 @@ const ContactForm = ({}: ContactFormProps) => {
           theme: theme,
           closeButton: true,
           autoClose: 4000,
-          data: dictionary?.contactForm.successMessage,
+          data: dictionary.contactForm.successMessage,
           className:
             'shadow-lg text-inherit rounded-lg flex items-center bg-primary-900 max-w-[96vw]',
         })
@@ -94,7 +98,7 @@ const ContactForm = ({}: ContactFormProps) => {
         theme: theme,
         closeButton: true,
         autoClose: 4000,
-        data: dictionary?.contactForm.errorMessage,
+        data: dictionary.contactForm.errorMessage,
         className:
           'shadow-lg text-inherit rounded-lg flex items-center bg-primary-900 max-w-[96vw]',
       })
@@ -122,7 +126,7 @@ const ContactForm = ({}: ContactFormProps) => {
   return (
     <div className='flex w-full max-w-md flex-col items-start'>
       <h2 className={`${hankenGrotesk600.className} mb-4 text-2xl`}>
-        {dictionary?.contactForm.title}
+        {dictionary.contactForm.title}
       </h2>
       <Form
         id='contact-form'
@@ -154,8 +158,8 @@ const ContactForm = ({}: ContactFormProps) => {
             placeholder={' '}
             value={userInput.firstName}
             onChange={(e) => handleChange(e)}
-            label={dictionary?.contactForm.firstNameLabel}
-            errorMessage={dictionary?.contactForm.firstNameError}
+            label={dictionary.contactForm.firstNameLabel}
+            errorMessage={dictionary.contactForm.firstNameError}
           />
           <Input
             required
@@ -174,8 +178,8 @@ const ContactForm = ({}: ContactFormProps) => {
             placeholder={' '}
             value={userInput.lastName}
             onChange={handleChange}
-            label={dictionary?.contactForm.lastNameLabel}
-            errorMessage={dictionary?.contactForm.lastNameError}
+            label={dictionary.contactForm.lastNameLabel}
+            errorMessage={dictionary.contactForm.lastNameError}
           />
         </div>
         <Input
@@ -195,8 +199,8 @@ const ContactForm = ({}: ContactFormProps) => {
           placeholder={' '}
           value={userInput.email}
           onChange={handleChange}
-          label={dictionary?.contactForm.emailLabel}
-          errorMessage={dictionary?.contactForm.emailError}
+          label={dictionary.contactForm.emailLabel}
+          errorMessage={dictionary.contactForm.emailError}
         />
         <Textarea
           required
@@ -216,8 +220,8 @@ const ContactForm = ({}: ContactFormProps) => {
           placeholder={' '}
           value={userInput.message}
           onChange={handleChange}
-          label={dictionary?.contactForm.messageLabel}
-          errorMessage={dictionary?.contactForm.messageError}
+          label={dictionary.contactForm.messageLabel}
+          errorMessage={dictionary.contactForm.messageError}
         />
         <div className='flex gap-2'>
           <Button
@@ -225,10 +229,14 @@ const ContactForm = ({}: ContactFormProps) => {
             isLoading={isDisabled}
             isDisabled={isDisabled}
             type='submit'>
-            {dictionary?.contactForm.submitButton}
+            {dictionary.contactForm.submitButton}
           </Button>
-          <Button className='rounded-full' isDisabled={isDisabled} type='reset' variant='flat'>
-            {dictionary?.contactForm.resetButton}
+          <Button
+            className='rounded-full'
+            isDisabled={isDisabled}
+            type='reset'
+            variant='flat'>
+            {dictionary.contactForm.resetButton}
           </Button>
         </div>
         {/* {action && (
