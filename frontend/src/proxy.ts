@@ -56,7 +56,7 @@ const securityHeaders: { key: string; value: string }[] = [
 ]
 
 // Langues supportées
-const locales = ['en-US', 'fr', 'de']
+const locales = ['en-us', 'fr', 'de']
 
 export function proxy(req: NextRequest) {
   // Not considering request to api
@@ -130,7 +130,10 @@ export function proxy(req: NextRequest) {
   }
   response.headers.set('x-locale', locale)
   response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue)
-  response.headers.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300')
+  response.headers.set(
+    'Cache-Control',
+    'public, max-age=60, stale-while-revalidate=300',
+  )
   securityHeaders.forEach((item) => {
     response.headers.set(item.key, item.value)
   })

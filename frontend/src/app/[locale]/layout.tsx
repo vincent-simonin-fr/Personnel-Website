@@ -1,5 +1,13 @@
 import { WebVitals } from 'components/WebVitals'
-import { ReactNode, Suspense } from 'react'
+import { ReactNode } from 'react'
+import { LocaleContextProvider } from '../../providers/LocaleContextProvider'
+import Header from 'components/shape/Header'
+import Footer from 'components/shape/Footer'
+import { getDictionary } from 'i18n/getDictionary'
+
+export async function generateStaticParams() {
+  return [{ locale: 'fr' }, { locale: 'en-us' }, { locale: 'de' }]
+}
 
 type LocaleLayoutProps = {
   children: ReactNode
@@ -9,8 +17,8 @@ type LocaleLayoutProps = {
 }
 
 const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
-  // const locale = (await params).locale
-  // const dictionary = await getDictionary(locale)
+  const locale = (await params).locale
+  const dictionary = await getDictionary(locale)
 
   // console.info('Loading main layout', locale, dictionary)
 
@@ -18,7 +26,11 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
     // <Suspense fallback={null}>
     <>
       {/* <WebVitals /> */}
-      {children}
+      <LocaleContextProvider dictionary={dictionary}>
+        <Header />
+        {children}
+        <Footer />
+      </LocaleContextProvider>
     </>
     // </Suspense>
   )
