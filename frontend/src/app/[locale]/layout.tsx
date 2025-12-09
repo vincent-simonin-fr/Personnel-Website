@@ -1,6 +1,6 @@
 import { WebVitals } from 'components/WebVitals'
 import { ReactNode } from 'react'
-import { LocaleContextProvider } from '../../providers/LocaleContextProvider'
+import { LocaleContextProvider } from 'providers/LocaleContextProvider'
 import Header from 'components/shape/Header'
 import Footer from 'components/shape/Footer'
 import { getDictionary } from 'i18n/getDictionary'
