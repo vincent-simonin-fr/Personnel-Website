@@ -12,6 +12,7 @@ export type MenuItem = {
 }
 
 export type Dictionary = {
+  locale: string
   homePage: {
     title: string
     description: string

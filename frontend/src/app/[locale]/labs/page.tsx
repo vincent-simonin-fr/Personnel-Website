@@ -1,34 +1,31 @@
 'use client'
 
-import Starfield from 'components/ui/animations/Starfields'
-import { useAppContext } from 'hooks/useAppContext'
+import { PageTitle } from 'components/shape/PageTitle'
 import { useTheme } from 'next-themes'
-import { useEffect } from 'react'
+import { lazy } from 'react'
+
+const Starfield = lazy(() => import('components/ui/animations/Starfield'))
 
 const Labs = () => {
-  const { dictionary, locale } = useAppContext()
   const { theme } = useTheme()
 
-  useEffect(() => {
-    if (dictionary?.navigation?.[2]?.title) {
-      document.title = dictionary.navigation[2].title
-    }
-  }, [locale])
-
   return (
-    <div className='relative -mt-16 w-screen'>
-      <div className={theme === 'dark' ? '' : 'invert'}>
-        <Starfield
-          starCount={1000}
-          starColor={[255, 255, 255]}
-          speedFactor={0.05}
-          backgroundColor='black'
-        />
+    <>
+      <PageTitle pageIndex={2} />
+      <div className='relative -mt-16 w-screen'>
+        <div className={theme === 'dark' ? '' : 'invert'}>
+          <Starfield
+            starCount={1000}
+            starColor={[255, 255, 255]}
+            speedFactor={0.05}
+            backgroundColor='black'
+          />
+        </div>
+        <div className='flex h-[calc(100vh-60px)] flex-col items-center justify-center'>
+          <div className='z-50 text-6xl text-primary'>Labs is good</div>
+        </div>
       </div>
-      <div className='flex h-[calc(100vh-60px)] flex-col items-center justify-center'>
-        <div className='z-50 text-6xl text-primary'>Labs is good</div>
-      </div>
-    </div>
+    </>
   )
 }
 

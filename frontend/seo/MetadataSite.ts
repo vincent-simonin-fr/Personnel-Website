@@ -74,7 +74,7 @@ export const MetadataSite: Metadata = {
   alternates: {
     canonical: 'https://www.dev.vincentsimonin.fr/fr',
     languages: {
-      'en-US': 'https://www.dev.vincentsimonin.fr/en-US',
+      'en-US': 'https://www.dev.vincentsimonin.fr/en-us',
       fr: 'https://www.dev.vincentsimonin.fr/fr',
       de: 'https://www.dev.vincentsimonin.fr/de',
     },
