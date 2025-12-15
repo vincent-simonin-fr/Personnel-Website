@@ -1,3 +1,5 @@
+export type Lang = 'fr' | 'en-us' | 'de'
+
 export type User = {
   id?: string
   email?: string
