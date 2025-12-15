@@ -18,7 +18,7 @@ import Link from 'next/link'
 import LocaleSwitcher from './LocaleSwitcher'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import AppLogo from './AppLogo'
-import { usePathname } from 'next/navigation'
+import { notFound, usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { useAppContext } from 'hooks/useAppContext'
 import { siteConfig } from 'config/site'
@@ -30,8 +30,9 @@ import { useLocaleContext } from 'hooks/useLocaleContext'
 type HeaderProps = object
 
 const classLinkActive = 'text-fuchsia-600'
-
 const AnimatedDiv = animated('div')
+const SUPPORTED_LOCALES = ['fr', 'en-us', 'de'] as const
+type Locale = (typeof SUPPORTED_LOCALES)[number]
 
 const Header = ({}: HeaderProps) => {
   const path = usePathname()
@@ -49,6 +50,9 @@ const Header = ({}: HeaderProps) => {
   const { is404 } = useAppContext()
   const { dictionary } = useLocaleContext()
 
+  if (!dictionary || !SUPPORTED_LOCALES.includes(dictionary.locale as Locale)) {
+    notFound()
+  }
   const locale = dictionary.locale
 
   const handleLinkClick = () => {
