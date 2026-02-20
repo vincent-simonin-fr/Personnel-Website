@@ -23,7 +23,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   return (
     <html className={'dark'} lang={locale} data-scroll-behavior='smooth'>
       <Head>
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       </Head>
       <Script
         src='https://www.googletagmanager.com/gtag/js?id=GTM-NKBC7G3V'
