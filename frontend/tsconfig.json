@@ -27,7 +27,7 @@
       "seo/*": ["./seo/*"],
       "config/*": ["./config/*"],
       "types": ["./src/types/index"],
-      "actions": ["./src/app/actions/actions"]
+      "actions": ["./src/lib/actions/actions"]
     }
   },
   "include": [
