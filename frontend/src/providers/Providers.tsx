@@ -6,8 +6,6 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { useEffect, useState } from 'react'
 
 import { useRouter } from 'next/navigation'
-import { Dictionary } from 'types'
-import { LocaleContextProvider } from './LocaleContextProvider'
 import { AppContextProvider } from './AppContextProvider'
 
 // Only if using TypeScript
