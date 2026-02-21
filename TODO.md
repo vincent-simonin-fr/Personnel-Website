@@ -14,7 +14,7 @@
   - [ ] template: Specialized re-rendered Layout UI
   - [ ] default: Fallback UI for Parallel Routes
 - [ ] Refactor global layout & locale layout
-- [ ] Replace standard hooks copies by use usehooks-ts
+- [x] Replace standard hooks copies by use usehooks-ts
 - [ ] Remotion demo
 - [ ] Echarts demo
 - [ ] MapBox demo
