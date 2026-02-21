@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "overrides": {
-    "@heroui/theme": "2.4.17"
+    "@heroui/theme": "2.4.17",
+    "minimatch": "^10.2.1"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -40,8 +41,8 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "cssnano": "^7.1.2",
-    "eslint": "^10.0.1",
-    "eslint-config-next": "^0.2.4",
+    "eslint": "^9.39.3",
+    "eslint-config-next": "^16.1.6",
     "postcss": "^8.5.6",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
