@@ -1,7 +1,7 @@
 import 'styles/globals.css'
 import { Providers } from 'providers/Providers'
 import { Bounce, ToastContainer } from 'react-toastify'
-import { jsonLd, MetadataSite, ViewportSite } from '../../seo/MetadataSite'
+import { jsonLd, MetadataSite, ViewportSite } from 'seo/MetadataSite'
 import Script from 'next/script'
 import { Hanken_Grotesk } from 'next/font/google'
 import { headers } from 'next/headers'
@@ -26,14 +26,15 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
         strategy='afterInteractive'
         nonce={nonce}
       />
-      <Script
-        id='schema-jsonld'
-        type='application/ld+json'
-        strategy='afterInteractive'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        nonce={nonce}
-      />
       <body className={`${hankenGrotesk.className} antialiased *:text-primary`}>
+        {/* Server-rendered so crawlers see it; `<` escaped to keep the JSON inert. */}
+        <script
+          type='application/ld+json'
+          nonce={nonce}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+          }}
+        />
         <Providers locale={locale}>
           <main className='flex min-h-screen w-screen flex-col items-center justify-center'>
             {children}

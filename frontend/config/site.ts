@@ -2,14 +2,15 @@ export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
   name: 'Vincent Simonin',
-  url: 'https://www.dev.vincentsimonin.fr',
+  // Canonical production origin: every absolute URL (SEO, sitemap, manifest) derives from it.
+  url: 'https://vincentsimonin.fr',
   description: 'Personal website of Vincent Simonin',
   links: {
     github: 'https://github.com/vincent-simonin-fr',
     linkedin: 'https://www.linkedin.com/in/vincentsimonin',
     email: 'mailto:vincent.simonin@hotmail.com',
   },
-  authors: [{ name: 'Vincent Simonin', url: 'https://www.dev.vincentsimonin.fr' }],
+  authors: [{ name: 'Vincent Simonin', url: 'https://vincentsimonin.fr' }],
   color: {
     hex: '#c026d3',
     tailwind: {

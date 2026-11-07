@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 const PUBLIC_FILE = /\.(.*)$/
-const allowedOrigins = ['https://dev.vincentsimonin.fr', 'http://localhost:3000']
+const allowedOrigins = [
+  'https://vincentsimonin.fr',
+  'https://dev.vincentsimonin.fr', // preprod
+  'http://localhost:3000',
+]
 
 const corsOptions = {
   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
@@ -73,7 +77,7 @@ export function proxy(req: NextRequest) {
 
   const cspHeader = `
     default-src 'self';
-    connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://dev.vincentsimonin.fr;
+    connect-src 'self' https://api.emailjs.com;
     script-src 'self' 'nonce-${nonce}' 'wasm-unsafe-eval' ${isDev ? "'unsafe-eval' 'unsafe-inline'" : 'strict-dynamic'} ;
     frame-src 'self';
     style-src 'self' 'unsafe-inline';
