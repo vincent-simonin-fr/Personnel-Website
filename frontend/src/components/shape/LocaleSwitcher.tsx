@@ -1,11 +1,7 @@
+'use client'
+
 import { usePathname, useRouter } from 'next/navigation'
-import {
-  Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from '@heroui/react'
+import { Button, Dropdown } from '@heroui/react'
 import LanguageSvg from 'components/ui/svg/LanguageSvg'
 import UsaSvg from 'components/ui/svg/UsaSvg'
 import FranceSvg from 'components/ui/svg/FranceSvg'
@@ -69,36 +65,38 @@ const LocaleSwitcher = () => {
   }
 
   return (
-    <Dropdown aria-label='Language switcher' className='min-w-min'>
-      <DropdownTrigger>
-        <Button
-          className='min-w-8 px-2'
-          name='open-language-menu'
-          color='primary'
-          radius='full'
-          variant='light'
-          aria-label='Open language menu'>
-          <LanguageSvg size={24} />
-        </Button>
-      </DropdownTrigger>
-      <DropdownMenu
-        aria-label='Language menu'
-        items={locales}
-        selectionMode='single'
-        selectedKeys={[currentLocale]}
-        onAction={(key) => handleSelectLocale(String(key))}>
-        {(locale) => (
-          <DropdownItem
-            key={locale.key}
-            textValue={locale.key}
-            aria-label={`${locale.country} language`}>
-            <div className='flex items-center justify-start gap-3'>
-              {getFlag(locale.key)}
-              <span className='align-middle text-lg'>{locale.label}</span>
-            </div>
-          </DropdownItem>
-        )}
-      </DropdownMenu>
+    <Dropdown>
+      <Button
+        // v3 icon buttons force svg to 16px; keep the 24px icon of the v2 design.
+        className='min-w-8 rounded-full px-2 text-primary [&_svg]:size-6'
+        name='open-language-menu'
+        variant='ghost'
+        isIconOnly
+        aria-label='Open language menu'>
+        <LanguageSvg size={24} />
+      </Button>
+      <Dropdown.Popover className='min-w-min'>
+        <Dropdown.Menu
+          aria-label='Language menu'
+          items={locales}
+          selectionMode='single'
+          selectedKeys={[currentLocale]}
+          onAction={(key) => handleSelectLocale(String(key))}>
+          {(locale) => (
+            <Dropdown.Item
+              id={locale.key}
+              textValue={locale.key}
+              aria-label={`${locale.country} language`}>
+              <div className='flex items-center justify-start gap-3'>
+                {getFlag(locale.key)}
+                <span className='align-middle text-lg'>{locale.label}</span>
+              </div>
+              {/* v3 shows the selection check only when the indicator is rendered. */}
+              <Dropdown.ItemIndicator />
+            </Dropdown.Item>
+          )}
+        </Dropdown.Menu>
+      </Dropdown.Popover>
     </Dropdown>
   )
 }

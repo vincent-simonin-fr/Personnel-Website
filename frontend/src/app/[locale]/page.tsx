@@ -5,7 +5,7 @@ import { useAppContext } from 'hooks/useAppContext'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Hanken_Grotesk } from 'next/font/google'
-import { Button } from '@heroui/react'
+import { buttonVariants, cn } from '@heroui/react'
 import { lazy } from 'react'
 import Loading from 'components/loading/Loading'
 import { siteConfig } from 'config/site'
@@ -27,6 +27,12 @@ const SocialMedia = lazy(() => import('components/SocialMedia'))
 const Threads = lazy(() => import('components/ui/animations/Threads'))
 const Waves = lazy(() => import('components/ui/animations/Waves'))
 const HandSvg = lazy(() => import('components/ui/svg/HandSvg'))
+
+// HeroUI v3 Button can't render as a link: style a Next Link with the button classes.
+const primaryLinkButton = cn(
+  buttonVariants(),
+  'rounded-full bg-primary-50 text-primary-900',
+)
 
 const hankenGrotesk = Hanken_Grotesk({ subsets: ['latin'], weight: '600' })
 
@@ -50,7 +56,7 @@ const HomePage = () => {
                   {dictionary.homePage.firstScreen.salutation}
                 </div>
                 <h1
-                  className={`${hankenGrotesk.className} text-pretty text-3xl md:text-4xl lg:text-5xl`}>
+                  className={`${hankenGrotesk.className} text-3xl text-pretty md:text-4xl lg:text-5xl`}>
                   {dictionary.homePage.firstScreen.hook.one}
                   <span className={`text-fuchsia-600`}>
                     {dictionary.homePage.firstScreen.hook.two}
@@ -62,22 +68,20 @@ const HomePage = () => {
                   {dictionary.homePage.firstScreen.hook.five}
                 </h1>
                 <hr className='my-4 h-[2px] w-1/2 bg-primary-500' />
-                <div className='text-pretty text-3xl md:text-4xl lg:text-5xl'>
+                <div className='text-3xl text-pretty md:text-4xl lg:text-5xl'>
                   {dictionary.homePage.firstScreen.firstLine}
                 </div>
-                <div className='text-pretty text-3xl md:text-4xl lg:text-5xl'>
+                <div className='text-3xl text-pretty md:text-4xl lg:text-5xl'>
                   {dictionary.homePage.firstScreen.secondLine}
                 </div>
                 <div className='mt-8 flex w-full items-center justify-between'>
                   <SocialMedia noDelay />
                   <FadeInWhenVisible delay={0}>
-                    <Button
-                      className='rounded-full bg-primary-50 text-primary-900'
-                      as={Link}
-                      href={`/${dictionary.locale}/projects`}
-                      variant='solid'>
+                    <Link
+                      className={primaryLinkButton}
+                      href={`/${dictionary.locale}/projects`}>
                       {dictionary.homePage.labelButtonToSkills}
-                    </Button>
+                    </Link>
                   </FadeInWhenVisible>
                 </div>
               </div>
@@ -194,16 +198,14 @@ const HomePage = () => {
                 <h2 className={`${hankenGrotesk.className} text-2xl`}>
                   {dictionary.contactForm.title}
                 </h2>
-                <p className='text-pretty text-lg'>
+                <p className='text-lg text-pretty'>
                   {dictionary.homePage.contactCta.text}
                 </p>
-                <Button
-                  className='rounded-full bg-primary-50 text-primary-900'
-                  as={Link}
-                  href={`/${dictionary.locale}/contact`}
-                  variant='solid'>
+                <Link
+                  className={primaryLinkButton}
+                  href={`/${dictionary.locale}/contact`}>
                   {dictionary.homePage.contactCta.button}
-                </Button>
+                </Link>
               </div>
             </div>
           </KeyframeCssOnView>

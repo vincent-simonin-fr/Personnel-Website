@@ -1,9 +1,17 @@
 'use client'
 
-import { Form, Input, Button, Textarea } from '@heroui/react'
+import {
+  Button,
+  FieldError,
+  Form,
+  Input,
+  Label,
+  TextArea,
+  TextField,
+} from '@heroui/react'
 import { toast, ToastContentProps } from 'react-toastify' // For notifications
 import emailjs from '@emailjs/browser'
-import { ChangeEvent, ReactNode, SyntheticEvent, useEffect, useState } from 'react'
+import { FormEvent, ReactNode, useState } from 'react'
 import { useTheme } from 'next-themes'
 import { Hanken_Grotesk } from 'next/font/google'
 import { useLocaleContext } from 'hooks/useLocaleContext'
@@ -20,6 +28,15 @@ type UserInput = {
   message: string
 }
 
+const emptyInput: UserInput = { firstName: '', lastName: '', email: '', message: '' }
+
+// Shared field look (DESIGN.md): dark/light primary scale, fuchsia focus ring.
+const labelClassName = 'text-sm text-primary-50'
+const fieldClassName =
+  'rounded-xl border-1 border-primary-600 bg-primary-900 text-primary-50 focus:border-transparent focus:ring-1 focus:ring-fuchsia-600'
+const inputClassName = `${fieldClassName} h-8` // v2 size='sm' height
+const errorClassName = 'text-sm text-danger'
+
 const CustomToast = ({ data }: ToastContentProps<ReactNode>) => {
   return (
     <div
@@ -31,25 +48,16 @@ const CustomToast = ({ data }: ToastContentProps<ReactNode>) => {
 
 const ContactForm = ({}: ContactFormProps) => {
   const { theme } = useTheme()
-  const [userInput, setUserInput] = useState<UserInput>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: '',
-  })
+  const [userInput, setUserInput] = useState<UserInput>(emptyInput)
   const { dictionary } = useLocaleContext()
   const [isDisabled, setIsDisabled] = useState<boolean>(false)
+  const { contactForm } = dictionary
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.preventDefault()
-    const { name, value } = e.target
-    setUserInput({
-      ...userInput,
-      [name]: value,
-    })
-  }
+  // v3 TextField hands the new value (not an event) to onChange.
+  const setField = (name: keyof UserInput) => (value: string) =>
+    setUserInput((current) => ({ ...current, [name]: value }))
 
-  const handleSubmit = async (e: SyntheticEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsDisabled(true)
 
@@ -58,36 +66,24 @@ const ContactForm = ({}: ContactFormProps) => {
     const userID = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
 
     try {
-      const emailParams = {
-        firstName: userInput.firstName,
-        lastName: userInput.lastName,
-        email: userInput.email,
-        message: userInput.message,
-      }
-
-      const res = await emailjs.send(serviceID, templateID, emailParams, userID)
+      const res = await emailjs.send(serviceID, templateID, userInput, userID)
       if (res.status === 200) {
         toast.success(CustomToast, {
           theme: theme,
           closeButton: true,
           autoClose: 4000,
-          data: dictionary.contactForm.successMessage,
+          data: contactForm.successMessage,
           className:
             'shadow-lg text-inherit rounded-lg flex items-center bg-primary-900 max-w-[96vw]',
         })
-        setUserInput({
-          firstName: '',
-          lastName: '',
-          email: '',
-          message: '',
-        })
+        setUserInput(emptyInput)
       }
     } catch (error) {
       toast.error(CustomToast, {
         theme: theme,
         closeButton: true,
         autoClose: 4000,
-        data: dictionary.contactForm.errorMessage,
+        data: contactForm.errorMessage,
         className:
           'shadow-lg text-inherit rounded-lg flex items-center bg-primary-900 max-w-[96vw]',
       })
@@ -96,137 +92,90 @@ const ContactForm = ({}: ContactFormProps) => {
     }
   }
 
-  const labelClassnames = 'group-data-[filled-within=true]:text-primary-50'
-  const inputWrapperClassnames = [
-    'rounded-xl',
-    'border-1',
-    'bg-primary-900',
-    'border-primary-600',
-    `focus-within:ring-fuchsia-600`,
-    'focus-within:ring-1',
-    'focus-within:ring-offset-0',
-    'focus-within:border-transparent',
-    `group-data-[focus-visible=true]:ring-fuchsia-600`,
-    'group-data-[focus-visible=true]:ring-1',
-    'group-data-[focus-visible=true]:ring-offset-0',
-    'group-data-[focus-visible=true]:border-transparent',
-  ]
-
   return (
     <div className='flex w-full max-w-md flex-col items-start'>
       {/* h1: the form is the main content of /contact (its only usage). */}
       <h1 className={`${hankenGrotesk600.className} mb-4 text-2xl`}>
-        {dictionary.contactForm.title}
+        {contactForm.title}
       </h1>
       <Form
         id='contact-form'
         className='flex w-full max-w-md flex-col gap-4'
-        onReset={() => {
-          setUserInput({
-            firstName: '',
-            lastName: '',
-            email: '',
-            message: '',
-          })
-        }}
+        onReset={() => setUserInput(emptyInput)}
         onSubmit={handleSubmit}>
         <div className='flex w-full gap-4'>
-          <Input
-            required
+          <TextField
+            isRequired
             isDisabled={isDisabled}
-            type='text'
-            autoComplete='given-name'
-            className='flex-1'
-            classNames={{
-              label: labelClassnames,
-              inputWrapper: inputWrapperClassnames,
-            }}
-            size='sm'
-            labelPlacement='outside'
-            id='firstname'
+            className='flex flex-1 flex-col gap-1'
             name='firstName'
-            placeholder={' '}
+            autoComplete='given-name'
             value={userInput.firstName}
-            onChange={(e) => handleChange(e)}
-            label={dictionary.contactForm.firstNameLabel}
-            errorMessage={dictionary.contactForm.firstNameError}
-          />
-          <Input
-            required
+            onChange={setField('firstName')}>
+            <Label className={labelClassName}>{contactForm.firstNameLabel}</Label>
+            <Input className={inputClassName} />
+            <FieldError className={errorClassName}>
+              {contactForm.firstNameError}
+            </FieldError>
+          </TextField>
+          <TextField
+            isRequired
             isDisabled={isDisabled}
-            type='text'
-            autoComplete='family-name'
-            className='flex-1'
-            classNames={{
-              label: labelClassnames,
-              inputWrapper: inputWrapperClassnames,
-            }}
-            size='sm'
-            labelPlacement='outside'
-            id='lastname'
+            className='flex flex-1 flex-col gap-1'
             name='lastName'
-            placeholder={' '}
+            autoComplete='family-name'
             value={userInput.lastName}
-            onChange={handleChange}
-            label={dictionary.contactForm.lastNameLabel}
-            errorMessage={dictionary.contactForm.lastNameError}
-          />
+            onChange={setField('lastName')}>
+            <Label className={labelClassName}>{contactForm.lastNameLabel}</Label>
+            <Input className={inputClassName} />
+            <FieldError className={errorClassName}>
+              {contactForm.lastNameError}
+            </FieldError>
+          </TextField>
         </div>
-        <Input
-          required
+        <TextField
+          isRequired
           isDisabled={isDisabled}
+          className='flex w-full flex-col gap-1'
+          name='email'
           type='email'
           autoComplete='email'
-          className='w-full'
-          classNames={{
-            label: labelClassnames,
-            inputWrapper: inputWrapperClassnames,
-          }}
-          size='sm'
-          labelPlacement='outside'
-          id='email'
-          name='email'
-          placeholder={' '}
           value={userInput.email}
-          onChange={handleChange}
-          label={dictionary.contactForm.emailLabel}
-          errorMessage={dictionary.contactForm.emailError}
-        />
-        <Textarea
-          required
+          onChange={setField('email')}>
+          <Label className={labelClassName}>{contactForm.emailLabel}</Label>
+          <Input className={inputClassName} />
+          <FieldError className={errorClassName}>
+            {contactForm.emailError}
+          </FieldError>
+        </TextField>
+        <TextField
+          isRequired
           isDisabled={isDisabled}
-          type='text'
-          minRows={3}
-          maxRows={5}
-          className='w-full'
-          classNames={{
-            label: labelClassnames,
-            inputWrapper: inputWrapperClassnames,
-          }}
-          size='sm'
-          labelPlacement='outside'
-          id='message'
+          className='flex w-full flex-col gap-1'
           name='message'
-          placeholder={' '}
           value={userInput.message}
-          onChange={handleChange}
-          label={dictionary.contactForm.messageLabel}
-          errorMessage={dictionary.contactForm.messageError}
-        />
+          onChange={setField('message')}>
+          <Label className={labelClassName}>{contactForm.messageLabel}</Label>
+          <TextArea rows={4} className={`${fieldClassName} max-h-40 resize-y`} />
+          <FieldError className={errorClassName}>
+            {contactForm.messageError}
+          </FieldError>
+        </TextField>
         <div className='flex gap-2'>
           <Button
             className='rounded-full bg-primary-50 text-primary-900'
-            isLoading={isDisabled}
+            isPending={isDisabled}
             isDisabled={isDisabled}
             type='submit'>
-            {dictionary.contactForm.submitButton}
+            {contactForm.submitButton}
           </Button>
           <Button
-            className='rounded-full'
+            // Neutral like the v2 flat button (secondary would use the fuchsia accent).
+            className='rounded-full bg-primary-800 text-primary-100'
             isDisabled={isDisabled}
             type='reset'
-            variant='flat'>
-            {dictionary.contactForm.resetButton}
+            variant='secondary'>
+            {contactForm.resetButton}
           </Button>
         </div>
       </Form>
