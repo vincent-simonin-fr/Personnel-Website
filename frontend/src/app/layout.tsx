@@ -3,7 +3,6 @@ import { Providers } from 'providers/Providers'
 import { Bounce, ToastContainer } from 'react-toastify'
 import { jsonLd, MetadataSite, ViewportSite } from '../../seo/MetadataSite'
 import Script from 'next/script'
-import Head from 'next/head'
 import { Hanken_Grotesk } from 'next/font/google'
 import { headers } from 'next/headers'
 
@@ -22,9 +21,6 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
 
   return (
     <html className={'dark'} lang={locale} data-scroll-behavior='smooth'>
-      <Head>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      </Head>
       <Script
         src='https://www.googletagmanager.com/gtag/js?id=GTM-NKBC7G3V'
         strategy='afterInteractive'
