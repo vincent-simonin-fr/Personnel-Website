@@ -10,7 +10,9 @@ const Projects = ({}: ProjectsProps) => {
 
   return (
     <>
-      <PageTitle pageIndex={1} />
+      <PageTitle
+        title={dictionary.navigation.find((item) => item.to === '/projects')?.title}
+      />
       <div className='flex min-h-[calc(100vh-60px)] w-[84vw] flex-col items-start justify-center py-8'>
         <div className='mb-8 text-start text-2xl'>
           {dictionary && dictionary.presentation.introduction}

@@ -1,13 +1,17 @@
-// type LabsProps = object
-
 import { PageTitle } from 'components/shape/PageTitle'
+import { getDictionary } from 'i18n/getDictionary'
 
-const Labs = async ({ params }: { params: Promise<{ slug: string }> }) => {
-  const slug = (await params).slug
+type LabProps = { params: Promise<{ locale: string; slug: string }> }
+
+const Lab = async ({ params }: LabProps) => {
+  const { locale, slug } = await params
+  const dictionary = await getDictionary(locale)
+  const labs = dictionary?.navigation.find((item) => item.to === '/labs')
+  const lab = labs?.items?.find((item) => item.to === `/labs/${slug}`)
 
   return (
     <>
-      <PageTitle pageIndex={2} />
+      <PageTitle title={lab?.title ?? labs?.title} />
       <div className='flex h-[calc(100vh-60px)] flex-col items-center justify-center'>
         Labs : {slug}
       </div>
@@ -15,4 +19,4 @@ const Labs = async ({ params }: { params: Promise<{ slug: string }> }) => {
   )
 }
 
-export default Labs
+export default Lab
