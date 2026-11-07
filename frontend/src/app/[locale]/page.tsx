@@ -13,20 +13,20 @@ import { siteConfig } from 'config/site'
 import { useLocaleContext } from 'hooks/useLocaleContext'
 import RivePlayer from 'components/ui/animations/RivePlayer'
 import PresentationSection from 'components/PresentationSection'
+import OnScreen from 'components/ui/animations/OnScreen'
+import FadeInWhenVisible from 'components/ui/animations/FadeInWhenVisible'
+import KeyframeCssOnView from 'components/ui/animations/KeyframeCssOnView'
+import FadeInOnAppear from 'components/ui/animations/FadeInOnAppear'
+import SocialMedia from 'components/SocialMedia'
+import HandSvg from 'components/ui/svg/HandSvg'
 
-const FadeInWhenVisible = lazy(
-  () => import('components/ui/animations/FadeInWhenVisible'),
-)
-const KeyframeCssOnView = lazy(
-  () => import('components/ui/animations/KeyframeCssOnView'),
-)
-const FadeInOnAppear = lazy(() => import('components/ui/animations/FadeInOnAppear'))
+// Heavy canvas/WebGL animations only: loaded when OnScreen mounts them. Small above-the-
+// fold pieces are imported statically (lazy made them pop in and shift the layout).
+
 const MetaBalls = lazy(() => import('components/ui/animations/MetaBalls'))
 const LetterGlitch = lazy(() => import('components/ui/animations/LetterGlitch'))
-const SocialMedia = lazy(() => import('components/SocialMedia'))
 const Threads = lazy(() => import('components/ui/animations/Threads'))
 const Waves = lazy(() => import('components/ui/animations/Waves'))
-const HandSvg = lazy(() => import('components/ui/svg/HandSvg'))
 
 // HeroUI v3 Button can't render as a link: style a Next Link with the button classes.
 const primaryLinkButton = cn(
@@ -87,12 +87,14 @@ const HomePage = () => {
               </div>
             </FadeInOnAppear>
             <div className='relative h-[50vh] w-full'>
-              <Threads
-                color={theme === 'dark' ? [1, 1, 1] : [0, 0, 0]}
-                amplitude={1}
-                distance={0}
-                enableMouseInteraction={false}
-              />
+              <OnScreen>
+                <Threads
+                  color={theme === 'dark' ? [1, 1, 1] : [0, 0, 0]}
+                  amplitude={1}
+                  distance={0}
+                  enableMouseInteraction={false}
+                />
+              </OnScreen>
             </div>
           </section>
 
@@ -104,18 +106,20 @@ const HomePage = () => {
                 {...sections.design}
                 visual={
                   <div className='aspect-[1/1] max-h-[240px] scale-125'>
-                    <MetaBalls
-                      color={siteConfig.color.hex}
-                      cursorBallColor={siteConfig.color.hex}
-                      cursorBallSize={2}
-                      ballCount={16}
-                      animationSize={30}
-                      enableMouseInteraction={true}
-                      enableTransparency={true}
-                      hoverSmoothness={0.05}
-                      clumpFactor={1}
-                      speed={0.5}
-                    />
+                    <OnScreen>
+                      <MetaBalls
+                        color={siteConfig.color.hex}
+                        cursorBallColor={siteConfig.color.hex}
+                        cursorBallSize={2}
+                        ballCount={16}
+                        animationSize={30}
+                        enableMouseInteraction={true}
+                        enableTransparency={true}
+                        hoverSmoothness={0.05}
+                        clumpFactor={1}
+                        speed={0.5}
+                      />
+                    </OnScreen>
                   </div>
                 }
               />
@@ -123,31 +127,35 @@ const HomePage = () => {
                 {...sections.agility}
                 reverse
                 visual={
-                  <Waves
-                    lineColor={siteConfig.color.hex}
-                    className='rounded-3xl border-1 border-fuchsia-600'
-                    waveSpeedX={0.0175}
-                    waveSpeedY={0.005}
-                    waveAmpX={32}
-                    waveAmpY={16}
-                    xGap={5}
-                    yGap={32}
-                    friction={0.925}
-                    tension={0.1}
-                    maxCursorMove={100}
-                  />
+                  <OnScreen className='absolute inset-0'>
+                    <Waves
+                      lineColor={siteConfig.color.hex}
+                      className='rounded-3xl border-1 border-fuchsia-600'
+                      waveSpeedX={0.0175}
+                      waveSpeedY={0.005}
+                      waveAmpX={32}
+                      waveAmpY={16}
+                      xGap={5}
+                      yGap={32}
+                      friction={0.925}
+                      tension={0.1}
+                      maxCursorMove={100}
+                    />
+                  </OnScreen>
                 }
               />
               <PresentationSection
                 {...sections.development}
                 visual={
                   <div className='aspect-[1/1] max-h-[280px]'>
-                    <LetterGlitch
-                      glitchSpeed={100}
-                      centerVignette={false}
-                      outerVignette={true}
-                      smooth={true}
-                    />
+                    <OnScreen>
+                      <LetterGlitch
+                        glitchSpeed={100}
+                        centerVignette={false}
+                        outerVignette={true}
+                        smooth={true}
+                      />
+                    </OnScreen>
                   </div>
                 }
               />
