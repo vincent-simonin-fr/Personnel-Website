@@ -16,7 +16,25 @@
       "firstLine": "Moderne Webanwendungen entwerfen und entwickeln",
       "secondLine": "für digitale Kommunikation oder Geschäftssysteme."
     },
-    "labelButtonToSkills": "Projekte"
+    "labelButtonToSkills": "Projekte",
+    "sections": {
+      "design": {
+        "title": "Softwareanalyse und -konzeption",
+        "description": "Diese Phase ist entscheidend für den Erfolg eines Projekts und beginnt mit der Erhebung der Anforderungen. Eine gründliche Untersuchung der Fachdomäne, die ein umfassendes Verständnis der Problemstellungen zum Ziel hat, ermöglicht es, das Projekt effizient zu strukturieren. Gut durchgeführt, gewährleistet dieser Schritt maßgeschneiderte, leistungsfähige und zuverlässige Softwarelösungen."
+      },
+      "agility": {
+        "title": "Agilität",
+        "description": "Agile Methoden fördern eine schnelle Anpassung an Veränderungen und die kontinuierliche Lieferung von Mehrwert. Eine wirksame Projektsteuerung setzt transparente Kommunikation und regelmäßige Besprechungen voraus. Die Verbindung von Agilität und konsequenter Steuerung optimiert die Produktivität und die Qualität der Ergebnisse."
+      },
+      "development": {
+        "title": "Entwicklung",
+        "description": "Eine hochwertige Anwendung entsteht aus Kreativität und dem ständigen Streben nach Exzellenz. Technisches Können ermöglicht eine leistungsfähige, zuverlässige und skalierbare Lösung. Digitale Technologien sind für Unternehmen unverzichtbar, doch Software ist oft eine bedeutende Investition. Eine hochwertige Entwicklung nach bewährten Praktiken hält die Kosten über den gesamten Lebenszyklus der Anwendung im Griff und sorgt für eine längere Lebensdauer. Dieser Ansatz garantiert nicht nur eine optimale Rendite, sondern auch die Anpassungsfähigkeit an die künftigen Bedürfnisse des Unternehmens."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Die Fähigkeit, innovativ zu sein und neue Technologien schnell einzuführen, ist ein entscheidender Erfolgsfaktor in der Softwareentwicklung. Diese technologische Agilität sichert einen Wettbewerbsvorteil in einem sich ständig wandelnden Markt. Zudem ermöglicht sie es, proaktiv auf die wachsenden Erwartungen der Kunden einzugehen und immer fortschrittlichere, passgenaue Lösungen anzubieten."
+      }
+    }
   },
   "navigation": [
     {
