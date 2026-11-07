@@ -22,7 +22,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
       setLoading: setIsLoading,
       setIs404: setIs404,
     }),
-    [is404, nonce],
+    [is404, nonce, isLoading, isError],
   )
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>

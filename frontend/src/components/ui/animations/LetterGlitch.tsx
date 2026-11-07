@@ -27,7 +27,7 @@ const LetterGlitch = ({
   >([])
   const grid = useRef({ columns: 0, rows: 0 })
   const context = useRef<CanvasRenderingContext2D | null>(null)
-  const lastGlitchTime = useRef(Date.now())
+  const lastGlitchTime = useRef(0)
 
   const fontSize = 16
   const charWidth = 10
@@ -230,8 +230,8 @@ const LetterGlitch = ({
     }
   }
 
-  const animate = () => {
-    const now = Date.now()
+  // `now` is the requestAnimationFrame timestamp (performance.now clock): no clock read during render.
+  const animate = (now: number) => {
     if (now - lastGlitchTime.current >= glitchSpeed) {
       updateLetters()
       drawLetters()
@@ -251,7 +251,7 @@ const LetterGlitch = ({
 
     context.current = canvas.getContext('2d')
     resizeCanvas()
-    animate()
+    animate(performance.now())
 
     let resizeTimeout: NodeJS.Timeout
 
@@ -260,7 +260,7 @@ const LetterGlitch = ({
       resizeTimeout = setTimeout(() => {
         cancelAnimationFrame(animationRef.current as number)
         resizeCanvas()
-        animate()
+        animate(performance.now())
       }, 100)
     }
 
@@ -270,7 +270,6 @@ const LetterGlitch = ({
       cancelAnimationFrame(animationRef.current!)
       window.removeEventListener('resize', handleResize)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [glitchSpeed, smooth])
 
   return (
