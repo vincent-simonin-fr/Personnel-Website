@@ -1,25 +1,12 @@
 'use client'
 
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarMenuToggle,
-  NavbarMenuItem,
-  NavbarMenu,
-  NavbarContent,
-  NavbarItem,
-  Button,
-  DropdownItem,
-  Dropdown,
-  DropdownMenu,
-  DropdownTrigger,
-} from '@heroui/react'
+import { Button, Dropdown } from '@heroui/react'
 import Link from 'next/link'
 import LocaleSwitcher from './LocaleSwitcher'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import AppLogo from './AppLogo'
 import { notFound, usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAppContext } from 'hooks/useAppContext'
 import { siteConfig } from 'config/site'
 import { useScroll, useSpring, animated } from '@react-spring/web'
@@ -34,6 +21,8 @@ const AnimatedDiv = animated('div')
 const SUPPORTED_LOCALES = ['fr', 'en-us', 'de'] as const
 type Locale = (typeof SUPPORTED_LOCALES)[number]
 
+// HeroUI v3 has no Navbar: hand-built with the same layout as the former v2 one
+// (brand | links pushed to the center | switchers on the right; overlay menu on mobile).
 const Header = ({}: HeaderProps) => {
   const path = usePathname()
   const segments = path.split('/')
@@ -53,14 +42,14 @@ const Header = ({}: HeaderProps) => {
   const { is404 } = useAppContext()
   const { dictionary } = useLocaleContext()
 
-  if (!dictionary || !SUPPORTED_LOCALES.includes(dictionary.locale as Locale)) {
-    notFound()
-  }
-  const locale = dictionary.locale
-
-  const handleLinkClick = () => {
-    setIsMenuOpen(false)
-  }
+  // Escape closes the mobile menu.
+  useEffect(() => {
+    if (!isMenuOpen) return
+    const onKeyDown = (e: KeyboardEvent) =>
+      e.key === 'Escape' && setIsMenuOpen(false)
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [isMenuOpen])
 
   const width = useSpring({
     width: scrollYProgress.to((y) =>
@@ -69,146 +58,129 @@ const Header = ({}: HeaderProps) => {
     config: { tension: 280, friction: 50 },
   })
 
+  if (!dictionary || !SUPPORTED_LOCALES.includes(dictionary.locale as Locale)) {
+    notFound()
+  }
+  const locale = dictionary.locale
+  const closeMenu = () => setIsMenuOpen(false)
+
   return (
     <AnimatedDiv
       className={`sticky top-0 z-50 h-12 w-full sm:min-w-[640px] md:min-w-[640px]`}
       style={width}>
-      <Navbar
-        className={`h-10 w-full bg-transparent transition-transform-colors-opacity *:max-w-full ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? 'backdrop-blur-none backdrop-saturate-100 data-[menu-open=true]:backdrop-blur-none' : ''}`}
-        isMenuOpen={isMenuOpen}
-        onMenuOpenChange={() => setIsMenuOpen(!isMenuOpen)}>
-        <NavbarContent className='sm:hidden' justify='start'>
-          <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} />
-        </NavbarContent>
+      <nav
+        aria-label='Main'
+        className={`flex h-10 w-full items-center gap-4 px-6 ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? '' : 'backdrop-blur-lg backdrop-saturate-150'}`}>
+        <div className='flex grow basis-0 justify-start sm:hidden'>
+          <button
+            type='button'
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
+            aria-controls='mobile-menu'
+            onClick={() => setIsMenuOpen((open) => !open)}
+            className='relative block h-6 w-6 cursor-pointer'>
+            <span
+              className={`absolute left-0 h-px w-6 bg-current transition-transform duration-200 ${isMenuOpen ? 'top-3 rotate-45' : 'top-2'}`}
+            />
+            <span
+              className={`absolute left-0 h-px w-6 bg-current transition-transform duration-200 ${isMenuOpen ? 'top-3 -rotate-45' : 'top-4'}`}
+            />
+          </button>
+        </div>
 
-        <NavbarContent className='pr-3 sm:hidden' justify='start'>
-          <NavbarItem>
-            <NavbarBrand>
-              <Link color='primary' href={`/${locale}`} passHref>
-                <AppLogo />
-                <p className='hidden sm:block'>{siteConfig.name}</p>
-              </Link>
-            </NavbarBrand>
-          </NavbarItem>
-        </NavbarContent>
+        <div className='flex grow basis-0 justify-start sm:grow-0 sm:basis-auto'>
+          <Link href={`/${locale}`} className='flex items-center gap-2'>
+            <AppLogo />
+            <span className='hidden text-xl sm:block'>{siteConfig.name}</span>
+          </Link>
+        </div>
 
-        <NavbarContent className='hidden gap-4 sm:flex' justify='center'>
-          <NavbarItem>
-            <NavbarBrand>
-              <Link color='primary' href={`/${locale}`}>
-                <AppLogo />
-                <p className={`hidden text-xl sm:block`}>{siteConfig.name}</p>
-              </Link>
-            </NavbarBrand>
-          </NavbarItem>
-        </NavbarContent>
+        <ul className='hidden grow basis-0 items-center justify-end gap-4 sm:flex'>
+          {dictionary.navigation.map((item) => {
+            const isActive = item.to.endsWith(pathname)
 
-        <NavbarContent className='hidden gap-4 sm:flex' justify='end'>
-          {dictionary &&
-            dictionary.navigation.map((item) => {
-              if (!item.items) {
-                return (
-                  <NavbarItem key={item.to} isActive={item.to.endsWith(pathname)}>
-                    {/* TODO : transition duration-1000 ease-in-out hover:underline */}
-                    <Link
-                      className={`${item.to.endsWith(pathname) ? classLinkActive : ''}`}
-                      color='primary'
-                      href={`/${locale}${item.to}`}
-                      aria-label={`${item.label} link`}>
-                      {item.label}
-                    </Link>
-                  </NavbarItem>
-                )
-              }
-
+            if (!item.items) {
               return (
-                <Dropdown
-                  key={item.to}
-                  classNames={{
-                    content: 'bg-primary-900',
-                  }}>
-                  <NavbarItem>
-                    <DropdownTrigger>
-                      <Button
-                        disableRipple
-                        className={`bg-transparent p-0 data-[hover=true]:bg-transparent ${item.to.endsWith(pathname) ? classLinkActive : ''}`}
-                        color='primary'
-                        endContent={<ChevronDownSvg size={16} />}
-                        radius='sm'
-                        variant='light'>
-                        {item.label}
-                      </Button>
-                    </DropdownTrigger>
-                  </NavbarItem>
-                  <DropdownMenu
-                    aria-label='Yuno-IT TechLabs'
-                    className='w-[340px]'
-                    color='primary'
-                    itemClasses={{
-                      base: 'gap-4',
-                    }}>
-                    {item.items!.map((subItem) => (
-                      <DropdownItem
-                        color='primary'
-                        className={
-                          subItem.to.endsWith(segments[3]) ? classLinkActive : ''
-                        }
-                        key={subItem.to}
-                        href={`/${locale}${subItem.to}`}
-                        aria-label={`${item.label} link`}>
-                        {subItem.label}
-                      </DropdownItem>
-                    ))}
-                  </DropdownMenu>
-                </Dropdown>
+                <li key={item.to}>
+                  <Link
+                    className={isActive ? classLinkActive : ''}
+                    aria-current={isActive ? 'page' : undefined}
+                    href={`/${locale}${item.to}`}>
+                    {item.label}
+                  </Link>
+                </li>
               )
-            })}
-        </NavbarContent>
+            }
 
-        <NavbarContent as='div' className='items-center' justify='end'>
+            return (
+              <li key={item.to}>
+                <Dropdown>
+                  <Button
+                    variant='ghost'
+                    className={`h-auto bg-transparent p-0 text-primary ${isActive ? classLinkActive : ''}`}>
+                    {item.label}
+                    <ChevronDownSvg size={16} />
+                  </Button>
+                  <Dropdown.Popover className='w-[340px] bg-primary-900'>
+                    <Dropdown.Menu aria-label={item.label}>
+                      {item.items.map((subItem) => (
+                        <Dropdown.Item
+                          key={subItem.to}
+                          id={subItem.to}
+                          textValue={subItem.label}
+                          href={`/${locale}${subItem.to}`}
+                          className={
+                            subItem.to.endsWith(segments[3]) ? classLinkActive : ''
+                          }>
+                          {subItem.label}
+                        </Dropdown.Item>
+                      ))}
+                    </Dropdown.Menu>
+                  </Dropdown.Popover>
+                </Dropdown>
+              </li>
+            )
+          })}
+        </ul>
+
+        <div className='flex grow basis-0 items-center justify-end gap-2'>
           {!is404 && <LocaleSwitcher />}
           <ThemeSwitcher />
-        </NavbarContent>
+        </div>
+      </nav>
 
-        <NavbarMenu className='top-0 min-h-screen bg-transparent pt-16 backdrop-blur-lg backdrop-saturate-150 *:text-primary'>
-          {dictionary &&
-            dictionary.navigation.map((item, index) => {
-              return (
-                <div key={index}>
-                  <NavbarMenuItem key={`${item.label}-${index}`}>
-                    <Link
-                      key={item.to}
-                      color='primary'
-                      className={`w-full ${item.to.endsWith(pathname) ? classLinkActive : ''}`}
-                      href={`/${locale}${item.to}`}
-                      onClick={handleLinkClick}
-                      aria-label={`${item.label} link`}
-                      passHref>
-                      {item.label}
-                    </Link>
-                  </NavbarMenuItem>
-                  {item.items?.length &&
-                    item.items!.map((subItem, index) => {
-                      return (
-                        <NavbarMenuItem key={`${subItem.label}-${index}`}>
-                          <Link
-                            key={subItem.to}
-                            color='primary'
-                            className={`w-90 ml-4 ${subItem.to.endsWith(segments[3]) ? classLinkActive : ''}`}
-                            href={`/${locale}${subItem.to}`}
-                            onClick={handleLinkClick}
-                            aria-label={`${item.label} link`}
-                            passHref>
-                            {subItem.label}
-                          </Link>
-                        </NavbarMenuItem>
-                      )
-                    })}
-                </div>
-              )
-            })}
-        </NavbarMenu>
-      </Navbar>
+      {isMenuOpen && (
+        <div
+          id='mobile-menu'
+          className='fixed inset-0 top-0 -z-10 min-h-screen px-6 pt-16 backdrop-blur-lg backdrop-saturate-150 sm:hidden'>
+          <ul className='flex flex-col gap-2 text-lg *:text-primary'>
+            {dictionary.navigation.map((item) => (
+              <li key={item.to}>
+                <Link
+                  className={`block w-full ${item.to.endsWith(pathname) ? classLinkActive : ''}`}
+                  href={`/${locale}${item.to}`}
+                  onClick={closeMenu}>
+                  {item.label}
+                </Link>
+                {item.items && item.items.length > 0 && (
+                  <ul className='mt-2 flex flex-col gap-2'>
+                    {item.items.map((subItem) => (
+                      <li key={subItem.to}>
+                        <Link
+                          className={`ml-4 block ${subItem.to.endsWith(segments[3]) ? classLinkActive : ''}`}
+                          href={`/${locale}${subItem.to}`}
+                          onClick={closeMenu}>
+                          {subItem.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </AnimatedDiv>
   )
 }

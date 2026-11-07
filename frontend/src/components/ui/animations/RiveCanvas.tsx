@@ -42,7 +42,7 @@ const RiveCanvas = ({
   // useRive already pauses rendering while the canvas is off-screen.
   const { rive, RiveComponent } = useRive({
     src,
-    stateMachines,
+    stateMachine: stateMachines, // `stateMachines` param is deprecated since Rive 2.4x
     autoplay: autoplay && !reduceMotion,
   })
   const { ref, isIntersecting } = useIntersectionObserver({ rootMargin })

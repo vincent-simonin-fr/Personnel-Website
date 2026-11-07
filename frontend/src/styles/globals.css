@@ -1,46 +1,133 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*
+ * HeroUI v3, selective import. The full `@heroui/styles` ships CSS for ~75 components
+ * (+16 KB gzip render-blocking). This mirrors @heroui/styles/dist/index.css but keeps
+ * only the components the site uses, in the order of its components/index.css (order
+ * matters). Using a new HeroUI component? Add its file here, or it renders unstyled.
+ */
+@layer theme, base, components, utilities;
 
+@import 'tailwindcss';
+@import '@heroui/styles/base/base.css' layer(base);
+@import '@heroui/styles/base/scrollbar.css' layer(base);
+
+@import '@heroui/styles/components/field-error.css' layer(components);
+@import '@heroui/styles/components/label.css' layer(components);
+@import '@heroui/styles/components/button.css' layer(components);
+@import '@heroui/styles/components/dropdown.css' layer(components);
+@import '@heroui/styles/components/list-box-item.css' layer(components);
+@import '@heroui/styles/components/list-box-section.css' layer(components);
+@import '@heroui/styles/components/list-box.css' layer(components);
+@import '@heroui/styles/components/menu-item.css' layer(components);
+@import '@heroui/styles/components/menu-section.css' layer(components);
+@import '@heroui/styles/components/menu.css' layer(components);
+@import '@heroui/styles/components/spinner.css' layer(components);
+@import '@heroui/styles/components/input.css' layer(components);
+@import '@heroui/styles/components/textfield.css' layer(components);
+@import '@heroui/styles/components/textarea.css' layer(components);
+@import '@heroui/styles/components/popover.css' layer(components);
+
+@import '@heroui/styles/themes/default' layer(theme);
+/* Not layered (they declare @utility / @custom-variant, which can't be nested). */
+@import '@heroui/styles/utilities';
+@import '@heroui/styles/variants';
+
+/*
+ * Theme = HeroUI v3 tokens (--background, --foreground, --accent, --focus…) + the site's
+ * own `primary-*` grey scale, inverted between light and dark (see DESIGN.md).
+ * Values come from the former HeroUI v2 config. Dark mode: `.dark` on <html> (next-themes).
+ */
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+}
+
+@theme {
+  /* Radii of the former HeroUI v2 layout (rounded-small/medium/large). */
+  --radius-small: 2px;
+  --radius-medium: 4px;
+  --radius-large: 6px;
+
+  /* HeroUI v2 utilities still used by the theme switcher. */
+  --ease-soft-spring: cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  --animate-spinner-ease-spin: spinner-spin 0.8s ease infinite;
+
+  @keyframes spinner-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* Same layer as HeroUI's theme variables but declared later, so these win. */
 @layer base {
+  /* Don't override --radius: HeroUI derives Tailwind's whole rounded-* scale from it, and
+     its default (0.5rem) is what reproduces Tailwind's standard radii. */
+  :root {
+    --background: #f1f5f9;
+    --foreground: #1e293b;
+    --accent: #c026d3;
+    --accent-foreground: #ffffff;
+    --focus: #f182f6;
+
+    --primary: #475569;
+    --primary-foreground: #cbd5e1;
+    --primary-50: #0f172a;
+    --primary-100: #1e293b;
+    --primary-200: #334155;
+    --primary-300: #475569;
+    --primary-400: #64748b;
+    --primary-500: #94a3b8;
+    --primary-600: #cbd5e1;
+    --primary-700: #e2e8f0;
+    --primary-800: #f1f5f9;
+    --primary-900: #f8fafc;
+  }
+
+  /* After :root on purpose: same specificity, so source order makes dark win. */
+  .dark {
+    --background: #0a0a0a;
+    --foreground: #ffffff;
+    --focus: #3d3d3d;
+
+    --primary: #b0b0b0;
+    --primary-foreground: #f6f6f6;
+    --primary-50: #f6f6f6;
+    --primary-100: #e7e7e7;
+    --primary-200: #b0b0b0;
+    --primary-300: #888888;
+    --primary-400: #6d6d6d;
+    --primary-500: #5d5d5d;
+    --primary-600: #4f4f4f;
+    --primary-700: #454545;
+    --primary-800: #3d3d3d;
+    --primary-900: #1b1b1b;
+  }
+
+  html {
+    color: var(--foreground);
+    background: var(--background);
+    scroll-behavior: smooth;
+  }
+
   .rive-container {
     all: unset;
     position: absolute;
     width: 100%;
     height: 100%;
   }
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --foreground-rgb: 0, 0, 0;
-
-  --color-bg-light: #ffffff;
-  --color-bg-dark: #1a1a1a;
-  --color-text-light: #000000;
-  --color-text-dark: #ffffff;
-  --color-border-light: #e2e8f0;
-  --color-border-dark: #4a5568;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ffffff;
-    --foreground-rgb: 255, 255, 255;
-
-    --color-bg: var(--color-bg-dark);
-    --color-text: var(--color-text-dark);
-    --color-border: var(--color-border-dark);
-  }
-}
-
-html {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  scroll-behavior: smooth;
 }
 
 @keyframes hide {
