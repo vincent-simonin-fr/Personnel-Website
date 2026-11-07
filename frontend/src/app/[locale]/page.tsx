@@ -10,13 +10,9 @@ import { lazy } from 'react'
 import Loading from 'components/loading/Loading'
 import { siteConfig } from 'config/site'
 
-import dynamic from 'next/dynamic'
 import { useLocaleContext } from 'hooks/useLocaleContext'
 import { PageTitle } from 'components/shape/PageTitle'
-
-const RivePlayer = dynamic(() => import('components/ui/animations/RivePlayer'), {
-  ssr: false,
-})
+import RivePlayer from 'components/ui/animations/RivePlayer'
 
 const FadeInWhenVisible = lazy(
   () => import('components/ui/animations/FadeInWhenVisible'),
