@@ -20,7 +20,7 @@ const Labs = () => {
           />
         </div>
         <div className='flex h-[calc(100vh-60px)] flex-col items-center justify-center'>
-          <div className='z-50 text-6xl text-primary'>Labs is good</div>
+          <h1 className='z-50 text-6xl text-primary'>Labs is good</h1>
         </div>
       </div>
     </>
