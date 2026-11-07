@@ -4,7 +4,8 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Vincent Simonin',
     short_name: 'VS',
-    description: 'Personal website of Vincent Simonin, Software Engineer & Azure Cloud Developer',
+    description:
+      'Personal website of Vincent Simonin, Software Engineer & Azure Cloud Developer',
     start_url: 'https://www.dev.vincentsimonin.fr/',
     display: 'standalone',
     categories: [

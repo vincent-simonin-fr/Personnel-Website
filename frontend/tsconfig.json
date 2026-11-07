@@ -35,8 +35,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/i18n/dictionaries.ts",
-    "src/components/ui/animations/hyperspeed/index.jsx",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules"]

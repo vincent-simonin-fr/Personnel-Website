@@ -64,7 +64,10 @@ const SplitText: React.FC<SplitTextProps> = ({
         ? async (next: (props: any) => Promise<void>) => {
             await next(animationTo)
             animatedCount.current += 1
-            if (animatedCount.current === letters.length && onLetterAnimationComplete) {
+            if (
+              animatedCount.current === letters.length &&
+              onLetterAnimationComplete
+            ) {
               onLetterAnimationComplete()
             }
           }
@@ -80,10 +83,13 @@ const SplitText: React.FC<SplitTextProps> = ({
       className={`split-parent inline overflow-hidden ${className}`}
       style={{ textAlign, whiteSpace: 'normal', wordWrap: 'break-word' }}>
       {words.map((word, wordIndex) => (
-        <span key={wordIndex} style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
+        <span
+          key={wordIndex}
+          style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
           {word.map((letter, letterIndex) => {
             const index =
-              words.slice(0, wordIndex).reduce((acc, w) => acc + w.length, 0) + letterIndex
+              words.slice(0, wordIndex).reduce((acc, w) => acc + w.length, 0) +
+              letterIndex
             return (
               <AnimatedSpan
                 key={index}
