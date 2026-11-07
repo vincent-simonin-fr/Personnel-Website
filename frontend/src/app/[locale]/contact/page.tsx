@@ -3,7 +3,6 @@
 import ContactForm from 'components/ContactForm'
 import Image from 'next/image'
 import { useLocaleContext } from 'hooks/useLocaleContext'
-import { PageTitle } from 'components/shape/PageTitle'
 
 type ContactProps = object
 
@@ -12,7 +11,6 @@ const Contact = ({}: ContactProps) => {
 
   return (
     <>
-      <PageTitle title={dictionary.contactForm.title} />
       <div className='flex h-[calc(100vh-56px)] w-full flex-col items-center justify-center'>
         <div className='relative h-full w-full'>
           <Image

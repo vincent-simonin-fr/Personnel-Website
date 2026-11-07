@@ -57,6 +57,42 @@ export const MetadataSite: Metadata = {
   authors: siteConfig.authors,
 }
 
+const ogLocales: Record<string, string> = {
+  fr: 'fr_FR',
+  'en-us': 'en_US',
+  de: 'de_DE',
+}
+
+/** hreflang alternates + canonical for `path` (e.g. '/projects', '' for home). */
+export const localeAlternates = (locale: string, path: string) => ({
+  canonical: `/${locale}${path}`,
+  languages: {
+    fr: `/fr${path}`,
+    'en-US': `/en-us${path}`,
+    de: `/de${path}`,
+    'x-default': `/fr${path}`,
+  },
+})
+
+/** Per-route metadata: localized title, canonical/hreflang, and matching Open Graph. */
+export const pageMetadata = (
+  locale: string,
+  path: string,
+  title?: string,
+  description?: string,
+): Metadata => ({
+  ...(title && { title }),
+  ...(description && { description }),
+  alternates: localeAlternates(locale, path),
+  openGraph: {
+    ...MetadataSite.openGraph,
+    ...(title && { title }),
+    ...(description && { description }),
+    url: `/${locale}${path}`,
+    locale: ogLocales[locale],
+  },
+})
+
 export const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',

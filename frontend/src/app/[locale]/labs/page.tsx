@@ -1,6 +1,5 @@
 'use client'
 
-import { PageTitle } from 'components/shape/PageTitle'
 import { lazy } from 'react'
 import { useLocaleContext } from 'hooks/useLocaleContext'
 
@@ -11,7 +10,6 @@ const Labs = () => {
 
   return (
     <>
-      <PageTitle title={dictionary.labs.title} />
       <div className='relative -mt-16 w-screen'>
         <div className='invert dark:invert-0'>
           <Starfield
