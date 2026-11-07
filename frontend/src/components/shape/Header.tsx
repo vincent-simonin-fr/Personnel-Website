@@ -6,10 +6,9 @@ import LocaleSwitcher from './LocaleSwitcher'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import AppLogo from './AppLogo'
 import { notFound, usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useAppContext } from 'hooks/useAppContext'
 import { siteConfig } from 'config/site'
-import { useScroll, useSpring, animated } from '@react-spring/web'
 import { useMediaQuery } from 'usehooks-ts'
 import ChevronDownSvg from 'components/ui/svg/ChevronDownSvg'
 import { useLocaleContext } from 'hooks/useLocaleContext'
@@ -17,7 +16,6 @@ import { useLocaleContext } from 'hooks/useLocaleContext'
 type HeaderProps = object
 
 const classLinkActive = 'text-fuchsia-600'
-const AnimatedDiv = animated('div')
 const SUPPORTED_LOCALES = ['fr', 'en-us', 'de'] as const
 type Locale = (typeof SUPPORTED_LOCALES)[number]
 
@@ -29,7 +27,7 @@ const Header = ({}: HeaderProps) => {
   const pathname = segments[2] ?? '/'
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const { scrollYProgress } = useScroll()
+  const headerRef = useRef<HTMLDivElement>(null)
 
   const minWidth = '640px'
   const headerWidthVw = 76
@@ -51,12 +49,31 @@ const Header = ({}: HeaderProps) => {
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [isMenuOpen])
 
-  const width = useSpring({
-    width: scrollYProgress.to((y) =>
-      isMobile ? '100vw' : `${headerWidthVw - y * 43 * 3}vw`,
-    ),
-    config: { tension: 280, friction: 50 },
-  })
+  // Header shrinks as the page scrolls (desktop). Passive listener + direct style write,
+  // batched per frame: zero work while idle and no React re-render (react-spring's
+  // useScroll used to poll every frame, even without scrolling).
+  useEffect(() => {
+    const el = headerRef.current
+    if (!el) return
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      const progress = max > 0 ? window.scrollY / max : 0
+      el.style.width = isMobile ? '100vw' : `${headerWidthVw - progress * 43 * 3}vw`
+    }
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+    }
+  }, [isMobile])
 
   if (!dictionary || !SUPPORTED_LOCALES.includes(dictionary.locale as Locale)) {
     notFound()
@@ -65,9 +82,11 @@ const Header = ({}: HeaderProps) => {
   const closeMenu = () => setIsMenuOpen(false)
 
   return (
-    <AnimatedDiv
+    <div
+      ref={headerRef}
       className={`sticky top-0 z-50 h-12 w-full sm:min-w-[640px] md:min-w-[640px]`}
-      style={width}>
+      // Initial width (= server render, scroll 0); the effect above takes over.
+      style={{ width: `${headerWidthVw}vw` }}>
       <nav
         aria-label='Main'
         className={`flex h-10 w-full items-center gap-4 px-6 ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? '' : 'backdrop-blur-lg backdrop-saturate-150'}`}>
@@ -181,7 +200,7 @@ const Header = ({}: HeaderProps) => {
           </ul>
         </div>
       )}
-    </AnimatedDiv>
+    </div>
   )
 }
 

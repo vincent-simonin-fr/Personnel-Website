@@ -14,7 +14,9 @@ export function ThemeSwitcher() {
     setMounted(true)
   }, [])
 
-  if (!mounted) return null
+  // Same-size placeholder until the theme is known: rendering nothing made the icon pop in
+  // and shift the header (layout shift).
+  if (!mounted) return <div aria-hidden className='h-6 w-6' />
 
   return (
     <div className='flex items-center gap-2'>
