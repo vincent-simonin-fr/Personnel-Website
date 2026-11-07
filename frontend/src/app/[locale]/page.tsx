@@ -196,8 +196,8 @@ const HomePage = () => {
                       },
                       onMouseLeave: (rive, inputs) => {
                         if (rive && inputs.enter && inputs.exit) {
-                          inputs.exit.value = false
-                          inputs.enter.value = true
+                          inputs.enter.value = false
+                          inputs.exit.value = true
                         }
                       },
                     }}
