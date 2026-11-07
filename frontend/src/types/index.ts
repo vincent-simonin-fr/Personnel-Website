@@ -32,6 +32,10 @@ export type Dictionary = {
       secondLine: string
     }
     labelButtonToSkills: string
+    sections: Record<
+      'design' | 'agility' | 'development' | 'innovation',
+      { title: string; description: string }
+    >
   }
   navigation: MenuItem[]
   notFound: {

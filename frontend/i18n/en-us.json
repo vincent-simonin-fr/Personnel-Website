@@ -16,7 +16,25 @@
       "firstLine": "Crafting and building modern web applications",
       "secondLine": "for digital communication or business system."
     },
-    "labelButtonToSkills": "Projects"
+    "labelButtonToSkills": "Projects",
+    "sections": {
+      "design": {
+        "title": "Software analysis and design",
+        "description": "Crucial to a project's success, this phase starts with gathering requirements. A thorough study of the business domain, aimed at fully understanding its challenges, makes it possible to structure the project efficiently. Done well, this step ensures tailor-made, high-performing and reliable software solutions."
+      },
+      "agility": {
+        "title": "Agility",
+        "description": "Agile methodologies foster rapid adaptation to change and continuous delivery of value. Effective project tracking relies on transparent communication and regular meetings. Combining agility with rigorous tracking optimizes both productivity and the quality of deliverables."
+      },
+      "development": {
+        "title": "Development",
+        "description": "Building a quality application comes from creativity and a constant pursuit of excellence. Technical mastery makes it possible to build a solution that is efficient, reliable and scalable. Digital technology is essential for businesses, but software is often a significant investment. Quality development that follows best practices keeps costs under control throughout the application's lifecycle and makes it last longer. This approach not only ensures an optimal return on investment, but also adaptability to the company's future needs."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "The ability to innovate and quickly adopt new technologies is a key success factor in software development. This technological agility helps maintain a competitive edge in a constantly changing market. It also makes it possible to respond proactively to customers' growing expectations with ever more advanced solutions tailored to their needs."
+      }
+    }
   },
   "navigation": [
     {
