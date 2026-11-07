@@ -2,8 +2,8 @@
   "locale": "de",
   "homePage": {
     "title": "Startseite",
-    "description": "Full Stack Entwickler und Azure Cloud Entwickler, Experte für IT und neue Technologien.",
-    "deployButtonLabel": "Jetzt entfalten",
+    "description": "Full-Stack-Entwickler und Azure-Cloud-Entwickler, Experte für IT und neue Technologien.",
+    "deployButtonLabel": "Jetzt bereitstellen",
     "firstScreen": {
       "salutation": "Hallo zusammen,",
       "hook": {
@@ -91,10 +91,10 @@
   },
   "presentation": {
     "introduction": "Als Digitalprofi verfolge ich die Entwicklung neuer Technologien mit großer Aufmerksamkeit. Es ist vor allem eine Leidenschaft. Bei jeder Umsetzung geht es darum, nach Exzellenz zu streben. Qualitätslieferungen zu produzieren und gleichzeitig die innovativsten Technologien in ihren jeweiligen Bereichen zu integrieren.",
-    "description": "Full stack entwickler und Azure cloud entwickler, Experte für IT und neue Technologien.",
+    "description": "Full-Stack-Entwickler und Azure-Cloud-Entwickler, Experte für IT und neue Technologien.",
     "services": [
       {
-        "title": "Full stack entwicklung",
+        "title": "Full-Stack-Entwicklung",
         "description": "Design und Implementierung von leistungsstarken, sicheren und skalierbaren Web- und mobilen Anwendungen mit den neuesten Technologien. Ich arbeite mit Microsoft-Technologien, Azure Cloud, der .Net-Plattform und React.js. Während meiner Ausbildung begann ich mich für Softwarequalität und Wartbarkeit zu interessieren, ein Fragezeichen, das Hunderte von anderen aufgeworfen hat."
       },
       {
@@ -106,7 +106,7 @@
         "description": "Implementierung von CI/CD-Pipelines, Automatisierung von Tests und Bereitstellungen sowie Verwaltung von Entwicklungsumgebungen für eine kontinuierliche und zuverlässige Lieferung. Ich entwerfe und entwickle Projekte, die Sicherheit von Anfang an integrieren, indem ich DevSecOps-Methoden anwende."
       },
       {
-        "title": "Evolutive und Korrektive Wartung",
+        "title": "Evolutive und korrektive Wartung",
         "description": "Kontinuierliche Überwachung und Verbesserung von Anwendungen, Fehlerbehebung und Hinzufügen neuer Funktionen zur Erfüllung der sich ändernden Benutzeranforderungen."
       },
       {
@@ -123,18 +123,18 @@
     "title": "Kontaktieren Sie mich",
     "firstNameLabel": "Vorname",
     "lastNameLabel": "Nachname",
-    "emailLabel": "Email",
+    "emailLabel": "E-Mail",
     "messageLabel": "Nachricht",
     "submitButton": "Senden",
     "resetButton": "Zurücksetzen",
-    "firstNameError": "Bitte geben Sie einen gültigen Vornamen",
-    "lastNameError": "Bitte geben Sie einen gültigen Nachnamen",
-    "emailError": "Bitte geben Sie eine gültige E-Mail-Adresse",
-    "messageError": "Bitte geben Sie eine Nachricht",
-    "firstNamePlaceholder": "Geben Sie Ihren Vornamen",
-    "lastNamePlaceholder": "Geben Sie Ihren Nachnamen",
-    "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse",
-    "messagePlaceholder": "Geben Sie Ihre Nachricht",
+    "firstNameError": "Bitte geben Sie einen gültigen Vornamen ein",
+    "lastNameError": "Bitte geben Sie einen gültigen Nachnamen ein",
+    "emailError": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "messageError": "Bitte geben Sie eine Nachricht ein",
+    "firstNamePlaceholder": "Geben Sie Ihren Vornamen ein",
+    "lastNamePlaceholder": "Geben Sie Ihren Nachnamen ein",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
+    "messagePlaceholder": "Geben Sie Ihre Nachricht ein",
     "successMessage": "Ihre Nachricht wurde erfolgreich gesendet",
     "errorMessage": "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten"
   },
