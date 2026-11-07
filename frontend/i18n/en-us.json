@@ -137,5 +137,10 @@
     "messagePlaceholder": "Enter your message",
     "successMessage": "Your message has been sent successfully",
     "errorMessage": "An error occurred while sending the message"
+  },
+  "projects": {
+    "title": "Projects",
+    "servicesTitle": "My services",
+    "items": []
   }
 }

@@ -1,30 +1,39 @@
-'use client'
+import ProjectCard from 'components/ProjectCard'
+import { getDictionary } from 'i18n/getDictionary'
 
-import { useLocaleContext } from 'hooks/useLocaleContext'
+type ProjectsProps = { params: Promise<{ locale: string }> }
 
-type ProjectsProps = object
-
-const Projects = ({}: ProjectsProps) => {
-  const { dictionary } = useLocaleContext()
+const Projects = async ({ params }: ProjectsProps) => {
+  const { locale } = await params
+  const { presentation, projects } = await getDictionary(locale)
 
   return (
-    <>
-      <div className='flex min-h-[calc(100vh-60px)] w-[84vw] flex-col items-start justify-center py-8'>
-        <div className='mb-8 text-start text-2xl'>
-          {dictionary && dictionary.presentation.introduction}
-        </div>
-        <div className='mx-auto grid h-full grid-cols-1 gap-8 md:grid-cols-1 lg:grid-cols-1'>
-          <h2 className='mb-4 text-4xl font-semibold'>Mes services</h2>
-          {dictionary &&
-            dictionary.presentation.services.map((service, index) => (
-              <div key={index} className=''>
-                <h2 className='mb-4 text-4xl font-semibold'>{service.title}</h2>
-                <div className='text-2xl'>{service.description}</div>
-              </div>
+    <div className='flex min-h-[calc(100vh-60px)] w-[84vw] flex-col items-start justify-center gap-16 py-8'>
+      <p className='text-start text-2xl'>{presentation.introduction}</p>
+
+      {projects.items.length > 0 && (
+        <section className='w-full'>
+          <h2 className='mb-8 text-4xl font-semibold'>{projects.title}</h2>
+          <ul className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+            {projects.items.map((project) => (
+              <li key={project.title}>
+                <ProjectCard project={project} />
+              </li>
             ))}
-        </div>
-      </div>
-    </>
+          </ul>
+        </section>
+      )}
+
+      <section className='grid w-full grid-cols-1 gap-8'>
+        <h2 className='mb-4 text-4xl font-semibold'>{projects.servicesTitle}</h2>
+        {presentation.services.map((service) => (
+          <div key={service.title}>
+            <h3 className='mb-4 text-4xl font-semibold'>{service.title}</h3>
+            <p className='text-2xl'>{service.description}</p>
+          </div>
+        ))}
+      </section>
+    </div>
   )
 }
 

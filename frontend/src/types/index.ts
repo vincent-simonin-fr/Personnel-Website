@@ -13,6 +13,16 @@ export type MenuItem = {
   items?: MenuItem[]
 }
 
+export type Project = {
+  title: string
+  description: string
+  stack: string[]
+  /** External link (demo, repository, case study). */
+  url?: string
+  /** Image path under /public, e.g. '/images/projects/foo.jpg' (16:9). */
+  image?: string
+}
+
 export type Dictionary = {
   locale: string
   homePage: {
@@ -41,6 +51,12 @@ export type Dictionary = {
   navigation: MenuItem[]
   // Hidden from the menus until the lab pages have content; move back into `navigation` to publish.
   labs: MenuItem
+  /** Portfolio. The grid only renders when `items` is non-empty. */
+  projects: {
+    title: string
+    servicesTitle: string
+    items: Project[]
+  }
   notFound: {
     title: string
     subtitle: string

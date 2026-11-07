@@ -137,5 +137,10 @@
     "messagePlaceholder": "Geben Sie Ihre Nachricht",
     "successMessage": "Ihre Nachricht wurde erfolgreich gesendet",
     "errorMessage": "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten"
+  },
+  "projects": {
+    "title": "Projekte",
+    "servicesTitle": "Meine Leistungen",
+    "items": []
   }
 }
