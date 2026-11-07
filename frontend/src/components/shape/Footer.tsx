@@ -11,7 +11,10 @@ type FooterProps = object
 
 const Footer = ({}: FooterProps) => {
   const minWidth = '624px'
-  const isMobile = useMediaQuery(`(max-width: ${minWidth})`)
+  // false on the first render (= server HTML), then the real value: no hydration mismatch.
+  const isMobile = useMediaQuery(`(max-width: ${minWidth})`, {
+    initializeWithValue: false,
+  })
 
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' })

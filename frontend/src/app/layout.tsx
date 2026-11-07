@@ -20,22 +20,29 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   const nonce = headersList.get('x-nonce')!
 
   return (
-    <html className={'dark'} lang={locale} data-scroll-behavior='smooth'>
+    // suppressHydrationWarning: next-themes swaps the theme class before hydration.
+    <html
+      className={'dark'}
+      lang={locale}
+      data-scroll-behavior='smooth'
+      suppressHydrationWarning>
       <Script
         src='https://www.googletagmanager.com/gtag/js?id=GTM-NKBC7G3V'
         strategy='afterInteractive'
         nonce={nonce}
       />
       <body className={`${hankenGrotesk.className} antialiased *:text-primary`}>
-        {/* Server-rendered so crawlers see it; `<` escaped to keep the JSON inert. */}
+        {/* Server-rendered so crawlers see it; `<` escaped to keep the JSON inert.
+            suppressHydrationWarning: browsers hide nonce values from the DOM. */}
         <script
           type='application/ld+json'
           nonce={nonce}
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
           }}
         />
-        <Providers locale={locale}>
+        <Providers nonce={nonce}>
           <main className='flex min-h-screen w-screen flex-col items-center justify-center'>
             {children}
             <ToastContainer
