@@ -3,7 +3,7 @@
   "homePage": {
     "title": "Page d'accueil",
     "description": "Développeur Full Stack et Développeur Azure Cloud, expert en informatique et nouvelles technologies.",
-    "deployButtonLabel": "Déploies maintenant",
+    "deployButtonLabel": "Déployez maintenant",
     "firstScreen": {
       "salutation": "Bonjour à tous,",
       "hook": {
@@ -95,7 +95,7 @@
     "services": [
       {
         "title": "Développement Full Stack",
-        "description": "Conception et réalisation d'applications web performantes, sécurisées et évolutives, utilisant les technologies les plus récentes. Je travaille avec la plus part des technologies Microsoft, que ce soit les services Azure, ou la plateforme de développement .Net, ainsi qu'avec l'environnement React.js pour la présentation. Au cours de ma formation, je me suis intéressé à la qualité et à la maintenabilité des logiciels, un point d'interrogation qui m'a permis de développer une approche permettant de garder la maîtrise des coûts d'une application."
+        "description": "Conception et réalisation d'applications web performantes, sécurisées et évolutives, utilisant les technologies les plus récentes. Je travaille avec la plupart des technologies Microsoft, que ce soit les services Azure, ou la plateforme de développement .Net, ainsi qu'avec l'environnement React.js pour la présentation. Au cours de ma formation, je me suis intéressé à la qualité et à la maintenabilité des logiciels, un point d'interrogation qui m'a permis de développer une approche permettant de garder la maîtrise des coûts d'une application."
       },
       {
         "title": "Étude et Conception Logicielle",
