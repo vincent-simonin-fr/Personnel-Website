@@ -49,7 +49,7 @@ const HomePage = () => {
                   </span>
                   {dictionary.homePage.firstScreen.salutation}
                 </div>
-                <div
+                <h1
                   className={`${hankenGrotesk.className} text-pretty text-3xl md:text-4xl lg:text-5xl`}>
                   {dictionary.homePage.firstScreen.hook.one}
                   <span className={`text-fuchsia-600`}>
@@ -60,7 +60,7 @@ const HomePage = () => {
                     {dictionary.homePage.firstScreen.hook.four}
                   </span>
                   {dictionary.homePage.firstScreen.hook.five}
-                </div>
+                </h1>
                 <hr className='my-4 h-[2px] w-1/2 bg-primary-500' />
                 <div className='text-pretty text-3xl md:text-4xl lg:text-5xl'>
                   {dictionary.homePage.firstScreen.firstLine}

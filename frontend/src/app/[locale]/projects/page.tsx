@@ -5,10 +5,12 @@ type ProjectsProps = { params: Promise<{ locale: string }> }
 
 const Projects = async ({ params }: ProjectsProps) => {
   const { locale } = await params
-  const { presentation, projects } = await getDictionary(locale)
+  const { presentation, projects, navigation } = await getDictionary(locale)
+  const pageTitle = navigation.find((item) => item.to === '/projects')?.title
 
   return (
     <div className='flex min-h-[calc(100vh-60px)] w-[84vw] flex-col items-start justify-center gap-16 py-8'>
+      <h1 className='sr-only'>{pageTitle}</h1>
       <p className='text-start text-2xl'>{presentation.introduction}</p>
 
       {projects.items.length > 0 && (

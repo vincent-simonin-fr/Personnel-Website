@@ -125,9 +125,10 @@ const ContactForm = ({}: ContactFormProps) => {
 
   return (
     <div className='flex w-full max-w-md flex-col items-start'>
-      <h2 className={`${hankenGrotesk600.className} mb-4 text-2xl`}>
+      {/* h1: the form is the main content of /contact (its only usage). */}
+      <h1 className={`${hankenGrotesk600.className} mb-4 text-2xl`}>
         {dictionary.contactForm.title}
-      </h2>
+      </h1>
       <Form
         id='contact-form'
         className='flex w-full max-w-md flex-col gap-4'
