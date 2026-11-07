@@ -45,7 +45,10 @@ const Header = ({}: HeaderProps) => {
   const minWidth = '640px'
   const headerWidthVw = 76
 
-  const isMobile = useMediaQuery(`(max-width: ${minWidth})`)
+  // false on the first render (= server HTML), then the real value: no hydration mismatch.
+  const isMobile = useMediaQuery(`(max-width: ${minWidth})`, {
+    initializeWithValue: false,
+  })
 
   const { is404 } = useAppContext()
   const { dictionary } = useLocaleContext()

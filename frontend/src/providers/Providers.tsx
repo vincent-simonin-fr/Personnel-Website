@@ -3,7 +3,6 @@
 import { HeroUIProvider } from '@heroui/react'
 import { isServer, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import { useEffect, useState } from 'react'
 
 import { useRouter } from 'next/navigation'
 import { AppContextProvider } from './AppContextProvider'
@@ -45,28 +44,19 @@ function getQueryClient() {
 
 type ProvidersProps = {
   children: React.ReactNode
-  locale: string
+  /** CSP nonce: next-themes injects an inline script to apply the theme before paint. */
+  nonce: string
 }
 
-export function Providers({ children, locale }: ProvidersProps) {
-  // L'état qui gère l'initialisation du thème côté client
-  const [mounted, setMounted] = useState(false)
-
+// Renders on the server too: theme-dependent output must use CSS (`dark:`), not
+// `useTheme()` during render, or hydration mismatches.
+export function Providers({ children, nonce }: ProvidersProps) {
   // NOTE: Avoid useState when initializing the query client if you don't
   //       have a suspense boundary between this and the code that may
   //       suspend because React will throw away the client on the initial
   //       render if it suspends and there is no boundary
   const queryClient = getQueryClient()
   const router = useRouter()
-
-  // Utilisez useEffect pour activer le rendu côté client uniquement
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true)
-  }, [])
-
-  // Si le composant n'est pas encore monté, ne pas appliquer le thème pour éviter l'erreur d'hydratation
-  if (!mounted) return <div /> // Affiche rien jusqu'à ce que le composant soit monté
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -75,6 +65,7 @@ export function Providers({ children, locale }: ProvidersProps) {
           attribute='class'
           defaultTheme='dark'
           storageKey='theme'
+          nonce={nonce}
           themes={['dark', 'light']}>
           <AppContextProvider>{children}</AppContextProvider>
         </NextThemesProvider>

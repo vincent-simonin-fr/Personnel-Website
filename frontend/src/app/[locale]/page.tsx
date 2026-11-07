@@ -137,7 +137,7 @@ const HomePage = () => {
               <section className={`${commonSectionClasses} md:flex-row-reverse`}>
                 <div className={commonImageContainerClasses}>
                   <Waves
-                    lineColor={theme === 'dark' ? '#c026d3' : '#c026d3'}
+                    lineColor={siteConfig.color.hex}
                     className='rounded-3xl border-1 border-fuchsia-600'
                     waveSpeedX={0.0175}
                     waveSpeedY={0.005}
