@@ -20,8 +20,8 @@ const NotFound = async () => {
         fontWeight={700}>
         404
       </FuzzyText>
-      <h1 className='text-balance text-center text-4xl'>{notFound.title}</h1>
-      <p className='text-balance text-center text-2xl'>{notFound.subtitle}</p>
+      <h1 className='text-center text-4xl text-balance'>{notFound.title}</h1>
+      <p className='text-center text-2xl text-balance'>{notFound.subtitle}</p>
       <Link
         className='text mt-4 text-xl hover:underline hover:opacity-[0.7]'
         href={`/${locale}`}>

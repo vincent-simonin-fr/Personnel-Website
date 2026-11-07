@@ -5,7 +5,7 @@ Charte **de fait** : elle formalise les conventions déjà présentes dans le co
 ## Couleurs
 
 - **Accent unique : fuchsia `#c026d3`** (`siteConfig.color`, classe `text-fuchsia-600`). Réservé à ce qui doit attirer l'œil : mots clés de l'accroche, lien actif de la nav, liens, bordures et anneaux de focus, animations de marque. Jamais en aplat de fond.
-- **Neutres : l'échelle HeroUI `primary-*`**, définie dans `tailwind.config.ts`. Elle est **inversée entre thèmes** (`primary-50` est clair en sombre, foncé en clair) : utiliser ces classes plutôt que des gris Tailwind ou des hex, pour que les deux thèmes fonctionnent sans code.
+- **Neutres : l'échelle `primary-*`** du site, définie dans `src/styles/globals.css` (avec les tokens HeroUI `--background`, `--foreground`, `--accent` = fuchsia, `--focus`). Elle est **inversée entre thèmes** (`primary-50` est clair en sombre, foncé en clair) : utiliser ces classes plutôt que des gris Tailwind ou des hex, pour que les deux thèmes fonctionnent sans code.
 - Fonds : `bg-background`. Texte courant : hérité (`*:text-primary` sur `body`).
 - Thème **sombre par défaut**. Toute variation selon le thème passe par la variante CSS `dark:`, jamais par `useTheme()` au rendu (sinon décalage d'hydratation).
 
@@ -33,10 +33,10 @@ Titres et paragraphes longs : `text-pretty` (ou `text-balance` pour les titres c
 
 ## Composants
 
-- **Bouton principal** : HeroUI `Button`, `rounded-full bg-primary-50 text-primary-900`. Secondaire : `variant='flat'`, `rounded-full`.
+- **Bouton principal** : HeroUI `Button`, `rounded-full bg-primary-50 text-primary-900` ; en lien, un `next/link` avec `cn(buttonVariants(), …)` et les mêmes classes. Secondaire : `variant='secondary'` + `rounded-full bg-primary-800 text-primary-100` (neutre ; la variante seule prendrait l'accent fuchsia).
 - **Carte / panneau** : `rounded-large`, `p-6` (ou `p-5` pour les cartes de grille), fond `bg-background` ou `bg-primary-900`, bordure `border-1 border-primary-700`.
-- **Rayons** (thème HeroUI) : small 2 px, medium 4 px, large 6 px. `rounded-full` pour les boutons et les puces.
-- Champs de formulaire : voir `ContactForm` (fond `primary-900`, anneau de focus fuchsia).
+- **Rayons** : `rounded-small/medium/large` = 2 / 4 / 6 px (définis dans `globals.css`) ; échelle Tailwind standard pour le reste. `rounded-full` pour les boutons et les puces.
+- Champs de formulaire : voir `ContactForm` (`TextField` HeroUI, `rounded-xl`, fond `primary-900`, anneau de focus fuchsia, hauteur `h-8`).
 
 ## Mouvement
 

@@ -26,8 +26,8 @@ const PresentationSection = ({
       {visual}
     </div>
     <div className={`w-full space-y-4 md:w-2/3 ${reverse ? 'md:text-end' : ''}`}>
-      <h2 className='text-pretty text-4xl tracking-tight md:text-5xl'>{title}</h2>
-      <p className='text-pretty text-xl leading-relaxed md:text-2xl'>
+      <h2 className='text-4xl tracking-tight text-pretty md:text-5xl'>{title}</h2>
+      <p className='text-xl leading-relaxed text-pretty md:text-2xl'>
         {description}
       </p>
     </div>
