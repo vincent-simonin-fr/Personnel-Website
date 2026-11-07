@@ -9,7 +9,9 @@ import {
 import { useEffect } from 'react'
 import { useIntersectionObserver } from 'usehooks-ts'
 
-RuntimeLoader.setWasmUrl('rive/rive.wasm')
+// Absolute URL: a relative one resolves against the locale path. The file is
+// copied from node_modules on install (scripts/copy-rive-wasm.mjs).
+RuntimeLoader.setWasmUrl('/rive/rive.wasm')
 
 type Inputs = {
   click: StateMachineInput | null
@@ -28,9 +30,6 @@ type RivePlayerProps = {
     onClick?: (rive: any, inputs: Record<string, any>) => void
   }
 }
-
-// Set a custom WASM URL from the local public folder
-// RuntimeLoader.setWasmUrl('/rive/rive.wasm')
 
 const RivePlayer = ({
   src,

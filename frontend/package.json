@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --webpack",
     "start": "next start",
+    "postinstall": "node scripts/copy-rive-wasm.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
