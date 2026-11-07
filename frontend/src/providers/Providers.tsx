@@ -1,6 +1,6 @@
 'use client'
 
-import { HeroUIProvider } from '@heroui/react'
+import { RouterProvider } from '@heroui/react'
 import { isServer, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 
@@ -60,7 +60,9 @@ export function Providers({ children, nonce }: ProvidersProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <HeroUIProvider navigate={router.push}>
+      {/* HeroUI v3 has no provider; RouterProvider (React Aria) makes `href` on its
+          links and menu items navigate with the Next router instead of a full reload. */}
+      <RouterProvider navigate={router.push}>
         <NextThemesProvider
           attribute='class'
           defaultTheme='dark'
@@ -69,7 +71,7 @@ export function Providers({ children, nonce }: ProvidersProps) {
           themes={['dark', 'light']}>
           <AppContextProvider>{children}</AppContextProvider>
         </NextThemesProvider>
-      </HeroUIProvider>
+      </RouterProvider>
     </QueryClientProvider>
   )
 }
