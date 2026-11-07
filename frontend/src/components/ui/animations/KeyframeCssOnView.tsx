@@ -7,7 +7,11 @@ type KeyframeCssOnViewProps = {
   rootMargin?: string
 }
 
-const KeyframeCssOnView = ({ children, cssClass, rootMargin = '-10%' }: KeyframeCssOnViewProps) => {
+const KeyframeCssOnView = ({
+  children,
+  cssClass,
+  rootMargin = '-10%',
+}: KeyframeCssOnViewProps) => {
   const { ref, entry, isIntersecting } = useIntersectionObserver({
     threshold: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
     rootMargin: rootMargin,

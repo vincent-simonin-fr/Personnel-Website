@@ -7,11 +7,32 @@ type ButtonProps = {
   onPress?: () => void
   className?: string
   type?: 'button' | 'submit' | 'reset'
-  variant?: 'flat' | 'solid' | 'bordered' | 'light' | 'faded' | 'shadow' | 'ghost' | undefined
-  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'default' | undefined
+  variant?:
+    | 'flat'
+    | 'solid'
+    | 'bordered'
+    | 'light'
+    | 'faded'
+    | 'shadow'
+    | 'ghost'
+    | undefined
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'default'
+    | undefined
 }
 
-const Button = ({ children, onPress, type = 'button', variant, color }: ButtonProps) => {
+const Button = ({
+  children,
+  onPress,
+  type = 'button',
+  variant,
+  color,
+}: ButtonProps) => {
   return (
     <div>
       <HeroButton

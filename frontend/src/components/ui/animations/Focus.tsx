@@ -36,7 +36,12 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
   const [lastActiveIndex, setLastActiveIndex] = useState<number | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
   const wordRefs = useRef<(HTMLSpanElement | null)[]>([])
-  const [focusRect, setFocusRect] = useState<FocusRect>({ x: 0, y: 0, width: 0, height: 0 })
+  const [focusRect, setFocusRect] = useState<FocusRect>({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  })
 
   useEffect(() => {
     if (!manualMode) {
@@ -95,7 +100,8 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
           <span
             key={index}
             ref={
-              ((el: HTMLSpanElement) => (wordRefs.current[index] = el)) as unknown as
+              ((el: HTMLSpanElement) =>
+                (wordRefs.current[index] = el)) as unknown as
                 | Ref<HTMLSpanElement>
                 | undefined
             }

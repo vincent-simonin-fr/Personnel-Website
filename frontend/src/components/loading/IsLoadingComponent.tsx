@@ -8,7 +8,11 @@ const color = siteConfig.color.hex
 const IsLoadingComponent = () => {
   return (
     <div className='flex min-h-[calc(100vh-60px)] w-full items-center justify-center'>
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' width='100%' height='100%'>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 200 20'
+        width='100%'
+        height='100%'>
         {[...Array(3)].map((_, index) => (
           <circle
             key={index}
