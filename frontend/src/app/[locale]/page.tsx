@@ -12,6 +12,7 @@ import { siteConfig } from 'config/site'
 
 import { useLocaleContext } from 'hooks/useLocaleContext'
 import RivePlayer from 'components/ui/animations/RivePlayer'
+import PresentationSection from 'components/PresentationSection'
 
 const FadeInWhenVisible = lazy(
   () => import('components/ui/animations/FadeInWhenVisible'),
@@ -29,20 +30,11 @@ const HandSvg = lazy(() => import('components/ui/svg/HandSvg'))
 
 const hankenGrotesk = Hanken_Grotesk({ subsets: ['latin'], weight: '600' })
 
-const colorText = 'text-fuchsia-600'
-
 const HomePage = () => {
   const { isLoading, isError, error } = useAppContext()
   const { dictionary } = useLocaleContext()
   const { sections } = dictionary.homePage
   const { theme } = useTheme()
-
-  const commonSectionClasses = 'flex w-[84vw] flex-col items-center gap-8 md:gap-4'
-  const commonTextContainerClasses = 'w-full space-y-4 md:w-2/3'
-  const commonTitleClasses = 'text-pretty text-4xl tracking-tight md:text-5xl'
-  const commonDescriptionClasses = 'text-pretty text-xl leading-relaxed md:text-2xl'
-  const commonImageContainerClasses =
-    'relative flex w-full min-h-[14rem] items-center justify-center md:w-1/3'
 
   return (
     <>
@@ -104,8 +96,9 @@ const HomePage = () => {
             <div
               id='presentation'
               className='flex flex-col items-center justify-center gap-28'>
-              <section className={`${commonSectionClasses} md:flex-row`}>
-                <div className={commonImageContainerClasses}>
+              <PresentationSection
+                {...sections.design}
+                visual={
                   <div className='aspect-[1/1] max-h-[240px] scale-125'>
                     <MetaBalls
                       color={siteConfig.color.hex}
@@ -120,17 +113,12 @@ const HomePage = () => {
                       speed={0.5}
                     />
                   </div>
-                </div>
-                <div className={commonTextContainerClasses}>
-                  <div className={commonTitleClasses}>{sections.design.title}</div>
-                  <div className={commonDescriptionClasses}>
-                    {sections.design.description}
-                  </div>
-                </div>
-              </section>
-
-              <section className={`${commonSectionClasses} md:flex-row-reverse`}>
-                <div className={commonImageContainerClasses}>
+                }
+              />
+              <PresentationSection
+                {...sections.agility}
+                reverse
+                visual={
                   <Waves
                     lineColor={siteConfig.color.hex}
                     className='rounded-3xl border-1 border-fuchsia-600'
@@ -144,18 +132,11 @@ const HomePage = () => {
                     tension={0.1}
                     maxCursorMove={100}
                   />
-                </div>
-                <div className={`${commonTextContainerClasses} md:mr-4`}>
-                  <div className={`${commonTitleClasses} text-end`}>
-                    {sections.agility.title}
-                  </div>
-                  <div className={`${commonDescriptionClasses} text-end`}>
-                    {sections.agility.description}
-                  </div>
-                </div>
-              </section>
-              <section className={`${commonSectionClasses} md:flex-row`}>
-                <div className={commonImageContainerClasses}>
+                }
+              />
+              <PresentationSection
+                {...sections.development}
+                visual={
                   <div className='aspect-[1/1] max-h-[280px]'>
                     <LetterGlitch
                       glitchSpeed={100}
@@ -164,19 +145,13 @@ const HomePage = () => {
                       smooth={true}
                     />
                   </div>
-                </div>
-                <div className={commonTextContainerClasses}>
-                  <div className={commonTitleClasses}>
-                    {sections.development.title}
-                  </div>
-                  <div className={commonDescriptionClasses}>
-                    {sections.development.description}
-                  </div>
-                </div>
-              </section>
-
-              <section className={`${commonSectionClasses} md:flex-row-reverse`}>
-                <div className={`${commonImageContainerClasses} max-h-[240px]`}>
+                }
+              />
+              <PresentationSection
+                {...sections.innovation}
+                reverse
+                visualClassName='max-h-[240px]'
+                visual={
                   <RivePlayer
                     src='/animations/responsive_core.riv'
                     stateMachines='StateMachine'
@@ -197,16 +172,8 @@ const HomePage = () => {
                       },
                     }}
                   />
-                </div>
-                <div className={commonTextContainerClasses}>
-                  <div className={`${commonTitleClasses} text-end`}>
-                    {sections.innovation.title}
-                  </div>
-                  <div className={`${commonDescriptionClasses} text-end`}>
-                    {sections.innovation.description}
-                  </div>
-                </div>
-              </section>
+                }
+              />
             </div>
           </div>
           {/* Contact Section */}

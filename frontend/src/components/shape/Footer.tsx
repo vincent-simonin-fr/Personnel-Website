@@ -9,6 +9,9 @@ import { useMediaQuery } from 'usehooks-ts'
 
 type FooterProps = object
 
+// Module scope: computed once, outside render (keeps the component pure).
+const currentYear = new Date().getFullYear()
+
 const Footer = ({}: FooterProps) => {
   const minWidth = '624px'
   // false on the first render (= server HTML), then the real value: no hydration mismatch.
@@ -38,7 +41,9 @@ const Footer = ({}: FooterProps) => {
           </FadeInWhenVisible>
         )}
         <FadeInWhenVisible delay={0.8}>
-          <div>© 2025 {siteConfig.name}</div>
+          <div>
+            © {currentYear} {siteConfig.name}
+          </div>
         </FadeInWhenVisible>
       </div>
       <div className='h-[3px] w-full bg-primary'></div>
