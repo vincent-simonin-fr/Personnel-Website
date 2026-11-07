@@ -1,21 +1,13 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useLocaleContext } from 'hooks/useLocaleContext'
 
-type Props = { pageIndex: number }
+type PageTitleProps = { title?: string }
 
-export function PageTitle({ pageIndex }: Props) {
-  const { dictionary } = useLocaleContext()
-
+export function PageTitle({ title }: PageTitleProps) {
   useEffect(() => {
-    document.title = dictionary.navigation[pageIndex].title
-  }, [pageIndex])
+    if (title) document.title = title
+  }, [title])
 
-  return (
-    <>
-      <title>{document.title}</title>
-      <meta name='description' content='example description' />
-    </>
-  )
+  return null
 }

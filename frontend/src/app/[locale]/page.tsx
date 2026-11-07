@@ -51,7 +51,9 @@ const HomePage = () => {
 
   return (
     <>
-      <PageTitle pageIndex={0} />
+      <PageTitle
+        title={dictionary.navigation.find((item) => item.to === '/')?.title}
+      />
       <Loading isLoading={isLoading} isError={isError} error={error}>
         <div className='flex w-full flex-col items-center gap-4'>
           <section className='flex min-h-[calc(100vh-60px)] w-full flex-col items-center justify-center'>

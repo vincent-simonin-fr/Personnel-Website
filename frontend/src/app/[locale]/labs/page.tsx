@@ -3,15 +3,19 @@
 import { PageTitle } from 'components/shape/PageTitle'
 import { useTheme } from 'next-themes'
 import { lazy } from 'react'
+import { useLocaleContext } from 'hooks/useLocaleContext'
 
 const Starfield = lazy(() => import('components/ui/animations/Starfield'))
 
 const Labs = () => {
   const { theme } = useTheme()
+  const { dictionary } = useLocaleContext()
 
   return (
     <>
-      <PageTitle pageIndex={2} />
+      <PageTitle
+        title={dictionary.navigation.find((item) => item.to === '/labs')?.title}
+      />
       <div className='relative -mt-16 w-screen'>
         <div className={theme === 'dark' ? '' : 'invert'}>
           <Starfield
