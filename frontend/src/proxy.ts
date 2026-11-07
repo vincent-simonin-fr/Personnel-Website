@@ -116,7 +116,13 @@ export function proxy(req: NextRequest) {
   const firstSegment = pathname.split('/')[1]
   const hasLocale = locales.includes(firstSegment)
 
-  const locale = hasLocale ? firstSegment : 'fr'
+  // Locale-less URL (e.g. "/"): last language picked in LocaleSwitcher, else French.
+  const savedLocale = req.cookies.get('NEXT_LOCALE')?.value ?? ''
+  const locale = hasLocale
+    ? firstSegment
+    : locales.includes(savedLocale)
+      ? savedLocale
+      : 'fr'
   // Request header (not response): read by the root layout and not-found via headers()
   requestHeaders.set('x-locale', locale)
 
