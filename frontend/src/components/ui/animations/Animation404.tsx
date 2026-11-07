@@ -1,10 +1,6 @@
 'use client'
 
-import dynamic from 'next/dynamic'
-
-const RivePlayer = dynamic(() => import('components/ui/animations/RivePlayer'), {
-  ssr: false,
-})
+import RivePlayer from 'components/ui/animations/RivePlayer'
 
 export default function Animation404() {
   return (
