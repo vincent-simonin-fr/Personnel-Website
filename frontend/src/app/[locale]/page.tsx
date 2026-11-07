@@ -11,7 +11,6 @@ import Loading from 'components/loading/Loading'
 import { siteConfig } from 'config/site'
 
 import { useLocaleContext } from 'hooks/useLocaleContext'
-import { PageTitle } from 'components/shape/PageTitle'
 import RivePlayer from 'components/ui/animations/RivePlayer'
 
 const FadeInWhenVisible = lazy(
@@ -48,9 +47,6 @@ const HomePage = () => {
 
   return (
     <>
-      <PageTitle
-        title={dictionary.navigation.find((item) => item.to === '/')?.title}
-      />
       <Loading isLoading={isLoading} isError={isError} error={error}>
         <div className='flex w-full flex-col items-center gap-4'>
           <section className='flex min-h-[calc(100vh-60px)] w-full flex-col items-center justify-center'>
