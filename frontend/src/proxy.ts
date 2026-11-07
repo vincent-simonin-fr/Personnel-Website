@@ -108,10 +108,13 @@ export function proxy(req: NextRequest) {
 
   const pathname = req.nextUrl.pathname
 
-  // Vérifie si le chemin inclut une langue
-  const hasLocale = locales.some((locale) => pathname.startsWith(`/${locale}`))
+  // Vérifie si le chemin inclut une langue (segment exact : `/fresh` n'est pas `fr`)
+  const firstSegment = pathname.split('/')[1]
+  const hasLocale = locales.includes(firstSegment)
 
-  const locale = hasLocale ? pathname.split('/')[1] : 'fr'
+  const locale = hasLocale ? firstSegment : 'fr'
+  // Request header (not response): read by the root layout and not-found via headers()
+  requestHeaders.set('x-locale', locale)
 
   const response = hasLocale
     ? NextResponse.next({
@@ -128,7 +131,6 @@ export function proxy(req: NextRequest) {
   if (isAllowedOrigin) {
     response.headers.set('Access-Control-Allow-Origin', origin)
   }
-  response.headers.set('x-locale', locale)
   response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue)
   response.headers.set(
     'Cache-Control',
