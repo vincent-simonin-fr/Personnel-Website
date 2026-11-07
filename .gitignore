@@ -42,3 +42,6 @@ next-env.d.ts
 bi/*
 my-heroui-app/*
 deployment-architecture-v2.jpg
+# claude code (personal)
+CLAUDE.local.md
+.claude/settings.local.json
