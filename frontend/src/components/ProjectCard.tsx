@@ -21,7 +21,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       )}
       <div className='flex flex-1 flex-col gap-3 p-5'>
         <h3 className='text-2xl font-semibold'>{title}</h3>
-        <p className='text-pretty text-lg leading-relaxed'>{description}</p>
+        <p className='text-lg leading-relaxed text-pretty'>{description}</p>
         {stack.length > 0 && (
           <ul className='mt-auto flex flex-wrap gap-2 pt-2'>
             {stack.map((tech) => (

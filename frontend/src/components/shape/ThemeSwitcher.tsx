@@ -20,13 +20,13 @@ export function ThemeSwitcher() {
     <div className='flex items-center gap-2'>
       {theme === 'dark' ? (
         <SunSvg
-          className='duration-800 h-6 w-6 ease-soft-spring hover:animate-spinner-ease-spin hover:brightness-[0.8]'
+          className='h-6 w-6 duration-800 ease-soft-spring hover:animate-spinner-ease-spin hover:brightness-[0.8]'
           size={24}
           onClick={() => setTheme('light')}
         />
       ) : (
         <MoonSvg
-          className='duration-800 h-6 w-6 ease-soft-spring hover:animate-spinner-ease-spin hover:brightness-[1.5]'
+          className='h-6 w-6 duration-800 ease-soft-spring hover:animate-spinner-ease-spin hover:brightness-[1.5]'
           size={24}
           onClick={() => setTheme('dark')}
         />
