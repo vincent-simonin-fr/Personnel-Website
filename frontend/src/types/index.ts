@@ -38,6 +38,8 @@ export type Dictionary = {
     >
   }
   navigation: MenuItem[]
+  // Hidden from the menus until the lab pages have content; move back into `navigation` to publish.
+  labs: MenuItem
   notFound: {
     title: string
     subtitle: string

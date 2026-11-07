@@ -13,9 +13,7 @@ const Labs = () => {
 
   return (
     <>
-      <PageTitle
-        title={dictionary.navigation.find((item) => item.to === '/labs')?.title}
-      />
+      <PageTitle title={dictionary.labs.title} />
       <div className='relative -mt-16 w-screen'>
         <div className={theme === 'dark' ? '' : 'invert'}>
           <Starfield
