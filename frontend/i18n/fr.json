@@ -137,5 +137,10 @@
     "messagePlaceholder": "Entrez votre message",
     "successMessage": "Votre message a bien été envoyé. Merci !",
     "errorMessage": "Une erreur s'est produite. Veuillez réessayer."
+  },
+  "projects": {
+    "title": "Réalisations",
+    "servicesTitle": "Mes services",
+    "items": []
   }
 }
