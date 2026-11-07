@@ -166,7 +166,8 @@ const Waves: React.FC<WavesProps> = ({
     left: 0,
     top: 0,
   })
-  const noiseRef = useRef(new Noise(Math.random()))
+  // Created on first use, outside render (Math.random is impure).
+  const noiseRef = useRef<Noise | null>(null)
   const linesRef = useRef<Point[][]>([])
   const mouseRef = useRef<Mouse>({
     x: -10,
@@ -268,7 +269,7 @@ const Waves: React.FC<WavesProps> = ({
     function movePoints(time: number) {
       const lines = linesRef.current
       const mouse = mouseRef.current
-      const noise = noiseRef.current
+      const noise = (noiseRef.current ??= new Noise(Math.random()))
       const {
         waveSpeedX,
         waveSpeedY,

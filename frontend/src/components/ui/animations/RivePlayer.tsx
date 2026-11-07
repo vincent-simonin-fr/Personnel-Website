@@ -1,4 +1,4 @@
-'use-client'
+'use client'
 
 import {
   RuntimeLoader,
@@ -49,25 +49,18 @@ const RivePlayer = ({
     rootMargin: rootMargin,
   })
 
-  const useConfigureStateMachine = (): Inputs => {
-    const inputs: Inputs = {
-      click: null,
-      enter: null,
-      exit: null,
-    }
-    if (actions.onClick)
-      inputs.click = useStateMachineInput(rive, stateMachines, 'click')
-    if (actions.onMouseEnter)
-      inputs.enter = useStateMachineInput(rive, stateMachines, 'enter')
-    if (actions.onMouseLeave)
-      inputs.exit = useStateMachineInput(rive, stateMachines, 'exit')
-
-    return inputs
+  // Hooks must run unconditionally; inputs without a matching action stay null.
+  const click = useStateMachineInput(rive, stateMachines, 'click')
+  const enter = useStateMachineInput(rive, stateMachines, 'enter')
+  const exit = useStateMachineInput(rive, stateMachines, 'exit')
+  const inputs: Inputs = {
+    click: actions.onClick ? click : null,
+    enter: actions.onMouseEnter ? enter : null,
+    exit: actions.onMouseLeave ? exit : null,
   }
 
-  const inputs: Inputs = useConfigureStateMachine()
-
   // Déclencher l'animation quand l'élément entre dans la vue
+  // eslint-disable-next-line react-hooks/immutability -- Rive inputs are imperative handles: setting `.value` is the API
   useEffect(() => {
     if (isIntersecting && inputs.enter && inputs.exit) {
       inputs.exit.value = false
