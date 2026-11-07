@@ -46,35 +46,35 @@
       "label": "Projects",
       "title": "Projects",
       "to": "/projects"
-    },
-    {
-      "label": "Tech Labs",
-      "title": "Technology Labs",
-      "to": "/labs",
-      "items": [
-        {
-          "label": "Geographic Information System",
-          "title": "GIS Solutions",
-          "to": "/labs/gis"
-        },
-        {
-          "label": "Business Intelligence",
-          "title": "BI Solutions",
-          "to": "/labs/bi"
-        },
-        {
-          "label": "Artificial Intelligence",
-          "title": "AI Solutions",
-          "to": "/labs/ai"
-        },
-        {
-          "label": "Blockchain",
-          "title": "Web3 & Blockchain",
-          "to": "/labs/blockchain"
-        }
-      ]
     }
   ],
+  "labs": {
+    "label": "Tech Labs",
+    "title": "Technology Labs",
+    "to": "/labs",
+    "items": [
+      {
+        "label": "Geographic Information System",
+        "title": "GIS Solutions",
+        "to": "/labs/gis"
+      },
+      {
+        "label": "Business Intelligence",
+        "title": "BI Solutions",
+        "to": "/labs/bi"
+      },
+      {
+        "label": "Artificial Intelligence",
+        "title": "AI Solutions",
+        "to": "/labs/ai"
+      },
+      {
+        "label": "Blockchain",
+        "title": "Web3 & Blockchain",
+        "to": "/labs/blockchain"
+      }
+    ]
+  },
   "notFound": {
     "title": "Page Not Found",
     "subtitle": "Sorry, the page you're looking for does not exist.",
