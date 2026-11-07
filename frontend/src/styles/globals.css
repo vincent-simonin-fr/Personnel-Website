@@ -60,6 +60,32 @@
   /* HeroUI v2 utilities still used by the theme switcher. */
   --ease-soft-spring: cubic-bezier(0.155, 1.105, 0.295, 1.12);
   --animate-spinner-ease-spin: spinner-spin 0.8s ease infinite;
+  /* FadeInOnAppear (hero): rise + settle, easeInOutCubic. */
+  --animate-fade-in-up: fade-in-up 1s cubic-bezier(0.65, 0, 0.35, 1) both;
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(42px) scale(1.1);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* BouncingHand (404): gentle vertical loop. */
+  --animate-bounce-y: bounce-y 1.2s ease-in-out infinite;
+
+  @keyframes bounce-y {
+    0%,
+    100% {
+      transform: translateY(-5px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+  }
 
   @keyframes spinner-spin {
     0% {
@@ -127,6 +153,16 @@
     position: absolute;
     width: 100%;
     height: 100%;
+  }
+}
+
+/* FadeInWhenVisible: no entrance animation for users who ask for reduced motion.
+   !important beats the component's inline styles. */
+@media (prefers-reduced-motion: reduce) {
+  [data-fade-in] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
