@@ -1,4 +1,5 @@
 import { Metadata, Viewport } from 'next'
+import { siteConfig } from 'config/site'
 
 export const ViewportSite: Viewport = {
   width: 'device-width',
@@ -11,32 +12,16 @@ export const ViewportSite: Viewport = {
   ],
   colorScheme: 'dark',
   viewportFit: 'cover',
-  // Also supported but less commonly used
-  // interactiveWidget: 'resizes-visual',
 }
 
-const defaultOpenGraph: Metadata['openGraph'] = {
-  type: 'website',
-  locale: 'fr_FR',
-  url: 'https://www.dev.vincentsimonin.fr',
-  siteName: 'Vincent Simonin',
-  description:
-    'Discover Vincent Simonin, a Full Stack and Cloud Azure expert, specializing in modern, scalable web applications. Explore his innovative design and development methods.',
-  images: [
-    {
-      url: '/images/og-image.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Vincent Simonin - Full Stack Developer',
-    },
-  ],
-}
+const description =
+  'Discover Vincent Simonin, a Full Stack and Cloud Azure expert, specializing in modern, scalable web applications. Explore his innovative design and development methods.'
 
+// Site-wide defaults. Localized title/description/alternates come from [locale]/layout.tsx.
 export const MetadataSite: Metadata = {
-  metadataBase: new URL('https://www.dev.vincentsimonin.fr'),
+  metadataBase: new URL(siteConfig.url),
   title: 'Vincent Simonin - Full Stack Developer & Azure Cloud Expert',
-  description:
-    'Discover Vincent Simonin, a Full Stack and Cloud Azure expert, specializing in modern, scalable web applications. Explore his innovative design and development methods.',
+  description,
   keywords: [
     'Full Stack Developer',
     'Azure Cloud',
@@ -47,18 +32,16 @@ export const MetadataSite: Metadata = {
     'Cloud Architecture',
     'Software Engineering',
   ],
-  creator: 'Vincent Simonin',
+  creator: siteConfig.name,
   openGraph: {
-    ...defaultOpenGraph,
+    type: 'website',
+    siteName: siteConfig.name,
     title: 'Vincent Simonin - Full Stack Developer & Azure Cloud Expert',
-    description:
-      'Discover Vincent Simonin, a Full Stack and Cloud Azure expert, specializing in modern, scalable web applications. Explore his innovative design and development methods.',
+    description,
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Vincent Simonin - Full Stack Developer',
-    description: 'Expert en développement Full Stack et Cloud Azure',
-    images: ['/images/twitter-image.jpg'],
   },
   robots: {
     index: true,
@@ -71,31 +54,14 @@ export const MetadataSite: Metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: {
-    canonical: 'https://www.dev.vincentsimonin.fr/fr',
-    languages: {
-      'en-US': 'https://www.dev.vincentsimonin.fr/en-us',
-      fr: 'https://www.dev.vincentsimonin.fr/fr',
-      de: 'https://www.dev.vincentsimonin.fr/de',
-    },
-  },
-  // verification: {
-  //   // TODO: Add your Google site verification code here
-  //   // google: 'your-google-site-verification',
-  // },
-  authors: [
-    {
-      name: 'Vincent Simonin',
-      url: 'https://www.dev.vincentsimonin.fr',
-    },
-  ],
+  authors: siteConfig.authors,
 }
 
 export const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Vincent Simonin',
-  url: 'https://www.dev.vincentsimonin.fr',
+  name: siteConfig.name,
+  url: siteConfig.url,
   jobTitle: 'Full Stack Developer & Azure Cloud Expert',
   alumniOf: {
     '@type': 'Organization',
@@ -112,16 +78,6 @@ export const jsonLd = {
     'React',
     '.Net platform',
   ],
-  image: 'https://www.dev.vincent-simonin.com/images/profile.jpg',
-  description:
-    'Discover Vincent Simonin, a Full Stack and Cloud Azure expert, specializing in modern, scalable web applications. Explore his innovative design and development methods.',
-  sameAs: [
-    'https://github.com/vincent-simonin-fr',
-    'https://www.dev.linkedin.com/in/vincentsimonin',
-  ],
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Best Company',
-    url: 'https://microsoft.com',
-  },
+  description,
+  sameAs: [siteConfig.links.github, siteConfig.links.linkedin],
 }
