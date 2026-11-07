@@ -1,7 +1,6 @@
 'use client'
 
 import { RouterProvider } from '@heroui/react'
-import { isServer, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 
 import { useRouter } from 'next/navigation'
@@ -14,52 +13,21 @@ declare module '@react-types/shared' {
   }
 }
 
-function makeQueryClient() {
-  return new QueryClient({
-    defaultOptions: {
-      queries: {
-        // With SSR, we usually want to set some default staleTime
-        // above 0 to avoid refetching immediately on the client
-        staleTime: 60 * 1000,
-      },
-    },
-  })
-}
-
-let browserQueryClient: QueryClient | undefined = undefined
-
-function getQueryClient() {
-  if (isServer) {
-    // Server: always make a new query client
-    return makeQueryClient()
-  } else {
-    // Browser: make a new query client if we don't already have one
-    // This is very important, so we don't re-make a new client if React
-    // suspends during the initial render. This may not be needed if we
-    // have a suspense boundary BELOW the creation of the query client
-    if (!browserQueryClient) browserQueryClient = makeQueryClient()
-    return browserQueryClient
-  }
-}
-
 type ProvidersProps = {
   children: React.ReactNode
   /** CSP nonce: next-themes injects an inline script to apply the theme before paint. */
   nonce: string
 }
 
+// No TanStack Query provider: no query exists, and it shipped its runtime on every page.
+// Add QueryClientProvider back here when the first server-data fetch is introduced.
 // Renders on the server too: theme-dependent output must use CSS (`dark:`), not
 // `useTheme()` during render, or hydration mismatches.
 export function Providers({ children, nonce }: ProvidersProps) {
-  // NOTE: Avoid useState when initializing the query client if you don't
-  //       have a suspense boundary between this and the code that may
-  //       suspend because React will throw away the client on the initial
-  //       render if it suspends and there is no boundary
-  const queryClient = getQueryClient()
   const router = useRouter()
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       {/* HeroUI v3 has no provider; RouterProvider (React Aria) makes `href` on its
           links and menu items navigate with the Next router instead of a full reload. */}
       <RouterProvider navigate={router.push}>
@@ -72,6 +40,6 @@ export function Providers({ children, nonce }: ProvidersProps) {
           <AppContextProvider>{children}</AppContextProvider>
         </NextThemesProvider>
       </RouterProvider>
-    </QueryClientProvider>
+    </>
   )
 }
