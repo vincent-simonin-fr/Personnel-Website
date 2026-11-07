@@ -34,6 +34,10 @@
         "title": "Innovation",
         "description": "The ability to innovate and quickly adopt new technologies is a key success factor in software development. This technological agility helps maintain a competitive edge in a constantly changing market. It also makes it possible to respond proactively to customers' growing expectations with ever more advanced solutions tailored to their needs."
       }
+    },
+    "contactCta": {
+      "text": "A project, a question or a collaboration in mind? Write to me and I'll get back to you quickly.",
+      "button": "Contact me"
     }
   },
   "navigation": [
@@ -46,6 +50,11 @@
       "label": "Projects",
       "title": "Projects",
       "to": "/projects"
+    },
+    {
+      "label": "Contact",
+      "title": "Contact Me",
+      "to": "/contact"
     }
   ],
   "labs": {
@@ -111,7 +120,7 @@
     ]
   },
   "contactForm": {
-    "title": "To Contact Me",
+    "title": "Contact Me",
     "firstNameLabel": "First name",
     "lastNameLabel": "Last name",
     "emailLabel": "Email",

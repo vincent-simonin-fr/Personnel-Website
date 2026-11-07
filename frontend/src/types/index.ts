@@ -32,6 +32,7 @@ export type Dictionary = {
       secondLine: string
     }
     labelButtonToSkills: string
+    contactCta: { text: string; button: string }
     sections: Record<
       'design' | 'agility' | 'development' | 'innovation',
       { title: string; description: string }
