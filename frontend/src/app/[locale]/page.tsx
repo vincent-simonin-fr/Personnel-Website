@@ -22,7 +22,6 @@ const KeyframeCssOnView = lazy(
 const FadeInOnAppear = lazy(() => import('components/ui/animations/FadeInOnAppear'))
 const MetaBalls = lazy(() => import('components/ui/animations/MetaBalls'))
 const LetterGlitch = lazy(() => import('components/ui/animations/LetterGlitch'))
-const ContactForm = lazy(() => import('components/ContactForm'))
 const SocialMedia = lazy(() => import('components/SocialMedia'))
 const Threads = lazy(() => import('components/ui/animations/Threads'))
 const Waves = lazy(() => import('components/ui/animations/Waves'))
@@ -215,17 +214,29 @@ const HomePage = () => {
             <div className='relative h-[calc(100vh-136px)] w-full'>
               <Image
                 src='/images/meeting.jpg'
-                alt='Contact Image'
+                alt=''
                 fill
                 style={{ objectFit: 'cover' }}
                 sizes='80vw'
                 loading='lazy'
               />
             </div>
+            {/* Call to action only: the form lives on /contact (single source). */}
             <div className='absolute inset-0 flex items-center justify-center md:justify-end md:pr-32'>
-              <div className='max-w-md rounded-large bg-background p-6 text-primary-50 md:w-1/2'>
-                {/*backdrop-blur-2xl*/}
-                <ContactForm />
+              <div className='flex max-w-md flex-col items-start gap-4 rounded-large bg-background p-6 text-primary-50 md:w-1/2'>
+                <h2 className={`${hankenGrotesk.className} text-2xl`}>
+                  {dictionary.contactForm.title}
+                </h2>
+                <p className='text-pretty text-lg'>
+                  {dictionary.homePage.contactCta.text}
+                </p>
+                <Button
+                  className='rounded-full bg-primary-50 text-primary-900'
+                  as={Link}
+                  href={`/${dictionary.locale}/contact`}
+                  variant='solid'>
+                  {dictionary.homePage.contactCta.button}
+                </Button>
               </div>
             </div>
           </KeyframeCssOnView>

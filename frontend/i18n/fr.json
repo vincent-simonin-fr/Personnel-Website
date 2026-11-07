@@ -34,6 +34,10 @@
         "title": "Innovation",
         "description": "La capacité à innover et à adopter rapidement de nouvelles technologies est un facteur clé de succès dans le développement logiciel. Cette agilité technologique permet de maintenir un avantage concurrentiel dans un marché en constante évolution. De plus, elle offre la possibilité de répondre de manière proactive aux attentes croissantes des consommateurs, en proposant des solutions toujours plus avancées et adaptées à leurs besoins."
       }
+    },
+    "contactCta": {
+      "text": "Un projet, une question ou une collaboration ? Écrivez-moi, je vous réponds rapidement.",
+      "button": "Me contacter"
     }
   },
   "navigation": [
@@ -46,6 +50,11 @@
       "label": "Projets",
       "title": "Projets",
       "to": "/projects"
+    },
+    {
+      "label": "Contact",
+      "title": "Me Contacter",
+      "to": "/contact"
     }
   ],
   "labs": {

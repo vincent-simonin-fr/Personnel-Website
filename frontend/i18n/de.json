@@ -34,6 +34,10 @@
         "title": "Innovation",
         "description": "Die Fähigkeit, innovativ zu sein und neue Technologien schnell einzuführen, ist ein entscheidender Erfolgsfaktor in der Softwareentwicklung. Diese technologische Agilität sichert einen Wettbewerbsvorteil in einem sich ständig wandelnden Markt. Zudem ermöglicht sie es, proaktiv auf die wachsenden Erwartungen der Kunden einzugehen und immer fortschrittlichere, passgenaue Lösungen anzubieten."
       }
+    },
+    "contactCta": {
+      "text": "Ein Projekt, eine Frage oder eine Zusammenarbeit? Schreiben Sie mir, ich antworte Ihnen schnell.",
+      "button": "Kontakt aufnehmen"
     }
   },
   "navigation": [
@@ -46,6 +50,11 @@
       "label": "Projekte",
       "title": "Projekte",
       "to": "/projects"
+    },
+    {
+      "label": "Kontakt",
+      "title": "Kontaktieren Sie mich",
+      "to": "/contact"
     }
   ],
   "labs": {
@@ -111,7 +120,7 @@
     ]
   },
   "contactForm": {
-    "title": "Kontaktieren Sie Mich",
+    "title": "Kontaktieren Sie mich",
     "firstNameLabel": "Vorname",
     "lastNameLabel": "Nachname",
     "emailLabel": "Email",
