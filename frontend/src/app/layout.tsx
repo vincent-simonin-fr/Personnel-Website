@@ -12,8 +12,8 @@ export const metadata = MetadataSite
 
 export const viewport = ViewportSite
 
-// fr or en-US or de
-// Note: Pour SSG, on utilise une locale par défaut. La locale réelle sera gérée dans [locale]/layout.tsx
+// Locale and CSP nonce come from request headers set by src/proxy.ts. Reading them
+// makes every route dynamic, which the per-request nonce requires anyway.
 const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {
   const headersList = await headers()
   const locale = headersList.get('x-locale') || 'fr' // Défaut à 'fr' si pas de locale trouvée

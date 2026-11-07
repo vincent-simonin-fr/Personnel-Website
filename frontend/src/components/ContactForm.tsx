@@ -20,26 +20,16 @@ type UserInput = {
   message: string
 }
 
-const CustomToast = ({
-  closeToast,
-  toastProps,
-  isPaused,
-  data,
-}: ToastContentProps<ReactNode>) => {
+const CustomToast = ({ data }: ToastContentProps<ReactNode>) => {
   return (
     <div
       className={`${hankenGrotesk.className} flex flex-col pl-8 text-primary-300`}>
-      {/* <div className='absolute -left-12 top-1/2 z-10 grid size-20 -translate-y-1/2 place-items-center rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'>
-        smile
-      </div> */}
-      {/* <p className={`${soehneSemiBold.className}`}>John Doe</p> */}
       <p className={`text-sm`}>{data}</p>
     </div>
   )
 }
 
 const ContactForm = ({}: ContactFormProps) => {
-  // const [action, setAction] = useState<string | null>(null) // For debugging
   const { theme } = useTheme()
   const [userInput, setUserInput] = useState<UserInput>({
     firstName: '',
@@ -75,7 +65,6 @@ const ContactForm = ({}: ContactFormProps) => {
         message: userInput.message,
       }
 
-      // TODO Text I18n
       const res = await emailjs.send(serviceID, templateID, emailParams, userID)
       if (res.status === 200) {
         toast.success(CustomToast, {
@@ -240,11 +229,6 @@ const ContactForm = ({}: ContactFormProps) => {
             {dictionary.contactForm.resetButton}
           </Button>
         </div>
-        {/* {action && (
-          <div className='text-small text-default-500'>
-            Action: <code>{action}</code>
-          </div>
-        )} */}
       </Form>
     </div>
   )

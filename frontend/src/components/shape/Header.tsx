@@ -209,7 +209,6 @@ const Header = ({}: HeaderProps) => {
             })}
         </NavbarMenu>
       </Navbar>
-      {/* {isMenuOpen && <div className='h-4 bg-foreground'></div>} */}
     </AnimatedDiv>
   )
 }
