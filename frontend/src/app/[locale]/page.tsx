@@ -3,6 +3,7 @@
 import { useTheme } from 'next-themes'
 import { useAppContext } from 'hooks/useAppContext'
 import Image from 'next/image'
+import meetingImage from 'assets/meeting.jpg'
 import Link from 'next/link'
 import { Hanken_Grotesk } from 'next/font/google'
 import { buttonVariants, cn } from '@heroui/react'
@@ -192,12 +193,14 @@ const HomePage = () => {
           <KeyframeCssOnView cssClass='showAndHideOnView px-4 md:px-16'>
             <div className='relative h-[calc(100vh-136px)] w-full'>
               <Image
-                src='/images/meeting.jpg'
+                src={meetingImage}
                 alt=''
                 fill
                 style={{ objectFit: 'cover' }}
-                sizes='80vw'
+                // Container is full width minus px-4 / md:px-16.
+                sizes='(min-width: 768px) calc(100vw - 8rem), calc(100vw - 2rem)'
                 loading='lazy'
+                placeholder='blur'
               />
             </div>
             {/* Call to action only: the form lives on /contact (single source). */}
