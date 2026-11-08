@@ -46,3 +46,9 @@ deployment-architecture-v2.jpg
 
 # Specs, plans and review notes (local only, never committed)
 docs/
+
+# Local only for now: editor settings, project notes
+.vscode/
+TODO.md
+frontend/.vscode/
+frontend/TODO.md
