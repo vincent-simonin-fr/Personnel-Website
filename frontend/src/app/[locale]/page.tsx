@@ -129,7 +129,7 @@ const HomePage = () => {
               <p className='max-w-3xl text-lg leading-relaxed text-pretty text-primary-200'>
                 {career.text}
               </p>
-              <ol className='mt-6 grid grid-cols-1 md:grid-cols-6 md:gap-4'>
+              <ol className='mt-6 grid grid-cols-1 md:grid-cols-3 md:gap-x-4 md:gap-y-8 xl:grid-cols-6'>
                 {career.items.map((item, i) => {
                   const last = i === career.items.length - 1
                   return (
@@ -142,7 +142,7 @@ const HomePage = () => {
                       />
                       <p className='text-sm text-primary-300'>{item.year}</p>
                       <p className='mt-1 font-semibold'>{item.title}</p>
-                      <p className='mt-1 text-sm text-pretty text-primary-200'>
+                      <p className='mt-1 text-sm text-pretty break-words hyphens-auto text-primary-200'>
                         {item.detail}
                       </p>
                     </li>
