@@ -28,13 +28,14 @@ Titres et paragraphes longs : `text-pretty` (ou `text-balance` pour les titres c
 - Colonne de contenu : `w-[84vw]`, centrée.
 - Écran d'ouverture et pages : `min-h-[calc(100vh-60px)]` (hauteur moins le header).
 - Espacements : `gap-4` (éléments liés), `gap-8` (blocs), `gap-16` (sections d'une page), `gap-28` (sections de l'accueil).
-- Sections de présentation : composant `PresentationSection` (visuel 1/3, texte 2/3, alterné avec `reverse`, empilé sous `md`). L'alignement à droite ne s'applique qu'à partir de `md`.
+- Accueil : récit concret (accroche, références, méthode en 5 phases avec preuves, projets phares, parcours, contact). Page Projets : une scène plein écran par projet (voir « Fiche projet »).
 - Points de rupture : ceux de Tailwind ; le header passe en mode mobile sous 640 px.
 
 ## Composants
 
 - **Bouton principal** : HeroUI `Button`, `rounded-full bg-primary-50 text-primary-900` ; en lien, un `next/link` avec `cn(buttonVariants(), …)` et les mêmes classes. Secondaire : `variant='secondary'` + `rounded-full bg-primary-800 text-primary-100` (neutre ; la variante seule prendrait l'accent fuchsia).
-- **Carte / panneau** : `rounded-large`, `p-6` (ou `p-5` pour les cartes de grille), fond `bg-background` ou `bg-primary-900`, bordure `border-1 border-primary-700`.
+- **Carte / panneau** : `rounded-large`, `p-6` (ou `p-5` pour les cartes de grille), fond `bg-background` ou `bg-primary-900`, bordure `border-1 border-primary-700`. Règle par défaut partout, sauf les fiches projet.
+- **Fiche projet / scène** (`ProjectCard`, `ProjectScene`) : `rounded-3xl`, fond en verre `bg-primary-900/80 backdrop-blur-xl`, bordure `border-1 border-primary-800`, ombre portée profonde (`shadow-2xl`). Derrière l'illustration, un halo fuchsia flou est permis (lumière, jamais un aplat). Frise des 5 phases : point plein fuchsia = phase couverte, point creux = non couverte, doublée d'un texte `sr-only`.
 - **Rayons** : `rounded-small/medium/large` = 2 / 4 / 6 px (définis dans `globals.css`) ; échelle Tailwind standard pour le reste. `rounded-full` pour les boutons et les puces.
 - Champs de formulaire : voir `ContactForm` (`TextField` HeroUI, `rounded-xl`, fond `primary-900`, anneau de focus fuchsia, hauteur `h-8`).
 
@@ -43,9 +44,10 @@ Titres et paragraphes longs : `text-pretty` (ou `text-balance` pour les titres c
 - Les animations sont **décoratives** : `aria-hidden`, montées seulement près de l'écran (`OnScreen`, `RivePlayer`), sans décalage de mise en page (conteneur de même taille).
 - Respecter `prefers-reduced-motion`.
 - Entrées de contenu : `FadeInOnAppear` / `FadeInWhenVisible` (CSS pur), pas d'animation maison ni de bibliothèque JS d'animation.
+- Profondeur au défilement : attributs `data-scene` (la scène) et `data-parallax` / `data-parallax-fade` (ses plans), distance réglée par `[--parallax:…]` (positive = le plan traîne, négative = il devance). CSS pur (`animation-timeline: view()`), statique sans support ou en mouvement réduit.
 
 ## Images
 
 - Image décorative : `alt=""`. Image au-dessus de la ligne de flottaison (LCP) : `preload` + `fetchPriority='high'`.
 - Photos importées statiquement depuis `src/assets/` (aperçu flou, cache long) ; source à 3840 px de large maximum (Next n'en sert jamais plus). AVIF est servi automatiquement.
-- Visuels de projets : 16:9, dans `public/images/projects/` (chemins déclarés dans les dictionnaires JSON, qui ne peuvent pas faire d'import statique).
+- Visuels de projets : pas de captures (projets clients confidentiels) ; illustrations SVG abstraites (`ProjectIllustration`), une par type de projet.
