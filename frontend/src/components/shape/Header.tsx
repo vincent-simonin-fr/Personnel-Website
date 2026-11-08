@@ -110,7 +110,9 @@ const Header = ({}: HeaderProps) => {
         <div className='flex grow basis-0 justify-start sm:grow-0 sm:basis-auto'>
           <Link href={`/${locale}`} className='flex items-center gap-2'>
             <AppLogo />
-            <span className='hidden text-xl sm:block'>{siteConfig.name}</span>
+            {/* sr-only below sm (not `hidden`): AppLogo is empty, so this text is the
+                link's only accessible name on mobile. */}
+            <span className='sr-only text-xl sm:not-sr-only'>{siteConfig.name}</span>
           </Link>
         </div>
 
