@@ -24,6 +24,7 @@ export const ILLUSTRATIONS = [
   'devices',
   'roads',
   'layers',
+  'interface',
 ] as const
 export type Illustration = (typeof ILLUSTRATIONS)[number]
 
@@ -31,7 +32,7 @@ export type Project = {
   /** Stable key, e.g. 'ey-placement' (also referenced by homePage.featured.ids). */
   id: string
   client: string
-  /** Employer through which the client was served, e.g. 'Kardham Digital'. */
+  /** Employer through which the client was served, e.g. 'Kardham Digital' (shown as "Kardham Digital x EY"). */
   via?: string
   period: string
   /** Localized badge, e.g. 'En cours'. */
@@ -49,6 +50,7 @@ export type OtherProject = {
   period: string
   title: string
   description: string
+  stack: string[]
 }
 
 export type Dictionary = {
@@ -94,13 +96,11 @@ export type Dictionary = {
     title: string
     intro: string
     roleLabel: string
-    viaLabel: string
     /** Prefix of the screen-reader sentence listing the covered phases. */
     phasesLabel: string
     items: Project[]
     othersTitle: string
     others: OtherProject[]
-    servicesTitle: string
   }
   notFound: {
     /** The page's h1, under the stage scene: "Cette page n'est pas au programme." */

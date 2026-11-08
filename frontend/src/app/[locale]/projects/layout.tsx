@@ -10,12 +10,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const dictionary = await getDictionary(locale)
   const title = dictionary.navigation.find((item) => item.to === '/projects')?.title
-  return pageMetadata(
-    locale,
-    '/projects',
-    title,
-    dictionary.presentation.description,
-  )
+  return pageMetadata(locale, '/projects', title, dictionary.projects.intro)
 }
 
 const ProjectsLayout = ({ children }: Props) => children

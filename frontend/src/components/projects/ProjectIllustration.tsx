@@ -215,6 +215,83 @@ const drawing = (kind: Illustration): ReactElement => {
           <circle cx='150' cy='120' r='3' className='fill-fuchsia-500/60' />
         </g>
       )
+    case 'interface':
+      // A redesigned search screen: search bar, filters column, result rows.
+      return (
+        <g fill='none' strokeWidth={1.5}>
+          <rect
+            x='40'
+            y='30'
+            width='320'
+            height='240'
+            rx='10'
+            stroke='currentColor'
+          />
+          <path d='M40 58h320' stroke='currentColor' />
+          {[56, 70, 84].map((x) => (
+            <circle
+              key={x}
+              cx={x}
+              cy='44'
+              r='4'
+              fill='currentColor'
+              fillOpacity={0.4}
+            />
+          ))}
+          <rect
+            x='60'
+            y='74'
+            width='280'
+            height='30'
+            rx='15'
+            className='fill-fuchsia-500/15 stroke-fuchsia-500'
+          />
+          <circle cx='80' cy='89' r='6' className='stroke-fuchsia-500' />
+          <path
+            d='M84 93l5 5'
+            strokeLinecap='round'
+            className='stroke-fuchsia-500'
+          />
+          {[126, 150, 174, 198].map((y, i) => (
+            <g key={y}>
+              <rect
+                x='60'
+                y={y - 6}
+                width='12'
+                height='12'
+                rx='3'
+                stroke='currentColor'
+                className={i < 2 ? 'fill-fuchsia-500/80 stroke-fuchsia-500' : ''}
+              />
+              <path
+                d={`M80 ${y}h40`}
+                stroke='currentColor'
+                strokeOpacity={0.5}
+                strokeLinecap='round'
+              />
+            </g>
+          ))}
+          {[120, 166, 212].map((y, i) => (
+            <g key={y}>
+              <rect
+                x='140'
+                y={y}
+                width='200'
+                height='36'
+                rx='6'
+                stroke='currentColor'
+                className={i === 0 ? 'stroke-fuchsia-500' : ''}
+              />
+              <path
+                d={`M154 ${y + 13}h110M154 ${y + 24}h70`}
+                stroke='currentColor'
+                strokeOpacity={0.5}
+                strokeLinecap='round'
+              />
+            </g>
+          ))}
+        </g>
+      )
   }
 }
 

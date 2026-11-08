@@ -2,24 +2,23 @@
   "locale": "de",
   "homePage": {
     "title": "Startseite",
-    "description": "Vincent Simonin, Full-Stack-Softwareingenieur in Dijon: Fachanwendungen mit .NET, Angular, React und Azure, von der Spezifikation bis zur Wartung.",
+    "description": "Vincent Simonin, Full-Stack-Softwareingenieur in Dijon: Fachanwendungen mit .NET, React, Angular und Azure, von der Spezifikation bis zum Produktivbetrieb.",
     "deployButtonLabel": "Jetzt bereitstellen",
     "firstScreen": {
-      "salutation": "Hallo zusammen,",
+      "salutation": "Hallo,",
       "hook": {
-        "before": "Fachanwendungen, ",
-        "accent": "die Bestand haben",
-        "after": ", von der Anforderung bis zur Wartung."
+        "before": "Als Full-Stack-Ingenieur konzipiere und realisiere ich Ihre ",
+        "accent": "maß\u00adgeschneiderten Anwendungen",
+        "after": "."
       },
-      "subline": ".NET, Angular, React und Azure Cloud, mit DevSecOps-Kultur. Ansässig in Dijon, Frankreich."
+      "subline": "Konzeption – Entwicklung – Hosting – Wartung – Audit"
     },
     "labelButtonToSkills": "Projekte ansehen",
     "references": {
       "title": "Sie haben mir vertraut",
       "names": [
-        "EY",
-        "APRR",
         "Kardham Digital",
+        "APRR",
         "Inetum",
         "INRAE"
       ]
@@ -34,8 +33,8 @@
     },
     "career": {
       "kicker": "Werdegang",
-      "title": "Von der öffentlichen Forschung zum intelligenten Gebäude.",
-      "text": "Ausgebildet am DIIAGE, einer Partnerschule von Microsoft, habe ich für die öffentliche Forschung, die Wasserwirtschaft, Autobahnen und intelligente Gebäude gearbeitet, immer mit demselben Anliegen: wartbare Anwendungen, deren Kosten langfristig beherrschbar bleiben.",
+      "title": "Von der öffentlichen Forschung zum Smart Building.",
+      "text": "Ausgebildet am DIIAGE, einer Partnerschule von Microsoft, habe ich für die öffentliche Forschung, die Wasserwirtschaft, Autobahnen und den Bereich Smart Building gearbeitet, immer mit demselben Anliegen: wartbare Anwendungen, deren Kosten langfristig beherrschbar bleiben.",
       "items": [
         {
           "year": "2021",
@@ -45,17 +44,17 @@
         {
           "year": "2021",
           "title": "INRAE",
-          "detail": "Praktikum: Anwendung zur Erfassung von Schulkantinen-Menüs"
+          "detail": "Praktikum – Anwendung zur Erfassung von Schulkantinen-Menüs"
         },
         {
           "year": "2022",
           "title": "Inetum",
-          "detail": "Full-Stack-Entwickler, Software GREA (Wasserwirtschaft)"
+          "detail": "Full-Stack-Entwickler – Software GREA (Verwaltung von Wasser- und Abwasserressourcen)"
         },
         {
           "year": "2022 – 2024",
           "title": "APRR",
-          "detail": "Full-Stack-Entwickler: Verkehrs- und Wetterdaten, GIS"
+          "detail": "Full-Stack-Entwickler – Unterstützungssystem für das Verkehrsmanagement, GIS-Software"
         },
         {
           "year": "2024",
@@ -65,10 +64,10 @@
         {
           "year": "2024 –",
           "title": "Kardham Digital",
-          "detail": "Full-Stack-Entwickler: Smart Building, Module für EY"
+          "detail": "Full-Stack-Entwickler – Smart-Building-Lösung"
         }
       ],
-      "certifications": "Zertifizierungen Microsoft Azure Fundamentals und Azure AI Fundamentals"
+      "certifications": "Zertifizierungen Microsoft DevOps Engineer Expert (AZ-400), Azure Fundamentals und Azure AI Fundamentals"
     },
     "contactCta": {
       "text": "Ein Projekt, eine Frage oder eine Zusammenarbeit? Schreiben Sie mir, ich antworte Ihnen schnell.",
@@ -80,24 +79,24 @@
       "proofLabel": "In der Praxis",
       "steps": {
         "specify": {
-          "title": "Erst das Fachgebiet verstehen, dann programmieren",
-          "text": "Anforderungsanalyse, funktionale Spezifikationen, Machbarkeitsstudien.",
+          "title": "Das Verständnis des Fachgebiets im Mittelpunkt des Prozesses",
+          "text": "Anforderungsanalyse, funktionale Spezifikationen, Forschung & Entwicklung.",
           "proof": "Funktionale Spezifikationen der Anwendungen für Gebäudeleittechnik (Kardham Digital) · Machbarkeitsstudie für eine private Blockchain (APRR)."
         },
         "design": {
-          "title": "Architekturentscheidungen, die Bestand haben",
-          "text": "Microservices oder modularer Monolith in .NET, mit Beobachtbarkeit, Skalierbarkeit und Wartbarkeit von Anfang an.",
+          "title": "Eine Architektur, die die Kosten langfristig im Griff behält",
+          "text": "Performance, Beobachtbarkeit, Skalierbarkeit und Wartbarkeit.",
           "proof": "Technische Architektur der Anwendungen für Gebäudeleittechnik (Kardham Digital) · verteilte und N-Tier-Architekturen (APRR)."
         },
         "build": {
           "title": "Vom Backend bis zur Oberfläche",
-          "text": "ASP.NET / Blazor, Angular, React, Java / Spring Boot, Geodienste (ArcGIS, AutoCAD Map 3D), Industrieprotokolle (BACnet).",
-          "proof": "Erfassung, Verarbeitung, Verbreitung und Visualisierung von Verkehrs- und Wetterdaten (APRR) · automatisierte Arbeitsplatzvergabe und Flächen-BI (EY)."
+          "text": "ASP.NET / Blazor, React, Angular, Java / Spring Boot, Kartendienste (ArcGIS, AutoCAD Map 3D), Industrieprotokolle (BACnet).",
+          "proof": "Erfassung, Verarbeitung, Verbreitung und Visualisierung von Verkehrs- und Wetterdaten (APRR) · Modul für automatisierte Arbeitsplatzvergabe und Flächensteuerung (Kardham Digital x EY)."
         },
         "ship": {
           "title": "Oft liefern, sicher liefern",
           "text": "Continuous Integration und Deployment, Sicherheit von Anfang an (DevSecOps), Azure Cloud.",
-          "proof": "Continuous Integration und Deployment bei Kardham Digital · Zertifizierungen Microsoft Azure Fundamentals und Azure AI Fundamentals."
+          "proof": "Continuous Integration und Deployment bei Kardham Digital · Zertifizierungen Microsoft DevOps Engineer Expert (AZ-400), Azure Fundamentals und Azure AI Fundamentals."
         },
         "maintain": {
           "title": "Die Anwendung am Leben halten",
@@ -206,27 +205,38 @@
   },
   "projects": {
     "title": "Projekte",
-    "intro": "Fachanwendungen für Großunternehmen, von der ersten Anforderung bis zur Wartung begleitet.",
+    "intro": "Fachanwendungen für Großunternehmen, von der ersten Anforderung bis zum Produktivbetrieb begleitet.",
     "roleLabel": "Rolle",
-    "viaLabel": "über",
     "phasesLabel": "Abgedeckte Phasen:",
     "items": [
       {
-        "id": "ey-placement",
-        "client": "EY",
-        "via": "Kardham Digital",
-        "period": "2024 – 2025",
-        "title": "Automatisierte Arbeitsplatzvergabe und Flächensteuerung",
-        "summary": "Modul, das Mitarbeitende automatisch nach Business Unit und Karrierestufe zuweist, ergänzt durch eine BI-Lösung zur Optimierung der Flächen und zur Analyse der Kosten pro m². Es erweitert das Smart-Building-Angebot von Kardham Digital.",
-        "role": "Full-Stack-Entwickler",
+        "id": "kardham-bms",
+        "client": "Kardham Digital",
+        "period": "2024 – heute",
+        "title": "Steuerung der Gebäudeleittechnik",
+        "summary": "Anwendungen zur Steuerung von Gebäudemanagementsystemen, die mit den Anlagen (GLT, IoT, Videoüberwachung und Zutrittskontrolle) kommunizieren. Als Teil des Smart-Building-Angebots nutzen sie Belegungs- und Komfortdaten, um die Flächennutzung und das Wohlbefinden der Nutzer zu optimieren – im Sinne des WELL-Labels.",
+        "role": "Full-Stack-Entwickler: technische Architektur, Erstellung von Spezifikationen, Continuous Integration und Deployment",
         "phases": [
+          "specify",
           "design",
           "build",
           "ship",
           "maintain"
         ],
-        "stack": [],
-        "illustration": "floorplan"
+        "stack": [
+          ".NET",
+          "Blazor",
+          "PostgreSQL",
+          "RabbitMQ",
+          "Azure",
+          "Docker",
+          "Nginx",
+          "IIS",
+          "Power BI",
+          "BACnet",
+          "OPC UA"
+        ],
+        "illustration": "devices"
       },
       {
         "id": "ey-worksite",
@@ -234,24 +244,9 @@
         "via": "Kardham Digital",
         "period": "2025 –",
         "status": "In Arbeit",
-        "title": "Baustellenmanagement",
+        "title": "Modul für Baustellenmanagement",
         "summary": "Modul für das Baustellenmanagement, derzeit in Entwicklung, das das Smart-Building-Angebot von Kardham Digital ergänzt und EY eine fortschrittliche Lösung bietet.",
-        "role": "Full-Stack-Entwickler",
-        "phases": [
-          "design",
-          "build",
-          "ship"
-        ],
-        "stack": [],
-        "illustration": "schedule"
-      },
-      {
-        "id": "kardham-bms",
-        "client": "Kardham Digital",
-        "period": "2024 –",
-        "title": "Steuerung der Gebäudeleittechnik",
-        "summary": "Anwendungen zur Steuerung der Gebäudeleittechnik, die über industrielle Kommunikationsprotokolle wie BACnet mit den Anlagen kommunizieren.",
-        "role": "Full-Stack-Entwickler: technische Architektur, Continuous Integration und Deployment, funktionale Spezifikationen",
+        "role": "Full-Stack-Entwickler: vollständige Umsetzung des Moduls in direkter Zusammenarbeit mit dem Kunden",
         "phases": [
           "specify",
           "design",
@@ -259,22 +254,53 @@
           "ship"
         ],
         "stack": [
-          "BACnet"
+          ".NET",
+          "Blazor",
+          "PostgreSQL",
+          "IIS"
         ],
-        "illustration": "devices"
+        "illustration": "schedule"
+      },
+      {
+        "id": "ey-placement",
+        "client": "EY",
+        "via": "Kardham Digital",
+        "period": "2024 – 2025",
+        "title": "Modul für automatisierte Arbeitsplatzvergabe und Flächensteuerung",
+        "summary": "Weist Mitarbeitenden nach den vom Unternehmen festgelegten Kriterien automatisch Flächen an ihrem Arbeitsort zu, Flex Office inklusive. Die erzeugten Daten speisen die Entscheidungsunterstützung: Flächenoptimierung und Kosten pro m². Es ergänzt das Smart-Building-Angebot von Kardham Digital.",
+        "role": "Full-Stack-Entwickler: vollständige Umsetzung des Moduls in direkter Zusammenarbeit mit dem Kunden",
+        "phases": [
+          "specify",
+          "design",
+          "build",
+          "ship"
+        ],
+        "stack": [
+          ".NET",
+          "Blazor",
+          "PostgreSQL",
+          "IIS"
+        ],
+        "illustration": "floorplan"
       },
       {
         "id": "aprr-traffic",
         "client": "APRR",
         "period": "2022 – 2024",
-        "title": "Verkehrs- und Wetterdaten",
-        "summary": "Neue Funktionen für eine Anwendung, die Verkehrs- und Wetterdaten erfasst, verarbeitet, verbreitet und visualisiert.",
+        "title": "Unterstützungssystem für das Verkehrsmanagement",
+        "summary": "Weiterentwickelnde Wartung einer Anwendung für den Autobahnbetrieb, die Verkehrs- und Wetterdaten in Echtzeit erfasst, verarbeitet, verbreitet und visualisiert. Konzeption und Entwicklung neuer Funktionen von Anfang bis Ende, von der Datenverarbeitung bis zur Oberfläche, innerhalb einer verteilten Architektur.",
         "role": "Full-Stack-Entwickler",
         "phases": [
           "build",
           "maintain"
         ],
-        "stack": [],
+        "stack": [
+          ".NET",
+          "Angular",
+          "PostgreSQL",
+          "Kafka",
+          "RabbitMQ"
+        ],
         "illustration": "roads"
       },
       {
@@ -282,7 +308,7 @@
         "client": "APRR",
         "period": "2022 – 2024",
         "title": "Geoinformationsdienste",
-        "summary": "Widgets für Geodienste, eingebunden in die Plattform ArcGIS Experience Builder, sowie neue Funktionen für ein Plug-in für AutoCAD Map 3D.",
+        "summary": "Widgets für Kartendienste, eingebunden in die Plattform ArcGIS Experience Builder, sowie neue Funktionen für ein Plug-in für AutoCAD Map 3D.",
         "role": "Full-Stack-Entwickler",
         "phases": [
           "build"
@@ -292,6 +318,26 @@
           "AutoCAD Map 3D"
         ],
         "illustration": "layers"
+      },
+      {
+        "id": "inetum-grea",
+        "client": "Inetum",
+        "period": "2022",
+        "title": "Grafische Neugestaltung von GREA",
+        "summary": "Neue Suchoberfläche für GREA, eine Software zur Verwaltung von Wasser- und Abwasserressourcen, danach korrigierende und weiterentwickelnde Wartung.",
+        "role": "Full-Stack-Entwickler",
+        "phases": [
+          "design",
+          "build",
+          "maintain"
+        ],
+        "stack": [
+          ".NET",
+          "PostgreSQL",
+          "Oracle",
+          "Bootstrap"
+        ],
+        "illustration": "interface"
       }
     ],
     "othersTitle": "Weitere Projekte",
@@ -300,28 +346,35 @@
         "client": "APRR",
         "period": "2022 – 2024",
         "title": "Blockchain-Studie",
-        "description": "Machbarkeitsstudie für eine private Blockchain, um die Anforderungen an die Zertifizierung von Kassensoftware zu erfüllen."
+        "description": "Machbarkeitsstudie für eine private Blockchain, um die Anforderungen an die Zertifizierung von Kassensoftware zu erfüllen.",
+        "stack": [
+          "Hyperledger Fabric",
+          "Kubernetes"
+        ]
       },
       {
         "client": "APRR",
         "period": "2022 – 2024",
         "title": "Immobilienverwaltung",
-        "description": "Neue Funktionen für eine Anwendung zur Verwaltung des Immobilienbestands."
-      },
-      {
-        "client": "Inetum",
-        "period": "2022",
-        "title": "GREA, Wasserwirtschaft",
-        "description": "Neugestaltung der Suchoberfläche von GREA, einer Software für Wasser- und Abwasserwirtschaft, danach korrigierende und weiterentwickelnde Wartung."
+        "description": "Neue Funktionen für eine Anwendung zur Verwaltung des Immobilienbestands.",
+        "stack": [
+          "Java / Spring Boot",
+          "Angular",
+          "PostgreSQL"
+        ]
       },
       {
         "client": "INRAE",
         "period": "2021",
         "title": "Schulkantinen-Menüs",
-        "description": "Desktop-Anwendung zur Erfassung und Verarbeitung von Schulkantinen-Menüs für eine Studie zur ernährungsphysiologischen und ökologischen Qualität der Schulverpflegung in Frankreich (Python, SQL, Tkinter)."
+        "description": "Desktop-Anwendung zur Erfassung und Verarbeitung von Schulkantinen-Menüs für eine Studie zur ernährungsphysiologischen und ökologischen Qualität der Schulverpflegung in Frankreich.",
+        "stack": [
+          "Python",
+          "SQL",
+          "Tkinter"
+        ]
       }
-    ],
-    "servicesTitle": "Meine Leistungen"
+    ]
   },
   "phases": {
     "specify": "Spezifizieren",

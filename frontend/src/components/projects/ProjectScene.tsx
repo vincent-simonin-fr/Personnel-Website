@@ -6,7 +6,7 @@ type ProjectSceneProps = {
   project: Project
   index: number
   total: number
-  labels: Pick<Dictionary['projects'], 'roleLabel' | 'viaLabel' | 'phasesLabel'>
+  labels: Pick<Dictionary['projects'], 'roleLabel' | 'phasesLabel'>
   phaseLabels: Record<Phase, string>
 }
 

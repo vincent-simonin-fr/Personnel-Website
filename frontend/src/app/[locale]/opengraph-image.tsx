@@ -31,7 +31,8 @@ const OpengraphImage = async ({ params }: Props) => {
         {siteConfig.name}
       </div>
       <div style={{ marginTop: 24, fontSize: 40, color: '#B0B0B0' }}>
-        {`${hook.before}${hook.accent}${hook.after}`}
+        {/* The OG renderer draws soft hyphens (used for narrow screens) as real ones. */}
+        {`${hook.before}${hook.accent}${hook.after}`.replaceAll('\u00ad', '')}
       </div>
       <div style={{ marginTop: 'auto', fontSize: 28, color: siteConfig.color.hex }}>
         {siteConfig.url.replace('https://', '')}
