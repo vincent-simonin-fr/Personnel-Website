@@ -12,6 +12,7 @@ type Props = { params: Promise<{ locale: string }> }
 const OpengraphImage = async ({ params }: Props) => {
   const { locale } = await params
   const { homePage } = await getDictionary(locale)
+  const { hook } = homePage.firstScreen
 
   return new ImageResponse(
     <div
@@ -30,7 +31,7 @@ const OpengraphImage = async ({ params }: Props) => {
         {siteConfig.name}
       </div>
       <div style={{ marginTop: 24, fontSize: 40, color: '#B0B0B0' }}>
-        {homePage.firstScreen.firstLine}
+        {`${hook.before}${hook.accent}${hook.after}`}
       </div>
       <div style={{ marginTop: 'auto', fontSize: 28, color: siteConfig.color.hex }}>
         {siteConfig.url.replace('https://', '')}

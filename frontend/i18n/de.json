@@ -2,38 +2,73 @@
   "locale": "de",
   "homePage": {
     "title": "Startseite",
-    "description": "Full-Stack-Entwickler und Azure-Cloud-Entwickler, Experte für IT und neue Technologien.",
+    "description": "Vincent Simonin, Full-Stack-Softwareingenieur in Dijon: Fachanwendungen mit .NET, Angular, React und Azure, von der Spezifikation bis zur Wartung.",
     "deployButtonLabel": "Jetzt bereitstellen",
     "firstScreen": {
       "salutation": "Hallo zusammen,",
       "hook": {
-        "one": "Ich bin ein ",
-        "two": "Problemlöser ",
-        "three": "& ",
-        "four": "kreativer Entwickler",
-        "five": ","
+        "before": "Fachanwendungen, ",
+        "accent": "die Bestand haben",
+        "after": ", von der Anforderung bis zur Wartung."
       },
-      "firstLine": "Moderne Webanwendungen entwerfen und entwickeln",
-      "secondLine": "für digitale Kommunikation oder Geschäftssysteme."
+      "subline": ".NET, Angular, React und Azure Cloud, mit DevSecOps-Kultur. Ansässig in Dijon, Frankreich."
     },
-    "labelButtonToSkills": "Projekte",
-    "sections": {
-      "design": {
-        "title": "Softwareanalyse und -konzeption",
-        "description": "Diese Phase ist entscheidend für den Erfolg eines Projekts und beginnt mit der Erhebung der Anforderungen. Eine gründliche Untersuchung der Fachdomäne, die ein umfassendes Verständnis der Problemstellungen zum Ziel hat, ermöglicht es, das Projekt effizient zu strukturieren. Gut durchgeführt, gewährleistet dieser Schritt maßgeschneiderte, leistungsfähige und zuverlässige Softwarelösungen."
-      },
-      "agility": {
-        "title": "Agilität",
-        "description": "Agile Methoden fördern eine schnelle Anpassung an Veränderungen und die kontinuierliche Lieferung von Mehrwert. Eine wirksame Projektsteuerung setzt transparente Kommunikation und regelmäßige Besprechungen voraus. Die Verbindung von Agilität und konsequenter Steuerung optimiert die Produktivität und die Qualität der Ergebnisse."
-      },
-      "development": {
-        "title": "Entwicklung",
-        "description": "Eine hochwertige Anwendung entsteht aus Kreativität und dem ständigen Streben nach Exzellenz. Technisches Können ermöglicht eine leistungsfähige, zuverlässige und skalierbare Lösung. Digitale Technologien sind für Unternehmen unverzichtbar, doch Software ist oft eine bedeutende Investition. Eine hochwertige Entwicklung nach bewährten Praktiken hält die Kosten über den gesamten Lebenszyklus der Anwendung im Griff und sorgt für eine längere Lebensdauer. Dieser Ansatz garantiert nicht nur eine optimale Rendite, sondern auch die Anpassungsfähigkeit an die künftigen Bedürfnisse des Unternehmens."
-      },
-      "innovation": {
-        "title": "Innovation",
-        "description": "Die Fähigkeit, innovativ zu sein und neue Technologien schnell einzuführen, ist ein entscheidender Erfolgsfaktor in der Softwareentwicklung. Diese technologische Agilität sichert einen Wettbewerbsvorteil in einem sich ständig wandelnden Markt. Zudem ermöglicht sie es, proaktiv auf die wachsenden Erwartungen der Kunden einzugehen und immer fortschrittlichere, passgenaue Lösungen anzubieten."
-      }
+    "labelButtonToSkills": "Projekte ansehen",
+    "references": {
+      "title": "Sie haben mir vertraut",
+      "names": [
+        "EY",
+        "APRR",
+        "Kardham Digital",
+        "Inetum",
+        "INRAE"
+      ]
+    },
+    "featured": {
+      "kicker": "Ausgewählte Projekte",
+      "ids": [
+        "ey-placement",
+        "aprr-traffic"
+      ],
+      "allProjects": "Alle Projekte"
+    },
+    "career": {
+      "kicker": "Werdegang",
+      "title": "Von der öffentlichen Forschung zum intelligenten Gebäude.",
+      "text": "Ausgebildet am DIIAGE, einer Partnerschule von Microsoft, habe ich für die öffentliche Forschung, die Wasserwirtschaft, Autobahnen und intelligente Gebäude gearbeitet, immer mit demselben Anliegen: wartbare Anwendungen, deren Kosten langfristig beherrschbar bleiben.",
+      "items": [
+        {
+          "year": "2021",
+          "title": "GRETA de Côte-d'Or",
+          "detail": "Bachelor, Anwendungsentwickler"
+        },
+        {
+          "year": "2021",
+          "title": "INRAE",
+          "detail": "Praktikum: Anwendung zur Erfassung von Schulkantinen-Menüs"
+        },
+        {
+          "year": "2022",
+          "title": "Inetum",
+          "detail": "Full-Stack-Entwickler, Software GREA (Wasserwirtschaft)"
+        },
+        {
+          "year": "2022 – 2024",
+          "title": "APRR",
+          "detail": "Full-Stack-Entwickler: Verkehrs- und Wetterdaten, GIS"
+        },
+        {
+          "year": "2024",
+          "title": "DIIAGE · Ingetis",
+          "detail": "Ingenieurdiplom Informatik, Master"
+        },
+        {
+          "year": "2024 –",
+          "title": "Kardham Digital",
+          "detail": "Full-Stack-Entwickler: Smart Building, Module für EY"
+        }
+      ],
+      "certifications": "Zertifizierungen Microsoft Azure Fundamentals und Azure AI Fundamentals"
     },
     "contactCta": {
       "text": "Ein Projekt, eine Frage oder eine Zusammenarbeit? Schreiben Sie mir, ich antworte Ihnen schnell.",

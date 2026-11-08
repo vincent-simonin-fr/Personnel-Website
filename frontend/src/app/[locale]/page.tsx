@@ -8,81 +8,76 @@ import Link from 'next/link'
 import { buttonVariants, cn } from '@heroui/react'
 import { lazy } from 'react'
 import Loading from 'components/loading/Loading'
-import { siteConfig } from 'config/site'
 
 import { useLocaleContext } from 'hooks/useLocaleContext'
-import RivePlayer from 'components/ui/animations/RivePlayer'
-import PresentationSection from 'components/PresentationSection'
 import OnScreen from 'components/ui/animations/OnScreen'
 import FadeInWhenVisible from 'components/ui/animations/FadeInWhenVisible'
 import KeyframeCssOnView from 'components/ui/animations/KeyframeCssOnView'
-import FadeInOnAppear from 'components/ui/animations/FadeInOnAppear'
 import SocialMedia from 'components/SocialMedia'
 import HandSvg from 'components/ui/svg/HandSvg'
+import MethodSection from 'components/home/MethodSection'
+import ProjectCard from 'components/ProjectCard'
 
-// Heavy canvas/WebGL animations only: loaded when OnScreen mounts them. Small above-the-
-// fold pieces are imported statically (lazy made them pop in and shift the layout).
-
-const MetaBalls = lazy(() => import('components/ui/animations/MetaBalls'))
-const LetterGlitch = lazy(() => import('components/ui/animations/LetterGlitch'))
+// Heavy canvas/WebGL animation: loaded when OnScreen mounts it.
 const Threads = lazy(() => import('components/ui/animations/Threads'))
-const Waves = lazy(() => import('components/ui/animations/Waves'))
 
 // HeroUI v3 Button can't render as a link: style a Next Link with the button classes.
 const primaryLinkButton = cn(
   buttonVariants(),
   'rounded-full bg-primary-50 text-primary-900',
 )
+const secondaryLinkButton = cn(
+  buttonVariants({ variant: 'secondary' }),
+  'rounded-full bg-primary-800 text-primary-100',
+)
+
+const kicker = 'text-sm tracking-widest text-primary-300 uppercase'
+const sectionTitle = 'max-w-3xl text-3xl font-semibold text-pretty md:text-5xl'
 
 const HomePage = () => {
   const { isLoading, isError, error } = useAppContext()
   const { dictionary } = useLocaleContext()
-  const { sections } = dictionary.homePage
+  const { firstScreen, references, featured, career, method } = dictionary.homePage
+  const { projects, phases, locale } = dictionary
+  const featuredProjects = projects.items.filter((p) => featured.ids.includes(p.id))
   const { theme } = useTheme()
 
   return (
     <>
       <Loading isLoading={isLoading} isError={isError} error={error}>
-        <div className='flex w-full flex-col items-center gap-4'>
+        <div className='flex w-full flex-col items-center gap-28'>
           <section className='flex min-h-[calc(100vh-60px)] w-full flex-col items-center justify-center'>
-            <FadeInOnAppear>
-              <div className='w-[84vw] py-8 sm:px-2'>
-                <div className='flex items-center pb-8 text-xl'>
-                  <span className={`mr-1 text-fuchsia-600`}>
-                    <HandSvg />
-                  </span>
-                  {dictionary.homePage.firstScreen.salutation}
-                </div>
-                <h1 className='text-3xl font-semibold text-pretty md:text-4xl lg:text-5xl'>
-                  {dictionary.homePage.firstScreen.hook.one}
-                  <span className={`text-fuchsia-600`}>
-                    {dictionary.homePage.firstScreen.hook.two}
-                  </span>{' '}
-                  {dictionary.homePage.firstScreen.hook.three}
-                  <span className={`text-fuchsia-600`}>
-                    {dictionary.homePage.firstScreen.hook.four}
-                  </span>
-                  {dictionary.homePage.firstScreen.hook.five}
-                </h1>
-                <hr className='my-4 h-[2px] w-1/2 bg-primary-500' />
-                <div className='text-3xl text-pretty md:text-4xl lg:text-5xl'>
-                  {dictionary.homePage.firstScreen.firstLine}
-                </div>
-                <div className='text-3xl text-pretty md:text-4xl lg:text-5xl'>
-                  {dictionary.homePage.firstScreen.secondLine}
-                </div>
-                <div className='mt-8 flex w-full items-center justify-between'>
-                  <SocialMedia noDelay />
-                  <FadeInWhenVisible delay={0}>
-                    <Link
-                      className={primaryLinkButton}
-                      href={`/${dictionary.locale}/projects`}>
+            <div className='w-[84vw] py-8 sm:px-2'>
+              <div className='flex items-center pb-8 text-xl'>
+                <span className='mr-1 text-fuchsia-600'>
+                  <HandSvg />
+                </span>
+                {firstScreen.salutation}
+              </div>
+              <h1 className='max-w-5xl text-4xl font-semibold tracking-tight text-pretty md:text-5xl lg:text-6xl'>
+                {firstScreen.hook.before}
+                <span className='text-fuchsia-600'>{firstScreen.hook.accent}</span>
+                {firstScreen.hook.after}
+              </h1>
+              <p className='mt-6 max-w-3xl text-xl text-pretty text-primary-200 md:text-2xl'>
+                {firstScreen.subline}
+              </p>
+              <div className='mt-10 flex w-full flex-wrap items-center justify-between gap-6'>
+                <SocialMedia noDelay />
+                <FadeInWhenVisible delay={0}>
+                  <div className='flex flex-wrap gap-3'>
+                    <Link className={primaryLinkButton} href={`/${locale}/projects`}>
                       {dictionary.homePage.labelButtonToSkills}
                     </Link>
-                  </FadeInWhenVisible>
-                </div>
+                    <Link
+                      className={secondaryLinkButton}
+                      href={`/${locale}/contact`}>
+                      {dictionary.homePage.contactCta.button}
+                    </Link>
+                  </div>
+                </FadeInWhenVisible>
               </div>
-            </FadeInOnAppear>
+            </div>
             <div className='relative h-[50vh] w-full'>
               <OnScreen>
                 <Threads
@@ -95,96 +90,69 @@ const HomePage = () => {
             </div>
           </section>
 
-          <div className='relative mb-6 w-[84vw] space-y-8 sm:space-y-2'>
-            <div
-              id='presentation'
-              className='flex flex-col items-center justify-center gap-28'>
-              <PresentationSection
-                {...sections.design}
-                visual={
-                  <div className='aspect-[1/1] max-h-[240px] scale-125'>
-                    <OnScreen>
-                      <MetaBalls
-                        color={siteConfig.color.hex}
-                        cursorBallColor={siteConfig.color.hex}
-                        cursorBallSize={2}
-                        ballCount={16}
-                        animationSize={30}
-                        enableMouseInteraction={true}
-                        enableTransparency={true}
-                        hoverSmoothness={0.05}
-                        clumpFactor={1}
-                        speed={0.5}
-                      />
-                    </OnScreen>
-                  </div>
-                }
-              />
-              <PresentationSection
-                {...sections.agility}
-                reverse
-                visual={
-                  <OnScreen className='absolute inset-0'>
-                    <Waves
-                      lineColor={siteConfig.color.hex}
-                      className='rounded-3xl border-1 border-fuchsia-600'
-                      waveSpeedX={0.0175}
-                      waveSpeedY={0.005}
-                      waveAmpX={32}
-                      waveAmpY={16}
-                      xGap={5}
-                      yGap={32}
-                      friction={0.925}
-                      tension={0.1}
-                      maxCursorMove={100}
+          <div className='flex w-[84vw] flex-col gap-28'>
+            <section className='flex flex-col gap-6'>
+              <h2 className={kicker}>{references.title}</h2>
+              <ul className='flex flex-wrap items-center gap-x-12 gap-y-4 text-2xl font-extrabold tracking-tight text-primary-400 md:text-3xl'>
+                {references.names.map((name) => (
+                  <li key={name}>{name}</li>
+                ))}
+              </ul>
+            </section>
+
+            <MethodSection method={method} phaseLabels={phases} />
+
+            <section className='flex flex-col gap-8'>
+              <h2 className={sectionTitle}>{featured.kicker}</h2>
+              <ul className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+                {featuredProjects.map((project) => (
+                  <li key={project.id}>
+                    <ProjectCard
+                      project={project}
+                      labels={projects}
+                      phaseLabels={phases}
+                      index={projects.items.indexOf(project)}
                     />
-                  </OnScreen>
-                }
-              />
-              <PresentationSection
-                {...sections.development}
-                visual={
-                  <div className='aspect-[1/1] max-h-[280px]'>
-                    <OnScreen>
-                      <LetterGlitch
-                        glitchSpeed={100}
-                        centerVignette={false}
-                        outerVignette={true}
-                        smooth={true}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                className={cn(secondaryLinkButton, 'self-start')}
+                href={`/${locale}/projects`}>
+                {featured.allProjects} <span aria-hidden>→</span>
+              </Link>
+            </section>
+
+            <section className='flex flex-col gap-6'>
+              <p className={kicker}>{career.kicker}</p>
+              <h2 className={sectionTitle}>{career.title}</h2>
+              <p className='max-w-3xl text-lg leading-relaxed text-pretty text-primary-200'>
+                {career.text}
+              </p>
+              <ol className='mt-6 grid grid-cols-1 md:grid-cols-6 md:gap-4'>
+                {career.items.map((item, i) => {
+                  const last = i === career.items.length - 1
+                  return (
+                    <li
+                      key={`${item.year}-${item.title}`}
+                      className='relative border-l-1 border-primary-700 pb-6 pl-6 md:border-t-1 md:border-l-0 md:pt-6 md:pb-0 md:pl-0'>
+                      <span
+                        aria-hidden
+                        className={`absolute top-1 -left-[5.5px] size-2.5 rounded-full border-1 md:-top-[5.5px] md:left-0 ${last ? 'border-fuchsia-500 bg-fuchsia-500 shadow-[0_0_10px_rgb(225_42_251/0.7)]' : 'border-primary-500 bg-background'}`}
                       />
-                    </OnScreen>
-                  </div>
-                }
-              />
-              <PresentationSection
-                {...sections.innovation}
-                reverse
-                visualClassName='max-h-[240px]'
-                visual={
-                  <RivePlayer
-                    src='/animations/responsive_core.riv'
-                    stateMachines='StateMachine'
-                    autoplay
-                    rootMargin='-25%'
-                    actions={{
-                      onMouseEnter: (rive, inputs) => {
-                        if (rive && inputs.enter && inputs.exit) {
-                          inputs.exit.value = false
-                          inputs.enter.value = true
-                        }
-                      },
-                      onMouseLeave: (rive, inputs) => {
-                        if (rive && inputs.enter && inputs.exit) {
-                          inputs.enter.value = false
-                          inputs.exit.value = true
-                        }
-                      },
-                    }}
-                  />
-                }
-              />
-            </div>
+                      <p className='text-sm text-primary-300'>{item.year}</p>
+                      <p className='mt-1 font-semibold'>{item.title}</p>
+                      <p className='mt-1 text-sm text-pretty text-primary-200'>
+                        {item.detail}
+                      </p>
+                    </li>
+                  )
+                })}
+              </ol>
+              <p className='text-sm text-primary-300'>{career.certifications}</p>
+            </section>
           </div>
+
           {/* Contact Section */}
           <KeyframeCssOnView cssClass='showAndHideOnView px-4 md:px-16'>
             <div className='relative h-[calc(100vh-136px)] w-full'>
@@ -208,9 +176,7 @@ const HomePage = () => {
                 <p className='text-lg text-pretty'>
                   {dictionary.homePage.contactCta.text}
                 </p>
-                <Link
-                  className={primaryLinkButton}
-                  href={`/${dictionary.locale}/contact`}>
+                <Link className={primaryLinkButton} href={`/${locale}/contact`}>
                   {dictionary.homePage.contactCta.button}
                 </Link>
               </div>

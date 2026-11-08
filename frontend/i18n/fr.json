@@ -2,38 +2,73 @@
   "locale": "fr",
   "homePage": {
     "title": "Page d'accueil",
-    "description": "Développeur Full Stack et Développeur Azure Cloud, expert en informatique et nouvelles technologies.",
+    "description": "Vincent Simonin, ingénieur logiciel full stack à Dijon : des applications métier en .NET, Angular, React et Azure, de la spécification à la maintenance.",
     "deployButtonLabel": "Déployez maintenant",
     "firstScreen": {
       "salutation": "Bonjour à tous,",
       "hook": {
-        "one": "Je suis un ",
-        "two": "solutionneur de problèmes ",
-        "three": "& un ",
-        "four": "développeur créatif",
-        "five": ","
+        "before": "Des applications métier ",
+        "accent": "pensées pour durer",
+        "after": ", du besoin à la maintenance."
       },
-      "firstLine": "Concevoir et développer des applications web modernes",
-      "secondLine": "pour la communication digitale ou les systèmes d'entreprise."
+      "subline": ".NET, Angular, React et cloud Azure, avec une culture DevSecOps. Basé à Dijon."
     },
-    "labelButtonToSkills": "Projets",
-    "sections": {
-      "design": {
-        "title": "Étude et conception logicielle",
-        "description": "Cruciale pour garantir le succès d'un projet, cette phase débute par un recueil des besoins. Une étude approfondie du domaine métier, visant à acquérir une parfaite compréhension des problématiques, permet de structurer le projet de manière efficiente. Bien menée, cette étape assure de créer des solutions logicielles sur mesure, performantes et fiables."
-      },
-      "agility": {
-        "title": "Agilité",
-        "description": "Les méthodologies agiles favorisent une adaptation rapide aux changements et une livraison continue de valeur. Un suivi de projet efficace implique une communication transparente et des réunions régulières. La combinaison de l'agilité et d'un suivi rigoureux permet d'optimiser la productivité et la qualité des livrables."
-      },
-      "development": {
-        "title": "Développement",
-        "description": "La réalisation d'une application de qualité est le fruit de la créativité et d'une recherche permanente de l'excellence. La maîtrise technique permet de construire une solution performante, fiable et évolutive. Le numérique est essentiel pour les entreprises, mais un logiciel représente souvent un investissement important. Un développement de qualité, respectant les bonnes pratiques, assure une maîtrise des coûts tout au long du cycle de vie de l'application et une durabilité accrue. Cette approche garantit non seulement un retour sur investissement optimal, mais aussi une adaptabilité aux besoins futurs de l'entreprise."
-      },
-      "innovation": {
-        "title": "Innovation",
-        "description": "La capacité à innover et à adopter rapidement de nouvelles technologies est un facteur clé de succès dans le développement logiciel. Cette agilité technologique permet de maintenir un avantage concurrentiel dans un marché en constante évolution. De plus, elle offre la possibilité de répondre de manière proactive aux attentes croissantes des consommateurs, en proposant des solutions toujours plus avancées et adaptées à leurs besoins."
-      }
+    "labelButtonToSkills": "Voir les projets",
+    "references": {
+      "title": "Ils m'ont fait confiance",
+      "names": [
+        "EY",
+        "APRR",
+        "Kardham Digital",
+        "Inetum",
+        "INRAE"
+      ]
+    },
+    "featured": {
+      "kicker": "Projets phares",
+      "ids": [
+        "ey-placement",
+        "aprr-traffic"
+      ],
+      "allProjects": "Tous les projets"
+    },
+    "career": {
+      "kicker": "Parcours",
+      "title": "De la recherche publique au bâtiment intelligent.",
+      "text": "Formé au DIIAGE, partenaire Microsoft, j'ai travaillé pour la recherche publique, la gestion de l'eau, les autoroutes et le bâtiment intelligent, avec toujours la même préoccupation : des applications maintenables, dont on maîtrise le coût dans la durée.",
+      "items": [
+        {
+          "year": "2021",
+          "title": "GRETA de Côte-d'Or",
+          "detail": "Licence concepteur développeur d'applications"
+        },
+        {
+          "year": "2021",
+          "title": "INRAE",
+          "detail": "Stage : application de collecte des menus de cantines"
+        },
+        {
+          "year": "2022",
+          "title": "Inetum",
+          "detail": "Développeur full stack, logiciel GREA (gestion de l'eau)"
+        },
+        {
+          "year": "2022 – 2024",
+          "title": "APRR",
+          "detail": "Développeur full stack : données trafic et météo, SIG"
+        },
+        {
+          "year": "2024",
+          "title": "DIIAGE · Ingetis",
+          "detail": "Diplôme d'ingénierie informatique, Master II"
+        },
+        {
+          "year": "2024 –",
+          "title": "Kardham Digital",
+          "detail": "Développeur full stack : Smart Building, modules pour EY"
+        }
+      ],
+      "certifications": "Certifications Microsoft Azure Fundamentals et Azure AI Fundamentals"
     },
     "contactCta": {
       "text": "Un projet, une question ou une collaboration ? Écrivez-moi, je vous réponds rapidement.",

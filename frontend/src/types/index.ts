@@ -59,17 +59,23 @@ export type Dictionary = {
     deployButtonLabel: string
     firstScreen: {
       salutation: string
-      hook: {
-        one: string
-        two: string
-        three: string
-        four: string
-        five: string
-      }
-      firstLine: string
-      secondLine: string
+      /** h1: before + accent (fuchsia) + after. */
+      hook: { before: string; accent: string; after: string }
+      subline: string
     }
     labelButtonToSkills: string
+    /** Client and employer names, shown as text (no logos: usage rights unchecked). */
+    references: { title: string; names: string[] }
+    /** Home teaser of the projects page: `ids` are `projects.items[].id`. */
+    featured: { kicker: string; ids: string[]; allProjects: string }
+    /** IT career only (nothing before 2020). */
+    career: {
+      kicker: string
+      title: string
+      text: string
+      items: { year: string; title: string; detail: string }[]
+      certifications: string
+    }
     contactCta: { text: string; button: string }
     /** "How I work": the 5 phases, each backed by a real project. */
     method: {
@@ -78,10 +84,6 @@ export type Dictionary = {
       proofLabel: string
       steps: Record<Phase, { title: string; text: string; proof: string }>
     }
-    sections: Record<
-      'design' | 'agility' | 'development' | 'innovation',
-      { title: string; description: string }
-    >
   }
   navigation: MenuItem[]
   // Hidden from the menus until the lab pages have content; move back into `navigation` to publish.
