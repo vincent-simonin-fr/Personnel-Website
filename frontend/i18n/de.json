@@ -140,7 +140,128 @@
   },
   "projects": {
     "title": "Projekte",
-    "servicesTitle": "Meine Leistungen",
-    "items": []
+    "intro": "Fachanwendungen für Großunternehmen, von der ersten Anforderung bis zur Wartung begleitet.",
+    "roleLabel": "Rolle",
+    "viaLabel": "über",
+    "phasesLabel": "Abgedeckte Phasen:",
+    "items": [
+      {
+        "id": "ey-placement",
+        "client": "EY",
+        "via": "Kardham Digital",
+        "period": "2024 – 2025",
+        "title": "Automatisierte Arbeitsplatzvergabe und Flächensteuerung",
+        "summary": "Modul, das Mitarbeitende automatisch nach Business Unit und Karrierestufe zuweist, ergänzt durch eine BI-Lösung zur Optimierung der Flächen und zur Analyse der Kosten pro m². Es erweitert das Smart-Building-Angebot von Kardham Digital.",
+        "role": "Full-Stack-Entwickler",
+        "phases": [
+          "design",
+          "build",
+          "ship",
+          "maintain"
+        ],
+        "stack": [],
+        "illustration": "floorplan"
+      },
+      {
+        "id": "ey-worksite",
+        "client": "EY",
+        "via": "Kardham Digital",
+        "period": "2025 –",
+        "status": "In Arbeit",
+        "title": "Baustellenmanagement",
+        "summary": "Modul für das Baustellenmanagement, derzeit in Entwicklung, das das Smart-Building-Angebot von Kardham Digital ergänzt und EY eine fortschrittliche Lösung bietet.",
+        "role": "Full-Stack-Entwickler",
+        "phases": [
+          "design",
+          "build",
+          "ship"
+        ],
+        "stack": [],
+        "illustration": "schedule"
+      },
+      {
+        "id": "kardham-bms",
+        "client": "Kardham Digital",
+        "period": "2024 –",
+        "title": "Steuerung der Gebäudeleittechnik",
+        "summary": "Anwendungen zur Steuerung der Gebäudeleittechnik, die über industrielle Kommunikationsprotokolle wie BACnet mit den Anlagen kommunizieren.",
+        "role": "Full-Stack-Entwickler: technische Architektur, Continuous Integration und Deployment, funktionale Spezifikationen",
+        "phases": [
+          "specify",
+          "design",
+          "build",
+          "ship"
+        ],
+        "stack": [
+          "BACnet"
+        ],
+        "illustration": "devices"
+      },
+      {
+        "id": "aprr-traffic",
+        "client": "APRR",
+        "period": "2022 – 2024",
+        "title": "Verkehrs- und Wetterdaten",
+        "summary": "Neue Funktionen für eine Anwendung, die Verkehrs- und Wetterdaten erfasst, verarbeitet, verbreitet und visualisiert.",
+        "role": "Full-Stack-Entwickler",
+        "phases": [
+          "build",
+          "maintain"
+        ],
+        "stack": [],
+        "illustration": "roads"
+      },
+      {
+        "id": "aprr-gis",
+        "client": "APRR",
+        "period": "2022 – 2024",
+        "title": "Geoinformationsdienste",
+        "summary": "Widgets für Geodienste, eingebunden in die Plattform ArcGIS Experience Builder, sowie neue Funktionen für ein Plug-in für AutoCAD Map 3D.",
+        "role": "Full-Stack-Entwickler",
+        "phases": [
+          "build"
+        ],
+        "stack": [
+          "ArcGIS Experience Builder",
+          "AutoCAD Map 3D"
+        ],
+        "illustration": "layers"
+      }
+    ],
+    "othersTitle": "Weitere Projekte",
+    "others": [
+      {
+        "client": "APRR",
+        "period": "2022 – 2024",
+        "title": "Blockchain-Studie",
+        "description": "Machbarkeitsstudie für eine private Blockchain, um die Anforderungen an die Zertifizierung von Kassensoftware zu erfüllen."
+      },
+      {
+        "client": "APRR",
+        "period": "2022 – 2024",
+        "title": "Immobilienverwaltung",
+        "description": "Neue Funktionen für eine Anwendung zur Verwaltung des Immobilienbestands."
+      },
+      {
+        "client": "Inetum",
+        "period": "2022",
+        "title": "GREA, Wasserwirtschaft",
+        "description": "Neugestaltung der Suchoberfläche von GREA, einer Software für Wasser- und Abwasserwirtschaft, danach korrigierende und weiterentwickelnde Wartung."
+      },
+      {
+        "client": "INRAE",
+        "period": "2021",
+        "title": "Schulkantinen-Menüs",
+        "description": "Desktop-Anwendung zur Erfassung und Verarbeitung von Schulkantinen-Menüs für eine Studie zur ernährungsphysiologischen und ökologischen Qualität der Schulverpflegung in Frankreich (Python, SQL, Tkinter)."
+      }
+    ],
+    "servicesTitle": "Meine Leistungen"
+  },
+  "phases": {
+    "specify": "Spezifizieren",
+    "design": "Konzipieren",
+    "build": "Entwickeln",
+    "ship": "Industrialisieren",
+    "maintain": "Warten"
   }
 }

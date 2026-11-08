@@ -140,7 +140,128 @@
   },
   "projects": {
     "title": "Projects",
-    "servicesTitle": "My services",
-    "items": []
+    "intro": "Business applications for large companies, carried from the first requirements through to maintenance.",
+    "roleLabel": "Role",
+    "viaLabel": "via",
+    "phasesLabel": "Phases covered:",
+    "items": [
+      {
+        "id": "ey-placement",
+        "client": "EY",
+        "via": "Kardham Digital",
+        "period": "2024 – 2025",
+        "title": "Automated seating and workspace management",
+        "summary": "Module that automatically assigns employees by business unit and professional rank, backed by decision-making BI to optimize space and analyze cost per square meter. It extends Kardham Digital's Smart Building offering.",
+        "role": "Full stack developer",
+        "phases": [
+          "design",
+          "build",
+          "ship",
+          "maintain"
+        ],
+        "stack": [],
+        "illustration": "floorplan"
+      },
+      {
+        "id": "ey-worksite",
+        "client": "EY",
+        "via": "Kardham Digital",
+        "period": "2025 –",
+        "status": "In progress",
+        "title": "Construction site management",
+        "summary": "Construction site management module, currently in development, built to complete Kardham Digital's Smart Building offering and give EY an advanced solution.",
+        "role": "Full stack developer",
+        "phases": [
+          "design",
+          "build",
+          "ship"
+        ],
+        "stack": [],
+        "illustration": "schedule"
+      },
+      {
+        "id": "kardham-bms",
+        "client": "Kardham Digital",
+        "period": "2024 –",
+        "title": "Building management system control",
+        "summary": "Applications that control building management systems, talking to equipment through industrial communication protocols such as BACnet.",
+        "role": "Full stack developer: technical architecture, continuous integration and delivery, functional specifications",
+        "phases": [
+          "specify",
+          "design",
+          "build",
+          "ship"
+        ],
+        "stack": [
+          "BACnet"
+        ],
+        "illustration": "devices"
+      },
+      {
+        "id": "aprr-traffic",
+        "client": "APRR",
+        "period": "2022 – 2024",
+        "title": "Traffic and weather data",
+        "summary": "New features for an application that collects, processes and distributes traffic and weather data, and visualizes it.",
+        "role": "Full stack developer",
+        "phases": [
+          "build",
+          "maintain"
+        ],
+        "stack": [],
+        "illustration": "roads"
+      },
+      {
+        "id": "aprr-gis",
+        "client": "APRR",
+        "period": "2022 – 2024",
+        "title": "Geographic information services",
+        "summary": "Geographic service widgets built into the ArcGIS Experience Builder platform, and new features for an AutoCAD Map 3D plug-in.",
+        "role": "Full stack developer",
+        "phases": [
+          "build"
+        ],
+        "stack": [
+          "ArcGIS Experience Builder",
+          "AutoCAD Map 3D"
+        ],
+        "illustration": "layers"
+      }
+    ],
+    "othersTitle": "Other work",
+    "others": [
+      {
+        "client": "APRR",
+        "period": "2022 – 2024",
+        "title": "Blockchain study",
+        "description": "Feasibility study of a private blockchain to meet the requirements for certifying point-of-sale software."
+      },
+      {
+        "client": "APRR",
+        "period": "2022 – 2024",
+        "title": "Real estate asset management",
+        "description": "New features for a real estate asset management application."
+      },
+      {
+        "client": "Inetum",
+        "period": "2022",
+        "title": "GREA, water management",
+        "description": "Redesign of the search interface of GREA, a water and sanitation management software, followed by corrective and evolutive maintenance."
+      },
+      {
+        "client": "INRAE",
+        "period": "2021",
+        "title": "School canteen menus",
+        "description": "Desktop application collecting and processing school canteen menus for a study on the nutritional and environmental quality of school catering in France (Python, SQL, Tkinter)."
+      }
+    ],
+    "servicesTitle": "My services"
+  },
+  "phases": {
+    "specify": "Specify",
+    "design": "Design",
+    "build": "Build",
+    "ship": "Ship",
+    "maintain": "Maintain"
   }
 }

@@ -5,7 +5,7 @@ type ProjectsProps = { params: Promise<{ locale: string }> }
 
 const Projects = async ({ params }: ProjectsProps) => {
   const { locale } = await params
-  const { presentation, projects, navigation } = await getDictionary(locale)
+  const { presentation, projects, navigation, phases } = await getDictionary(locale)
   const pageTitle = navigation.find((item) => item.to === '/projects')?.title
 
   return (
@@ -17,9 +17,14 @@ const Projects = async ({ params }: ProjectsProps) => {
         <section className='w-full'>
           <h2 className='mb-8 text-4xl font-semibold'>{projects.title}</h2>
           <ul className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
-            {projects.items.map((project) => (
-              <li key={project.title}>
-                <ProjectCard project={project} />
+            {projects.items.map((project, index) => (
+              <li key={project.id}>
+                <ProjectCard
+                  project={project}
+                  labels={projects}
+                  phaseLabels={phases}
+                  index={index}
+                />
               </li>
             ))}
           </ul>

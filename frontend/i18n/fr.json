@@ -140,7 +140,128 @@
   },
   "projects": {
     "title": "Réalisations",
-    "servicesTitle": "Mes services",
-    "items": []
+    "intro": "Des applications métier pour de grands comptes, menées de l'expression du besoin jusqu'à la maintenance.",
+    "roleLabel": "Rôle",
+    "viaLabel": "via",
+    "phasesLabel": "Phases couvertes :",
+    "items": [
+      {
+        "id": "ey-placement",
+        "client": "EY",
+        "via": "Kardham Digital",
+        "period": "2024 – 2025",
+        "title": "Placement automatisé et pilotage des espaces",
+        "summary": "Module qui affecte automatiquement les collaborateurs selon leur business unit et leur rang professionnel, complété d'une BI décisionnelle pour optimiser les espaces et analyser le coût au m². Il enrichit l'offre Smart Building de Kardham Digital.",
+        "role": "Développeur full stack",
+        "phases": [
+          "design",
+          "build",
+          "ship",
+          "maintain"
+        ],
+        "stack": [],
+        "illustration": "floorplan"
+      },
+      {
+        "id": "ey-worksite",
+        "client": "EY",
+        "via": "Kardham Digital",
+        "period": "2025 –",
+        "status": "En cours",
+        "title": "Gestion de chantier",
+        "summary": "Module de gestion de chantier, en cours de réalisation, conçu pour compléter l'offre Smart Building de Kardham Digital et fournir à EY une solution avancée.",
+        "role": "Développeur full stack",
+        "phases": [
+          "design",
+          "build",
+          "ship"
+        ],
+        "stack": [],
+        "illustration": "schedule"
+      },
+      {
+        "id": "kardham-bms",
+        "client": "Kardham Digital",
+        "period": "2024 –",
+        "title": "Pilotage des systèmes de gestion du bâtiment",
+        "summary": "Applications de pilotage des systèmes de gestion technique du bâtiment, qui dialoguent avec les équipements par des protocoles de communication industriels comme BACnet.",
+        "role": "Développeur full stack : architecture technique, intégration et déploiement continus, spécifications fonctionnelles",
+        "phases": [
+          "specify",
+          "design",
+          "build",
+          "ship"
+        ],
+        "stack": [
+          "BACnet"
+        ],
+        "illustration": "devices"
+      },
+      {
+        "id": "aprr-traffic",
+        "client": "APRR",
+        "period": "2022 – 2024",
+        "title": "Données trafic et météo",
+        "summary": "Nouvelles fonctionnalités d'une application qui collecte, traite et diffuse les données trafic et météo, et en assure la visualisation.",
+        "role": "Développeur full stack",
+        "phases": [
+          "build",
+          "maintain"
+        ],
+        "stack": [],
+        "illustration": "roads"
+      },
+      {
+        "id": "aprr-gis",
+        "client": "APRR",
+        "period": "2022 – 2024",
+        "title": "Services d'information géographique",
+        "summary": "Widgets de services géographiques intégrés à la plateforme ArcGIS Experience Builder, et nouvelles fonctionnalités d'un plugiciel pour AutoCAD Map 3D.",
+        "role": "Développeur full stack",
+        "phases": [
+          "build"
+        ],
+        "stack": [
+          "ArcGIS Experience Builder",
+          "AutoCAD Map 3D"
+        ],
+        "illustration": "layers"
+      }
+    ],
+    "othersTitle": "Autres réalisations",
+    "others": [
+      {
+        "client": "APRR",
+        "period": "2022 – 2024",
+        "title": "Étude blockchain",
+        "description": "Étude de faisabilité d'une blockchain privée pour répondre au cahier des charges de la certification des logiciels de caisse."
+      },
+      {
+        "client": "APRR",
+        "period": "2022 – 2024",
+        "title": "Gestion du patrimoine immobilier",
+        "description": "Nouvelles fonctionnalités d'une application de gestion du patrimoine immobilier."
+      },
+      {
+        "client": "Inetum",
+        "period": "2022",
+        "title": "GREA, gestion de l'eau",
+        "description": "Refonte graphique de l'interface de recherche du logiciel de gestion de l'eau et de l'assainissement GREA, puis maintenance corrective et évolutive."
+      },
+      {
+        "client": "INRAE",
+        "period": "2021",
+        "title": "Menus de cantines",
+        "description": "Application desktop de collecte et de traitement des menus de cantines pour une étude sur la qualité nutritionnelle et environnementale de la restauration scolaire en France (Python, SQL, Tkinter)."
+      }
+    ],
+    "servicesTitle": "Mes services"
+  },
+  "phases": {
+    "specify": "Spécifier",
+    "design": "Concevoir",
+    "build": "Développer",
+    "ship": "Industrialiser",
+    "maintain": "Maintenir"
   }
 }

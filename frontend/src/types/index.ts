@@ -13,14 +13,42 @@ export type MenuItem = {
   items?: MenuItem[]
 }
 
+/** Project lifecycle, in order: shown as a timeline on every project sheet. */
+export const PHASES = ['specify', 'design', 'build', 'ship', 'maintain'] as const
+export type Phase = (typeof PHASES)[number]
+
+/** Abstract SVG drawn instead of screenshots (client projects are confidential). */
+export const ILLUSTRATIONS = [
+  'floorplan',
+  'schedule',
+  'devices',
+  'roads',
+  'layers',
+] as const
+export type Illustration = (typeof ILLUSTRATIONS)[number]
+
 export type Project = {
+  /** Stable key, e.g. 'ey-placement' (also referenced by homePage.featured.ids). */
+  id: string
+  client: string
+  /** Employer through which the client was served, e.g. 'Kardham Digital'. */
+  via?: string
+  period: string
+  /** Localized badge, e.g. 'En cours'. */
+  status?: string
+  title: string
+  summary: string
+  role: string
+  phases: Phase[]
+  stack: string[]
+  illustration: Illustration
+}
+
+export type OtherProject = {
+  client: string
+  period: string
   title: string
   description: string
-  stack: string[]
-  /** External link (demo, repository, case study). */
-  url?: string
-  /** Image path under /public, e.g. '/images/projects/foo.jpg' (16:9). */
-  image?: string
 }
 
 export type Dictionary = {
@@ -51,11 +79,19 @@ export type Dictionary = {
   navigation: MenuItem[]
   // Hidden from the menus until the lab pages have content; move back into `navigation` to publish.
   labs: MenuItem
-  /** Portfolio. The grid only renders when `items` is non-empty. */
+  /** Short label of each lifecycle phase. */
+  phases: Record<Phase, string>
   projects: {
     title: string
-    servicesTitle: string
+    intro: string
+    roleLabel: string
+    viaLabel: string
+    /** Prefix of the screen-reader sentence listing the covered phases. */
+    phasesLabel: string
     items: Project[]
+    othersTitle: string
+    others: OtherProject[]
+    servicesTitle: string
   }
   notFound: {
     title: string
