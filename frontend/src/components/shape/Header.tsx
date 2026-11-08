@@ -15,7 +15,8 @@ import { useLocaleContext } from 'hooks/useLocaleContext'
 
 type HeaderProps = object
 
-const classLinkActive = 'text-fuchsia-600'
+// text-brand: theme-aware fuchsia that passes 4.5:1 for small text (see globals.css).
+const classLinkActive = 'text-brand'
 const SUPPORTED_LOCALES = ['fr', 'en-us', 'de'] as const
 type Locale = (typeof SUPPORTED_LOCALES)[number]
 

@@ -4,7 +4,7 @@ Charte **de fait** : elle formalise les conventions déjà présentes dans le co
 
 ## Couleurs
 
-- **Accent unique : fuchsia `#c026d3`** (`siteConfig.color`, classe `text-fuchsia-600`). Réservé à ce qui doit attirer l'œil : mots clés de l'accroche, lien actif de la nav, liens, bordures et anneaux de focus, animations de marque. Jamais en aplat de fond.
+- **Accent unique : fuchsia `#c026d3`** (`siteConfig.color`). Petit texte (liens, lien actif de la nav) : classe **`text-brand`**, dont la teinte suit le thème (fuchsia-700 en clair, fuchsia-500 en sombre) pour atteindre le contraste WCAG 4,5:1 ; `text-fuchsia-600` (4,25:1) seulement pour le grand texte (≥ 24 px) et les icônes. Réservé à ce qui doit attirer l'œil : mots clés de l'accroche, lien actif de la nav, liens, bordures et anneaux de focus, animations de marque. Jamais en aplat de fond.
 - **Neutres : l'échelle `primary-*`** du site, définie dans `src/styles/globals.css` (avec les tokens HeroUI `--background`, `--foreground`, `--accent` = fuchsia, `--focus`). Elle est **inversée entre thèmes** (`primary-50` est clair en sombre, foncé en clair) : utiliser ces classes plutôt que des gris Tailwind ou des hex, pour que les deux thèmes fonctionnent sans code.
 - Fonds : `bg-background`. Texte courant : hérité (`*:text-primary` sur `body`).
 - Thème **sombre par défaut**. Toute variation selon le thème passe par la variante CSS `dark:`, jamais par `useTheme()` au rendu (sinon décalage d'hydratation).
