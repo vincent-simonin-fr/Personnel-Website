@@ -1,94 +1,30 @@
-'use-client'
+'use client'
 
-import {
-  RuntimeLoader,
-  StateMachineInput,
-  useRive,
-  useStateMachineInput,
-} from '@rive-app/react-canvas'
-import { useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import { useIntersectionObserver } from 'usehooks-ts'
+import type { RiveCanvasProps } from './RiveCanvas'
 
-type Inputs = {
-  click: StateMachineInput | null
-  enter: StateMachineInput | null
-  exit: StateMachineInput | null
-}
+export type { RiveInputs } from './RiveCanvas'
 
-type RivePlayerProps = {
-  src: string
-  stateMachines: string
-  autoplay?: boolean
-  rootMargin?: string
-  actions?: {
-    onMouseEnter?: (rive: any, inputs: Record<string, any>) => void
-    onMouseLeave?: (rive: any, inputs: Record<string, any>) => void
-    onClick?: (rive: any, inputs: Record<string, any>) => void
-  }
-}
+// Same box as the canvas, so swapping it in causes no layout shift.
+const placeholder = <div className='aspect-[1/1] h-full w-full' />
 
-// Set a custom WASM URL from the local public folder
-RuntimeLoader.setWasmUrl('/rive.wasm')
+// Rive runtime (~60 KB gzip JS) + WASM (~630 KB gzip) + .riv: fetched only when needed.
+const RiveCanvas = dynamic(() => import('./RiveCanvas'), {
+  ssr: false,
+  loading: () => placeholder,
+})
 
-const RivePlayer = ({
-  src,
-  stateMachines,
-  autoplay = false,
-  rootMargin = '-10%',
-  actions = {},
-}: RivePlayerProps) => {
-  const { rive, RiveComponent } = useRive({
-    src: src,
-    stateMachines: stateMachines,
-    autoplay: autoplay,
+/** Decorative Rive animation, loaded when it gets close to the viewport. */
+const RivePlayer = (props: RiveCanvasProps) => {
+  const { ref, isIntersecting: isNear } = useIntersectionObserver({
+    rootMargin: '400px',
+    freezeOnceVisible: true,
   })
-  const { ref, isIntersecting } = useIntersectionObserver({
-    threshold: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
-    rootMargin: rootMargin,
-  })
-
-  const configureStateMachine = (): Inputs => {
-    const inputs: Inputs = {
-      click: null,
-      enter: null,
-      exit: null,
-    }
-    if (actions.onClick) inputs.click = useStateMachineInput(rive, stateMachines, 'click')
-    if (actions.onMouseEnter) inputs.enter = useStateMachineInput(rive, stateMachines, 'enter')
-    if (actions.onMouseLeave) inputs.exit = useStateMachineInput(rive, stateMachines, 'exit')
-
-    return inputs
-  }
-
-  const inputs: Inputs = configureStateMachine()
-
-  // Déclencher l'animation quand l'élément entre dans la vue
-  useEffect(() => {
-    if (isIntersecting && inputs.enter && inputs.exit) {
-      inputs.exit.value = false
-      inputs.enter.value = true
-    } else if (!isIntersecting && inputs.enter && inputs.exit) {
-      inputs.exit.value = true
-      inputs.enter.value = false
-    }
-  }, [isIntersecting, inputs.enter, inputs.exit])
 
   return (
-    <div ref={ref} className='relative mx-auto w-full'>
-      <RiveComponent
-        width={240}
-        height={240}
-        className='aspect-[1/1] h-full w-full object-contain'
-        {...(actions.onMouseEnter && {
-          onMouseEnter: () => actions.onMouseEnter?.(rive, inputs),
-        })}
-        {...(actions.onMouseLeave && {
-          onMouseLeave: () => actions.onMouseLeave?.(rive, inputs),
-        })}
-        {...(actions.onClick && {
-          onClick: () => actions.onClick?.(rive, inputs),
-        })}
-      />
+    <div ref={ref} aria-hidden className='relative mx-auto w-full'>
+      {isNear ? <RiveCanvas {...props} /> : placeholder}
     </div>
   )
 }

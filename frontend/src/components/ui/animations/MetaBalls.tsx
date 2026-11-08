@@ -27,9 +27,10 @@ function fract(x: number): number {
 }
 
 function hash31(p: number): number[] {
-  let r = [p * 0.1031, p * 0.103, p * 0.0973].map(fract)
+  const r = [p * 0.1031, p * 0.103, p * 0.0973].map(fract)
   const r_yzx = [r[1], r[2], r[0]]
-  const dotVal = r[0] * (r_yzx[0] + 33.33) + r[1] * (r_yzx[1] + 33.33) + r[2] * (r_yzx[2] + 33.33)
+  const dotVal =
+    r[0] * (r_yzx[0] + 33.33) + r[1] * (r_yzx[1] + 33.33) + r[2] * (r_yzx[2] + 33.33)
   for (let i = 0; i < 3; i++) {
     r[i] = fract(r[i] + dotVal)
   }
@@ -37,9 +38,10 @@ function hash31(p: number): number[] {
 }
 
 function hash33(v: number[]): number[] {
-  let p = [v[0] * 0.1031, v[1] * 0.103, v[2] * 0.0973].map(fract)
+  const p = [v[0] * 0.1031, v[1] * 0.103, v[2] * 0.0973].map(fract)
   const p_yxz = [p[1], p[0], p[2]]
-  const dotVal = p[0] * (p_yxz[0] + 33.33) + p[1] * (p_yxz[1] + 33.33) + p[2] * (p_yxz[2] + 33.33)
+  const dotVal =
+    p[0] * (p_yxz[0] + 33.33) + p[1] * (p_yxz[1] + 33.33) + p[2] * (p_yxz[2] + 33.33)
   for (let i = 0; i < 3; i++) {
     p[i] = fract(p[i] + dotVal)
   }
@@ -210,9 +212,11 @@ const MetaBalls: React.FC<MetaBallsProps> = ({
       const width = container.clientWidth
       const height = container.clientHeight
       renderer.setSize(width * dpr, height * dpr)
+      // Fill the container exactly: the drawing buffer is width x height, so a forced
+      // square (the former aspect-ratio 1/1) stretched the balls and overflowed any
+      // non-square container.
       gl.canvas.style.width = '100%'
-      gl.canvas.style.height = 'auto'
-      gl.canvas.style.aspectRatio = '1/1'
+      gl.canvas.style.height = '100%'
       program.uniforms.iResolution.value.set(gl.canvas.width, gl.canvas.height, 0)
     }
     window.addEventListener('resize', resize)

@@ -1,11 +1,11 @@
 'use client'
 
-import { useAppContext } from 'hooks/useAppContext'
-import React, { useEffect } from 'react'
+import { useLocaleContext } from 'hooks/useLocaleContext'
+import { useEffect } from 'react'
 
 // TODO: Handle loading and error states
 const Presentation = () => {
-  const { dictionary } = useAppContext()
+  const { dictionary } = useLocaleContext()
 
   useEffect(() => {}, [dictionary])
 
@@ -16,7 +16,7 @@ const Presentation = () => {
           dictionary.presentation.services.map((service, index) => (
             <div
               key={index}
-              className='duration-800 transform rounded-lg border border-primary p-6 shadow-lg shadow-primary transition-shadow ease-in-out hover:scale-[1.01] hover:shadow-xl hover:shadow-primary'>
+              className='transform rounded-lg border border-primary p-6 shadow-lg shadow-primary transition-shadow duration-800 ease-in-out hover:scale-[1.01] hover:shadow-xl hover:shadow-primary'>
               <h2 className='mb-4 text-2xl font-semibold'>{service.title}</h2>
               <div className='text-base'>{service.description}</div>
             </div>

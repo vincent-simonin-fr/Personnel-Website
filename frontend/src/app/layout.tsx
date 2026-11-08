@@ -1,53 +1,53 @@
-'use server-only'
-
-import Footer from 'components/shape/Footer'
-import Header from 'components/shape/Header'
 import 'styles/globals.css'
-import { Providers } from '../providers/providers'
+import { Providers } from 'providers/Providers'
 import { Bounce, ToastContainer } from 'react-toastify'
-import { jsonLd, MetadataSite, ViewportSite } from 'src/seo/MetadataSite'
+import { jsonLd, MetadataSite, ViewportSite } from 'seo/MetadataSite'
 import Script from 'next/script'
-import Head from 'next/head'
-import { Hanken_Grotesk } from 'next/font/google'
+import { siteFont } from 'config/siteFont'
 import { headers } from 'next/headers'
-
-const hankenGrotesk = Hanken_Grotesk({ subsets: ['latin'] })
 
 export const metadata = MetadataSite
 
 export const viewport = ViewportSite
 
-// fr or en-US or de
+// Locale and CSP nonce come from request headers set by src/proxy.ts. Reading them
+// makes every route dynamic, which the per-request nonce requires anyway.
 const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {
   const headersList = await headers()
   const locale = headersList.get('x-locale') || 'fr' // Défaut à 'fr' si pas de locale trouvée
   const nonce = headersList.get('x-nonce')!
 
-  console.info('Loading root layout', locale)
-
   return (
-    <html className={'dark'} lang={locale}>
-      <Head>
-        <Script
-          src='https://www.googletagmanager.com/gtag/js'
-          strategy='afterInteractive'
-          nonce={nonce}
-        />
-        <Script
-          id='schema-jsonld'
+    // suppressHydrationWarning: next-themes swaps the theme class before hydration.
+    <html
+      className={'dark'}
+      lang={locale}
+      data-scroll-behavior='smooth'
+      suppressHydrationWarning>
+      {/* lazyOnload: 115 KB of third-party JS kept off the critical path (loads after
+          `load`). NB: a GTM container id given to gtag.js with no config likely measures
+          nothing; see TODO "Analytics". */}
+      <Script
+        src='https://www.googletagmanager.com/gtag/js?id=GTM-NKBC7G3V'
+        strategy='lazyOnload'
+        nonce={nonce}
+      />
+      <body className={`${siteFont.className} antialiased *:text-primary`}>
+        {/* Server-rendered so crawlers see it; `<` escaped to keep the JSON inert.
+            suppressHydrationWarning: browsers hide nonce values from the DOM. */}
+        <script
           type='application/ld+json'
-          strategy='afterInteractive'
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          nonce={nonce}
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+          }}
         />
-      </Head>
-      <body className={`${hankenGrotesk.className} antialiased *:text-primary`}>
-        <Providers locale={locale}>
+        <Providers nonce={nonce}>
           <main className='flex min-h-screen w-screen flex-col items-center justify-center'>
-            <Header />
             {children}
-            <Footer />
             <ToastContainer
-              toastClassName={`${hankenGrotesk.className}`}
+              toastClassName={`${siteFont.className}`}
               position='bottom-right'
               transition={Bounce}
             />

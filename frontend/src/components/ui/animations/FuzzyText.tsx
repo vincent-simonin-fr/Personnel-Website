@@ -1,6 +1,8 @@
+'use client'
+
 import React, { useEffect, useRef } from 'react'
 import { useTheme } from 'next-themes'
-import { siteConfig } from 'config/site'
+import { siteConfig } from '../../../../config/site'
 
 interface FuzzyTextProps {
   children: React.ReactNode
@@ -27,7 +29,8 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    color = theme === 'dark' ? '#94a3b8' : siteConfig.color.hex
+    // Theme-driven: overrides the `color` prop (behavior kept as-is).
+    const textColor = theme === 'dark' ? '#94a3b8' : siteConfig.color.hex
     let animationFrameId: number
     let isCancelled = false
     const canvas = canvasRef.current
@@ -93,8 +96,8 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
       // Configure context styles
       offCtx.font = `${fontWeight} ${fontSizeStr} ${computedFontFamily}`
       offCtx.textBaseline = 'alphabetic'
-      offCtx.fillStyle = color
-      offCtx.strokeStyle = color
+      offCtx.fillStyle = textColor
+      offCtx.strokeStyle = textColor
 
       // Draw text
       offCtx.fillText(text, xOffset - actualLeft, actualAscent)

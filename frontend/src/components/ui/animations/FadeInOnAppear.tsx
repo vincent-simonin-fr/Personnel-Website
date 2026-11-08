@@ -1,32 +1,14 @@
-import { useTransition, animated, useSpringRef, easings } from '@react-spring/web'
-import { ReactNode, useEffect } from 'react'
+import { ReactNode } from 'react'
 
 type FadeInOnAppearProps = {
   children: ReactNode
 }
-const FadeInOnAppear = ({ children }: FadeInOnAppearProps) => {
-  const transRef = useSpringRef()
-  const [transitions, api] = useTransition(children, () => ({
-    ref: transRef,
-    from: { opacity: 0, scale: 1.1, transform: 'translateY(42px)', display: 'none' },
-    enter: { opacity: 1, scale: 1, transform: 'translateY(0px)', display: 'block' },
-    config: {
-      duration: 1000,
-      easing: (t) => easings.easeInOutCubic(t),
-    },
-  }))
 
-  useEffect(() => {
-    transRef.start()
-  }, [children])
-
-  const AnimatedDiv = animated('div')
-
-  return transitions((style, item) => (
-    <AnimatedDiv key={'fade'} style={style}>
-      {item}
-    </AnimatedDiv>
-  ))
-}
+// CSS entrance animation: starts at first paint, no JS, and the content stays in the
+// layout. Was a react-spring transition starting from `display: none` until hydration:
+// the hero was out of the layout (CLS 0.16 on desktop) and painted late (LCP).
+const FadeInOnAppear = ({ children }: FadeInOnAppearProps) => (
+  <div className='animate-fade-in-up motion-reduce:animate-none'>{children}</div>
+)
 
 export default FadeInOnAppear
