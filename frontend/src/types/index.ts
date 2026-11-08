@@ -71,6 +71,13 @@ export type Dictionary = {
     }
     labelButtonToSkills: string
     contactCta: { text: string; button: string }
+    /** "How I work": the 5 phases, each backed by a real project. */
+    method: {
+      kicker: string
+      title: string
+      proofLabel: string
+      steps: Record<Phase, { title: string; text: string; proof: string }>
+    }
     sections: Record<
       'design' | 'agility' | 'development' | 'innovation',
       { title: string; description: string }
