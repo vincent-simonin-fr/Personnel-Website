@@ -46,3 +46,6 @@ deployment-architecture-v2.jpg
 CLAUDE.local.md
 .claude/settings.local.json
 .playwright-mcp/
+
+# Specs, plans and review notes (local only, never committed)
+docs/
