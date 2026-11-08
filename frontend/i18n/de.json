@@ -38,6 +38,38 @@
     "contactCta": {
       "text": "Ein Projekt, eine Frage oder eine Zusammenarbeit? Schreiben Sie mir, ich antworte Ihnen schnell.",
       "button": "Kontakt aufnehmen"
+    },
+    "method": {
+      "kicker": "Meine Arbeitsweise",
+      "title": "Ein Ansprechpartner, von der Anforderung bis zur Anwendung in Produktion.",
+      "proofLabel": "In der Praxis",
+      "steps": {
+        "specify": {
+          "title": "Erst das Fachgebiet verstehen, dann programmieren",
+          "text": "Anforderungsanalyse, funktionale Spezifikationen, Machbarkeitsstudien.",
+          "proof": "Funktionale Spezifikationen der Anwendungen für Gebäudeleittechnik (Kardham Digital) · Machbarkeitsstudie für eine private Blockchain (APRR)."
+        },
+        "design": {
+          "title": "Architekturentscheidungen, die Bestand haben",
+          "text": "Microservices oder modularer Monolith in .NET, mit Beobachtbarkeit, Skalierbarkeit und Wartbarkeit von Anfang an.",
+          "proof": "Technische Architektur der Anwendungen für Gebäudeleittechnik (Kardham Digital) · verteilte und N-Tier-Architekturen (APRR)."
+        },
+        "build": {
+          "title": "Vom Backend bis zur Oberfläche",
+          "text": "ASP.NET / Blazor, Angular, React, Java / Spring Boot, Geodienste (ArcGIS, AutoCAD Map 3D), Industrieprotokolle (BACnet).",
+          "proof": "Erfassung, Verarbeitung, Verbreitung und Visualisierung von Verkehrs- und Wetterdaten (APRR) · automatisierte Arbeitsplatzvergabe und Flächen-BI (EY)."
+        },
+        "ship": {
+          "title": "Oft liefern, sicher liefern",
+          "text": "Continuous Integration und Deployment, Sicherheit von Anfang an (DevSecOps), Azure Cloud.",
+          "proof": "Continuous Integration und Deployment bei Kardham Digital · Zertifizierungen Microsoft Azure Fundamentals und Azure AI Fundamentals."
+        },
+        "maintain": {
+          "title": "Die Anwendung am Leben halten",
+          "text": "Korrigierende und weiterentwickelnde Wartung, neue Funktionen für Anwendungen in Produktion.",
+          "proof": "Neugestaltung und Wartung von GREA, Wasserwirtschaft (Inetum) · Weiterentwicklung von Anwendungen in Produktion (APRR)."
+        }
+      }
     }
   },
   "navigation": [

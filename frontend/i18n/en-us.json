@@ -38,6 +38,38 @@
     "contactCta": {
       "text": "A project, a question or a collaboration in mind? Write to me and I'll get back to you quickly.",
       "button": "Contact me"
+    },
+    "method": {
+      "kicker": "How I work",
+      "title": "One point of contact, from the first need to the application in production.",
+      "proofLabel": "In practice",
+      "steps": {
+        "specify": {
+          "title": "Understand the business before writing a line of code",
+          "text": "Requirements gathering, functional specifications, feasibility studies.",
+          "proof": "Functional specifications of the building management applications (Kardham Digital) · feasibility study of a private blockchain (APRR)."
+        },
+        "design": {
+          "title": "Architecture choices that stand the test of time",
+          "text": "Microservices or modular monolith in .NET, with observability, scalability and maintainability built in from the start.",
+          "proof": "Technical architecture of the building management applications (Kardham Digital) · distributed and N-tier architectures (APRR)."
+        },
+        "build": {
+          "title": "From back end to interface",
+          "text": "ASP.NET / Blazor, Angular, React, Java / Spring Boot, geographic services (ArcGIS, AutoCAD Map 3D), industrial protocols (BACnet).",
+          "proof": "Collection, processing, distribution and visualization of traffic and weather data (APRR) · automated seating and workspace BI (EY)."
+        },
+        "ship": {
+          "title": "Ship often, ship safely",
+          "text": "Continuous integration and delivery, security built in from the design stage (DevSecOps), Azure cloud.",
+          "proof": "Continuous integration and delivery at Kardham Digital · Microsoft Azure Fundamentals and Azure AI Fundamentals certifications."
+        },
+        "maintain": {
+          "title": "Keep the application alive",
+          "text": "Corrective and evolutive maintenance, new features on applications in production.",
+          "proof": "Redesign and maintenance of GREA, water management (Inetum) · enhancements to applications in production (APRR)."
+        }
+      }
     }
   },
   "navigation": [

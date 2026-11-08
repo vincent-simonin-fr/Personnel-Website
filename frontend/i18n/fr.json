@@ -38,6 +38,38 @@
     "contactCta": {
       "text": "Un projet, une question ou une collaboration ? Écrivez-moi, je vous réponds rapidement.",
       "button": "Me contacter"
+    },
+    "method": {
+      "kicker": "Ma façon de travailler",
+      "title": "Un seul interlocuteur, du besoin à l'application en production.",
+      "proofLabel": "En pratique",
+      "steps": {
+        "specify": {
+          "title": "Comprendre le métier avant d'écrire une ligne",
+          "text": "Recueil des besoins, spécifications fonctionnelles, études de faisabilité.",
+          "proof": "Spécifications fonctionnelles des applications de pilotage du bâtiment (Kardham Digital) · étude de faisabilité d'une blockchain privée (APRR)."
+        },
+        "design": {
+          "title": "Des choix d'architecture qui tiennent dans le temps",
+          "text": "Microservices ou monolithe modulaire en .NET, avec observabilité, scalabilité et maintenabilité dès la conception.",
+          "proof": "Architecture technique des applications de pilotage du bâtiment (Kardham Digital) · architectures distribuées et N-tiers (APRR)."
+        },
+        "build": {
+          "title": "Du back-end à l'interface",
+          "text": "ASP.NET / Blazor, Angular, React, Java / Spring Boot, services géographiques (ArcGIS, AutoCAD Map 3D), protocoles industriels (BACnet).",
+          "proof": "Collecte, traitement, diffusion et visualisation des données trafic et météo (APRR) · placement automatisé et BI des espaces (EY)."
+        },
+        "ship": {
+          "title": "Livrer souvent, livrer sûr",
+          "text": "Intégration et déploiement continus, sécurité intégrée dès la conception (DevSecOps), cloud Azure.",
+          "proof": "Intégration et déploiement continus chez Kardham Digital · certifications Microsoft Azure Fundamentals et Azure AI Fundamentals."
+        },
+        "maintain": {
+          "title": "Faire vivre l'application",
+          "text": "Maintenance corrective et évolutive, nouvelles fonctionnalités sur des applications en production.",
+          "proof": "Refonte et maintenance de GREA, gestion de l'eau (Inetum) · évolutions d'applications en production (APRR)."
+        }
+      }
     }
   },
   "navigation": [
