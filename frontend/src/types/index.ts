@@ -139,6 +139,4 @@ export type Dictionary = {
 export type Locale = {
   key: string
   label: string
-  country: string
-  icon: string
 }

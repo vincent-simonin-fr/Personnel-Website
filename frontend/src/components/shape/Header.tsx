@@ -61,7 +61,7 @@ const Header = ({}: HeaderProps) => {
       frame = 0
       const max = document.documentElement.scrollHeight - window.innerHeight
       const progress = max > 0 ? window.scrollY / max : 0
-      el.style.width = isMobile ? '100vw' : `${headerWidthVw - progress * 43 * 3}vw`
+      el.style.width = isMobile ? '100vw' : `${headerWidthVw - progress * 22 * 3}vw`
     }
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(update)
