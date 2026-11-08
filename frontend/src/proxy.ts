@@ -50,8 +50,11 @@ const securityHeaders: { key: string; value: string }[] = [
     value: 'require-corp',
   },
   {
+    // HTML carries a per-request CSP nonce: never let a shared cache (CDN) reuse it.
+    // no-cache (revalidate), not no-store, so the browser's back/forward cache still works.
+    // On Vercel, Next overrides this for dynamic pages (no-store): not actionable there.
     key: 'Cache-Control',
-    value: 'public, max-age=60, stale-while-revalidate=300',
+    value: 'private, no-cache',
   },
   {
     key: 'Vary',
@@ -142,10 +145,6 @@ export function proxy(req: NextRequest) {
     response.headers.set('Access-Control-Allow-Origin', origin)
   }
   response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue)
-  response.headers.set(
-    'Cache-Control',
-    'public, max-age=60, stale-while-revalidate=300',
-  )
   securityHeaders.forEach((item) => {
     response.headers.set(item.key, item.value)
   })
