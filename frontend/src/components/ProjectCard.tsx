@@ -3,7 +3,7 @@ import PhaseTimeline from 'components/projects/PhaseTimeline'
 
 type ProjectCardProps = {
   project: Project
-  labels: Pick<Dictionary['projects'], 'roleLabel' | 'viaLabel' | 'phasesLabel'>
+  labels: Pick<Dictionary['projects'], 'roleLabel' | 'phasesLabel'>
   phaseLabels: Record<Phase, string>
   /** 0-based position, shown as '01'. */
   index: number
@@ -31,12 +31,8 @@ const ProjectCard = ({
     <article className='relative flex flex-col gap-4 rounded-3xl border-1 border-primary-800 bg-primary-900/80 p-6 shadow-2xl backdrop-blur-xl sm:p-8'>
       <div className='flex flex-wrap items-baseline gap-x-3 gap-y-1 pr-14 text-sm tracking-widest text-primary-300 uppercase'>
         <span className='font-bold text-brand'>{pad(index + 1)}</span>
-        <span>{client}</span>
-        {via && (
-          <span className='normal-case'>
-            {labels.viaLabel} {via}
-          </span>
-        )}
+        {/* Served through an employer: "Kardham Digital x EY". */}
+        <span>{via ? `${via} x ${client}` : client}</span>
         <span>· {period}</span>
         {status && (
           <span className='rounded-full border-1 border-fuchsia-500 px-2 py-0.5 text-xs tracking-normal text-brand normal-case'>

@@ -2,24 +2,23 @@
   "locale": "en-us",
   "homePage": {
     "title": "Home page",
-    "description": "Vincent Simonin, full stack software engineer in Dijon, France: business applications in .NET, Angular, React and Azure, from specification to maintenance.",
+    "description": "Vincent Simonin, full stack software engineer in Dijon, France: business applications in .NET, React, Angular and Azure, from specification to production.",
     "deployButtonLabel": "Deploy now",
     "firstScreen": {
-      "salutation": "Hi everyone,",
+      "salutation": "Hello,",
       "hook": {
-        "before": "Business applications ",
-        "accent": "built to last",
-        "after": ", from the first need to maintenance."
+        "before": "Full stack engineer, I design and build your ",
+        "accent": "custom applications",
+        "after": "."
       },
-      "subline": ".NET, Angular, React and Azure cloud, with a DevSecOps culture. Based in Dijon, France."
+      "subline": "Design – Development – Hosting – Maintenance – Audit"
     },
     "labelButtonToSkills": "See the projects",
     "references": {
       "title": "They trusted me",
       "names": [
-        "EY",
-        "APRR",
         "Kardham Digital",
+        "APRR",
         "Inetum",
         "INRAE"
       ]
@@ -34,8 +33,8 @@
     },
     "career": {
       "kicker": "Career",
-      "title": "From public research to smart buildings.",
-      "text": "Trained at DIIAGE, a Microsoft partner school, I have worked for public research, water management, motorways and smart buildings, always with the same concern: maintainable applications whose cost stays under control over time.",
+      "title": "From public research to Smart Building.",
+      "text": "Trained at DIIAGE, a Microsoft partner school, I have worked for public research, water management, motorways and Smart Building, always with the same concern: maintainable applications whose cost stays under control over time.",
       "items": [
         {
           "year": "2021",
@@ -45,17 +44,17 @@
         {
           "year": "2021",
           "title": "INRAE",
-          "detail": "Internship: school canteen menu collection application"
+          "detail": "Internship – School canteen menu collection application"
         },
         {
           "year": "2022",
           "title": "Inetum",
-          "detail": "Full stack developer, GREA software (water management)"
+          "detail": "Full stack developer – GREA software (water and sanitation resource management)"
         },
         {
           "year": "2022 – 2024",
           "title": "APRR",
-          "detail": "Full stack developer: traffic and weather data, GIS"
+          "detail": "Full stack developer – Traffic management support system, GIS software"
         },
         {
           "year": "2024",
@@ -65,10 +64,10 @@
         {
           "year": "2024 –",
           "title": "Kardham Digital",
-          "detail": "Full stack developer: Smart Building, modules for EY"
+          "detail": "Full stack developer – Smart Building solution"
         }
       ],
-      "certifications": "Microsoft Azure Fundamentals and Azure AI Fundamentals certifications"
+      "certifications": "Microsoft DevOps Engineer Expert (AZ-400), Azure Fundamentals and Azure AI Fundamentals certifications"
     },
     "contactCta": {
       "text": "A project, a question or a collaboration in mind? Write to me and I'll get back to you quickly.",
@@ -80,24 +79,24 @@
       "proofLabel": "In practice",
       "steps": {
         "specify": {
-          "title": "Understand the business before writing a line of code",
-          "text": "Requirements gathering, functional specifications, feasibility studies.",
+          "title": "Understanding the business at the heart of the process",
+          "text": "Requirements gathering, functional specifications, research & development.",
           "proof": "Functional specifications of the building management applications (Kardham Digital) · feasibility study of a private blockchain (APRR)."
         },
         "design": {
-          "title": "Architecture choices that stand the test of time",
-          "text": "Microservices or modular monolith in .NET, with observability, scalability and maintainability built in from the start.",
+          "title": "An architecture designed to keep costs under control over time",
+          "text": "Performance, observability, scalability and maintainability.",
           "proof": "Technical architecture of the building management applications (Kardham Digital) · distributed and N-tier architectures (APRR)."
         },
         "build": {
           "title": "From back end to interface",
-          "text": "ASP.NET / Blazor, Angular, React, Java / Spring Boot, geographic services (ArcGIS, AutoCAD Map 3D), industrial protocols (BACnet).",
-          "proof": "Collection, processing, distribution and visualization of traffic and weather data (APRR) · automated seating and workspace BI (EY)."
+          "text": "ASP.NET / Blazor, React, Angular, Java / Spring Boot, mapping services (ArcGIS, AutoCAD Map 3D), industrial protocols (BACnet).",
+          "proof": "Collection, processing, distribution and visualization of traffic and weather data (APRR) · Automated seating and workspace management module (Kardham Digital x EY)."
         },
         "ship": {
           "title": "Ship often, ship safely",
           "text": "Continuous integration and delivery, security built in from the design stage (DevSecOps), Azure cloud.",
-          "proof": "Continuous integration and delivery at Kardham Digital · Microsoft Azure Fundamentals and Azure AI Fundamentals certifications."
+          "proof": "Continuous integration and delivery at Kardham Digital · Microsoft DevOps Engineer Expert (AZ-400), Azure Fundamentals and Azure AI Fundamentals certifications."
         },
         "maintain": {
           "title": "Keep the application alive",
@@ -206,27 +205,38 @@
   },
   "projects": {
     "title": "Projects",
-    "intro": "Business applications for large companies, carried from the first requirements through to maintenance.",
+    "intro": "Business applications for large companies, carried from the first requirements through to production.",
     "roleLabel": "Role",
-    "viaLabel": "via",
     "phasesLabel": "Phases covered:",
     "items": [
       {
-        "id": "ey-placement",
-        "client": "EY",
-        "via": "Kardham Digital",
-        "period": "2024 – 2025",
-        "title": "Automated seating and workspace management",
-        "summary": "Module that automatically assigns employees by business unit and professional rank, backed by decision-making BI to optimize space and analyze cost per square meter. It extends Kardham Digital's Smart Building offering.",
-        "role": "Full stack developer",
+        "id": "kardham-bms",
+        "client": "Kardham Digital",
+        "period": "2024 – today",
+        "title": "Building management system control",
+        "summary": "Applications that control building management systems, talking to equipment (BMS, IoT, video surveillance and access control). Part of the Smart Building offering, they use occupancy and comfort data to optimize how spaces are used and the well-being of occupants, in support of the WELL label.",
+        "role": "Full stack developer: technical architecture, writing specifications, continuous integration and delivery",
         "phases": [
+          "specify",
           "design",
           "build",
           "ship",
           "maintain"
         ],
-        "stack": [],
-        "illustration": "floorplan"
+        "stack": [
+          ".NET",
+          "Blazor",
+          "PostgreSQL",
+          "RabbitMQ",
+          "Azure",
+          "Docker",
+          "Nginx",
+          "IIS",
+          "Power BI",
+          "BACnet",
+          "OPC UA"
+        ],
+        "illustration": "devices"
       },
       {
         "id": "ey-worksite",
@@ -234,24 +244,9 @@
         "via": "Kardham Digital",
         "period": "2025 –",
         "status": "In progress",
-        "title": "Construction site management",
+        "title": "Construction site management module",
         "summary": "Construction site management module, currently in development, built to complete Kardham Digital's Smart Building offering and give EY an advanced solution.",
-        "role": "Full stack developer",
-        "phases": [
-          "design",
-          "build",
-          "ship"
-        ],
-        "stack": [],
-        "illustration": "schedule"
-      },
-      {
-        "id": "kardham-bms",
-        "client": "Kardham Digital",
-        "period": "2024 –",
-        "title": "Building management system control",
-        "summary": "Applications that control building management systems, talking to equipment through industrial communication protocols such as BACnet.",
-        "role": "Full stack developer: technical architecture, continuous integration and delivery, functional specifications",
+        "role": "Full stack developer: built the entire module in direct collaboration with the client",
         "phases": [
           "specify",
           "design",
@@ -259,22 +254,53 @@
           "ship"
         ],
         "stack": [
-          "BACnet"
+          ".NET",
+          "Blazor",
+          "PostgreSQL",
+          "IIS"
         ],
-        "illustration": "devices"
+        "illustration": "schedule"
+      },
+      {
+        "id": "ey-placement",
+        "client": "EY",
+        "via": "Kardham Digital",
+        "period": "2024 – 2025",
+        "title": "Automated seating and workspace management module",
+        "summary": "Automatically assigns employees to spaces at their workplace according to criteria set by the company, flex office included. The data it produces feeds the decision-making side: space optimization and cost per square meter. It extends Kardham Digital's Smart Building offering.",
+        "role": "Full stack developer: built the entire module in direct collaboration with the client",
+        "phases": [
+          "specify",
+          "design",
+          "build",
+          "ship"
+        ],
+        "stack": [
+          ".NET",
+          "Blazor",
+          "PostgreSQL",
+          "IIS"
+        ],
+        "illustration": "floorplan"
       },
       {
         "id": "aprr-traffic",
         "client": "APRR",
         "period": "2022 – 2024",
-        "title": "Traffic and weather data",
-        "summary": "New features for an application that collects, processes and distributes traffic and weather data, and visualizes it.",
+        "title": "Traffic management support system",
+        "summary": "Evolutive maintenance of a motorway operations application for real-time collection, processing, distribution and visualization of traffic and weather data. End-to-end design and development of new features, from data processing to the interface, within a distributed architecture.",
         "role": "Full stack developer",
         "phases": [
           "build",
           "maintain"
         ],
-        "stack": [],
+        "stack": [
+          ".NET",
+          "Angular",
+          "PostgreSQL",
+          "Kafka",
+          "RabbitMQ"
+        ],
         "illustration": "roads"
       },
       {
@@ -282,7 +308,7 @@
         "client": "APRR",
         "period": "2022 – 2024",
         "title": "Geographic information services",
-        "summary": "Geographic service widgets built into the ArcGIS Experience Builder platform, and new features for an AutoCAD Map 3D plug-in.",
+        "summary": "Mapping service widgets built into the ArcGIS Experience Builder platform, and new features for an AutoCAD Map 3D plug-in.",
         "role": "Full stack developer",
         "phases": [
           "build"
@@ -292,6 +318,26 @@
           "AutoCAD Map 3D"
         ],
         "illustration": "layers"
+      },
+      {
+        "id": "inetum-grea",
+        "client": "Inetum",
+        "period": "2022",
+        "title": "GREA graphic redesign",
+        "summary": "New search interface for GREA, a water and sanitation resource management software, followed by corrective and evolutive maintenance.",
+        "role": "Full stack developer",
+        "phases": [
+          "design",
+          "build",
+          "maintain"
+        ],
+        "stack": [
+          ".NET",
+          "PostgreSQL",
+          "Oracle",
+          "Bootstrap"
+        ],
+        "illustration": "interface"
       }
     ],
     "othersTitle": "Other work",
@@ -300,28 +346,35 @@
         "client": "APRR",
         "period": "2022 – 2024",
         "title": "Blockchain study",
-        "description": "Feasibility study of a private blockchain to meet the requirements for certifying point-of-sale software."
+        "description": "Feasibility study of a private blockchain to meet the requirements for certifying point-of-sale software.",
+        "stack": [
+          "Hyperledger Fabric",
+          "Kubernetes"
+        ]
       },
       {
         "client": "APRR",
         "period": "2022 – 2024",
         "title": "Real estate asset management",
-        "description": "New features for a real estate asset management application."
-      },
-      {
-        "client": "Inetum",
-        "period": "2022",
-        "title": "GREA, water management",
-        "description": "Redesign of the search interface of GREA, a water and sanitation management software, followed by corrective and evolutive maintenance."
+        "description": "New features for a real estate asset management application.",
+        "stack": [
+          "Java / Spring Boot",
+          "Angular",
+          "PostgreSQL"
+        ]
       },
       {
         "client": "INRAE",
         "period": "2021",
         "title": "School canteen menus",
-        "description": "Desktop application collecting and processing school canteen menus for a study on the nutritional and environmental quality of school catering in France (Python, SQL, Tkinter)."
+        "description": "Desktop application collecting and processing school canteen menus for a study on the nutritional and environmental quality of school catering in France.",
+        "stack": [
+          "Python",
+          "SQL",
+          "Tkinter"
+        ]
       }
-    ],
-    "servicesTitle": "My services"
+    ]
   },
   "phases": {
     "specify": "Specify",
