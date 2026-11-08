@@ -49,3 +49,11 @@ CLAUDE.local.md
 
 # Specs, plans and review notes (local only, never committed)
 docs/
+
+# Local only for now: Claude config, editor settings, project notes
+.claude/
+.vscode/
+CLAUDE.md
+TODO.md
+frontend/.vscode/
+frontend/TODO.md
