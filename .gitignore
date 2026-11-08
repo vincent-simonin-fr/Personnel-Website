@@ -43,3 +43,6 @@ bi/*
 my-heroui-app/*
 deployment-architecture-v2.jpg
 .playwright-mcp/
+
+# Specs, plans and review notes (local only, never committed)
+docs/
