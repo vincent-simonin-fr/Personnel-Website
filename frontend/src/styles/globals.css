@@ -229,3 +229,46 @@
     animation-range: entry-crossing, exit-crossing;
   }
 }
+
+/* Scroll depth (projects page, see DESIGN.md "Mouvement"). Scenes and planes are static
+   by default; they only move where scroll-driven animations exist and motion is welcome. */
+@keyframes parallax-y {
+  from {
+    transform: translateY(var(--parallax, 0px));
+  }
+  to {
+    transform: translateY(calc(var(--parallax, 0px) * -1));
+  }
+}
+
+@keyframes parallax-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(var(--parallax, 0px));
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(calc(var(--parallax, 0px) * -1));
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-scene] {
+      view-timeline-name: --scene;
+    }
+    [data-parallax] {
+      animation: parallax-y linear both;
+      /* After the shorthand, which resets it. */
+      animation-timeline: --scene;
+    }
+    [data-parallax-fade] {
+      animation: parallax-fade linear both;
+      animation-timeline: --scene;
+    }
+  }
+}
