@@ -67,7 +67,7 @@
           "detail": "Développeur full stack – Solution Smart Building"
         }
       ],
-      "certifications": "Certifications Microsoft DevOps Engineer Expert (AZ-400), Azure Fundamentals et Azure AI Fundamentals"
+      "certifications": "Certifications Microsoft Azure Developer Associate (AZ-204), Azure Fundamentals et Azure AI Fundamentals"
     },
     "contactCta": {
       "text": "Un projet, une question ou une collaboration ? Écrivez-moi, je vous réponds rapidement.",
@@ -96,7 +96,7 @@
         "ship": {
           "title": "Livrer souvent, livrer sûr",
           "text": "Intégration et déploiement continus, sécurité intégrée dès la conception (DevSecOps), cloud Azure.",
-          "proof": "Intégration et déploiement continus chez Kardham Digital · certifications Microsoft DevOps Engineer Expert (AZ-400), Azure Fundamentals et Azure AI Fundamentals."
+          "proof": "Intégration et déploiement continus chez Kardham Digital · certifications Microsoft Azure Developer Associate (AZ-204), Azure Fundamentals et Azure AI Fundamentals."
         },
         "maintain": {
           "title": "Faire vivre l'application",

@@ -8,23 +8,25 @@ export default function manifest(): MetadataRoute.Manifest {
       'Personal website of Vincent Simonin, Software Engineer & Azure Cloud Developer',
     start_url: '/',
     display: 'standalone',
-    categories: [
-      'Full Stack Developer',
-      'Azure Cloud Developer',
-      'DevSecOps',
-      'React.js',
-      '.NET',
-      'Web Development',
-      'Cloud Architecture',
-      'Software Engineering',
-    ],
+    // W3C app categories (store listing), not keywords.
+    categories: ['business'],
     background_color: '#000',
     theme_color: '#000',
     icons: [
       {
         src: '/favicons/favicon.ico',
-        sizes: 'any',
+        sizes: '16x16 32x32 48x48',
         type: 'image/x-icon',
+      },
+      {
+        src: '/favicons/android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: '/favicons/android-chrome-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
       },
     ],
   }

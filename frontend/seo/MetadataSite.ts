@@ -15,33 +15,43 @@ export const ViewportSite: Viewport = {
 }
 
 const description =
-  'Discover Vincent Simonin, a Full Stack and Cloud Azure expert, specializing in modern, scalable web applications. Explore his innovative design and development methods.'
+  'Vincent Simonin, full stack software engineer in Dijon, France: business applications in .NET, React, Angular and Azure, from specification to production.'
 
 // Site-wide defaults. Localized title/description/alternates come from [locale]/layout.tsx.
 export const MetadataSite: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: 'Vincent Simonin - Full Stack Developer & Azure Cloud Expert',
+  title: 'Vincent Simonin - Full Stack Engineer & Azure Cloud Developer',
   description,
+  // What the site actually shows (stack, sector, location), in French and English: the
+  // main audience is French. Google ignores this tag; Bing and other engines may read it.
   keywords: [
-    'Full Stack Developer',
-    'Azure Cloud',
-    'DevSecOps',
-    'React.js',
+    'Vincent Simonin',
+    'Full Stack Engineer',
+    'Ingénieur full stack',
+    'Applications métier',
     '.NET',
-    'Web Development',
+    'Blazor',
+    'React',
+    'Angular',
+    'Azure',
+    'DevOps',
+    'DevSecOps',
     'Cloud Architecture',
     'Software Engineering',
+    'Web Development',
+    'Smart Building',
+    'Dijon',
   ],
   creator: siteConfig.name,
   openGraph: {
     type: 'website',
     siteName: siteConfig.name,
-    title: 'Vincent Simonin - Full Stack Developer & Azure Cloud Expert',
+    title: 'Vincent Simonin - Full Stack Engineer & Azure Cloud Developer',
     description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vincent Simonin - Full Stack Developer',
+    title: 'Vincent Simonin - Full Stack Engineer',
   },
   robots: {
     index: true,
@@ -55,6 +65,15 @@ export const MetadataSite: Metadata = {
     },
   },
   authors: siteConfig.authors,
+  // Brand fuchsia "VS" monogram (files in public/favicons, /favicon.ico for crawlers).
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
+      { url: '/favicons/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicons/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+    ],
+    apple: { url: '/favicons/apple-touch-icon.png', sizes: '180x180' },
+  },
 }
 
 const ogLocales: Record<string, string> = {
@@ -98,22 +117,42 @@ export const jsonLd = {
   '@type': 'Person',
   name: siteConfig.name,
   url: siteConfig.url,
-  jobTitle: 'Full Stack Developer & Azure Cloud Expert',
+  jobTitle: 'Full Stack Engineer & Azure Cloud Developer',
   alumniOf: {
     '@type': 'Organization',
     name: 'DIIAGE',
   },
+  // Read by Google (structured data): disciplines, then the stack and domains shown on
+  // the projects page.
   knowsAbout: [
-    'Web Development',
-    'Cloud Architecture',
-    'DevSecOps',
     'Software Engineering',
     'Software Architecture',
-    'JavaScript',
-    'TypeScript',
+    'Web Development',
+    'Cloud Architecture',
+    '.NET',
+    'Blazor',
     'React',
-    '.Net platform',
+    'Angular',
+    'Java Spring Boot',
+    'PostgreSQL',
+    'Microsoft Azure',
+    'DevOps',
+    'DevSecOps',
+    'Continuous Integration and Delivery',
+    'Smart Building',
+    'Geographic Information Systems',
   ],
+  // Same certifications as the home page career section (Microsoft Learn profile).
+  hasCredential: [
+    'Microsoft Certified: Azure Developer Associate',
+    'Microsoft Certified: Azure Fundamentals',
+    'Microsoft Certified: Azure AI Fundamentals',
+  ].map((name) => ({
+    '@type': 'EducationalOccupationalCredential',
+    name,
+    credentialCategory: 'certification',
+    recognizedBy: { '@type': 'Organization', name: 'Microsoft' },
+  })),
   description,
   sameAs: [siteConfig.links.github, siteConfig.links.linkedin],
 }
