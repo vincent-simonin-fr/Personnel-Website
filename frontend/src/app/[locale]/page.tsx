@@ -5,7 +5,6 @@ import { useAppContext } from 'hooks/useAppContext'
 import Image from 'next/image'
 import meetingImage from 'assets/meeting.jpg'
 import Link from 'next/link'
-import { Hanken_Grotesk } from 'next/font/google'
 import { buttonVariants, cn } from '@heroui/react'
 import { lazy } from 'react'
 import Loading from 'components/loading/Loading'
@@ -35,8 +34,6 @@ const primaryLinkButton = cn(
   'rounded-full bg-primary-50 text-primary-900',
 )
 
-const hankenGrotesk = Hanken_Grotesk({ subsets: ['latin'], weight: '600' })
-
 const HomePage = () => {
   const { isLoading, isError, error } = useAppContext()
   const { dictionary } = useLocaleContext()
@@ -56,8 +53,7 @@ const HomePage = () => {
                   </span>
                   {dictionary.homePage.firstScreen.salutation}
                 </div>
-                <h1
-                  className={`${hankenGrotesk.className} text-3xl text-pretty md:text-4xl lg:text-5xl`}>
+                <h1 className='text-3xl font-semibold text-pretty md:text-4xl lg:text-5xl'>
                   {dictionary.homePage.firstScreen.hook.one}
                   <span className={`text-fuchsia-600`}>
                     {dictionary.homePage.firstScreen.hook.two}
@@ -206,7 +202,7 @@ const HomePage = () => {
             {/* Call to action only: the form lives on /contact (single source). */}
             <div className='absolute inset-0 flex items-center justify-center md:justify-end md:pr-32'>
               <div className='flex max-w-md flex-col items-start gap-4 rounded-large bg-background p-6 text-primary-50 md:w-1/2'>
-                <h2 className={`${hankenGrotesk.className} text-2xl`}>
+                <h2 className='text-2xl font-semibold'>
                   {dictionary.contactForm.title}
                 </h2>
                 <p className='text-lg text-pretty'>

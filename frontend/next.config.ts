@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
     // AVIF first (-26 to -35% vs WebP on the contact photo), WebP fallback.
     formats: ['image/avif', 'image/webp'],
   },
+  experimental: {
+    // Inline the (small, ~15 KB gzip) CSS into the HTML: no render-blocking stylesheet
+    // request before first paint. Production builds only.
+    inlineCss: true,
+  },
   async headers() {
     return [
       {

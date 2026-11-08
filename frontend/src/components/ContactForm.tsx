@@ -13,11 +13,7 @@ import { toast, ToastContentProps } from 'react-toastify' // For notifications
 import emailjs from '@emailjs/browser'
 import { FormEvent, ReactNode, useState } from 'react'
 import { useTheme } from 'next-themes'
-import { Hanken_Grotesk } from 'next/font/google'
 import { useLocaleContext } from 'hooks/useLocaleContext'
-
-const hankenGrotesk = Hanken_Grotesk({ subsets: ['latin'] })
-const hankenGrotesk600 = Hanken_Grotesk({ subsets: ['latin'], weight: '600' })
 
 type ContactFormProps = object
 
@@ -39,8 +35,7 @@ const errorClassName = 'text-sm text-danger'
 
 const CustomToast = ({ data }: ToastContentProps<ReactNode>) => {
   return (
-    <div
-      className={`${hankenGrotesk.className} flex flex-col pl-8 text-primary-300`}>
+    <div className='flex flex-col pl-8 text-primary-300'>
       <p className={`text-sm`}>{data}</p>
     </div>
   )
@@ -95,9 +90,7 @@ const ContactForm = ({}: ContactFormProps) => {
   return (
     <div className='flex w-full max-w-md flex-col items-start'>
       {/* h1: the form is the main content of /contact (its only usage). */}
-      <h1 className={`${hankenGrotesk600.className} mb-4 text-2xl`}>
-        {contactForm.title}
-      </h1>
+      <h1 className='mb-4 text-2xl font-semibold'>{contactForm.title}</h1>
       <Form
         id='contact-form'
         className='flex w-full max-w-md flex-col gap-4'
