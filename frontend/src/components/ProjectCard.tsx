@@ -38,7 +38,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             href={url}
             target='_blank'
             rel='noopener noreferrer'
-            className='text-fuchsia-600 hover:underline'>
+            className='text-brand hover:underline'>
             {url.replace(/^https?:\/\//, '')} ↗
           </a>
         )}

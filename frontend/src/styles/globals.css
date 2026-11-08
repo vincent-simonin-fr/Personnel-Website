@@ -37,6 +37,9 @@
  * Values come from the former HeroUI v2 config. Dark mode: `.dark` on <html> (next-themes).
  */
 @theme inline {
+  /* `text-brand`: the accent for small text (links, active nav). One fuchsia can't reach
+     4.5:1 on both #0a0a0a and #f1f5f9 (max ~4.26), so the shade follows the theme. */
+  --color-brand: var(--brand-text);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-50: var(--primary-50);
@@ -107,6 +110,9 @@
     --accent: #c026d3;
     --accent-foreground: #ffffff;
     --focus: #f182f6;
+    --brand-text: oklch(
+      51.8% 0.253 323.949
+    ); /* fuchsia-700: 5.72:1 on the light bg */
 
     --primary: #475569;
     --primary-foreground: #cbd5e1;
@@ -127,6 +133,7 @@
     --background: #0a0a0a;
     --foreground: #ffffff;
     --focus: #3d3d3d;
+    --brand-text: oklch(66.7% 0.295 322.15); /* fuchsia-500: 5.59:1 on the dark bg */
 
     --primary: #b0b0b0;
     --primary-foreground: #f6f6f6;
