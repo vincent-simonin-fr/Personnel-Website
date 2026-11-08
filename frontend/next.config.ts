@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
   crossOrigin: 'anonymous',
   compress: true,
   devIndicators: false,
+  images: {
+    // AVIF first (-26 to -35% vs WebP on the contact photo), WebP fallback.
+    formats: ['image/avif', 'image/webp'],
+  },
   async headers() {
     return [
       {
