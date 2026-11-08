@@ -2,11 +2,9 @@
 
 import { useTheme } from 'next-themes'
 import { useAppContext } from 'hooks/useAppContext'
-import Image from 'next/image'
-import meetingImage from 'assets/meeting.jpg'
 import Link from 'next/link'
 import { buttonVariants, cn } from '@heroui/react'
-import { lazy } from 'react'
+import { lazy, type CSSProperties } from 'react'
 import Loading from 'components/loading/Loading'
 
 import { useLocaleContext } from 'hooks/useLocaleContext'
@@ -17,6 +15,7 @@ import SocialMedia from 'components/SocialMedia'
 import HandSvg from 'components/ui/svg/HandSvg'
 import MethodSection from 'components/home/MethodSection'
 import ProjectCard from 'components/ProjectCard'
+import ContactBackdrop from 'components/ui/animations/ContactBackdrop'
 
 // Heavy canvas/WebGL animation: loaded when OnScreen mounts it.
 const Threads = lazy(() => import('components/ui/animations/Threads'))
@@ -62,15 +61,18 @@ const HomePage = () => {
               <p className='mt-6 max-w-3xl text-xl text-pretty text-primary-200 md:text-2xl'>
                 {firstScreen.subline}
               </p>
-              <div className='mt-10 flex w-full flex-wrap items-center justify-between gap-6'>
+              {/* Mobile: the two buttons first, full width side by side, icons below. */}
+              <div className='mt-10 flex w-full flex-col-reverse gap-6 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between'>
                 <SocialMedia noDelay />
                 <FadeInWhenVisible delay={0}>
                   <div className='flex flex-wrap gap-3'>
-                    <Link className={primaryLinkButton} href={`/${locale}/projects`}>
+                    <Link
+                      className={cn(primaryLinkButton, 'flex-1 sm:flex-none')}
+                      href={`/${locale}/projects`}>
                       {dictionary.homePage.labelButtonToSkills}
                     </Link>
                     <Link
-                      className={secondaryLinkButton}
+                      className={cn(secondaryLinkButton, 'flex-1 sm:flex-none')}
                       href={`/${locale}/contact`}>
                       {dictionary.homePage.contactCta.button}
                     </Link>
@@ -78,7 +80,8 @@ const HomePage = () => {
                 </FadeInWhenVisible>
               </div>
             </div>
-            <div className='relative h-[50vh] w-full'>
+            {/* The threads are drawn mid-box: a shorter box on mobile lifts them into the first screen. */}
+            <div className='relative h-[40vh] w-full sm:h-[50vh]'>
               <OnScreen>
                 <Threads
                   color={theme === 'dark' ? [1, 1, 1] : [0, 0, 0]}
@@ -106,7 +109,8 @@ const HomePage = () => {
               <h2 className={sectionTitle}>{featured.kicker}</h2>
               <ul className='grid grid-cols-1 gap-6 md:grid-cols-2'>
                 {featuredProjects.map((project) => (
-                  <li key={project.id}>
+                  // flex: the card stretches to the row height, so both cards match.
+                  <li key={project.id} className='flex'>
                     <ProjectCard
                       project={project}
                       labels={projects}
@@ -129,20 +133,47 @@ const HomePage = () => {
               <p className='max-w-3xl text-lg leading-relaxed text-pretty text-primary-200'>
                 {career.text}
               </p>
-              <ol className='mt-6 grid grid-cols-1 md:grid-cols-3 md:gap-x-4 md:gap-y-8 xl:grid-cols-6'>
+              <ol className='mt-6 grid grid-cols-1 md:grid-cols-3 md:gap-y-8 xl:grid-cols-[repeat(6,minmax(min-content,1fr))]'>
                 {career.items.map((item, i) => {
-                  const last = i === career.items.length - 1
+                  const count = career.items.length
+                  const last = i === count - 1
+                  // One continuous hairline warming up to full fuchsia towards today (starting
+                  // already tinted, 40%): each item draws its own stretch, from its color to
+                  // the next one's. The current job is still running, so its stretch fades out.
+                  const tint = (step: number) =>
+                    `color-mix(in oklab, var(--color-fuchsia-500) ${Math.round(40 + (step / (count - 1)) * 60)}%, var(--color-primary-700))`
+                  const lineColors = {
+                    '--from': tint(i),
+                    '--to': last ? 'transparent' : tint(i + 1),
+                  } as CSSProperties
                   return (
                     <li
                       key={`${item.year}-${item.title}`}
-                      className='relative border-l-1 border-primary-700 pb-6 pl-6 md:border-t-1 md:border-l-0 md:pt-6 md:pb-0 md:pl-0'>
+                      className='relative pb-6 pl-5 md:pt-4 md:pr-4 md:pb-0 md:pl-0'>
                       <span
                         aria-hidden
-                        className={`absolute top-1 -left-[5.5px] size-2.5 rounded-full border-1 md:-top-[5.5px] md:left-0 ${last ? 'border-fuchsia-500 bg-fuchsia-500 shadow-[0_0_10px_rgb(225_42_251/0.7)]' : 'border-primary-500 bg-background'}`}
+                        style={lineColors}
+                        className='absolute inset-y-0 left-0 w-px bg-linear-to-b from-(--from) to-(--to) md:inset-x-0 md:top-0 md:bottom-auto md:h-px md:w-auto md:bg-linear-to-r'
                       />
-                      <p className='text-sm text-primary-300'>{item.year}</p>
-                      <p className='mt-1 font-semibold'>{item.title}</p>
-                      <p className='mt-1 text-sm text-pretty break-words hyphens-auto text-primary-200'>
+                      {last ? (
+                        <span
+                          aria-hidden
+                          className='absolute top-[6px] -left-[5.5px] size-3 rounded-full bg-fuchsia-500 shadow-[0_0_12px_rgb(225_42_251/0.8)] md:-top-[5.5px] md:left-0'>
+                          <span className='absolute inset-0 animate-ping rounded-full bg-fuchsia-500/60 motion-reduce:animate-none' />
+                        </span>
+                      ) : (
+                        <span
+                          aria-hidden
+                          style={{ backgroundColor: tint(i) }}
+                          className='absolute top-[8.5px] -left-[3px] size-[7px] rounded-full md:-top-[3px] md:left-0'
+                        />
+                      )}
+                      <p
+                        className={`tracking-wide tabular-nums ${last ? 'text-brand' : 'text-primary-300'}`}>
+                        {item.year}
+                      </p>
+                      <p className='text-lg font-semibold'>{item.title}</p>
+                      <p className='mt-0.5 leading-snug text-pretty break-words text-primary-200'>
                         {item.detail}
                       </p>
                     </li>
@@ -156,20 +187,12 @@ const HomePage = () => {
           {/* Contact Section */}
           <KeyframeCssOnView cssClass='showAndHideOnView px-4 md:px-16'>
             <div className='relative h-[calc(100vh-136px)] w-full'>
-              <Image
-                src={meetingImage}
-                alt=''
-                fill
-                style={{ objectFit: 'cover' }}
-                // Container is full width minus px-4 / md:px-16.
-                sizes='(min-width: 768px) calc(100vw - 8rem), calc(100vw - 2rem)'
-                loading='lazy'
-                placeholder='blur'
-              />
+              <ContactBackdrop />
             </div>
             {/* Call to action only: the form lives on /contact (single source). */}
-            <div className='absolute inset-0 flex items-center justify-center md:justify-end md:pr-32'>
-              <div className='flex max-w-md flex-col items-start gap-4 rounded-large bg-background p-6 text-primary-50 md:w-1/2'>
+            {/* Pointer events reach the backdrop (cursor ball), except on the card. */}
+            <div className='pointer-events-none absolute inset-0 flex items-center justify-center px-4 md:justify-end md:pr-32'>
+              <div className='pointer-events-auto flex w-full max-w-md flex-col items-start gap-4 rounded-3xl border-1 border-primary-800 bg-background/70 p-6 text-primary-50 shadow-2xl backdrop-blur-xl md:w-1/2'>
                 <h2 className='text-2xl font-semibold'>
                   {dictionary.contactForm.title}
                 </h2>

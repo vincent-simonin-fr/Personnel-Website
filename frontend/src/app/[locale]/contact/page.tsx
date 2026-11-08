@@ -1,27 +1,15 @@
 import ContactForm from 'components/ContactForm'
-import Image from 'next/image'
-import meetingImage from 'assets/meeting.jpg'
+import ContactBackdrop from 'components/ui/animations/ContactBackdrop'
 
 const Contact = () => {
   return (
     <div className='flex h-[calc(100vh-56px)] w-full flex-col items-center justify-center'>
       <div className='relative h-full w-full'>
-        {/* LCP element: preloaded with high priority. Static import = known size, blurred
-            preview while loading, content-hashed URL (cached long-term). */}
-        <Image
-          src={meetingImage}
-          alt=''
-          fill
-          style={{ objectFit: 'cover' }}
-          sizes='100vw'
-          preload
-          // `preload` alone no longer sets it (Next 16): keep the LCP fetch at high priority.
-          fetchPriority='high'
-          placeholder='blur'
-        />
+        <ContactBackdrop />
       </div>
-      <div className='absolute inset-0 flex items-center justify-center md:justify-end md:pr-32'>
-        <div className='max-w-md rounded-large bg-background p-6 text-primary-50 md:w-1/2'>
+      {/* Pointer events reach the backdrop (cursor ball), except on the card. */}
+      <div className='pointer-events-none absolute inset-0 flex items-center justify-center px-4 md:justify-end md:pr-32'>
+        <div className='pointer-events-auto w-full max-w-md rounded-3xl border-1 border-primary-800 bg-background/70 p-6 text-primary-50 shadow-2xl backdrop-blur-xl md:w-1/2'>
           <ContactForm />
         </div>
       </div>

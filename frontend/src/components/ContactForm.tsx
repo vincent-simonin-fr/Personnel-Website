@@ -96,7 +96,7 @@ const ContactForm = ({}: ContactFormProps) => {
         className='flex w-full max-w-md flex-col gap-4'
         onReset={() => setUserInput(emptyInput)}
         onSubmit={handleSubmit}>
-        <div className='flex w-full gap-4'>
+        <div className='flex w-full flex-col gap-4 sm:flex-row'>
           <TextField
             isRequired
             isDisabled={isDisabled}

@@ -14,21 +14,15 @@ import { useLocaleContext } from 'hooks/useLocaleContext'
 const locales: Locale[] = [
   {
     key: 'fr',
-    label: 'fr',
-    country: 'France',
-    icon: 'icons/fr.svg',
+    label: 'Français',
   },
   {
     key: 'en-us',
-    label: 'en',
-    country: 'United States',
-    icon: 'icons/us.svg',
+    label: 'English',
   },
   {
     key: 'de',
-    label: 'de',
-    country: 'Germany',
-    icon: 'icons/de.svg',
+    label: 'Deutsch',
   },
 ]
 
@@ -54,11 +48,11 @@ const LocaleSwitcher = () => {
   const getFlag = (locale: string) => {
     switch (locale) {
       case 'en-us':
-        return <UsaSvg size={20} />
+        return <UsaSvg size={18} />
       case 'fr':
-        return <FranceSvg size={20} />
+        return <FranceSvg size={18} />
       case 'de':
-        return <GermanySvg size={20} />
+        return <GermanySvg size={18} />
       default:
         return 'foo'
     }
@@ -75,7 +69,8 @@ const LocaleSwitcher = () => {
         aria-label='Open language menu'>
         <LanguageSvg size={24} />
       </Button>
-      <Dropdown.Popover className='min-w-min'>
+      {/* Frosted glass like the header; the active language is fuchsia. */}
+      <Dropdown.Popover className='min-w-40 rounded-2xl border-1 border-primary-800 bg-background/80 p-1 shadow-2xl backdrop-blur-lg backdrop-saturate-150'>
         <Dropdown.Menu
           aria-label='Language menu'
           items={locales}
@@ -85,14 +80,11 @@ const LocaleSwitcher = () => {
           {(locale) => (
             <Dropdown.Item
               id={locale.key}
-              textValue={locale.key}
-              aria-label={`${locale.country} language`}>
-              <div className='flex items-center justify-start gap-3'>
-                {getFlag(locale.key)}
-                <span className='align-middle text-lg'>{locale.label}</span>
-              </div>
-              {/* v3 shows the selection check only when the indicator is rendered. */}
-              <Dropdown.ItemIndicator />
+              textValue={locale.label}
+              className='gap-3 rounded-xl px-3 py-2 text-sm text-primary-100 data-selected:bg-fuchsia-500/10 data-selected:text-brand'>
+              {getFlag(locale.key)}
+              {/* Autonym: each language in its own name, so `lang` for screen readers. */}
+              <span lang={locale.key}>{locale.label}</span>
             </Dropdown.Item>
           )}
         </Dropdown.Menu>

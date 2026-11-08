@@ -212,9 +212,11 @@ const MetaBalls: React.FC<MetaBallsProps> = ({
       const width = container.clientWidth
       const height = container.clientHeight
       renderer.setSize(width * dpr, height * dpr)
+      // Fill the container exactly: the drawing buffer is width x height, so a forced
+      // square (the former aspect-ratio 1/1) stretched the balls and overflowed any
+      // non-square container.
       gl.canvas.style.width = '100%'
-      gl.canvas.style.height = 'auto'
-      gl.canvas.style.aspectRatio = '1/1'
+      gl.canvas.style.height = '100%'
       program.uniforms.iResolution.value.set(gl.canvas.width, gl.canvas.height, 0)
     }
     window.addEventListener('resize', resize)
