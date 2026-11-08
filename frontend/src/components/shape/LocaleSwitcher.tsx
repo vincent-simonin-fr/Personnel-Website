@@ -1,49 +1,36 @@
 'use client'
 
 import { usePathname, useRouter } from 'next/navigation'
-import {
-  Avatar,
-  Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from '@heroui/react'
-import { useAppContext } from 'hooks/useAppContext'
+import { Button, Dropdown } from '@heroui/react'
 import LanguageSvg from 'components/ui/svg/LanguageSvg'
-
-type Locale = {
-  key: string
-  label: string
-  country: string
-  icon: string
-}
+import UsaSvg from 'components/ui/svg/UsaSvg'
+import FranceSvg from 'components/ui/svg/FranceSvg'
+import GermanySvg from 'components/ui/svg/GermanySvg'
+import { setLocaleCookie } from '../../lib/actions/actions'
+import { Locale } from 'types'
+import { useState } from 'react'
+import { useLocaleContext } from 'hooks/useLocaleContext'
 
 const locales: Locale[] = [
   {
-    key: 'en-US',
-    label: 'en',
-    country: 'United States',
-    icon: 'icons/us.svg',
+    key: 'fr',
+    label: 'Français',
   },
   {
-    key: 'fr',
-    label: 'fr',
-    country: 'France',
-    icon: 'icons/fr.svg',
+    key: 'en-us',
+    label: 'English',
   },
   {
     key: 'de',
-    label: 'de',
-    country: 'Germany',
-    icon: 'icons/de.svg',
+    label: 'Deutsch',
   },
 ]
 
 const LocaleSwitcher = () => {
-  const pathname = usePathname()
   const router = useRouter()
-  const { locale, setLocale } = useAppContext()
+  const pathname = usePathname()
+  const { dictionary } = useLocaleContext()
+  const [currentLocale, setCurrentLocale] = useState(dictionary.locale)
 
   const path = (locale: string) => {
     const segments = pathname.split('/')
@@ -51,47 +38,57 @@ const LocaleSwitcher = () => {
     return segments.join('/')
   }
 
-  const handleSelectLocale = (newLocale: string) => {
-    if (newLocale === locale) return
-
-    setLocale(newLocale)
-    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`
+  const handleSelectLocale = async (newLocale: string) => {
+    if (newLocale === currentLocale) return
+    setCurrentLocale(newLocale)
+    await setLocaleCookie(newLocale)
     router.push(path(newLocale))
   }
 
+  const getFlag = (locale: string) => {
+    switch (locale) {
+      case 'en-us':
+        return <UsaSvg size={18} />
+      case 'fr':
+        return <FranceSvg size={18} />
+      case 'de':
+        return <GermanySvg size={18} />
+      default:
+        return 'foo'
+    }
+  }
+
   return (
-    <Dropdown aria-label='Language switcher' className='min-w-min'>
-      <DropdownTrigger>
-        <Button
-          className='min-w-8 px-2'
-          name='open-language-menu'
-          color='primary'
-          radius='full'
-          variant='light'
-          aria-label='Open language menu'>
-          <LanguageSvg size={24} />
-        </Button>
-      </DropdownTrigger>
-      <DropdownMenu
-        aria-label='Language menu'
-        items={locales}
-        selectionMode='single'
-        selectedKeys={[locale]}>
-        {(locale) => (
-          <li aria-label={`${locale.country} language`}>
-            <DropdownItem
-              key={locale.key}
-              textValue={locale.key}
-              onPress={() => handleSelectLocale(locale.key)}
-              aria-label={`${locale.country} language`}>
-              <span className='flex items-center justify-start gap-3'>
-                <Avatar alt={locale.country} className='h-5 w-5' src={locale.icon} />
-                <span className='align-middle text-lg'>{locale.label}</span>
-              </span>
-            </DropdownItem>
-          </li>
-        )}
-      </DropdownMenu>
+    <Dropdown>
+      <Button
+        // v3 icon buttons force svg to 16px; keep the 24px icon of the v2 design.
+        className='min-w-8 rounded-full px-2 text-primary [&_svg]:size-6'
+        name='open-language-menu'
+        variant='ghost'
+        isIconOnly
+        aria-label='Open language menu'>
+        <LanguageSvg size={24} />
+      </Button>
+      {/* Frosted glass like the header; the active language is fuchsia. */}
+      <Dropdown.Popover className='min-w-40 rounded-2xl border-1 border-primary-800 bg-background/80 p-1 shadow-2xl backdrop-blur-lg backdrop-saturate-150'>
+        <Dropdown.Menu
+          aria-label='Language menu'
+          items={locales}
+          selectionMode='single'
+          selectedKeys={[currentLocale]}
+          onAction={(key) => handleSelectLocale(String(key))}>
+          {(locale) => (
+            <Dropdown.Item
+              id={locale.key}
+              textValue={locale.label}
+              className='gap-3 rounded-xl px-3 py-2 text-sm text-primary-100 data-selected:bg-fuchsia-500/10 data-selected:text-brand'>
+              {getFlag(locale.key)}
+              {/* Autonym: each language in its own name, so `lang` for screen readers. */}
+              <span lang={locale.key}>{locale.label}</span>
+            </Dropdown.Item>
+          )}
+        </Dropdown.Menu>
+      </Dropdown.Popover>
     </Dropdown>
   )
 }

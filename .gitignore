@@ -42,3 +42,18 @@ next-env.d.ts
 bi/*
 my-heroui-app/*
 deployment-architecture-v2.jpg
+# claude code (personal)
+CLAUDE.local.md
+.claude/settings.local.json
+.playwright-mcp/
+
+# Specs, plans and review notes (local only, never committed)
+docs/
+
+# Local only for now: Claude config, editor settings, project notes
+.claude/
+.vscode/
+CLAUDE.md
+TODO.md
+frontend/.vscode/
+frontend/TODO.md

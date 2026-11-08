@@ -36,7 +36,12 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
   const [lastActiveIndex, setLastActiveIndex] = useState<number | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
   const wordRefs = useRef<(HTMLSpanElement | null)[]>([])
-  const [focusRect, setFocusRect] = useState<FocusRect>({ x: 0, y: 0, width: 0, height: 0 })
+  const [focusRect, setFocusRect] = useState<FocusRect>({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  })
 
   useEffect(() => {
     if (!manualMode) {
@@ -95,9 +100,9 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
           <span
             key={index}
             ref={
-              ((el: HTMLSpanElement) => (wordRefs.current[index] = el)) as unknown as
-                | Ref<HTMLSpanElement>
-                | undefined
+              ((el: HTMLSpanElement) =>
+                (wordRefs.current[index] = el)) as unknown as
+                Ref<HTMLSpanElement> | undefined
             }
             className='relative cursor-pointer text-[3rem] font-black'
             style={
@@ -121,7 +126,7 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
       })}
 
       <motion.div
-        className='pointer-events-none absolute left-0 top-0 box-border border-0'
+        className='pointer-events-none absolute top-0 left-0 box-border border-0'
         animate={{
           x: focusRect.x,
           y: focusRect.y,

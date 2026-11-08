@@ -4,7 +4,11 @@ interface LinkedinSVGProps extends SVGProps<SVGSVGElement> {
   size?: number
 }
 
-const LinkedinSvg = ({ size = 24, color = 'currentColor', ...props }: LinkedinSVGProps) => {
+const LinkedinSvg = ({
+  size = 24,
+  color = 'currentColor',
+  ...props
+}: LinkedinSVGProps) => {
   return (
     <svg
       fill='currentColor'

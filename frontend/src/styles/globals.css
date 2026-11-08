@@ -1,8 +1,209 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*
+ * HeroUI v3, selective import. The full `@heroui/styles` ships CSS for ~75 components
+ * (+16 KB gzip render-blocking). This mirrors @heroui/styles/dist/index.css but keeps
+ * only the components the site uses, in the order of its components/index.css (order
+ * matters). Using a new HeroUI component? Add its file here, or it renders unstyled.
+ */
+@layer theme, base, components, utilities;
 
+@import 'tailwindcss';
+@import '@heroui/styles/base/base.css' layer(base);
+@import '@heroui/styles/base/scrollbar.css' layer(base);
+
+@import '@heroui/styles/components/field-error.css' layer(components);
+@import '@heroui/styles/components/label.css' layer(components);
+@import '@heroui/styles/components/button.css' layer(components);
+@import '@heroui/styles/components/dropdown.css' layer(components);
+@import '@heroui/styles/components/list-box-item.css' layer(components);
+@import '@heroui/styles/components/list-box-section.css' layer(components);
+@import '@heroui/styles/components/list-box.css' layer(components);
+@import '@heroui/styles/components/menu-item.css' layer(components);
+@import '@heroui/styles/components/menu-section.css' layer(components);
+@import '@heroui/styles/components/menu.css' layer(components);
+@import '@heroui/styles/components/spinner.css' layer(components);
+@import '@heroui/styles/components/input.css' layer(components);
+@import '@heroui/styles/components/textfield.css' layer(components);
+@import '@heroui/styles/components/textarea.css' layer(components);
+@import '@heroui/styles/components/popover.css' layer(components);
+
+@import '@heroui/styles/themes/default' layer(theme);
+/* Not layered (they declare @utility / @custom-variant, which can't be nested). */
+@import '@heroui/styles/utilities';
+@import '@heroui/styles/variants';
+
+/*
+ * Theme = HeroUI v3 tokens (--background, --foreground, --accent, --focus…) + the site's
+ * own `primary-*` grey scale, inverted between light and dark (see DESIGN.md).
+ * Values come from the former HeroUI v2 config. Dark mode: `.dark` on <html> (next-themes).
+ */
+@theme inline {
+  /* `text-brand`: the accent for small text (links, active nav). One fuchsia can't reach
+     4.5:1 on both #0a0a0a and #f1f5f9 (max ~4.26), so the shade follows the theme. */
+  --color-brand: var(--brand-text);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+}
+
+@theme {
+  /* Radii of the former HeroUI v2 layout (rounded-small/medium/large). */
+  --radius-small: 2px;
+  --radius-medium: 4px;
+  --radius-large: 6px;
+
+  /* HeroUI v2 utilities still used by the theme switcher. */
+  --ease-soft-spring: cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  --animate-spinner-ease-spin: spinner-spin 0.8s ease infinite;
+  /* FadeInOnAppear (hero): rise + settle, easeInOutCubic. */
+  --animate-fade-in-up: fade-in-up 1s cubic-bezier(0.65, 0, 0.35, 1) both;
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(42px) scale(1.1);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* BouncingHand (404): gentle vertical loop. */
+  --animate-bounce-y: bounce-y 1.2s ease-in-out infinite;
+
+  @keyframes bounce-y {
+    0%,
+    100% {
+      transform: translateY(-5px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+  }
+
+  /* 404 stage (Animation404): the spotlight sweeps then lands on "404", which lights up
+     with its floor halo. Transform/opacity only. */
+  --animate-spot-sweep: spot-sweep 3.4s cubic-bezier(0.45, 0, 0.2, 1) both;
+  --animate-spot-lit: spot-lit 3.4s ease-out both;
+  /* The jazz guitarist on the 404 stage (image layers, one beat = 1.6s). */
+  --animate-jazz-sway: jazz-sway 3.2s ease-in-out infinite;
+  --animate-jazz-bob: jazz-bob 1.6s ease-in-out infinite alternate;
+  --animate-jazz-strum: jazz-strum 0.8s ease-in-out infinite alternate;
+  --animate-jazz-smoke: jazz-smoke 2.5s ease-in-out infinite alternate;
+
+  @keyframes jazz-sway {
+    0%,
+    100% {
+      transform: rotate(-1.2deg);
+    }
+    50% {
+      transform: rotate(1.2deg);
+    }
+  }
+
+  @keyframes jazz-bob {
+    from {
+      transform: rotate(-3deg);
+    }
+    to {
+      transform: rotate(3deg);
+    }
+  }
+
+  @keyframes jazz-strum {
+    from {
+      transform: rotate(-10deg);
+    }
+    to {
+      transform: rotate(6deg);
+    }
+  }
+
+  @keyframes jazz-smoke {
+    from {
+      opacity: 0.35;
+      transform: translateY(4px) scaleY(0.97);
+    }
+    to {
+      opacity: 0.85;
+      transform: translateY(-6px) scaleY(1.03);
+    }
+  }
+
+  @keyframes spinner-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* Same layer as HeroUI's theme variables but declared later, so these win. */
 @layer base {
+  /* Don't override --radius: HeroUI derives Tailwind's whole rounded-* scale from it, and
+     its default (0.5rem) is what reproduces Tailwind's standard radii. */
+  :root {
+    --background: #f1f5f9;
+    --foreground: #1e293b;
+    --accent: #c026d3;
+    --accent-foreground: #ffffff;
+    --focus: #f182f6;
+    --brand-text: oklch(
+      51.8% 0.253 323.949
+    ); /* fuchsia-700: 5.72:1 on the light bg */
+
+    --primary: #475569;
+    --primary-foreground: #cbd5e1;
+    --primary-50: #0f172a;
+    --primary-100: #1e293b;
+    --primary-200: #334155;
+    --primary-300: #475569;
+    --primary-400: #64748b;
+    --primary-500: #94a3b8;
+    --primary-600: #cbd5e1;
+    --primary-700: #e2e8f0;
+    --primary-800: #f1f5f9;
+    --primary-900: #f8fafc;
+  }
+
+  /* After :root on purpose: same specificity, so source order makes dark win. */
+  .dark {
+    --background: #0a0a0a;
+    --foreground: #ffffff;
+    --focus: #3d3d3d;
+    --brand-text: oklch(66.7% 0.295 322.15); /* fuchsia-500: 5.59:1 on the dark bg */
+
+    --primary: #b0b0b0;
+    --primary-foreground: #f6f6f6;
+    --primary-50: #f6f6f6;
+    --primary-100: #e7e7e7;
+    --primary-200: #b0b0b0;
+    --primary-300: #888888;
+    --primary-400: #6d6d6d;
+    --primary-500: #5d5d5d;
+    --primary-600: #4f4f4f;
+    --primary-700: #454545;
+    --primary-800: #3d3d3d;
+    --primary-900: #1b1b1b;
+  }
+
+  html {
+    color: var(--foreground);
+    background: var(--background);
+    scroll-behavior: smooth;
+  }
+
   .rive-container {
     all: unset;
     position: absolute;
@@ -11,36 +212,31 @@
   }
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --foreground-rgb: 0, 0, 0;
-
-  --color-bg-light: #ffffff;
-  --color-bg-dark: #1a1a1a;
-  --color-text-light: #000000;
-  --color-text-dark: #ffffff;
-  --color-border-light: #e2e8f0;
-  --color-border-dark: #4a5568;
+/* 404 beam (Animation404): comes out of the bottom of the "0"'s bowl. Sized in
+   em with the same font size as the digits, so it hugs the glyph at every viewport
+   (measured on Hanken Grotesk extrabold: the 0 is ~0.5em wide, its bowl ends at 0.85em). */
+@utility beam-404 {
+  top: 0.5em;
+  transform-origin: calc(50% + 0.026em) 0;
+  clip-path: polygon(
+    calc(50% - 0.146em) 0.285em,
+    calc(50% - 0.058em) 0.343em,
+    calc(50% + 0.026em) 0.358em,
+    calc(50% + 0.11em) 0.343em,
+    calc(50% + 0.198em) 0.285em,
+    90% 100%,
+    10% 100%
+  );
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --foreground-rgb: 255, 255, 255;
-
-    --color-bg: var(--color-bg-dark);
-    --color-text: var(--color-text-dark);
-    --color-border: var(--color-border-dark);
+/* FadeInWhenVisible: no entrance animation for users who ask for reduced motion.
+   !important beats the component's inline styles. */
+@media (prefers-reduced-motion: reduce) {
+  [data-fade-in] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
-}
-
-html {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  scroll-behavior: smooth;
 }
 
 @keyframes hide {
@@ -97,5 +293,47 @@ html {
     animation-fill-mode: none;
     animation-timeline: view();
     animation-range: entry-crossing, exit-crossing;
+  }
+}
+
+/* Scroll depth (projects page, see DESIGN.md "Mouvement"). Scenes and planes are static
+   by default; they only move where scroll-driven animations exist and motion is welcome. */
+@keyframes parallax-y {
+  from {
+    transform: translateY(var(--parallax, 0px));
+  }
+  to {
+    transform: translateY(calc(var(--parallax, 0px) * -1));
+  }
+}
+
+/* Fades out on exit only: a scene visible at load must show its text at full contrast. */
+@keyframes parallax-fade {
+  0% {
+    transform: translateY(var(--parallax, 0px));
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(calc(var(--parallax, 0px) * -1));
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-scene] {
+      view-timeline-name: --scene;
+    }
+    [data-parallax] {
+      animation: parallax-y linear both;
+      /* After the shorthand, which resets it. */
+      animation-timeline: --scene;
+    }
+    [data-parallax-fade] {
+      animation: parallax-fade linear both;
+      animation-timeline: --scene;
+    }
   }
 }

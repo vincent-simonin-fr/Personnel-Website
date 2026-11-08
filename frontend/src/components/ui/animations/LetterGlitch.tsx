@@ -27,7 +27,7 @@ const LetterGlitch = ({
   >([])
   const grid = useRef({ columns: 0, rows: 0 })
   const context = useRef<CanvasRenderingContext2D | null>(null)
-  const lastGlitchTime = useRef(Date.now())
+  const lastGlitchTime = useRef(0)
 
   const fontSize = 16
   const charWidth = 10
@@ -230,8 +230,8 @@ const LetterGlitch = ({
     }
   }
 
-  const animate = () => {
-    const now = Date.now()
+  // `now` is the requestAnimationFrame timestamp (performance.now clock): no clock read during render.
+  const animate = (now: number) => {
     if (now - lastGlitchTime.current >= glitchSpeed) {
       updateLetters()
       drawLetters()
@@ -251,7 +251,7 @@ const LetterGlitch = ({
 
     context.current = canvas.getContext('2d')
     resizeCanvas()
-    animate()
+    animate(performance.now())
 
     let resizeTimeout: NodeJS.Timeout
 
@@ -260,7 +260,7 @@ const LetterGlitch = ({
       resizeTimeout = setTimeout(() => {
         cancelAnimationFrame(animationRef.current as number)
         resizeCanvas()
-        animate()
+        animate(performance.now())
       }, 100)
     }
 
@@ -270,17 +270,16 @@ const LetterGlitch = ({
       cancelAnimationFrame(animationRef.current!)
       window.removeEventListener('resize', handleResize)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [glitchSpeed, smooth])
 
   return (
     <div className='relative h-full w-full overflow-hidden rounded-[38px] bg-black'>
       <canvas ref={canvasRef} className='block h-full w-full' />
       {outerVignette && (
-        <div className='pointer-events-none absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle,_rgba(0,0,0,0)_60%,_rgba(0,0,0,1)_100%)]'></div>
+        <div className='pointer-events-none absolute top-0 left-0 h-full w-full bg-[radial-gradient(circle,_rgba(0,0,0,0)_60%,_rgba(0,0,0,1)_100%)]'></div>
       )}
       {centerVignette && (
-        <div className='pointer-events-none absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle,_rgba(0,0,0,0.8)_0%,_rgba(0,0,0,0)_60%)]'></div>
+        <div className='pointer-events-none absolute top-0 left-0 h-full w-full bg-[radial-gradient(circle,_rgba(0,0,0,0.8)_0%,_rgba(0,0,0,0)_60%)]'></div>
       )}
     </div>
   )

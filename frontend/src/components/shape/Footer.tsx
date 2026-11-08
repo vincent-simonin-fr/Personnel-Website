@@ -4,14 +4,20 @@ import { Button } from '@heroui/react'
 import SocialMedia from 'components/SocialMedia'
 import FadeInWhenVisible from 'components/ui/animations/FadeInWhenVisible'
 import ArrowUpSvg from 'components/ui/svg/ArrowUpSvg'
-import { siteConfig } from 'config/site'
+import { siteConfig } from '../../../config/site'
 import { useMediaQuery } from 'usehooks-ts'
 
 type FooterProps = object
 
+// Module scope: computed once, outside render (keeps the component pure).
+const currentYear = new Date().getFullYear()
+
 const Footer = ({}: FooterProps) => {
   const minWidth = '624px'
-  const isMobile = useMediaQuery(`(max-width: ${minWidth})`)
+  // false on the first render (= server HTML), then the real value: no hydration mismatch.
+  const isMobile = useMediaQuery(`(max-width: ${minWidth})`, {
+    initializeWithValue: false,
+  })
 
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -24,18 +30,18 @@ const Footer = ({}: FooterProps) => {
         {!isMobile && (
           <FadeInWhenVisible delay={0.6}>
             <Button
-              className='duration-900 border-2 border-primary bg-background text-primary transition-transform ease-in-out hover:scale-95 hover:shadow-sm hover:shadow-primary'
-              radius='full'
+              className='rounded-full border-2 border-primary bg-background text-primary transition-transform duration-900 ease-in-out hover:scale-95 hover:shadow-xs hover:shadow-primary'
               isIconOnly
               aria-label='Scroll to top'
-              color='primary'
               onPress={scrollToTop}>
               <ArrowUpSvg />
             </Button>
           </FadeInWhenVisible>
         )}
         <FadeInWhenVisible delay={0.8}>
-          <div>© 2025 {siteConfig.name}</div>
+          <div>
+            © {currentYear} {siteConfig.name}
+          </div>
         </FadeInWhenVisible>
       </div>
       <div className='h-[3px] w-full bg-primary'></div>
