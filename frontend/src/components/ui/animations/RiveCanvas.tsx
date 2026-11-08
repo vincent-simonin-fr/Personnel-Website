@@ -47,15 +47,25 @@ const RiveCanvas = ({
   })
   const { ref, isIntersecting } = useIntersectionObserver({ rootMargin })
 
-  // Hooks must run unconditionally; inputs without a matching action stay null.
-  const click = useStateMachineInput(rive, stateMachines, 'click')
-  const enter = useStateMachineInput(rive, stateMachines, 'enter')
-  const exit = useStateMachineInput(rive, stateMachines, 'exit')
-  const inputs: RiveInputs = {
-    click: actions.onClick ? click : null,
-    enter: actions.onMouseEnter ? enter : null,
-    exit: actions.onMouseLeave ? exit : null,
-  }
+  // Hooks must run unconditionally, but an input is only looked up when an action uses
+  // it: reading state machine inputs logs Rive's deprecation warning, even for files
+  // that have none.
+  const click = useStateMachineInput(
+    rive,
+    stateMachines,
+    actions.onClick ? 'click' : undefined,
+  )
+  const enter = useStateMachineInput(
+    rive,
+    stateMachines,
+    actions.onMouseEnter ? 'enter' : undefined,
+  )
+  const exit = useStateMachineInput(
+    rive,
+    stateMachines,
+    actions.onMouseLeave ? 'exit' : undefined,
+  )
+  const inputs: RiveInputs = { click, enter, exit }
 
   // Déclencher l'animation quand l'élément entre dans la vue
   // eslint-disable-next-line react-hooks/immutability -- Rive inputs are imperative handles: setting `.value` is the API

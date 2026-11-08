@@ -85,8 +85,7 @@
     ]
   },
   "notFound": {
-    "title": "Page Not Found",
-    "subtitle": "Sorry, the page you're looking for does not exist.",
+    "tagline": "This page isn't on the setlist.",
     "buttonLabel": "Return to Home"
   },
   "presentation": {
