@@ -58,8 +58,8 @@ export type Dictionary = {
     items: Project[]
   }
   notFound: {
-    title: string
-    subtitle: string
+    /** The page's h1, under the stage scene: "Cette page n'est pas au programme." */
+    tagline: string
     buttonLabel: string
   }
   presentation: {

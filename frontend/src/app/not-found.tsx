@@ -1,7 +1,6 @@
 import BouncingHand from 'components/ui/animations/BouncingHand'
 import Link from 'next/link'
 import { headers } from 'next/headers'
-import FuzzyText from 'components/ui/animations/FuzzyText'
 import { getDictionary } from 'i18n/getDictionary'
 
 import Animation404 from 'components/ui/animations/Animation404'
@@ -12,20 +11,17 @@ const NotFound = async () => {
   const { notFound } = await getDictionary(locale)
 
   return (
-    <div className='flex min-h-[calc(100vh-60px)] flex-col items-center justify-start'>
+    <div className='flex min-h-[calc(100vh-60px)] w-[84vw] flex-col items-center justify-center gap-4 py-12 text-center'>
       <Animation404 />
-      <FuzzyText
-        baseIntensity={0.2}
-        fontSize='clamp(2rem, 6vw, 6rem)'
-        fontWeight={700}>
-        404
-      </FuzzyText>
-      <h1 className='text-center text-4xl text-balance'>{notFound.title}</h1>
-      <p className='text-center text-2xl text-balance'>{notFound.subtitle}</p>
+      <h1 className='text-2xl font-semibold text-balance text-primary-50 italic md:text-3xl'>
+        {notFound.tagline}
+      </h1>
       <Link
-        className='text mt-4 text-xl hover:underline hover:opacity-[0.7]'
+        className='group mt-4 inline-flex items-center gap-2 text-xl text-brand'
         href={`/${locale}`}>
-        {notFound.buttonLabel} <BouncingHand />
+        {/* Only the label is underlined on hover, not the hand. */}
+        <span className='group-hover:underline'>{notFound.buttonLabel}</span>
+        <BouncingHand />
       </Link>
     </div>
   )
