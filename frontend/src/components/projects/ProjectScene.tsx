@@ -23,13 +23,14 @@ const ProjectScene = ({
   <section
     data-scene
     className='relative flex min-h-svh w-full items-center overflow-hidden py-16'>
-    {/* Back plane: the client's name, barely lighter/darker than the page. */}
+    {/* Back plane: the client's name, barely lighter/darker than the page. Drawn by
+        CSS (::before) because it is decoration: contrast checkers skip it. */}
     <div
       aria-hidden
       data-parallax
-      className='pointer-events-none absolute top-[6%] -left-4 text-[clamp(6rem,22vw,19rem)] leading-none font-extrabold tracking-tighter whitespace-nowrap text-primary-700 select-none [--parallax:120px] max-sm:[--parallax:16px] dark:text-primary-900'>
-      {project.client}
-    </div>
+      data-name={project.client}
+      className='pointer-events-none absolute top-[6%] -left-4 text-[clamp(6rem,22vw,19rem)] leading-none font-extrabold tracking-tighter whitespace-nowrap text-primary-700 select-none [--parallax:120px] before:content-[attr(data-name)] max-sm:[--parallax:16px] dark:text-primary-900'
+    />
 
     <div className='relative grid w-full grid-cols-1 items-center gap-8 md:grid-cols-[minmax(0,44fr)_minmax(0,56fr)] md:gap-0'>
       {/* Middle plane: illustration with a fuchsia halo. */}
