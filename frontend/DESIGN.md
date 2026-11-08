@@ -40,11 +40,12 @@ Titres et paragraphes longs : `text-pretty` (ou `text-balance` pour les titres c
 
 ## Mouvement
 
-- Les animations sont **décoratives** : `aria-hidden`, chargées à la demande (`next/dynamic` / `React.lazy` / `RivePlayer`), sans décalage de mise en page (placeholder de même taille).
+- Les animations sont **décoratives** : `aria-hidden`, montées seulement près de l'écran (`OnScreen`, `RivePlayer`), sans décalage de mise en page (conteneur de même taille).
 - Respecter `prefers-reduced-motion`.
-- Entrées de contenu : `FadeInOnAppear` / `FadeInWhenVisible`, pas d'animation maison.
+- Entrées de contenu : `FadeInOnAppear` / `FadeInWhenVisible` (CSS pur), pas d'animation maison ni de bibliothèque JS d'animation.
 
 ## Images
 
-- Image décorative : `alt=""`. Image au-dessus de la ligne de flottaison (LCP) : `loading='eager'` + `fetchPriority='high'`.
-- Visuels de projets : 16:9, dans `public/images/projects/`.
+- Image décorative : `alt=""`. Image au-dessus de la ligne de flottaison (LCP) : `preload` + `fetchPriority='high'`.
+- Photos importées statiquement depuis `src/assets/` (aperçu flou, cache long) ; source à 3840 px de large maximum (Next n'en sert jamais plus). AVIF est servi automatiquement.
+- Visuels de projets : 16:9, dans `public/images/projects/` (chemins déclarés dans les dictionnaires JSON, qui ne peuvent pas faire d'import statique).
