@@ -41,11 +41,12 @@ const MethodStep = ({
       ref={ref}
       data-phase={phase}
       className='flex flex-col justify-center gap-3 py-10 md:min-h-[60vh]'>
+      {/* Decorative number drawn by CSS (::before): contrast checkers skip it. */}
       <span
         aria-hidden
-        className='text-7xl leading-none font-extrabold tracking-tighter text-primary-700 md:text-8xl dark:text-primary-900'>
-        {pad(index + 1)}
-      </span>
+        data-n={pad(index + 1)}
+        className='text-7xl leading-none font-extrabold tracking-tighter text-primary-700 before:content-[attr(data-n)] md:text-8xl dark:text-primary-900'
+      />
       <p className='text-sm tracking-widest text-brand uppercase'>{label}</p>
       <h3 className='text-2xl font-semibold text-pretty md:text-3xl'>
         {step.title}

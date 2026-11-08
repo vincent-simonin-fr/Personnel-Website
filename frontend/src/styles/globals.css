@@ -241,12 +241,11 @@
   }
 }
 
+/* Fades out on exit only: a scene visible at load must show its text at full contrast. */
 @keyframes parallax-fade {
   0% {
-    opacity: 0;
     transform: translateY(var(--parallax, 0px));
   }
-  25%,
   75% {
     opacity: 1;
   }
