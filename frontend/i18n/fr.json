@@ -152,8 +152,7 @@
     ]
   },
   "notFound": {
-    "title": "Page Introuvable",
-    "subtitle": "Désolé, la page que vous recherchez n'existe pas.",
+    "tagline": "Cette page n'est pas au programme.",
     "buttonLabel": "Retour à l'Accueil"
   },
   "presentation": {

@@ -152,8 +152,7 @@
     ]
   },
   "notFound": {
-    "title": "Seite nicht gefunden",
-    "subtitle": "Entschuldigung, die gesuchte Seite existiert nicht.",
+    "tagline": "Diese Seite steht nicht auf dem Programm.",
     "buttonLabel": "Zurück zur Startseite"
   },
   "presentation": {
