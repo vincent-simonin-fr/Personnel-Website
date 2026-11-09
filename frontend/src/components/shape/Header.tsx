@@ -85,7 +85,7 @@ const Header = ({}: HeaderProps) => {
   return (
     <div
       ref={headerRef}
-      className={`sticky top-0 z-50 h-12 w-full sm:min-w-[640px] md:min-w-[640px]`}
+      className={`sticky top-0 z-50 h-12 w-full sm:min-w-160 md:min-w-160`}
       // Initial width (= server render, scroll 0); the effect above takes over.
       style={{ width: `${headerWidthVw}vw` }}>
       <nav
@@ -143,7 +143,7 @@ const Header = ({}: HeaderProps) => {
                     {item.label}
                     <ChevronDownSvg size={16} />
                   </Button>
-                  <Dropdown.Popover className='w-[340px] bg-primary-900'>
+                  <Dropdown.Popover className='w-85 bg-primary-900'>
                     <Dropdown.Menu aria-label={item.label}>
                       {item.items.map((subItem) => (
                         <Dropdown.Item

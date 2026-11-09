@@ -80,7 +80,7 @@ const RiveCanvas = ({
       <RiveComponent
         width={240}
         height={240}
-        className='aspect-[1/1] h-full w-full object-contain'
+        className='aspect-square h-full w-full object-contain'
         {...(actions.onMouseEnter && {
           onMouseEnter: () => actions.onMouseEnter?.(rive, inputs),
         })}

@@ -30,7 +30,7 @@ const Layer = ({ src, className = '' }: LayerProps) => (
 const Animation404 = () => (
   <div
     aria-hidden
-    className='@container relative mx-auto aspect-[5/7] w-[min(100%,max(14rem,calc((100svh-16rem)*5/7)))] select-none'>
+    className='@container relative mx-auto aspect-5/7 w-[min(100%,max(14rem,calc((100svh-16rem)*5/7)))] select-none'>
     <p className='absolute inset-x-0 top-0 z-10 text-center text-[26.8cqw] leading-none font-extrabold tracking-tighter text-fuchsia-600 [text-shadow:0_0_24px_rgb(217_70_239/0.6),0_0_60px_rgb(217_70_239/0.35)]'>
       {/* The 0 is the light source: white like a lit bulb (ink in light theme). */}4
       <span className='text-primary-50'>0</span>4
@@ -43,7 +43,7 @@ const Animation404 = () => (
     {/* Floor halo */}
     <div className='absolute bottom-[1%] left-1/2 h-[12%] w-[74%] -translate-x-1/2 animate-spot-lit rounded-[50%] bg-[radial-gradient(closest-side,rgb(217_70_239/0.5),transparent)] motion-reduce:animate-none' />
 
-    <div className='absolute bottom-[3%] left-1/2 aspect-[578/970] h-[72%] -translate-x-1/2 animate-spot-lit motion-reduce:animate-none'>
+    <div className='absolute bottom-[3%] left-1/2 aspect-578/970 h-[72%] -translate-x-1/2 animate-spot-lit motion-reduce:animate-none'>
       <div className='absolute inset-0 origin-[49.7%_98.5%] animate-jazz-sway motion-reduce:animate-none'>
         <Layer src={body} />
         <div className='absolute inset-0 origin-[51.7%_47.9%] animate-jazz-bob motion-reduce:animate-none'>
