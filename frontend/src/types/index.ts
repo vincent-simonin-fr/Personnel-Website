@@ -56,6 +56,7 @@ export type OtherProject = {
 export type Dictionary = {
   locale: string
   homePage: {
+    /** Home <title> and og:title (≤ 60 chars, starts with the name). */
     title: string
     description: string
     deployButtonLabel: string

@@ -5,7 +5,7 @@ import { LocaleContextProvider } from 'providers/LocaleContextProvider'
 import Header from 'components/shape/Header'
 import Footer from 'components/shape/Footer'
 import { getDictionary, locales } from 'i18n/getDictionary'
-import { MetadataSite, pageMetadata } from 'seo/MetadataSite'
+import { pageMetadata } from 'seo/MetadataSite'
 import { siteConfig } from 'config/site'
 
 export async function generateStaticParams() {
@@ -26,19 +26,13 @@ export async function generateMetadata({
   const { locale } = await params
   const dictionary = await getDictionary(locale)
   if (!dictionary) return {}
-  const metadata = pageMetadata(
-    locale,
-    '',
-    undefined,
-    dictionary.homePage.description,
-  )
+  const { title, description } = dictionary.homePage
+  const metadata = pageMetadata(locale, '', title, description)
 
   return {
     ...metadata,
-    title: {
-      default: MetadataSite.title as string,
-      template: `%s | ${siteConfig.name}`,
-    },
+    // Localized: the French title carries "Développeur", what French visitors search.
+    title: { default: title, template: `%s | ${siteConfig.name}` },
   }
 }
 
