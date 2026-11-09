@@ -1,7 +1,7 @@
 {
   "locale": "en-us",
   "homePage": {
-    "title": "Home page",
+    "title": "Vincent Simonin - Full Stack Engineer & Azure Cloud Developer",
     "description": "Vincent Simonin, full stack software engineer in Dijon, France: business applications in .NET, React, Angular and Azure, from specification to production.",
     "deployButtonLabel": "Deploy now",
     "firstScreen": {
