@@ -1,7 +1,7 @@
 {
   "locale": "fr",
   "homePage": {
-    "title": "Page d'accueil",
+    "title": "Vincent Simonin - Ingénieur full stack & développeur cloud Azure",
     "description": "Vincent Simonin, ingénieur logiciel full stack à Dijon : des applications métier en .NET, React, Angular et Azure, de la spécification à la mise en production.",
     "deployButtonLabel": "Déployez maintenant",
     "firstScreen": {
