@@ -202,6 +202,10 @@
     color: var(--foreground);
     background: var(--background);
     scroll-behavior: smooth;
+    /* Classic scrollbars (Windows): React Aria hides the page scrollbar while a menu is
+       open; without a reserved gutter, every vw width (main, header, sections) grows
+       by the scrollbar width and the page shifts. */
+    scrollbar-gutter: stable;
   }
 
   .rive-container {
