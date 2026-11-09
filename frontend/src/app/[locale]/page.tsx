@@ -80,8 +80,9 @@ const HomePage = () => {
                 </FadeInWhenVisible>
               </div>
             </div>
-            {/* The threads are drawn mid-box: a shorter box on mobile lifts them into the first screen. */}
-            <div className='relative h-[40vh] w-full sm:h-[50vh]'>
+            {/* The threads are drawn mid-box: a shorter box on mobile lifts them into the first screen,
+                the translate a bit more (its empty top then overlaps the icons: no pointer events). */}
+            <div className='pointer-events-none relative h-[40vh] w-full max-sm:-translate-y-10 sm:h-[50vh]'>
               <OnScreen>
                 <Threads
                   color={theme === 'dark' ? [1, 1, 1] : [0, 0, 0]}
