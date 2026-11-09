@@ -39,7 +39,7 @@ const Projects = async ({ params }: ProjectsProps) => {
             // top and a soft glow in the corner, lifted on hover.
             <li
               key={other.title}
-              className='group relative overflow-hidden rounded-3xl border-1 border-primary-800 bg-primary-900/80 p-6 shadow-2xl transition duration-300 hover:-translate-y-1 hover:border-fuchsia-500/50 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-8'>
+              className='group relative overflow-hidden rounded-3xl border border-primary-800 bg-primary-900/80 p-6 shadow-2xl transition duration-300 hover:-translate-y-1 hover:border-fuchsia-500/50 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-8'>
               <span
                 aria-hidden
                 className='absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-fuchsia-500/80 to-transparent'
@@ -64,7 +64,7 @@ const Projects = async ({ params }: ProjectsProps) => {
                   {other.stack.map((tech) => (
                     <li
                       key={tech}
-                      className='rounded-full border-1 border-primary-700 px-3 py-1 text-xs text-primary-200'>
+                      className='rounded-full border border-primary-700 px-3 py-1 text-xs text-primary-200'>
                       {tech}
                     </li>
                   ))}

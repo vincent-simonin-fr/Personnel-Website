@@ -114,7 +114,7 @@ const ContactForm = ({}: ContactFormProps) => {
         className='flex w-full max-w-md flex-col gap-4'
         onReset={() => setUserInput(emptyInput)}
         onSubmit={handleSubmit}>
-        <div aria-hidden className='absolute -left-[9999px] size-px overflow-hidden'>
+        <div aria-hidden className='absolute left-[-9999px] size-px overflow-hidden'>
           <input type='text' name={HONEYPOT} tabIndex={-1} autoComplete='off' />
         </div>
         <div className='flex w-full flex-col gap-4 sm:flex-row'>
