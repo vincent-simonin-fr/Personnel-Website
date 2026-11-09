@@ -34,8 +34,10 @@ const LocaleSwitcher = () => {
 
   const path = (locale: string) => {
     const segments = pathname.split('/')
-    segments[1] = locale
-    return segments.join('/')
+    // Locale-less URL (e.g. /projects, rewritten by the proxy): keep every segment.
+    const hasLocale = locales.some((l) => l.key === segments[1])
+    const rest = segments.slice(hasLocale ? 2 : 1).filter(Boolean)
+    return ['', locale, ...rest].join('/')
   }
 
   const handleSelectLocale = async (newLocale: string) => {

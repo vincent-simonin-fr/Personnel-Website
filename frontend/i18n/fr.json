@@ -278,6 +278,7 @@
         "stack": [
           ".NET",
           "Blazor",
+          "Azure",
           "PostgreSQL",
           "IIS"
         ],
@@ -314,6 +315,8 @@
           "build"
         ],
         "stack": [
+          ".NET",
+          "React",
           "ArcGIS Experience Builder",
           "AutoCAD Map 3D"
         ],
