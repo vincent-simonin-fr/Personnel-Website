@@ -33,6 +33,9 @@ const fieldClassName =
 const inputClassName = `${fieldClassName} h-8` // v2 size='sm' height
 const errorClassName = 'text-sm text-danger'
 
+// Field hidden from people (screen, keyboard, screen readers) that form-filling bots fill.
+const HONEYPOT = 'website'
+
 const CustomToast = ({ data }: ToastContentProps<ReactNode>) => {
   return (
     <div className='flex flex-col pl-8 text-primary-300'>
@@ -52,8 +55,27 @@ const ContactForm = ({}: ContactFormProps) => {
   const setField = (name: keyof UserInput) => (value: string) =>
     setUserInput((current) => ({ ...current, [name]: value }))
 
+  const showSuccess = () => {
+    toast.success(CustomToast, {
+      theme: theme,
+      closeButton: true,
+      autoClose: 4000,
+      data: contactForm.successMessage,
+      className:
+        'shadow-lg text-inherit rounded-lg flex items-center bg-primary-900 max-w-[96vw]',
+    })
+    setUserInput(emptyInput)
+  }
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    // Honeypot filled = bot: fake a success so it doesn't retry, send nothing.
+    if (new FormData(e.currentTarget).get(HONEYPOT)) {
+      showSuccess()
+      return
+    }
+
     setIsDisabled(true)
 
     const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!
@@ -61,18 +83,14 @@ const ContactForm = ({}: ContactFormProps) => {
     const userID = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
 
     try {
-      const res = await emailjs.send(serviceID, templateID, userInput, userID)
-      if (res.status === 200) {
-        toast.success(CustomToast, {
-          theme: theme,
-          closeButton: true,
-          autoClose: 4000,
-          data: contactForm.successMessage,
-          className:
-            'shadow-lg text-inherit rounded-lg flex items-center bg-primary-900 max-w-[96vw]',
-        })
-        setUserInput(emptyInput)
-      }
+      // Client-side guards only (a direct API call bypasses them): no headless
+      // browsers, one message per minute per browser (localStorage).
+      const res = await emailjs.send(serviceID, templateID, userInput, {
+        publicKey: userID,
+        blockHeadless: true,
+        limitRate: { id: 'contact', throttle: 60_000 },
+      })
+      if (res.status === 200) showSuccess()
     } catch (error) {
       toast.error(CustomToast, {
         theme: theme,
@@ -96,6 +114,9 @@ const ContactForm = ({}: ContactFormProps) => {
         className='flex w-full max-w-md flex-col gap-4'
         onReset={() => setUserInput(emptyInput)}
         onSubmit={handleSubmit}>
+        <div aria-hidden className='absolute -left-[9999px] size-px overflow-hidden'>
+          <input type='text' name={HONEYPOT} tabIndex={-1} autoComplete='off' />
+        </div>
         <div className='flex w-full flex-col gap-4 sm:flex-row'>
           <TextField
             isRequired
