@@ -6,8 +6,6 @@ import LanguageSvg from 'components/ui/svg/LanguageSvg'
 import UsaSvg from 'components/ui/svg/UsaSvg'
 import FranceSvg from 'components/ui/svg/FranceSvg'
 import GermanySvg from 'components/ui/svg/GermanySvg'
-import { setLocaleCookie } from '../../lib/actions/actions'
-import { useState } from 'react'
 import { useLocaleContext } from 'hooks/useLocaleContext'
 import { locales, stripLocale } from 'i18n/locales'
 
@@ -15,18 +13,18 @@ const LocaleSwitcher = () => {
   const router = useRouter()
   const pathname = usePathname()
   const { dictionary } = useLocaleContext()
-  const [currentLocale, setCurrentLocale] = useState(dictionary.locale)
+  const currentLocale = dictionary.locale
 
   const path = (locale: string) => {
     const route = stripLocale(pathname)
     return route === '/' ? `/${locale}` : `/${locale}${route}`
   }
 
-  const handleSelectLocale = async (newLocale: string) => {
+  // No cookie to set here: the proxy remembers the language of the page it serves.
+  const handleSelectLocale = (newLocale: string) => {
     if (newLocale === currentLocale) return
-    setCurrentLocale(newLocale)
-    await setLocaleCookie(newLocale)
-    router.push(path(newLocale))
+    const { search, hash } = window.location
+    router.push(path(newLocale) + search + hash)
   }
 
   const getFlag = (locale: string) => {

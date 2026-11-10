@@ -117,7 +117,7 @@ export function proxy(req: NextRequest) {
   const firstSegment = pathname.split('/')[1]
   const hasLocale = isLocale(firstSegment)
 
-  // Locale-less URL (e.g. "/"): last language picked in LocaleSwitcher, else the
+  // Locale-less URL (e.g. "/"): language of the last visited page, else the
   // browser's, else the default (crawlers send no Accept-Language: they get x-default).
   const savedLocale = req.cookies.get('NEXT_LOCALE')?.value ?? ''
   const locale = hasLocale
@@ -135,6 +135,19 @@ export function proxy(req: NextRequest) {
   const response = hasLocale
     ? NextResponse.next({ request: { headers: requestHeaders } })
     : NextResponse.rewrite(target, { request: { headers: requestHeaders } })
+
+  // Remember the language of the last page with one in its URL (switcher, hreflang
+  // link…): "/" then opens in it. Lax, not strict: a strict cookie is not sent when the
+  // visitor arrives from another site (a search result), when it matters most.
+  if (hasLocale && savedLocale !== locale) {
+    response.cookies.set('NEXT_LOCALE', locale, {
+      httpOnly: true,
+      secure: !isDev,
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 365,
+      path: '/',
+    })
+  }
 
   if (isAllowedOrigin) {
     response.headers.set('Access-Control-Allow-Origin', origin)
