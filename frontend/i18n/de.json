@@ -154,36 +154,6 @@
     "tagline": "Diese Seite steht nicht auf dem Programm.",
     "buttonLabel": "Zurück zur Startseite"
   },
-  "presentation": {
-    "introduction": "Als Digitalprofi verfolge ich die Entwicklung neuer Technologien mit großer Aufmerksamkeit. Es ist vor allem eine Leidenschaft. Bei jeder Umsetzung geht es darum, nach Exzellenz zu streben. Qualitätslieferungen zu produzieren und gleichzeitig die innovativsten Technologien in ihren jeweiligen Bereichen zu integrieren.",
-    "description": "Full-Stack-Entwickler und Azure-Cloud-Entwickler, Experte für IT und neue Technologien.",
-    "services": [
-      {
-        "title": "Full-Stack-Entwicklung",
-        "description": "Design und Implementierung von leistungsstarken, sicheren und skalierbaren Web- und mobilen Anwendungen mit den neuesten Technologien. Ich arbeite mit Microsoft-Technologien, Azure Cloud, der .Net-Plattform und React.js. Während meiner Ausbildung begann ich mich für Softwarequalität und Wartbarkeit zu interessieren, ein Fragezeichen, das Hunderte von anderen aufgeworfen hat."
-      },
-      {
-        "title": "Softwaredesign und -analyse",
-        "description": "Detaillierte Analyse der Anforderungen, Erstellung technischer und funktionaler Spezifikationen und Design maßgeschneiderter Softwarelösungen."
-      },
-      {
-        "title": "Projektindustrialisierung",
-        "description": "Implementierung von CI/CD-Pipelines, Automatisierung von Tests und Bereitstellungen sowie Verwaltung von Entwicklungsumgebungen für eine kontinuierliche und zuverlässige Lieferung. Ich entwerfe und entwickle Projekte, die Sicherheit von Anfang an integrieren, indem ich DevSecOps-Methoden anwende."
-      },
-      {
-        "title": "Evolutive und korrektive Wartung",
-        "description": "Kontinuierliche Überwachung und Verbesserung von Anwendungen, Fehlerbehebung und Hinzufügen neuer Funktionen zur Erfüllung der sich ändernden Benutzeranforderungen."
-      },
-      {
-        "title": "Geschäftsanwendungen und Kommunikationswebsites",
-        "description": "Entwicklung spezifischer Geschäftsanwendungen und Kommunikationswebsites zur Verbesserung der Sichtbarkeit und Effizienz von Unternehmen."
-      },
-      {
-        "title": "Schulung und Coaching",
-        "description": "Schulung zu .NET- und React.js-Technologien, effizientes Softwaredesign, objektorientierte Programmierung, PostgreSQL- und MongoDB-Datenbanken. Persönliche Betreuung und schrittweises Lernen für alle Niveaus."
-      }
-    ]
-  },
   "contactForm": {
     "title": "Kontaktieren Sie mich",
     "firstNameLabel": "Vorname",

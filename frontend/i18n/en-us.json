@@ -154,36 +154,6 @@
     "tagline": "This page isn't on the setlist.",
     "buttonLabel": "Return to Home"
   },
-  "presentation": {
-    "introduction": "As a digital professional, I closely follow the evolution of new technologies. It is above all a passion. With each implementation, it is about striving for excellence. Producing quality deliverables while integrating the most innovative technologies in their respective fields.",
-    "description": "Full Stack Developer and Azure Cloud Developer, expert in IT and new technologies.",
-    "services": [
-      {
-        "title": "Full Stack Development",
-        "description": "Design and implementation of high-performance, secure, and scalable web and mobile applications using the latest technologies. I work with Microsoft technologies, Azure cloud, the .Net platform and React.js. During my training, I became interested in software quality and maintainability, a question mark that raised hundreds of others."
-      },
-      {
-        "title": "Software Design and Analysis",
-        "description": "In-depth analysis of needs, drafting of technical and functional specifications, and design of custom software solutions."
-      },
-      {
-        "title": "Project Industrialization",
-        "description": "Implementation of CI/CD pipelines, automation of tests and deployments, and management of development environments for continuous and reliable delivery. I design and develop projects integrating security from the earliest stages using DevSecOps methodologies."
-      },
-      {
-        "title": "Evolutionary and Corrective Maintenance",
-        "description": "Continuous monitoring and improvement of applications, bug fixing, and adding new features to meet changing user needs."
-      },
-      {
-        "title": "Business Applications and Communication Sites",
-        "description": "Development of specific business applications and communication websites to improve the visibility and efficiency of companies."
-      },
-      {
-        "title": "Training and Coaching",
-        "description": "Training on .NET and React.js technologies, efficient software design, object-oriented programming, PostgreSQL and MongoDB databases. Personalized follow-up and step-by-step learning for all levels."
-      }
-    ]
-  },
   "contactForm": {
     "title": "Contact Me",
     "firstNameLabel": "First name",

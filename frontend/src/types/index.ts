@@ -106,14 +106,6 @@ export type Dictionary = {
     tagline: string
     buttonLabel: string
   }
-  presentation: {
-    introduction: string
-    description: string
-    services: {
-      title: string
-      description: string
-    }[]
-  }
   contactForm: {
     title: string
     firstNameLabel: string
