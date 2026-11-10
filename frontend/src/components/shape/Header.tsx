@@ -12,7 +12,7 @@ import { siteConfig } from 'config/site'
 import { useMediaQuery } from 'usehooks-ts'
 import ChevronDownSvg from 'components/ui/svg/ChevronDownSvg'
 import { useLocaleContext } from 'hooks/useLocaleContext'
-import { isLocale } from 'i18n/locales'
+import { isLocale, stripLocale } from 'i18n/locales'
 
 type HeaderProps = object
 
@@ -22,9 +22,8 @@ const classLinkActive = 'text-brand'
 // HeroUI v3 has no Navbar: hand-built with the same layout as the former v2 one
 // (brand | links pushed to the center | switchers on the right; overlay menu on mobile).
 const Header = ({}: HeaderProps) => {
-  const path = usePathname()
-  const segments = path.split('/')
-  const pathname = segments[2] ?? '/'
+  const [, section, subSection] = stripLocale(usePathname()).split('/')
+  const pathname = section || '/'
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const headerRef = useRef<HTMLDivElement>(null)
@@ -151,7 +150,7 @@ const Header = ({}: HeaderProps) => {
                           textValue={subItem.label}
                           href={`/${locale}${subItem.to}`}
                           className={
-                            subItem.to.endsWith(segments[3]) ? classLinkActive : ''
+                            subItem.to.endsWith(subSection) ? classLinkActive : ''
                           }>
                           {subItem.label}
                         </Dropdown.Item>
@@ -188,7 +187,7 @@ const Header = ({}: HeaderProps) => {
                     {item.items.map((subItem) => (
                       <li key={subItem.to}>
                         <Link
-                          className={`ml-4 block ${subItem.to.endsWith(segments[3]) ? classLinkActive : ''}`}
+                          className={`ml-4 block ${subItem.to.endsWith(subSection) ? classLinkActive : ''}`}
                           href={`/${locale}${subItem.to}`}
                           onClick={closeMenu}>
                           {subItem.label}

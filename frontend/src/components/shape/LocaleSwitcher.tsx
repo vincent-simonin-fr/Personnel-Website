@@ -9,7 +9,7 @@ import GermanySvg from 'components/ui/svg/GermanySvg'
 import { setLocaleCookie } from '../../lib/actions/actions'
 import { useState } from 'react'
 import { useLocaleContext } from 'hooks/useLocaleContext'
-import { isLocale, locales } from 'i18n/locales'
+import { locales, stripLocale } from 'i18n/locales'
 
 const LocaleSwitcher = () => {
   const router = useRouter()
@@ -18,11 +18,8 @@ const LocaleSwitcher = () => {
   const [currentLocale, setCurrentLocale] = useState(dictionary.locale)
 
   const path = (locale: string) => {
-    const segments = pathname.split('/')
-    // Locale-less URL (e.g. /projects, rewritten by the proxy): keep every segment.
-    const hasLocale = isLocale(segments[1])
-    const rest = segments.slice(hasLocale ? 2 : 1).filter(Boolean)
-    return ['', locale, ...rest].join('/')
+    const route = stripLocale(pathname)
+    return route === '/' ? `/${locale}` : `/${locale}${route}`
   }
 
   const handleSelectLocale = async (newLocale: string) => {
