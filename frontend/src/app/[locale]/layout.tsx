@@ -26,7 +26,6 @@ export async function generateMetadata({
 }: LocaleLayoutProps): Promise<Metadata> {
   const { locale } = await params
   const dictionary = await getDictionary(locale)
-  if (!dictionary) return {}
   const { title, description } = dictionary.homePage
   const metadata = pageMetadata(locale, '', title, description)
 
