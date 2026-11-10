@@ -1,5 +1,3 @@
-export type Lang = 'fr' | 'en-us' | 'de'
-
 export type User = {
   id?: string
   email?: string
@@ -135,9 +133,4 @@ export type Dictionary = {
     successMessage: string
     errorMessage: string
   }
-}
-
-export type Locale = {
-  key: string
-  label: string
 }

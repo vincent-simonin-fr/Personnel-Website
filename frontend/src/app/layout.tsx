@@ -4,6 +4,7 @@ import { Bounce, ToastContainer } from 'react-toastify'
 import { jsonLd, MetadataSite, ViewportSite } from 'seo/MetadataSite'
 import { siteFont } from 'config/siteFont'
 import { headers } from 'next/headers'
+import { defaultLocale } from 'i18n/locales'
 
 export const metadata = MetadataSite
 
@@ -13,7 +14,7 @@ export const viewport = ViewportSite
 // makes every route dynamic, which the per-request nonce requires anyway.
 const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {
   const headersList = await headers()
-  const locale = headersList.get('x-locale') || 'fr' // Défaut à 'fr' si pas de locale trouvée
+  const locale = headersList.get('x-locale') || defaultLocale
   const nonce = headersList.get('x-nonce')!
 
   return (

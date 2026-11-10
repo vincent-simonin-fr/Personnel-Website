@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 import { siteConfig } from 'config/site'
-import { locales } from 'i18n/getDictionary'
+import { locales } from 'i18n/locales'
 import { localeAlternates } from 'seo/MetadataSite'
 
 // Published routes only (labs stay out until they have content).
@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const absolute = (path: string) => `${siteConfig.url}${path}`
 
   return routes.flatMap((route) =>
-    locales.map((locale) => ({
+    locales.map(({ key: locale }) => ({
       url: absolute(`/${locale}${route}`),
       lastModified,
       alternates: {

@@ -1,5 +1,6 @@
 import { Dictionary, ILLUSTRATIONS, PHASES, Project } from 'types'
 import { cache } from 'react'
+import { Lang } from './locales'
 
 import fr from './fr.json'
 import enus from './en-us.json'
@@ -28,15 +29,13 @@ const checked = (dictionary: DictionaryJson): Dictionary => {
   return dictionary as Dictionary
 }
 
-const dictionaries: Record<string, Dictionary> = {
+// Record<Lang, …>: a language added to i18n/locales.ts without its dictionary fails to compile.
+const dictionaries: Record<Lang, Dictionary> = {
   fr: checked(fr),
   'en-us': checked(enus),
   de: checked(de),
 }
 
-/** Supported locales; the first one is the default. */
-export const locales = Object.keys(dictionaries)
-
 export const getDictionary = cache(async (locale: string): Promise<Dictionary> => {
-  return dictionaries[locale]
+  return dictionaries[locale as Lang]
 })

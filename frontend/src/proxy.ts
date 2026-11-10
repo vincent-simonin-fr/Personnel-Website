@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { defaultLocale, isLocale } from 'i18n/locales'
 
 const PUBLIC_FILE = /\.(.*)$/
 const allowedOrigins = [
@@ -62,9 +63,6 @@ const securityHeaders: { key: string; value: string }[] = [
   },
 ]
 
-// Langues supportées
-const locales = ['en-us', 'fr', 'de']
-
 export function proxy(req: NextRequest) {
   // Not considering request to api
   if (
@@ -117,15 +115,15 @@ export function proxy(req: NextRequest) {
 
   // Vérifie si le chemin inclut une langue (segment exact : `/fresh` n'est pas `fr`)
   const firstSegment = pathname.split('/')[1]
-  const hasLocale = locales.includes(firstSegment)
+  const hasLocale = isLocale(firstSegment)
 
-  // Locale-less URL (e.g. "/"): last language picked in LocaleSwitcher, else French.
+  // Locale-less URL (e.g. "/"): last language picked in LocaleSwitcher, else the default.
   const savedLocale = req.cookies.get('NEXT_LOCALE')?.value ?? ''
   const locale = hasLocale
     ? firstSegment
-    : locales.includes(savedLocale)
+    : isLocale(savedLocale)
       ? savedLocale
-      : 'fr'
+      : defaultLocale
   // Request header (not response): read by the root layout and not-found via headers()
   requestHeaders.set('x-locale', locale)
 
