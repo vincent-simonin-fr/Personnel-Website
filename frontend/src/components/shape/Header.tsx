@@ -5,14 +5,14 @@ import Link from 'next/link'
 import LocaleSwitcher from './LocaleSwitcher'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import AppLogo from './AppLogo'
-import { notFound, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { useAppContext } from 'hooks/useAppContext'
 import { siteConfig } from 'config/site'
 import { useMediaQuery } from 'usehooks-ts'
 import ChevronDownSvg from 'components/ui/svg/ChevronDownSvg'
 import { useLocaleContext } from 'hooks/useLocaleContext'
-import { isLocale, stripLocale } from 'i18n/locales'
+import { stripLocale } from 'i18n/locales'
 
 type HeaderProps = object
 
@@ -74,9 +74,6 @@ const Header = ({}: HeaderProps) => {
     }
   }, [isMobile])
 
-  if (!dictionary || !isLocale(dictionary.locale)) {
-    notFound()
-  }
   const locale = dictionary.locale
   const closeMenu = () => setIsMenuOpen(false)
 
