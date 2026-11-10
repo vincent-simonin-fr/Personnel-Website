@@ -7,8 +7,7 @@ type LocaleContextProps = {
   dictionary: Dictionary
 }
 
-const LocaleContext = createContext<LocaleContextProps>({
-  dictionary: {} as Dictionary,
-})
+// null outside the provider, so useLocaleContext can fail with a clear message.
+const LocaleContext = createContext<LocaleContextProps | null>(null)
 
 export { LocaleContext }
