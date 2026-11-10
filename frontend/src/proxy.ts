@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { defaultLocale, isLocale } from 'i18n/locales'
+import { defaultLocale, isLocale, matchLocale } from 'i18n/locales'
 
 const PUBLIC_FILE = /\.(.*)$/
 const allowedOrigins = [
@@ -117,13 +117,14 @@ export function proxy(req: NextRequest) {
   const firstSegment = pathname.split('/')[1]
   const hasLocale = isLocale(firstSegment)
 
-  // Locale-less URL (e.g. "/"): last language picked in LocaleSwitcher, else the default.
+  // Locale-less URL (e.g. "/"): last language picked in LocaleSwitcher, else the
+  // browser's, else the default (crawlers send no Accept-Language: they get x-default).
   const savedLocale = req.cookies.get('NEXT_LOCALE')?.value ?? ''
   const locale = hasLocale
     ? firstSegment
     : isLocale(savedLocale)
       ? savedLocale
-      : defaultLocale
+      : (matchLocale(req.headers.get('accept-language')) ?? defaultLocale)
   // Request header (not response): read by the root layout and not-found via headers()
   requestHeaders.set('x-locale', locale)
 

@@ -14,3 +14,25 @@ export const defaultLocale: Lang = locales[0].key
 
 export const isLocale = (value: string): value is Lang =>
   locales.some((l) => l.key === value)
+
+/** Best supported language for an Accept-Language header, e.g. 'de-AT,de;q=0.9,en;q=0.8'.
+ *  Exact tag first, then the base language ('en-GB' → 'en-us', 'fr-CA' → 'fr'). */
+export const matchLocale = (header: string | null): Lang | undefined => {
+  const tags = (header ?? '')
+    .split(',')
+    .map((part) => {
+      const [tag, ...params] = part.trim().toLowerCase().split(';')
+      const q = params.map((p) => p.trim()).find((p) => p.startsWith('q='))
+      return { tag, weight: q ? Number(q.slice(2)) : 1 }
+    })
+    .filter(({ tag, weight }) => tag && weight > 0)
+    .sort((a, b) => b.weight - a.weight)
+
+  const base = (tag: string) => tag.split('-')[0]
+  for (const { tag } of tags) {
+    const match =
+      locales.find((l) => l.key === tag) ??
+      locales.find((l) => base(l.key) === base(tag))
+    if (match) return match.key
+  }
+}
