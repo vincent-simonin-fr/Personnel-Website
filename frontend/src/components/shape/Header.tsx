@@ -12,13 +12,12 @@ import { siteConfig } from 'config/site'
 import { useMediaQuery } from 'usehooks-ts'
 import ChevronDownSvg from 'components/ui/svg/ChevronDownSvg'
 import { useLocaleContext } from 'hooks/useLocaleContext'
+import { isLocale } from 'i18n/locales'
 
 type HeaderProps = object
 
 // text-brand: theme-aware fuchsia that passes 4.5:1 for small text (see globals.css).
 const classLinkActive = 'text-brand'
-const SUPPORTED_LOCALES = ['fr', 'en-us', 'de'] as const
-type Locale = (typeof SUPPORTED_LOCALES)[number]
 
 // HeroUI v3 has no Navbar: hand-built with the same layout as the former v2 one
 // (brand | links pushed to the center | switchers on the right; overlay menu on mobile).
@@ -76,7 +75,7 @@ const Header = ({}: HeaderProps) => {
     }
   }, [isMobile])
 
-  if (!dictionary || !SUPPORTED_LOCALES.includes(dictionary.locale as Locale)) {
+  if (!dictionary || !isLocale(dictionary.locale)) {
     notFound()
   }
   const locale = dictionary.locale

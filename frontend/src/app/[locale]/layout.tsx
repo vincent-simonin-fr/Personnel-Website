@@ -4,12 +4,13 @@ import { ReactNode } from 'react'
 import { LocaleContextProvider } from 'providers/LocaleContextProvider'
 import Header from 'components/shape/Header'
 import Footer from 'components/shape/Footer'
-import { getDictionary, locales } from 'i18n/getDictionary'
+import { getDictionary } from 'i18n/getDictionary'
+import { locales } from 'i18n/locales'
 import { pageMetadata } from 'seo/MetadataSite'
 import { siteConfig } from 'config/site'
 
 export async function generateStaticParams() {
-  return locales.map((locale) => ({ locale }))
+  return locales.map(({ key }) => ({ locale: key }))
 }
 
 type LocaleLayoutProps = {
