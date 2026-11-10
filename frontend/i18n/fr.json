@@ -154,36 +154,6 @@
     "tagline": "Cette page n'est pas au programme.",
     "buttonLabel": "Retour à l'Accueil"
   },
-  "presentation": {
-    "introduction": "En tant que professionnel du digital, je suis avec attention l'évolution des nouvelles technologies. C'est avant tout une passion. À chaque mise en œuvre, il s'agit de rechercher l'excellence. Produire des livrables de qualité tout en intégrant les technologies les plus novatrices dans leurs domaines respectifs.",
-    "description": "Développeur Full Stack et Développeur Azure Cloud, expert en informatique et nouvelles technologies.",
-    "services": [
-      {
-        "title": "Développement Full Stack",
-        "description": "Conception et réalisation d'applications web performantes, sécurisées et évolutives, utilisant les technologies les plus récentes. Je travaille avec la plupart des technologies Microsoft, que ce soit les services Azure, ou la plateforme de développement .Net, ainsi qu'avec l'environnement React.js pour la présentation. Au cours de ma formation, je me suis intéressé à la qualité et à la maintenabilité des logiciels, un point d'interrogation qui m'a permis de développer une approche permettant de garder la maîtrise des coûts d'une application."
-      },
-      {
-        "title": "Étude et Conception Logicielle",
-        "description": "Analyse approfondie des besoins, rédaction de spécifications techniques et fonctionnelles, et conception de solutions logicielles sur mesure."
-      },
-      {
-        "title": "Industrialisation de Projet",
-        "description": "Mise en place de pipelines CI/CD, automatisation des tests et des déploiements, et gestion des environnements de développement pour une livraison continue et fiable. Je conçois et développe des projets en intégrant la sécurité dès les premières étapes grâce aux méthodologies DevSecOps."
-      },
-      {
-        "title": "Maintenance Évolutive et Corrective",
-        "description": "Suivi et amélioration continue des applications, correction des bugs, et ajout de nouvelles fonctionnalités pour répondre aux besoins changeants des utilisateurs."
-      },
-      {
-        "title": "Applications Métiers et Sites de Communication",
-        "description": "Développement d'applications métiers spécifiques et de sites web de communication pour améliorer la visibilité et l'efficacité des entreprises."
-      },
-      {
-        "title": "Formation et Coaching",
-        "description": "Formation sur les technologies .NET et React.js, conception logicielle efficace, programmation orientée objet, bases de données PostgreSQL et MongoDB. Apprentissage par étape avec suivi personnalisé pour tous niveaux."
-      }
-    ]
-  },
   "contactForm": {
     "title": "Me Contacter",
     "firstNameLabel": "Prénom",
