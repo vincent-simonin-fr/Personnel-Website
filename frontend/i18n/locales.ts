@@ -15,6 +15,13 @@ export const defaultLocale: Lang = locales[0].key
 export const isLocale = (value: string): value is Lang =>
   locales.some((l) => l.key === value)
 
+/** Path without its locale prefix. The proxy also serves locale-less URLs (rewrite),
+ *  so both forms reach client code: '/de/projects' and '/projects' → '/projects', '/de' → '/'. */
+export const stripLocale = (pathname: string) => {
+  const [, first, ...rest] = pathname.split('/')
+  return isLocale(first) ? `/${rest.join('/')}` : pathname
+}
+
 /** Best supported language for an Accept-Language header, e.g. 'de-AT,de;q=0.9,en;q=0.8'.
  *  Exact tag first, then the base language ('en-GB' → 'en-us', 'fr-CA' → 'fr'). */
 export const matchLocale = (header: string | null): Lang | undefined => {

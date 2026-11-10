@@ -128,17 +128,13 @@ export function proxy(req: NextRequest) {
   // Request header (not response): read by the root layout and not-found via headers()
   requestHeaders.set('x-locale', locale)
 
+  // Locale-less URL: rewritten, not redirected (no extra round trip). Client code reads
+  // the path through stripLocale(), which handles both forms.
+  const target = req.nextUrl.clone()
+  target.pathname = `/${locale}${pathname === '/' ? '' : pathname}`
   const response = hasLocale
-    ? NextResponse.next({
-        request: {
-          headers: requestHeaders,
-        },
-      })
-    : NextResponse.rewrite(new URL(`/${locale}${pathname}`, req.url), {
-        request: {
-          headers: requestHeaders,
-        },
-      })
+    ? NextResponse.next({ request: { headers: requestHeaders } })
+    : NextResponse.rewrite(target, { request: { headers: requestHeaders } })
 
   if (isAllowedOrigin) {
     response.headers.set('Access-Control-Allow-Origin', origin)
