@@ -16,19 +16,11 @@
     "labelButtonToSkills": "Projekte ansehen",
     "references": {
       "title": "Sie haben mir vertraut",
-      "names": [
-        "Kardham Digital",
-        "APRR",
-        "Inetum",
-        "INRAE"
-      ]
+      "names": ["Kardham Digital", "APRR", "Inetum", "INRAE"]
     },
     "featured": {
       "kicker": "Ausgewählte Projekte",
-      "ids": [
-        "ey-placement",
-        "aprr-traffic"
-      ],
+      "ids": ["ey-placement", "aprr-traffic"],
       "allProjects": "Alle Projekte"
     },
     "career": {
@@ -150,6 +142,18 @@
       }
     ]
   },
+  "a11y": {
+    "mainNav": "Hauptmenü",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "openLanguageMenu": "Sprache ändern",
+    "languageMenu": "Sprachen",
+    "scrollToTop": "Nach oben",
+    "github": "GitHub-Profil (neuer Tab)",
+    "linkedin": "LinkedIn-Profil (neuer Tab)",
+    "email": "Schreiben Sie mir eine E-Mail",
+    "notifications": "Benachrichtigungen (Alt+T)"
+  },
   "notFound": {
     "tagline": "Diese Seite steht nicht auf dem Programm.",
     "buttonLabel": "Zurück zur Startseite"
@@ -186,13 +190,7 @@
         "title": "Steuerung der Gebäudeleittechnik",
         "summary": "Anwendungen zur Steuerung von Gebäudemanagementsystemen, die mit den Anlagen (GLT, IoT, Videoüberwachung und Zutrittskontrolle) kommunizieren. Als Teil des Smart-Building-Angebots nutzen sie Belegungs- und Komfortdaten, um die Flächennutzung und das Wohlbefinden der Nutzer zu optimieren – im Sinne des WELL-Labels.",
         "role": "Full-Stack-Entwickler: technische Architektur, Erstellung von Spezifikationen, Continuous Integration und Deployment",
-        "phases": [
-          "specify",
-          "design",
-          "build",
-          "ship",
-          "maintain"
-        ],
+        "phases": ["specify", "design", "build", "ship", "maintain"],
         "stack": [
           ".NET",
           "Blazor",
@@ -217,18 +215,8 @@
         "title": "Modul für Baustellenmanagement",
         "summary": "Modul für das Baustellenmanagement, derzeit in Entwicklung, das das Smart-Building-Angebot von Kardham Digital ergänzt und EY eine fortschrittliche Lösung bietet.",
         "role": "Full-Stack-Entwickler: vollständige Umsetzung des Moduls in direkter Zusammenarbeit mit dem Kunden",
-        "phases": [
-          "specify",
-          "design",
-          "build",
-          "ship"
-        ],
-        "stack": [
-          ".NET",
-          "Blazor",
-          "PostgreSQL",
-          "IIS"
-        ],
+        "phases": ["specify", "design", "build", "ship"],
+        "stack": [".NET", "Blazor", "PostgreSQL", "IIS"],
         "illustration": "schedule"
       },
       {
@@ -239,19 +227,8 @@
         "title": "Modul für automatisierte Arbeitsplatzvergabe und Flächensteuerung",
         "summary": "Weist Mitarbeitenden nach den vom Unternehmen festgelegten Kriterien automatisch Flächen an ihrem Arbeitsort zu, Flex Office inklusive. Die erzeugten Daten speisen die Entscheidungsunterstützung: Flächenoptimierung und Kosten pro m². Es ergänzt das Smart-Building-Angebot von Kardham Digital.",
         "role": "Full-Stack-Entwickler: vollständige Umsetzung des Moduls in direkter Zusammenarbeit mit dem Kunden",
-        "phases": [
-          "specify",
-          "design",
-          "build",
-          "ship"
-        ],
-        "stack": [
-          ".NET",
-          "Blazor",
-          "Azure",
-          "PostgreSQL",
-          "IIS"
-        ],
+        "phases": ["specify", "design", "build", "ship"],
+        "stack": [".NET", "Blazor", "Azure", "PostgreSQL", "IIS"],
         "illustration": "floorplan"
       },
       {
@@ -261,17 +238,8 @@
         "title": "Unterstützungssystem für das Verkehrsmanagement",
         "summary": "Weiterentwickelnde Wartung einer Anwendung für den Autobahnbetrieb, die Verkehrs- und Wetterdaten in Echtzeit erfasst, verarbeitet, verbreitet und visualisiert. Konzeption und Entwicklung neuer Funktionen von Anfang bis Ende, von der Datenverarbeitung bis zur Oberfläche, innerhalb einer verteilten Architektur.",
         "role": "Full-Stack-Entwickler",
-        "phases": [
-          "build",
-          "maintain"
-        ],
-        "stack": [
-          ".NET",
-          "Angular",
-          "PostgreSQL",
-          "Kafka",
-          "RabbitMQ"
-        ],
+        "phases": ["build", "maintain"],
+        "stack": [".NET", "Angular", "PostgreSQL", "Kafka", "RabbitMQ"],
         "illustration": "roads"
       },
       {
@@ -281,15 +249,8 @@
         "title": "Geoinformationsdienste",
         "summary": "Widgets für Kartendienste, eingebunden in die Plattform ArcGIS Experience Builder, sowie neue Funktionen für ein Plug-in für AutoCAD Map 3D.",
         "role": "Full-Stack-Entwickler",
-        "phases": [
-          "build"
-        ],
-        "stack": [
-          ".NET",
-          "React",
-          "ArcGIS Experience Builder",
-          "AutoCAD Map 3D"
-        ],
+        "phases": ["build"],
+        "stack": [".NET", "React", "ArcGIS Experience Builder", "AutoCAD Map 3D"],
         "illustration": "layers"
       },
       {
@@ -299,17 +260,8 @@
         "title": "Grafische Neugestaltung von GREA",
         "summary": "Neue Suchoberfläche für GREA, eine Software zur Verwaltung von Wasser- und Abwasserressourcen, danach korrigierende und weiterentwickelnde Wartung.",
         "role": "Full-Stack-Entwickler",
-        "phases": [
-          "design",
-          "build",
-          "maintain"
-        ],
-        "stack": [
-          ".NET",
-          "PostgreSQL",
-          "Oracle",
-          "Bootstrap"
-        ],
+        "phases": ["design", "build", "maintain"],
+        "stack": [".NET", "PostgreSQL", "Oracle", "Bootstrap"],
         "illustration": "interface"
       }
     ],
@@ -320,32 +272,21 @@
         "period": "2022 – 2024",
         "title": "Blockchain-Studie",
         "description": "Machbarkeitsstudie für eine private Blockchain, um die Anforderungen an die Zertifizierung von Kassensoftware zu erfüllen.",
-        "stack": [
-          "Hyperledger Fabric",
-          "Kubernetes"
-        ]
+        "stack": ["Hyperledger Fabric", "Kubernetes"]
       },
       {
         "client": "APRR",
         "period": "2022 – 2024",
         "title": "Immobilienverwaltung",
         "description": "Neue Funktionen für eine Anwendung zur Verwaltung des Immobilienbestands.",
-        "stack": [
-          "Java / Spring Boot",
-          "Angular",
-          "PostgreSQL"
-        ]
+        "stack": ["Java / Spring Boot", "Angular", "PostgreSQL"]
       },
       {
         "client": "INRAE",
         "period": "2021",
         "title": "Schulkantinen-Menüs",
         "description": "Desktop-Anwendung zur Erfassung und Verarbeitung von Schulkantinen-Menüs für eine Studie zur ernährungsphysiologischen und ökologischen Qualität der Schulverpflegung in Frankreich.",
-        "stack": [
-          "Python",
-          "SQL",
-          "Tkinter"
-        ]
+        "stack": ["Python", "SQL", "Tkinter"]
       }
     ]
   },
