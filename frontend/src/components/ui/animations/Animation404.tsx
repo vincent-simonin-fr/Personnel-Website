@@ -30,12 +30,40 @@ const Band = ({ d }: { d: string }) => (
   </>
 )
 
-// A fist with its highlight.
-const Fist = ({ cx, cy }: { cx: number; cy: number }) => (
-  <>
-    <circle cx={cx} cy={cy} r='8.5' fill={skin} />
-    <circle cx={cx - 2.5} cy={cy - 3} r='2.5' fill={light} stroke='none' />
-  </>
+// A cartoon fist at the end of a forearm (local axis: pointing down, wrist above):
+// rounded fist with a scalloped edge for the knuckles, three finger creases, the thumb
+// on one side (`flip` mirrors it for the other hand), cel shade and highlight.
+const Fist = ({
+  cx,
+  cy,
+  flip = false,
+}: {
+  cx: number
+  cy: number
+  flip?: boolean
+}) => (
+  <g transform={`translate(${cx} ${cy})${flip ? ' scale(-1 1)' : ''}`}>
+    <path
+      d='M-8.5 -5 C -9.5 2, -8 7.5, -5.5 9 C -4 10.6, -2.2 10.4, -1.2 9.6 C 0.2 10.8, 2.4 10.8, 3.4 9.6 C 4.8 10.4, 7 9.8, 7.8 7.6 C 9.4 3, 9.2 -2, 8.4 -5 Z'
+      fill={skin}
+    />
+    <path
+      d='M3.6 9.4 C 5 10, 7 9.6, 7.8 7.6 C 9.4 3, 9.2 -2, 8.4 -5 L 5.6 -5 C 6.6 1, 6 6, 3.6 9.4 Z'
+      fill={shade}
+      stroke='none'
+    />
+    <path
+      d='M-3.4 9.8 V 5.8 M 1.1 10.2 V 6 M 5.4 9.8 V 6.2'
+      fill='none'
+      strokeWidth='1.3'
+      strokeLinecap='round'
+    />
+    <path
+      d='M8 -3 C 12.4 -2, 13 3.4, 10 5.6 C 8.6 6.6, 6.6 5.8, 6.4 4.2'
+      fill={skin}
+    />
+    <circle cx='-4.2' cy='-1' r='2.2' fill={light} stroke='none' />
+  </g>
 )
 
 // Half of the rim (an ellipse seen from slightly above): fuchsia over its outline.
@@ -61,7 +89,7 @@ const net =
 // don't. Stroke color comes from the parent group.
 const Ball = ({ spin = '' }: { spin?: string }) => (
   <>
-    <g className={`origin-center [transform-box:fill-box] ${spin}`}>
+    <g className={`origin-center transform-fill ${spin}`}>
       <circle r='17' className='fill-fuchsia-500' strokeWidth='2.4' />
       <path
         d='M-17 0 H17 M0 -17 V17 M-11.5 -12.5 Q-2.5 0 -11.5 12.5 M11.5 -12.5 Q2.5 0 11.5 12.5'
@@ -113,6 +141,7 @@ const graffitiFont = Rock_Salt({
   subsets: ['latin'],
   display: 'swap',
 })
+
 const graffitiStyle = `${graffitiFont.className} graffiti text-center text-3xl leading-[1.1] text-balance landscape:absolute landscape:mt-0 landscape:mb-0 landscape:w-[21vw] landscape:text-[clamp(0.9rem,min(2.3vw,4svh),3rem)]`
 
 type Animation404Props = {
@@ -142,12 +171,20 @@ const Animation404 = ({ graffiti }: Animation404Props) => {
           and in portrait the two graffiti (10rem); width ≤ 54vw in landscape to leave
           the graffiti room on both sides. */}
       <div className='relative flex w-[min(100%,max(14rem,calc((100svh-24rem)*17/13)))] flex-col landscape:block landscape:w-[min(54vw,max(14rem,calc((100svh-14rem)*17/13)))]'>
+        {/* HOOPS across 60% of the screen width, behind everything: the brand fuchsia, very
+            faded, answering the white lettering (same idea as the projects page's
+            background names). */}
+        <span
+          aria-hidden
+          className={`${graffitiFont.className} pointer-events-none absolute top-1/2 left-1/2 -translate-1/2 text-[12.6vw] leading-none whitespace-nowrap text-fuchsia-500/25 select-none`}>
+          HOOPS
+        </span>
         <p
-          className={`${graffitiStyle} mb-3 -rotate-4 landscape:right-full landscape:bottom-[74%] landscape:-mr-[11%] landscape:-rotate-7`}>
+          className={`${graffitiStyle} mb-3 -rotate-4 landscape:right-full landscape:bottom-[74%] landscape:mr-[-11%] landscape:-rotate-7`}>
           {left}
         </p>
         <p
-          className={`${graffitiStyle} order-last mt-3 rotate-3 landscape:top-[3%] landscape:left-full landscape:-ml-[20%] landscape:rotate-6`}>
+          className={`${graffitiStyle} order-last mt-3 rotate-3 landscape:top-[3%] landscape:left-full landscape:ml-[-20%] landscape:rotate-6`}>
           {right}
         </p>
         {/* Court, x 16 to 356 × 260 units, floor at y 250: three stacked layers sharing
@@ -406,20 +443,20 @@ const Animation404 = ({ graffiti }: Animation404Props) => {
                 forearm (elbow pivot) and the fist; base rotations = set pose. */}
                 <g className='animate-player-body motion-reduce:animate-none'>
                   {/* Left arm: carries the ball in, then guides it */}
-                  <g className='origin-[80px_167px] [transform:rotate(42deg)] animate-player-arm-l-up motion-reduce:animate-none'>
+                  <g className='origin-[80px_167px] transform-[rotate(42deg)] animate-player-arm-l-up motion-reduce:animate-none'>
                     <Limb d='M80 167 V186' />
-                    <g className='origin-[80px_186px] [transform:rotate(-142.6deg)] animate-player-arm-l-fore motion-reduce:animate-none'>
+                    <g className='origin-[80px_186px] transform-[rotate(-142.6deg)] animate-player-arm-l-fore motion-reduce:animate-none'>
                       <Limb d='M80 186 V203' />
                       <Band d='M80 193 V198.5' />
                       <Fist cx={80} cy={203} />
                     </g>
                   </g>
                   {/* Right arm: swings, waves, then shoots */}
-                  <g className='origin-[121px_167px] [transform:rotate(-32deg)] animate-player-arm-r-up motion-reduce:animate-none'>
+                  <g className='origin-[121px_167px] transform-[rotate(-32deg)] animate-player-arm-r-up motion-reduce:animate-none'>
                     <Limb d='M121 167 V186' />
-                    <g className='origin-[121px_186px] [transform:rotate(94.4deg)] animate-player-arm-r-fore motion-reduce:animate-none'>
+                    <g className='origin-[121px_186px] transform-[rotate(94.4deg)] animate-player-arm-r-fore motion-reduce:animate-none'>
                       <Limb d='M121 186 V203' />
-                      <Fist cx={121} cy={203} />
+                      <Fist cx={121} cy={203} flip />
                     </g>
                   </g>
                 </g>
@@ -437,8 +474,14 @@ const Animation404 = ({ graffiti }: Animation404Props) => {
               <path d='M240 99 V249 H244 V99 Z' fill={shade} stroke='none' />
               <path d='M235 99 V249 M244 99 V249' fill='none' />
               <ellipse cx='239.5' cy='249' rx='10' ry='3' fill={kit} />
-              <Four x={256} />
-              <Four x={322} />
+              {/* The 4s pop in once the ball has stopped between them (wrappers: a CSS
+                  transform would replace the digit's own translate) */}
+              <g className='origin-[269px_250px] animate-four-in-l motion-reduce:animate-none'>
+                <Four x={256} />
+              </g>
+              <g className='origin-[335px_250px] animate-four-in-r motion-reduce:animate-none'>
+                <Four x={322} />
+              </g>
             </g>
             <g className='origin-[200px_86px] animate-shot-net motion-reduce:animate-none'>
               <path
