@@ -109,6 +109,9 @@ export type Dictionary = {
     openLanguageMenu: string
     languageMenu: string
     scrollToTop: string
+    /** Theme button: names the theme it switches to. */
+    lightTheme: string
+    darkTheme: string
     github: string
     linkedin: string
     email: string
