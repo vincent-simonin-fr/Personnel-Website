@@ -46,7 +46,7 @@ const Footer = ({}: FooterProps) => {
           </div>
         </FadeInWhenVisible>
       </div>
-      <div className='h-[3px] w-full bg-primary'></div>
+      <div className='h-0.75 w-full bg-primary'></div>
     </div>
   )
 }

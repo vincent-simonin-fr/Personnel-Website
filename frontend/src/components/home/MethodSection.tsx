@@ -40,7 +40,9 @@ const MethodStep = ({
     <div
       ref={ref}
       data-phase={phase}
-      className='flex flex-col justify-center gap-3 py-10 md:min-h-[60vh]'>
+      // Screen-relative spacing keeps the rail lighting up one step at a time; none
+      // after the last one, or it adds to the gap before the next section.
+      className='flex flex-col gap-3 py-10 last:pb-0 md:py-[12vh] md:last:pb-0'>
       {/* Decorative number drawn by CSS (::before): contrast checkers skip it. */}
       <span
         aria-hidden
@@ -79,14 +81,14 @@ const MethodSection = ({ method, phaseLabels }: MethodSectionProps) => {
       <div className='md:grid md:grid-cols-[14rem_1fr] md:gap-12'>
         <ol
           aria-hidden
-          className='hidden self-start border-l-1 border-primary-700 pl-4 md:sticky md:top-24 md:mt-10 md:block'>
+          className='hidden self-start border-l border-primary-700 pl-4 md:sticky md:top-24 md:mt-10 md:block'>
           {PHASES.map((phase, i) => (
             <li
               key={phase}
               data-active={i <= active || undefined}
               className='flex items-center gap-3 py-2 font-semibold text-primary-300 transition-colors data-active:text-primary-50 motion-reduce:transition-none'>
               <span
-                className={`size-2.5 rounded-full border-1 ${i <= active ? 'border-fuchsia-500 bg-fuchsia-500 shadow-[0_0_10px_rgb(225_42_251/0.7)]' : 'border-primary-500'}`}
+                className={`size-2.5 rounded-full border ${i <= active ? 'border-fuchsia-500 bg-fuchsia-500 shadow-[0_0_10px_rgb(225_42_251/0.7)]' : 'border-primary-500'}`}
               />
               {phaseLabels[phase]}
             </li>
