@@ -6,7 +6,7 @@ import LanguageSvg from 'components/ui/svg/LanguageSvg'
 import UsaSvg from 'components/ui/svg/UsaSvg'
 import FranceSvg from 'components/ui/svg/FranceSvg'
 import GermanySvg from 'components/ui/svg/GermanySvg'
-import { useLocaleContext } from 'hooks/useLocaleContext'
+import { useLocaleContext } from 'providers/LocaleContextProvider'
 import { locales, stripLocale } from 'i18n/locales'
 
 const LocaleSwitcher = () => {

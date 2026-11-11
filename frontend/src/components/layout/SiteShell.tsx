@@ -3,11 +3,11 @@ import { ReactNode } from 'react'
 import { Bounce, ToastContainer } from 'react-toastify'
 import { Providers } from 'providers/Providers'
 import { LocaleContextProvider } from 'providers/LocaleContextProvider'
-import Header from 'components/shape/Header'
-import Footer from 'components/shape/Footer'
+import Header from 'components/layout/Header'
+import Footer from 'components/layout/Footer'
 import { jsonLd } from 'seo/MetadataSite'
 import { siteFont } from 'config/siteFont'
-import { Dictionary } from 'types'
+import { Dictionary } from 'i18n/dictionary.types'
 
 type SiteShellProps = {
   locale: string

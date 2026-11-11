@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from 'react'
 import { siteConfig } from 'config/site'
 import { useMediaQuery } from 'usehooks-ts'
 import ChevronDownSvg from 'components/ui/svg/ChevronDownSvg'
-import { useLocaleContext } from 'hooks/useLocaleContext'
+import { useLocaleContext } from 'providers/LocaleContextProvider'
 import { stripLocale } from 'i18n/locales'
 
 type HeaderProps = object

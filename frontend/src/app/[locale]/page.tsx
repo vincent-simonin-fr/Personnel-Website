@@ -5,12 +5,12 @@ import type { CSSProperties } from 'react'
 import { getDictionary } from 'i18n/getDictionary'
 import FadeInWhenVisible from 'components/ui/animations/FadeInWhenVisible'
 import KeyframeCssOnView from 'components/ui/animations/KeyframeCssOnView'
-import SocialMedia from 'components/SocialMedia'
+import SocialMedia from 'components/layout/SocialMedia'
 import HandSvg from 'components/ui/svg/HandSvg'
 import HeroThreads from 'components/home/HeroThreads'
 import MethodSection from 'components/home/MethodSection'
-import ProjectCard from 'components/ProjectCard'
-import ContactBackdrop from 'components/ui/animations/ContactBackdrop'
+import ProjectCard from 'components/projects/ProjectCard'
+import ContactBackdrop from 'components/contact/ContactBackdrop'
 
 // HeroUI v3 Button can't render as a link: style a Next Link with the button classes.
 const primaryLinkButton = cn(

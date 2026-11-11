@@ -1,4 +1,5 @@
-import { Dictionary, Phase, Project } from 'types'
+import { Dictionary } from 'i18n/dictionary.types'
+import { Phase, Project } from './project.types'
 import PhaseTimeline from 'components/projects/PhaseTimeline'
 
 type ProjectCardProps = {
@@ -28,14 +29,14 @@ const ProjectCard = ({
     project
 
   return (
-    <article className='relative flex flex-col gap-4 rounded-3xl border-1 border-primary-800 bg-primary-900/80 p-6 shadow-2xl backdrop-blur-xl sm:p-8'>
+    <article className='relative flex flex-col gap-4 rounded-3xl border border-primary-800 bg-primary-900/80 p-6 shadow-2xl backdrop-blur-xl sm:p-8'>
       <div className='flex flex-wrap items-baseline gap-x-3 gap-y-1 pr-14 text-sm tracking-widest text-primary-300 uppercase'>
         <span className='font-bold text-brand'>{pad(index + 1)}</span>
         {/* Served through an employer: "Kardham Digital x EY". */}
         <span>{via ? `${via} x ${client}` : client}</span>
         <span>· {period}</span>
         {status && (
-          <span className='rounded-full border-1 border-fuchsia-500 px-2 py-0.5 text-xs tracking-normal text-brand normal-case'>
+          <span className='rounded-full border border-fuchsia-500 px-2 py-0.5 text-xs tracking-normal text-brand normal-case'>
             {status}
           </span>
         )}
@@ -47,7 +48,7 @@ const ProjectCard = ({
           <span className='text-brand'>{pad(index + 1)}</span> / {pad(total)}
         </span>
       )}
-      <Heading className='text-2xl leading-tight font-semibold text-pretty break-words hyphens-auto text-primary-50 sm:text-3xl'>
+      <Heading className='text-2xl leading-tight font-semibold text-pretty wrap-break-word hyphens-auto text-primary-50 sm:text-3xl'>
         {title}
       </Heading>
       <p className='leading-relaxed text-pretty text-primary-200'>{summary}</p>
@@ -65,7 +66,7 @@ const ProjectCard = ({
           {stack.map((tech) => (
             <li
               key={tech}
-              className='rounded-full border-1 border-primary-700 px-3 py-1 text-xs text-primary-200'>
+              className='rounded-full border border-primary-700 px-3 py-1 text-xs text-primary-200'>
               {tech}
             </li>
           ))}

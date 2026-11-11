@@ -1,5 +1,5 @@
-import ContactForm from 'components/ContactForm'
-import ContactBackdrop from 'components/ui/animations/ContactBackdrop'
+import ContactForm from 'components/contact/ContactForm'
+import ContactBackdrop from 'components/contact/ContactBackdrop'
 
 const Contact = () => {
   return (
