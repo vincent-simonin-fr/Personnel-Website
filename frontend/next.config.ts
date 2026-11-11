@@ -1,7 +1,6 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
   reactStrictMode: true,
   productionBrowserSourceMaps: false,
   compiler: {},
@@ -18,17 +17,6 @@ const nextConfig: NextConfig = {
     inlineCss: true,
     // app/global-not-found.tsx: the root layout lives in [locale], see that file.
     globalNotFound: true,
-  },
-  async headers() {
-    return [
-      {
-        source: '/rive/:path*',
-        headers: [
-          { key: 'Content-Type', value: 'application/wasm' },
-          { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
-        ],
-      },
-    ]
   },
 }
 

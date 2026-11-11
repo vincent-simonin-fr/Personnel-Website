@@ -41,7 +41,7 @@ Titres et paragraphes longs : `text-pretty` (ou `text-balance` pour les titres c
 
 ## Mouvement
 
-- Les animations sont **décoratives** : `aria-hidden`, montées seulement près de l'écran (`OnScreen`, `RivePlayer`), sans décalage de mise en page (conteneur de même taille).
+- Les animations sont **décoratives** : `aria-hidden`, montées seulement près de l'écran (`OnScreen`), sans décalage de mise en page (conteneur de même taille).
 - Respecter `prefers-reduced-motion`.
 - Entrées de contenu : `FadeInOnAppear` / `FadeInWhenVisible` (CSS pur), pas d'animation maison ni de bibliothèque JS d'animation.
 - Profondeur au défilement : attributs `data-scene` (la scène) et `data-parallax` / `data-parallax-fade` (ses plans), distance réglée par `[--parallax:…]` (positive = le plan traîne, négative = il devance). CSS pur (`animation-timeline: view()`), statique sans support ou en mouvement réduit.
