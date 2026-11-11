@@ -149,6 +149,8 @@
     "openLanguageMenu": "Change language",
     "languageMenu": "Languages",
     "scrollToTop": "Back to top",
+    "lightTheme": "Switch to light theme",
+    "darkTheme": "Switch to dark theme",
     "github": "GitHub profile (new tab)",
     "linkedin": "LinkedIn profile (new tab)",
     "email": "Send me an email",
