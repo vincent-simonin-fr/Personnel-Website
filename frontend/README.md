@@ -57,10 +57,6 @@ npm run dev
 
 5. Open your browser and navigate to `http://localhost:3000`.
 
-## Rive player
-
-[lien](https://www.youtube.com/watch?v=MVEAfl-3LKo)
-
 ## Reacts Bits
 
 [lien](https://reactbits.dev)
