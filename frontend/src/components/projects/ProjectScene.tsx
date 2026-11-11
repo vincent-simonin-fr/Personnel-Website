@@ -21,7 +21,10 @@ const ProjectScene = ({
   labels,
   phaseLabels,
 }: ProjectSceneProps) => (
-  <section data-scene className='relative flex min-h-svh w-full items-center py-16'>
+  // pt-40: the planes sit lower than centered, so more of the client's name shows above them.
+  <section
+    data-scene
+    className='relative flex min-h-svh w-full items-center pt-40 pb-16'>
     {/* Back plane: the client's name, barely lighter/darker than the page. Drawn by
         CSS (::before) because it is decoration: contrast checkers skip it. Only this
         layer clips, so the sheet's shadow is never cut at the scene's edge. */}
@@ -31,15 +34,16 @@ const ProjectScene = ({
       <div
         data-parallax
         data-name={project.client}
-        className='absolute top-[6%] -left-4 text-[clamp(6rem,22vw,19rem)] leading-none font-extrabold tracking-tighter whitespace-nowrap text-primary-700 select-none [--parallax:120px] before:content-[attr(data-name)] max-sm:[--parallax:16px] dark:text-primary-900'
+        className='absolute top-[6%] -left-4 text-[clamp(6rem,22vw,19rem)] leading-none font-extrabold tracking-tighter text-primary-700 select-none [--parallax:120px] before:content-[attr(data-name)] max-sm:[--parallax:16px] dark:text-primary-900'
       />
     </div>
 
     <div className='relative grid w-full grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,44fr)_minmax(0,56fr)] lg:gap-0'>
-      {/* Front plane: the project sheet (first, so it leads when stacked). */}
+      {/* Front plane: the project sheet (first, so it leads when stacked). More see-through
+          than on the home page, so the client's name shows behind it. */}
       <div
         data-parallax-fade
-        className='relative z-10 [--parallax:-40px] max-sm:[--parallax:-8px] lg:col-start-1 lg:row-start-1'>
+        className='relative z-10 [--parallax:-40px] max-sm:[--parallax:-8px] lg:col-start-1 lg:row-start-1 [&>article]:bg-primary-900/70'>
         <ProjectCard
           project={project}
           labels={labels}
@@ -59,7 +63,7 @@ const ProjectScene = ({
           aria-hidden
           className='absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgb(217_70_239/0.3),transparent_60%)] blur-2xl'
         />
-        <div className='relative aspect-[4/3] overflow-hidden rounded-3xl border-1 border-primary-800 bg-primary-900 text-primary-500 shadow-2xl'>
+        <div className='relative aspect-[4/3] overflow-hidden rounded-3xl border-1 border-primary-800 bg-primary-900/70 text-primary-500 shadow-2xl'>
           <ProjectIllustration
             kind={project.illustration}
             className='size-full p-6'
