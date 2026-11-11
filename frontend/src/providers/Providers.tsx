@@ -15,15 +15,13 @@ declare module '@react-types/shared' {
 
 type ProvidersProps = {
   children: React.ReactNode
-  /** CSP nonce: next-themes injects an inline script to apply the theme before paint. */
-  nonce: string
 }
 
 // No TanStack Query provider: no query exists, and it shipped its runtime on every page.
 // Add QueryClientProvider back here when the first server-data fetch is introduced.
 // Renders on the server too: theme-dependent output must use CSS (`dark:`), not
 // `useTheme()` during render, or hydration mismatches.
-export function Providers({ children, nonce }: ProvidersProps) {
+export function Providers({ children }: ProvidersProps) {
   const router = useRouter()
 
   return (
@@ -35,7 +33,6 @@ export function Providers({ children, nonce }: ProvidersProps) {
           attribute='class'
           defaultTheme='dark'
           storageKey='theme'
-          nonce={nonce}
           themes={['dark', 'light']}>
           <AppContextProvider>{children}</AppContextProvider>
         </NextThemesProvider>

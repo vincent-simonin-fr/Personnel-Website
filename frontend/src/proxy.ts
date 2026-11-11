@@ -51,13 +51,6 @@ const securityHeaders: { key: string; value: string }[] = [
     value: 'require-corp',
   },
   {
-    // HTML carries a per-request CSP nonce: never let a shared cache (CDN) reuse it.
-    // no-cache (revalidate), not no-store, so the browser's back/forward cache still works.
-    // On Vercel, Next overrides this for dynamic pages (no-store): not actionable there.
-    key: 'Cache-Control',
-    value: 'private, no-cache',
-  },
-  {
     key: 'Vary',
     value: 'Accept-Encoding',
   },
@@ -73,13 +66,15 @@ export function proxy(req: NextRequest) {
     return
   }
 
-  const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
   const isDev = process.env.NODE_ENV === 'development'
 
+  // No nonce: pages are prerendered once for everyone, so a per-request nonce can't be in
+  // them. 'unsafe-inline' lets Next's inline scripts (RSC payload, next-themes) run; the
+  // site renders no visitor input and loads no third-party script.
   const cspHeader = `
     default-src 'self';
     connect-src 'self' https://api.emailjs.com;
-    script-src 'self' 'nonce-${nonce}' 'wasm-unsafe-eval' ${isDev ? "'unsafe-eval' 'unsafe-inline'" : "'strict-dynamic'"} ;
+    script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' ${isDev ? "'unsafe-eval'" : ''} ;
     frame-src 'self';
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: https:;
@@ -92,9 +87,6 @@ export function proxy(req: NextRequest) {
     block-all-mixed-content;`
   // Replace newline characters and spaces
   const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, ' ').trim()
-  const requestHeaders = new Headers(req.headers)
-  // Set nonce to headers to get it in root layout
-  requestHeaders.set('x-nonce', nonce)
 
   // Check the origin from the request
   const origin = req.headers.get('origin') ?? ''
@@ -125,7 +117,9 @@ export function proxy(req: NextRequest) {
     : isLocale(savedLocale)
       ? savedLocale
       : (matchLocale(req.headers.get('accept-language')) ?? defaultLocale)
-  // Request header (not response): read by the root layout and not-found via headers()
+  // Request header (not response): only global-not-found reads it, pages get the locale
+  // from the URL.
+  const requestHeaders = new Headers(req.headers)
   requestHeaders.set('x-locale', locale)
 
   // Locale-less URL: rewritten, not redirected (no extra round trip). Client code reads

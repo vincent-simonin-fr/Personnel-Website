@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
     // Inline the (small, ~15 KB gzip) CSS into the HTML: no render-blocking stylesheet
     // request before first paint. Production builds only.
     inlineCss: true,
+    // app/global-not-found.tsx: the root layout lives in [locale], see that file.
+    globalNotFound: true,
   },
   async headers() {
     return [
