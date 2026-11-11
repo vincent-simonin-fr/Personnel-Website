@@ -5,7 +5,7 @@ import SiteShell from 'components/layout/SiteShell'
 import { getDictionary } from 'i18n/getDictionary'
 import { locales } from 'i18n/locales'
 import { MetadataSite, pageMetadata, ViewportSite } from 'seo/MetadataSite'
-import { siteConfig } from 'config/site'
+import { siteConfig } from 'site/siteConfig'
 
 export const viewport = ViewportSite
 

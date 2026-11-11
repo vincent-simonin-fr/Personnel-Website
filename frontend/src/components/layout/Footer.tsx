@@ -4,7 +4,7 @@ import { Button } from '@heroui/react'
 import SocialMedia from 'components/layout/SocialMedia'
 import FadeInWhenVisible from 'components/ui/animations/FadeInWhenVisible'
 import ArrowUpSvg from 'components/ui/svg/ArrowUpSvg'
-import { siteConfig } from 'config/site'
+import { siteConfig } from 'site/siteConfig'
 import { useMediaQuery } from 'usehooks-ts'
 import { useLocaleContext } from 'providers/LocaleContextProvider'
 

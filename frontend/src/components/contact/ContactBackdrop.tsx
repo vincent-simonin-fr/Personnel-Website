@@ -1,7 +1,7 @@
 'use client'
 
 import { lazy } from 'react'
-import { siteConfig } from 'config/site'
+import { siteConfig } from 'site/siteConfig'
 import OnScreen from 'components/ui/animations/OnScreen'
 
 // WebGL: loaded and running only while near the viewport (OnScreen).
@@ -16,8 +16,8 @@ const ContactBackdrop = () => (
   <div aria-hidden className='absolute inset-0 motion-reduce:hidden lg:right-144'>
     <OnScreen>
       <MetaBalls
-        color={siteConfig.color.hex}
-        cursorBallColor={siteConfig.color.hex}
+        color={siteConfig.color}
+        cursorBallColor={siteConfig.color}
         cursorBallSize={2}
         ballCount={16}
         animationSize={30}

@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { siteConfig } from 'config/site'
+import { siteConfig } from 'site/siteConfig'
 import { locales } from 'i18n/locales'
 import { localeAlternates } from 'seo/MetadataSite'
 
