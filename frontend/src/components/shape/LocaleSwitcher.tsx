@@ -48,13 +48,13 @@ const LocaleSwitcher = () => {
         name='open-language-menu'
         variant='ghost'
         isIconOnly
-        aria-label='Open language menu'>
+        aria-label={dictionary.a11y.openLanguageMenu}>
         <LanguageSvg size={24} />
       </Button>
       {/* Frosted glass like the header; the active language is fuchsia. */}
       <Dropdown.Popover className='min-w-40 rounded-2xl border border-primary-800 bg-background/80 p-1 shadow-2xl backdrop-blur-lg backdrop-saturate-150'>
         <Dropdown.Menu
-          aria-label='Language menu'
+          aria-label={dictionary.a11y.languageMenu}
           items={locales}
           selectionMode='single'
           selectedKeys={[currentLocale]}

@@ -2,13 +2,14 @@ import BouncingHand from 'components/ui/animations/BouncingHand'
 import Link from 'next/link'
 import { headers } from 'next/headers'
 import { getDictionary } from 'i18n/getDictionary'
-import { defaultLocale } from 'i18n/locales'
+import { defaultLocale, isLocale } from 'i18n/locales'
 
 import Animation404 from 'components/ui/animations/Animation404'
 
 // Rendered outside the [locale] layout: the locale comes from the proxy header.
 const NotFound = async () => {
-  const locale = (await headers()).get('x-locale') ?? defaultLocale
+  const header = (await headers()).get('x-locale') ?? ''
+  const locale = isLocale(header) ? header : defaultLocale
   const { notFound } = await getDictionary(locale)
 
   return (

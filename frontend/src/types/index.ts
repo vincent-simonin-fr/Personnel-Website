@@ -101,6 +101,20 @@ export type Dictionary = {
     othersTitle: string
     others: OtherProject[]
   }
+  /** Screen-reader names of icon-only controls and landmarks (never shown). */
+  a11y: {
+    mainNav: string
+    openMenu: string
+    closeMenu: string
+    openLanguageMenu: string
+    languageMenu: string
+    scrollToTop: string
+    github: string
+    linkedin: string
+    email: string
+    /** Toast region; Alt+T is react-toastify's shortcut to reach it. */
+    notifications: string
+  }
   notFound: {
     /** The page's h1, under the stage scene: "Cette page n'est pas au programme." */
     tagline: string

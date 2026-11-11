@@ -6,6 +6,7 @@ import FadeInWhenVisible from 'components/ui/animations/FadeInWhenVisible'
 import ArrowUpSvg from 'components/ui/svg/ArrowUpSvg'
 import { siteConfig } from '../../../config/site'
 import { useMediaQuery } from 'usehooks-ts'
+import { useLocaleContext } from 'hooks/useLocaleContext'
 
 type FooterProps = object
 
@@ -13,6 +14,7 @@ type FooterProps = object
 const currentYear = new Date().getFullYear()
 
 const Footer = ({}: FooterProps) => {
+  const { dictionary } = useLocaleContext()
   const minWidth = '624px'
   // false on the first render (= server HTML), then the real value: no hydration mismatch.
   const isMobile = useMediaQuery(`(max-width: ${minWidth})`, {
@@ -32,7 +34,7 @@ const Footer = ({}: FooterProps) => {
             <Button
               className='rounded-full border-2 border-primary bg-background text-primary transition-transform duration-900 ease-in-out hover:scale-95 hover:shadow-xs hover:shadow-primary'
               isIconOnly
-              aria-label='Scroll to top'
+              aria-label={dictionary.a11y.scrollToTop}
               onPress={scrollToTop}>
               <ArrowUpSvg />
             </Button>

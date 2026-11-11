@@ -84,12 +84,14 @@ const Header = ({}: HeaderProps) => {
       // Initial width (= server render, scroll 0); the effect above takes over.
       style={{ width: `${headerWidthVw}vw` }}>
       <nav
-        aria-label='Main'
+        aria-label={dictionary.a11y.mainNav}
         className={`flex h-10 w-full items-center gap-4 px-6 ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? '' : 'backdrop-blur-lg backdrop-saturate-150'}`}>
         <div className='flex grow basis-0 justify-start sm:hidden'>
           <button
             type='button'
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={
+              isMenuOpen ? dictionary.a11y.closeMenu : dictionary.a11y.openMenu
+            }
             aria-expanded={isMenuOpen}
             aria-controls='mobile-menu'
             onClick={() => setIsMenuOpen((open) => !open)}
