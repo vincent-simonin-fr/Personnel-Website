@@ -79,7 +79,7 @@ export function proxy(req: NextRequest) {
   const cspHeader = `
     default-src 'self';
     connect-src 'self' https://api.emailjs.com;
-    script-src 'self' 'nonce-${nonce}' 'wasm-unsafe-eval' ${isDev ? "'unsafe-eval' 'unsafe-inline'" : 'strict-dynamic'} ;
+    script-src 'self' 'nonce-${nonce}' 'wasm-unsafe-eval' ${isDev ? "'unsafe-eval' 'unsafe-inline'" : "'strict-dynamic'"} ;
     frame-src 'self';
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: https:;
