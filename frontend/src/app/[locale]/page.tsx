@@ -45,7 +45,8 @@ const HomePage = () => {
     <>
       <Loading isLoading={isLoading} isError={isError} error={error}>
         <div className='flex w-full flex-col items-center gap-28'>
-          <section className='flex min-h-[calc(100vh-60px)] w-full flex-col items-center justify-center'>
+          {/* At least the first screen under the 48px header (h-12). */}
+          <section className='flex min-h-[calc(100vh-3rem)] w-full flex-col items-center justify-center'>
             <div className='w-[84vw] py-8 sm:px-2'>
               <div className='flex items-center pb-8 text-xl'>
                 <span className='mr-1 text-fuchsia-600'>
@@ -94,7 +95,10 @@ const HomePage = () => {
             </div>
           </section>
 
-          <div className='flex w-[84vw] flex-col gap-28'>
+          {/* No gap after the first screen: the threads never leave the middle half of their
+              box, its empty bottom quarter already spaces them from the next block. Starting
+              right at the fold keeps it out of the first screen. */}
+          <div className='-mt-28 flex w-[84vw] flex-col gap-28'>
             <section className='flex flex-col gap-6'>
               <h2 className={kicker}>{references.title}</h2>
               <ul className='flex flex-wrap items-center gap-x-12 gap-y-4 text-2xl font-extrabold tracking-tight text-primary-400 md:text-3xl'>
@@ -186,7 +190,9 @@ const HomePage = () => {
           </div>
 
           {/* Contact Section */}
-          <KeyframeCssOnView cssClass='showAndHideOnView px-4 md:px-16'>
+          {/* -mt-4: with the card centered on screen, the career's last line still ends 4px
+              above the screen (max -mt-5, the same at any height: all in vh). */}
+          <KeyframeCssOnView cssClass='showAndHideOnView -mt-4 px-4 md:px-16'>
             <div className='relative h-[calc(100vh-136px)] w-full'>
               <ContactBackdrop />
             </div>
