@@ -6,7 +6,7 @@ import { LocaleContextProvider } from 'providers/LocaleContextProvider'
 import Header from 'components/layout/Header'
 import Footer from 'components/layout/Footer'
 import { jsonLd } from 'seo/MetadataSite'
-import { siteFont } from 'config/siteFont'
+import { siteFont } from 'site/siteFont'
 import { Dictionary } from 'i18n/dictionary.types'
 
 type SiteShellProps = {

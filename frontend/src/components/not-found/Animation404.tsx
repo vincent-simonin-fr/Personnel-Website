@@ -1,4 +1,6 @@
 import { Rock_Salt } from 'next/font/google'
+// The animate-* and .graffiti classes below: plain CSS, loaded on the 404 only.
+import './Animation404.css'
 
 // The player's greys are fixed, not theme tokens: like the former jazzman's image
 // layers, he looks the same in both themes.
@@ -133,7 +135,7 @@ const Four = ({ x }: { x: number }) => (
 
 // Wall lettering: a marker handstyle font (Rock Salt), loaded by this component only (the 404
 // is the only page that imports it: no extra font file anywhere else), styled by
-// .graffiti in globals.css. Portrait: in the flow, above and below the scene;
+// .graffiti in Animation404.css. Portrait: in the flow, above and below the scene;
 // landscape: out of the flow, over the scene's empty top corners (above the player's
 // head, above the 404) and beyond its sides, behind the drawing.
 const graffitiFont = Rock_Salt({
@@ -152,7 +154,7 @@ type Animation404Props = {
 // A chibi basketball player (proportions of the reference drawing: head with hair about
 // half the height, thick headband, big wide-set eyes, short thick arms, wide shoes).
 // He runs in, waves, takes the ball in both hands and, a second later, takes a free
-// throw: one sequence on load, no interaction (keyframes in globals.css, CSS only, no
+// throw: one sequence on load, no interaction (keyframes in Animation404.css, CSS only, no
 // JS: nothing runs once it's over). Rig:
 // each arm = upper arm rotating at the shoulder + forearm rotating at the elbow (base
 // rotation = set pose); legs rotate at the hip. The scene is decorative; with reduced
@@ -165,7 +167,7 @@ const Animation404 = ({ graffiti }: Animation404Props) => {
   return (
     // w-full: the stage's width is a percentage of this box, which must not shrink to
     // fit it. --strides: running strides before the last two, more on wider screens so
-    // he comes in from the screen's edge at about the same pace (intro-* in globals.css).
+    // he comes in from the screen's edge at about the same pace (intro-* in Animation404.css).
     <div className='flex w-full justify-center [--strides:1] min-[2200px]:[--strides:2]'>
       {/* Height = the viewport minus the header, the home link and the padding (14rem),
           and in portrait the two graffiti (10rem); width ≤ 54vw in landscape to leave
@@ -213,19 +215,19 @@ const Animation404 = ({ graffiti }: Animation404Props) => {
 
           <svg
             viewBox='16 0 340 260'
-            className='absolute inset-0 size-full animate-intro-run overflow-visible motion-reduce:animate-none'>
+            className='animate-intro-run absolute inset-0 size-full overflow-visible'>
             {/* Player, in player coordinates (shifted 12 units left to keep room before
             the hoop): rim at 212,86 here. */}
             <g transform='translate(-12 0)'>
               {/* Floor shadow, pulses with the strides */}
-              <g className='origin-[101px_250px] animate-intro-shadow motion-reduce:animate-none'>
+              <g className='animate-intro-shadow origin-[101px_250px]'>
                 <ellipse cx='101' cy='250' rx='40' ry='4' fill={shade} />
               </g>
 
               <g stroke={ink} strokeWidth='2.2' strokeLinejoin='round'>
                 {/* Legs (hip pivots), socks, shoes; they compress on the dip */}
-                <g className='origin-[101px_250px] animate-player-legs motion-reduce:animate-none'>
-                  <g className='origin-[87px_214px] animate-intro-leg-l motion-reduce:animate-none'>
+                <g className='animate-player-legs origin-[101px_250px]'>
+                  <g className='animate-intro-leg-l origin-[87px_214px]'>
                     <rect x='80' y='214' width='14' height='16' fill={skin} />
                     <rect x='77' y='228' width='18' height='11' fill={white} />
                     <path d='M78 231.5 H94' stroke={trim} strokeWidth='2' />
@@ -242,7 +244,7 @@ const Animation404 = ({ graffiti }: Animation404Props) => {
                       strokeLinecap='round'
                     />
                   </g>
-                  <g className='origin-[114px_214px] animate-intro-leg-r motion-reduce:animate-none'>
+                  <g className='animate-intro-leg-r origin-[114px_214px]'>
                     <rect x='107.5' y='214' width='14' height='16' fill={skin} />
                     <path
                       d='M114.5 214 H121.5 V230 H114.5 Z'
@@ -267,7 +269,7 @@ const Animation404 = ({ graffiti }: Animation404Props) => {
                 </g>
 
                 {/* Upper body: shorts, jersey, head */}
-                <g className='animate-player-body motion-reduce:animate-none'>
+                <g className='animate-player-body'>
                   {/* Shorts, waist as wide as the jersey hem: waistband, side stripes, split */}
                   <path
                     d='M81.5 199.5 H123.5 L128.5 224.5 H104 L101.5 217 L98 224.5 H75.5 Z'
@@ -431,30 +433,30 @@ const Animation404 = ({ graffiti }: Animation404Props) => {
 
                 {/* Ball: base = set pose (both hands, 103,178). X and Y on two groups make
                 the shot's arc; the inner group spins, the highlight doesn't. */}
-                <g className='animate-player-ball motion-reduce:animate-shot-ball-reduced'>
-                  <g className='animate-shot-ball-y motion-reduce:animate-none'>
+                <g className='animate-player-ball'>
+                  <g className='animate-shot-ball-y'>
                     <g transform='translate(103 178)'>
-                      <Ball spin='animate-shot-ball-spin motion-reduce:animate-none' />
+                      <Ball spin='animate-shot-ball-spin' />
                     </g>
                   </g>
                 </g>
 
                 {/* Arms, in front of the ball. Each: upper arm (shoulder pivot) holding the
                 forearm (elbow pivot) and the fist; base rotations = set pose. */}
-                <g className='animate-player-body motion-reduce:animate-none'>
+                <g className='animate-player-body'>
                   {/* Left arm: carries the ball in, then guides it */}
-                  <g className='origin-[80px_167px] transform-[rotate(42deg)] animate-player-arm-l-up motion-reduce:animate-none'>
+                  <g className='animate-player-arm-l-up origin-[80px_167px] transform-[rotate(42deg)]'>
                     <Limb d='M80 167 V186' />
-                    <g className='origin-[80px_186px] transform-[rotate(-142.6deg)] animate-player-arm-l-fore motion-reduce:animate-none'>
+                    <g className='animate-player-arm-l-fore origin-[80px_186px] transform-[rotate(-142.6deg)]'>
                       <Limb d='M80 186 V203' />
                       <Band d='M80 193 V198.5' />
                       <Fist cx={80} cy={203} />
                     </g>
                   </g>
                   {/* Right arm: swings, waves, then shoots */}
-                  <g className='origin-[121px_167px] transform-[rotate(-32deg)] animate-player-arm-r-up motion-reduce:animate-none'>
+                  <g className='animate-player-arm-r-up origin-[121px_167px] transform-[rotate(-32deg)]'>
                     <Limb d='M121 167 V186' />
-                    <g className='origin-[121px_186px] transform-[rotate(94.4deg)] animate-player-arm-r-fore motion-reduce:animate-none'>
+                    <g className='animate-player-arm-r-fore origin-[121px_186px] transform-[rotate(94.4deg)]'>
                       <Limb d='M121 186 V203' />
                       <Fist cx={121} cy={203} flip />
                     </g>
@@ -476,14 +478,14 @@ const Animation404 = ({ graffiti }: Animation404Props) => {
               <ellipse cx='239.5' cy='249' rx='10' ry='3' fill={kit} />
               {/* The 4s pop in once the ball has stopped between them (wrappers: a CSS
                   transform would replace the digit's own translate) */}
-              <g className='origin-[269px_250px] animate-four-in-l motion-reduce:animate-none'>
+              <g className='animate-four-in-l origin-[269px_250px]'>
                 <Four x={256} />
               </g>
-              <g className='origin-[335px_250px] animate-four-in-r motion-reduce:animate-none'>
+              <g className='animate-four-in-r origin-[335px_250px]'>
                 <Four x={322} />
               </g>
             </g>
-            <g className='origin-[200px_86px] animate-shot-net motion-reduce:animate-none'>
+            <g className='animate-shot-net origin-[200px_86px]'>
               <path
                 d={net}
                 fill='none'

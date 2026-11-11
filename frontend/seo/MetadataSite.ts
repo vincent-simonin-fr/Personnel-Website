@@ -1,5 +1,5 @@
 import { Metadata, Viewport } from 'next'
-import { siteConfig } from 'config/site'
+import { siteConfig } from 'site/siteConfig'
 import { defaultLocale, locales } from 'i18n/locales'
 
 export const ViewportSite: Viewport = {

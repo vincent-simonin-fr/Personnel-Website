@@ -2,16 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { defaultLocale, isLocale, matchLocale } from 'i18n/locales'
 
 const PUBLIC_FILE = /\.(.*)$/
-const allowedOrigins = [
-  'https://vincentsimonin.fr',
-  'https://dev.vincentsimonin.fr', // preprod
-  'http://localhost:3000',
-]
-
-const corsOptions = {
-  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-}
 
 const securityHeaders: { key: string; value: string }[] = [
   {
@@ -21,10 +11,6 @@ const securityHeaders: { key: string; value: string }[] = [
   {
     key: 'Strict-Transport-Security',
     value: 'max-age=63072000; includeSubDomains; preload',
-  },
-  {
-    key: 'X-XSS-Protection',
-    value: '1; mode=block',
   },
   {
     key: 'X-Frame-Options',
@@ -42,13 +28,11 @@ const securityHeaders: { key: string; value: string }[] = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
   },
+  // No Cross-Origin-Embedder-Policy: with this COOP the page is never cross-origin
+  // isolated, so COEP would only block cross-origin images lacking a CORP header.
   {
     key: 'Cross-Origin-Opener-Policy',
     value: 'same-origin-allow-popups',
-  },
-  {
-    key: 'Cross-Origin-Embedder-Policy',
-    value: 'require-corp',
   },
   {
     key: 'Vary',
@@ -83,26 +67,11 @@ export function proxy(req: NextRequest) {
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
-    upgrade-insecure-requests;
-    block-all-mixed-content;`
+    upgrade-insecure-requests;`
   // Replace newline characters and spaces
   const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, ' ').trim()
 
-  // Check the origin from the request
-  const origin = req.headers.get('origin') ?? ''
-  const isAllowedOrigin = allowedOrigins.includes(origin)
-
-  // Handle preflighted requests
-  const isPreflight = req.method === 'OPTIONS'
-
-  if (isPreflight) {
-    const preflightHeaders = {
-      ...(isAllowedOrigin && { 'Access-Control-Allow-Origin': origin }),
-      ...corsOptions,
-    }
-    return NextResponse.json({}, { headers: preflightHeaders })
-  }
-
+  // No CORS: the site has no API and nothing fetches its pages from another origin.
   const pathname = req.nextUrl.pathname
 
   // Vérifie si le chemin inclut une langue (segment exact : `/fresh` n'est pas `fr`)
@@ -143,9 +112,6 @@ export function proxy(req: NextRequest) {
     })
   }
 
-  if (isAllowedOrigin) {
-    response.headers.set('Access-Control-Allow-Origin', origin)
-  }
   response.headers.set('Content-Security-Policy', contentSecurityPolicyHeaderValue)
   securityHeaders.forEach((item) => {
     response.headers.set(item.key, item.value)
