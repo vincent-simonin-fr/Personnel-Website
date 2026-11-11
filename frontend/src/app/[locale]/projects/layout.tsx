@@ -5,7 +5,8 @@ import { pageMetadata } from 'seo/MetadataSite'
 
 type Props = { children: ReactNode; params: Promise<{ locale: string }> }
 
-// The page is a client component: its metadata lives in this server layout.
+// Metadata in a layout, not in page.tsx: there, its openGraph would replace the parent's
+// and drop the og:image of [locale]/opengraph-image (checked on Next 16.4).
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const dictionary = await getDictionary(locale)
