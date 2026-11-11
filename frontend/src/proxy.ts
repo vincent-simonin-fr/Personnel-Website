@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { defaultLocale, isLocale, matchLocale } from 'i18n/locales'
 
 const PUBLIC_FILE = /\.(.*)$/
 const allowedOrigins = [
@@ -62,9 +63,6 @@ const securityHeaders: { key: string; value: string }[] = [
   },
 ]
 
-// Langues supportées
-const locales = ['en-us', 'fr', 'de']
-
 export function proxy(req: NextRequest) {
   // Not considering request to api
   if (
@@ -117,29 +115,39 @@ export function proxy(req: NextRequest) {
 
   // Vérifie si le chemin inclut une langue (segment exact : `/fresh` n'est pas `fr`)
   const firstSegment = pathname.split('/')[1]
-  const hasLocale = locales.includes(firstSegment)
+  const hasLocale = isLocale(firstSegment)
 
-  // Locale-less URL (e.g. "/"): last language picked in LocaleSwitcher, else French.
+  // Locale-less URL (e.g. "/"): language of the last visited page, else the
+  // browser's, else the default (crawlers send no Accept-Language: they get x-default).
   const savedLocale = req.cookies.get('NEXT_LOCALE')?.value ?? ''
   const locale = hasLocale
     ? firstSegment
-    : locales.includes(savedLocale)
+    : isLocale(savedLocale)
       ? savedLocale
-      : 'fr'
+      : (matchLocale(req.headers.get('accept-language')) ?? defaultLocale)
   // Request header (not response): read by the root layout and not-found via headers()
   requestHeaders.set('x-locale', locale)
 
+  // Locale-less URL: rewritten, not redirected (no extra round trip). Client code reads
+  // the path through stripLocale(), which handles both forms.
+  const target = req.nextUrl.clone()
+  target.pathname = `/${locale}${pathname === '/' ? '' : pathname}`
   const response = hasLocale
-    ? NextResponse.next({
-        request: {
-          headers: requestHeaders,
-        },
-      })
-    : NextResponse.rewrite(new URL(`/${locale}${pathname}`, req.url), {
-        request: {
-          headers: requestHeaders,
-        },
-      })
+    ? NextResponse.next({ request: { headers: requestHeaders } })
+    : NextResponse.rewrite(target, { request: { headers: requestHeaders } })
+
+  // Remember the language of the last page with one in its URL (switcher, hreflang
+  // link…): "/" then opens in it. Lax, not strict: a strict cookie is not sent when the
+  // visitor arrives from another site (a search result), when it matters most.
+  if (hasLocale && savedLocale !== locale) {
+    response.cookies.set('NEXT_LOCALE', locale, {
+      httpOnly: true,
+      secure: !isDev,
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 365,
+      path: '/',
+    })
+  }
 
   if (isAllowedOrigin) {
     response.headers.set('Access-Control-Allow-Origin', origin)

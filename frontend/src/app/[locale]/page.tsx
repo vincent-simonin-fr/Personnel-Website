@@ -159,14 +159,14 @@ const HomePage = () => {
                       {last ? (
                         <span
                           aria-hidden
-                          className='absolute top-[6px] -left-[5.5px] size-3 rounded-full bg-fuchsia-500 shadow-[0_0_12px_rgb(225_42_251/0.8)] md:-top-[5.5px] md:left-0'>
+                          className='absolute top-1.5 left-[-5.5px] size-3 rounded-full bg-fuchsia-500 shadow-[0_0_12px_rgb(225_42_251/0.8)] md:top-[-5.5px] md:left-0'>
                           <span className='absolute inset-0 animate-ping rounded-full bg-fuchsia-500/60 motion-reduce:animate-none' />
                         </span>
                       ) : (
                         <span
                           aria-hidden
                           style={{ backgroundColor: tint(i) }}
-                          className='absolute top-[8.5px] -left-[3px] size-[7px] rounded-full md:-top-[3px] md:left-0'
+                          className='absolute top-[8.5px] -left-0.75 size-1.75 rounded-full md:-top-0.75 md:left-0'
                         />
                       )}
                       <p
@@ -174,7 +174,7 @@ const HomePage = () => {
                         {item.year}
                       </p>
                       <p className='text-lg font-semibold'>{item.title}</p>
-                      <p className='mt-0.5 leading-snug text-pretty break-words text-primary-200'>
+                      <p className='mt-0.5 leading-snug text-pretty wrap-break-word text-primary-200'>
                         {item.detail}
                       </p>
                     </li>
@@ -193,7 +193,7 @@ const HomePage = () => {
             {/* Call to action only: the form lives on /contact (single source). */}
             {/* Pointer events reach the backdrop (cursor ball), except on the card. */}
             <div className='pointer-events-none absolute inset-0 flex items-center justify-center px-4 md:justify-end md:pr-32'>
-              <div className='pointer-events-auto flex w-full max-w-md flex-col items-start gap-4 rounded-3xl border-1 border-primary-800 bg-background/70 p-6 text-primary-50 shadow-2xl backdrop-blur-xl md:w-1/2'>
+              <div className='pointer-events-auto flex w-full max-w-md flex-col items-start gap-4 rounded-3xl border border-primary-800 bg-background/70 p-6 text-primary-50 shadow-2xl backdrop-blur-xl md:w-1/2'>
                 <h2 className='text-2xl font-semibold'>
                   {dictionary.contactForm.title}
                 </h2>

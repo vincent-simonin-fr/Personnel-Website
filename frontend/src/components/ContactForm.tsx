@@ -35,6 +35,8 @@ const errorClassName = 'text-sm text-danger'
 
 // Field hidden from people (screen, keyboard, screen readers) that form-filling bots fill.
 const HONEYPOT = 'website'
+// localStorage key of EmailJS's one-message-per-minute limit.
+const RATE_LIMIT_ID = 'contact'
 
 const CustomToast = ({ data }: ToastContentProps<ReactNode>) => {
   return (
@@ -88,10 +90,14 @@ const ContactForm = ({}: ContactFormProps) => {
       const res = await emailjs.send(serviceID, templateID, userInput, {
         publicKey: userID,
         blockHeadless: true,
-        limitRate: { id: 'contact', throttle: 60_000 },
+        limitRate: { id: RATE_LIMIT_ID, throttle: 60_000 },
       })
       if (res.status === 200) showSuccess()
     } catch (error) {
+      // The SDK stores the send time before sending: a failed send (network, EmailJS)
+      // must not block the retry for a minute. 429 = the limit itself, keep it.
+      if ((error as { status?: number } | null)?.status !== 429)
+        localStorage.removeItem(RATE_LIMIT_ID)
       toast.error(CustomToast, {
         theme: theme,
         closeButton: true,
@@ -114,7 +120,7 @@ const ContactForm = ({}: ContactFormProps) => {
         className='flex w-full max-w-md flex-col gap-4'
         onReset={() => setUserInput(emptyInput)}
         onSubmit={handleSubmit}>
-        <div aria-hidden className='absolute -left-[9999px] size-px overflow-hidden'>
+        <div aria-hidden className='absolute left-[-9999px] size-px overflow-hidden'>
           <input type='text' name={HONEYPOT} tabIndex={-1} autoComplete='off' />
         </div>
         <div className='flex w-full flex-col gap-4 sm:flex-row'>

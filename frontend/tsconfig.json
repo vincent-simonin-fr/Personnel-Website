@@ -27,8 +27,7 @@
       "styles/*": ["./src/styles/*"],
       "seo/*": ["./seo/*"],
       "config/*": ["./config/*"],
-      "types": ["./src/types/index"],
-      "actions": ["./src/lib/actions/actions"]
+      "types": ["./src/types/index"]
     }
   },
   "include": [

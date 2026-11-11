@@ -6,6 +6,7 @@ import EmailSvg from 'components/ui/svg/EmailSvg'
 import LinkedinSvg from 'components/ui/svg/LinkedinSvg'
 import GithubSvg from 'components/ui/svg/GithubSvg'
 import FadeInWhenVisible from './ui/animations/FadeInWhenVisible'
+import { useLocaleContext } from 'hooks/useLocaleContext'
 
 type SocialMediaProps = {
   delay?: number
@@ -14,6 +15,7 @@ type SocialMediaProps = {
 
 // TODO: Handle loading and error states
 const SocialMedia = ({ delay = 0, noDelay = false }: SocialMediaProps) => {
+  const { a11y } = useLocaleContext().dictionary
   const size = 30
   return (
     <div className='flex gap-3'>
@@ -24,7 +26,7 @@ const SocialMedia = ({ delay = 0, noDelay = false }: SocialMediaProps) => {
             href={siteConfig.links.github}
             target='_blank'
             rel='noopener noreferrer'
-            aria-label='Github link'>
+            aria-label={a11y.github}>
             <GithubSvg size={size} className='text-primary' />
           </Link>
         </div>
@@ -36,14 +38,14 @@ const SocialMedia = ({ delay = 0, noDelay = false }: SocialMediaProps) => {
             href={siteConfig.links.linkedin}
             target='_blank'
             rel='noopener noreferrer'
-            aria-label='Linkedin link'>
+            aria-label={a11y.linkedin}>
             <LinkedinSvg size={size} className='text-primary' />
           </Link>
         </div>
       </FadeInWhenVisible>
       <FadeInWhenVisible delay={noDelay ? 0 : 0.4 + delay}>
         <div className='transition-transform duration-300 hover:scale-110'>
-          <Link key='email' href={siteConfig.links.email} aria-label='Email link'>
+          <Link key='email' href={siteConfig.links.email} aria-label={a11y.email}>
             <EmailSvg size={size} className='text-primary' />
           </Link>
         </div>

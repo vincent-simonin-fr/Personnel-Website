@@ -1,13 +1,10 @@
 'use client'
 
 import { lazy } from 'react'
-import { useLocaleContext } from 'hooks/useLocaleContext'
 
 const Starfield = lazy(() => import('components/ui/animations/Starfield'))
 
 const Labs = () => {
-  const { dictionary } = useLocaleContext()
-
   return (
     <>
       <div className='relative -mt-16 w-screen'>

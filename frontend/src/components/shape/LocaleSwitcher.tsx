@@ -6,45 +6,25 @@ import LanguageSvg from 'components/ui/svg/LanguageSvg'
 import UsaSvg from 'components/ui/svg/UsaSvg'
 import FranceSvg from 'components/ui/svg/FranceSvg'
 import GermanySvg from 'components/ui/svg/GermanySvg'
-import { setLocaleCookie } from '../../lib/actions/actions'
-import { Locale } from 'types'
-import { useState } from 'react'
 import { useLocaleContext } from 'hooks/useLocaleContext'
-
-const locales: Locale[] = [
-  {
-    key: 'fr',
-    label: 'Français',
-  },
-  {
-    key: 'en-us',
-    label: 'English',
-  },
-  {
-    key: 'de',
-    label: 'Deutsch',
-  },
-]
+import { locales, stripLocale } from 'i18n/locales'
 
 const LocaleSwitcher = () => {
   const router = useRouter()
   const pathname = usePathname()
   const { dictionary } = useLocaleContext()
-  const [currentLocale, setCurrentLocale] = useState(dictionary.locale)
+  const currentLocale = dictionary.locale
 
   const path = (locale: string) => {
-    const segments = pathname.split('/')
-    // Locale-less URL (e.g. /projects, rewritten by the proxy): keep every segment.
-    const hasLocale = locales.some((l) => l.key === segments[1])
-    const rest = segments.slice(hasLocale ? 2 : 1).filter(Boolean)
-    return ['', locale, ...rest].join('/')
+    const route = stripLocale(pathname)
+    return route === '/' ? `/${locale}` : `/${locale}${route}`
   }
 
-  const handleSelectLocale = async (newLocale: string) => {
+  // No cookie to set here: the proxy remembers the language of the page it serves.
+  const handleSelectLocale = (newLocale: string) => {
     if (newLocale === currentLocale) return
-    setCurrentLocale(newLocale)
-    await setLocaleCookie(newLocale)
-    router.push(path(newLocale))
+    const { search, hash } = window.location
+    router.push(path(newLocale) + search + hash)
   }
 
   const getFlag = (locale: string) => {
@@ -68,13 +48,13 @@ const LocaleSwitcher = () => {
         name='open-language-menu'
         variant='ghost'
         isIconOnly
-        aria-label='Open language menu'>
+        aria-label={dictionary.a11y.openLanguageMenu}>
         <LanguageSvg size={24} />
       </Button>
       {/* Frosted glass like the header; the active language is fuchsia. */}
-      <Dropdown.Popover className='min-w-40 rounded-2xl border-1 border-primary-800 bg-background/80 p-1 shadow-2xl backdrop-blur-lg backdrop-saturate-150'>
+      <Dropdown.Popover className='min-w-40 rounded-2xl border border-primary-800 bg-background/80 p-1 shadow-2xl backdrop-blur-lg backdrop-saturate-150'>
         <Dropdown.Menu
-          aria-label='Language menu'
+          aria-label={dictionary.a11y.languageMenu}
           items={locales}
           selectionMode='single'
           selectedKeys={[currentLocale]}

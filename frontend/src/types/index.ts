@@ -1,5 +1,3 @@
-export type Lang = 'fr' | 'en-us' | 'de'
-
 export type User = {
   id?: string
   email?: string
@@ -103,18 +101,27 @@ export type Dictionary = {
     othersTitle: string
     others: OtherProject[]
   }
+  /** Screen-reader names of icon-only controls and landmarks (never shown). */
+  a11y: {
+    mainNav: string
+    openMenu: string
+    closeMenu: string
+    openLanguageMenu: string
+    languageMenu: string
+    scrollToTop: string
+    /** Theme button: names the theme it switches to. */
+    lightTheme: string
+    darkTheme: string
+    github: string
+    linkedin: string
+    email: string
+    /** Toast region; Alt+T is react-toastify's shortcut to reach it. */
+    notifications: string
+  }
   notFound: {
     /** The page's h1, under the stage scene: "Cette page n'est pas au programme." */
     tagline: string
     buttonLabel: string
-  }
-  presentation: {
-    introduction: string
-    description: string
-    services: {
-      title: string
-      description: string
-    }[]
   }
   contactForm: {
     title: string
@@ -135,9 +142,4 @@ export type Dictionary = {
     successMessage: string
     errorMessage: string
   }
-}
-
-export type Locale = {
-  key: string
-  label: string
 }
