@@ -7,7 +7,6 @@ import { ThemeSwitcher } from './ThemeSwitcher'
 import AppLogo from './AppLogo'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { useAppContext } from 'hooks/useAppContext'
 import { siteConfig } from 'config/site'
 import { useMediaQuery } from 'usehooks-ts'
 import ChevronDownSvg from 'components/ui/svg/ChevronDownSvg'
@@ -36,7 +35,6 @@ const Header = ({}: HeaderProps) => {
     initializeWithValue: false,
   })
 
-  const { is404 } = useAppContext()
   const { dictionary } = useLocaleContext()
 
   // Escape closes the mobile menu.
@@ -163,7 +161,7 @@ const Header = ({}: HeaderProps) => {
         </ul>
 
         <div className='flex grow basis-0 items-center justify-end gap-2'>
-          {!is404 && <LocaleSwitcher />}
+          <LocaleSwitcher />
           <ThemeSwitcher />
         </div>
       </nav>

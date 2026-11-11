@@ -19,17 +19,6 @@ const nextConfig: NextConfig = {
     // app/global-not-found.tsx: the root layout lives in [locale], see that file.
     globalNotFound: true,
   },
-  async headers() {
-    return [
-      {
-        source: '/rive/:path*',
-        headers: [
-          { key: 'Content-Type', value: 'application/wasm' },
-          { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
-        ],
-      },
-    ]
-  },
 }
 
 // https://nextjs.org/docs/app/guides/package-bundling

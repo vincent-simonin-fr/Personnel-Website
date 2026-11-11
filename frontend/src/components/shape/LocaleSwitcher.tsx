@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { Button, Dropdown } from '@heroui/react'
 import LanguageSvg from 'components/ui/svg/LanguageSvg'
 import UsaSvg from 'components/ui/svg/UsaSvg'
@@ -10,7 +10,6 @@ import { useLocaleContext } from 'hooks/useLocaleContext'
 import { locales, stripLocale } from 'i18n/locales'
 
 const LocaleSwitcher = () => {
-  const router = useRouter()
   const pathname = usePathname()
   const { dictionary } = useLocaleContext()
   const currentLocale = dictionary.locale
@@ -21,10 +20,13 @@ const LocaleSwitcher = () => {
   }
 
   // No cookie to set here: the proxy remembers the language of the page it serves.
+  // Full page load, not router.push: the locale is the root layout's param, so a client
+  // navigation remounts the whole tree anyway, and next-themes' inline script then
+  // re-renders on the client (React 19 warns). The target page is prerendered (CDN).
   const handleSelectLocale = (newLocale: string) => {
     if (newLocale === currentLocale) return
     const { search, hash } = window.location
-    router.push(path(newLocale) + search + hash)
+    window.location.assign(path(newLocale) + search + hash)
   }
 
   const getFlag = (locale: string) => {
