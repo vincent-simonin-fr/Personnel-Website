@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import BouncingHand from 'components/ui/animations/BouncingHand'
 import Link from 'next/link'
 import { headers } from 'next/headers'
 import SiteShell from 'components/shape/SiteShell'
@@ -31,11 +30,9 @@ const GlobalNotFound = async () => {
         <h1 className='sr-only'>{notFound.tagline}</h1>
         <Animation404 graffiti={notFound.quote} />
         <Link
-          className='group mt-4 inline-flex items-center gap-2 text-xl text-brand'
+          className='mt-4 text-xl text-brand hover:underline'
           href={`/${locale}`}>
-          {/* Only the label is underlined on hover, not the hand. */}
-          <span className='group-hover:underline'>{notFound.buttonLabel}</span>
-          <BouncingHand />
+          {notFound.buttonLabel}
         </Link>
       </div>
     </SiteShell>
