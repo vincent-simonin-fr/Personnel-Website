@@ -1,17 +1,23 @@
 import type { Metadata } from 'next'
 import { WebVitals } from 'components/WebVitals'
 import { ReactNode } from 'react'
-import { LocaleContextProvider } from 'providers/LocaleContextProvider'
-import Header from 'components/shape/Header'
-import Footer from 'components/shape/Footer'
+import SiteShell from 'components/shape/SiteShell'
 import { getDictionary } from 'i18n/getDictionary'
 import { locales } from 'i18n/locales'
-import { pageMetadata } from 'seo/MetadataSite'
+import { MetadataSite, pageMetadata, ViewportSite } from 'seo/MetadataSite'
 import { siteConfig } from 'config/site'
 
+export const viewport = ViewportSite
+
+// Root layout (no app/layout.tsx): <html lang> comes from the URL, known at build time,
+// so every page is prerendered. Reading request headers here would make them dynamic.
 export async function generateStaticParams() {
   return locales.map(({ key }) => ({ locale: key }))
 }
+
+// Only prerendered params exist, here and in child segments: any other URL (e.g. a
+// missing /photo.png, which the proxy doesn't rewrite) gets global-not-found.tsx.
+export const dynamicParams = false
 
 type LocaleLayoutProps = {
   children: ReactNode
@@ -20,17 +26,19 @@ type LocaleLayoutProps = {
   }>
 }
 
-// Home page metadata + defaults for every page of this locale.
+// Site defaults + home page metadata for this locale. Spread, not nested: Next merges
+// metadata key by key (openGraph replaced as a whole), as when the defaults lived in a
+// parent layout.
 export async function generateMetadata({
   params,
 }: LocaleLayoutProps): Promise<Metadata> {
   const { locale } = await params
   const dictionary = await getDictionary(locale)
   const { title, description } = dictionary.homePage
-  const metadata = pageMetadata(locale, '', title, description)
 
   return {
-    ...metadata,
+    ...MetadataSite,
+    ...pageMetadata(locale, '', title, description),
     // Localized: the French title carries "Développeur", what French visitors search.
     title: { default: title, template: `%s | ${siteConfig.name}` },
   }
@@ -41,12 +49,10 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
   const dictionary = await getDictionary(locale)
 
   return (
-    <LocaleContextProvider dictionary={dictionary}>
+    <SiteShell locale={locale} dictionary={dictionary}>
       {/* <WebVitals /> */}
-      <Header />
       {children}
-      <Footer />
-    </LocaleContextProvider>
+    </SiteShell>
   )
 }
 
