@@ -1,0 +1,46 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "group:allNonMajor",
+    "schedule:weekly",
+    ":timezone(Europe/Paris)",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "baseBranchPatterns": ["dev"],
+  "minimumReleaseAge": "3 days",
+  "lockFileMaintenance": { "enabled": true },
+  "packageRules": [
+    {
+      "description": "HeroUI's peers are direct deps (legacy-peer-deps): upgrade them together, majors included.",
+      "matchPackageNames": [
+        "@heroui/**",
+        "react-aria",
+        "react-aria-components",
+        "@react-aria/**",
+        "@internationalized/date"
+      ],
+      "groupName": "HeroUI"
+    },
+    {
+      "description": "Held back on purpose, see 'Dépendances bloquées' in frontend/TODO.md: eslint-plugin-react supports ESLint <= 9.",
+      "matchPackageNames": ["eslint"],
+      "allowedVersions": "<10"
+    },
+    {
+      "description": "Held back on purpose, see frontend/TODO.md: typescript-eslint requires TypeScript < 6.1.",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<6.1"
+    },
+    {
+      "description": "Held back on purpose, see frontend/TODO.md: types follow the Node version in use (24), 25.x at most.",
+      "matchPackageNames": ["@types/node"],
+      "allowedVersions": "<26"
+    },
+    {
+      "description": "Held back on purpose, see frontend/TODO.md: @vercel/otel 2.3 requires OpenTelemetry < 0.300.",
+      "matchPackageNames": ["@opentelemetry/**"],
+      "allowedVersions": "<0.300"
+    }
+  ]
+}
