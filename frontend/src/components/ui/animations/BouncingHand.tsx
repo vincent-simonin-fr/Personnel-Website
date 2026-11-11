@@ -2,7 +2,7 @@
 // is part of the root layout tree, so it shipped the motion library (~138 KB) to every page.
 const BouncingHand = () => {
   return (
-    <span className='animate-bounce-y relative top-[0.1em] inline-block pl-1 align-middle text-4xl motion-reduce:animate-none'>
+    <span className='relative top-[0.1em] inline-block animate-bounce-y pl-1 align-middle text-4xl motion-reduce:animate-none'>
       👈
     </span>
   )
