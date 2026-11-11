@@ -27,10 +27,9 @@ const GlobalNotFound = async () => {
   return (
     <SiteShell locale={locale} dictionary={dictionary}>
       <div className='flex min-h-[calc(100vh-60px)] w-[84vw] flex-col items-center justify-center gap-4 py-12 text-center'>
-        <Animation404 />
-        <h1 className='text-2xl font-semibold text-balance text-primary-50 italic md:text-3xl'>
-          {notFound.tagline}
-        </h1>
+        {/* The scene says it (the ball completes "404"): heading for screen readers. */}
+        <h1 className='sr-only'>{notFound.tagline}</h1>
+        <Animation404 graffiti={notFound.quote} />
         <Link
           className='group mt-4 inline-flex items-center gap-2 text-xl text-brand'
           href={`/${locale}`}>
