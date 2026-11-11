@@ -3,7 +3,7 @@ import { siteConfig } from 'config/site'
 import { locales } from 'i18n/locales'
 import { localeAlternates } from 'seo/MetadataSite'
 
-// Published routes only (labs stay out until they have content).
+// Every public route; a new one goes here too.
 const routes = ['', '/projects', '/contact']
 
 export default function sitemap(): MetadataRoute.Sitemap {

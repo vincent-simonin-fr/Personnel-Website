@@ -87,8 +87,6 @@ export type Dictionary = {
     }
   }
   navigation: MenuItem[]
-  // Hidden from the menus until the lab pages have content; move back into `navigation` to publish.
-  labs: MenuItem
   /** Short label of each lifecycle phase. */
   phases: Record<Phase, string>
   projects: {

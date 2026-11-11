@@ -115,33 +115,6 @@
       "to": "/contact"
     }
   ],
-  "labs": {
-    "label": "Tech Labs",
-    "title": "Technology Labs",
-    "to": "/labs",
-    "items": [
-      {
-        "label": "Geographic Information System",
-        "title": "GIS Solutions",
-        "to": "/labs/gis"
-      },
-      {
-        "label": "Business Intelligence",
-        "title": "BI Solutions",
-        "to": "/labs/bi"
-      },
-      {
-        "label": "Artificial Intelligence",
-        "title": "AI Solutions",
-        "to": "/labs/ai"
-      },
-      {
-        "label": "Blockchain",
-        "title": "Web3 & Blockchain",
-        "to": "/labs/blockchain"
-      }
-    ]
-  },
   "a11y": {
     "mainNav": "Main menu",
     "openMenu": "Open menu",
