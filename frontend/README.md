@@ -2,30 +2,14 @@
 
 ## Introduction
 
-This is the frontend of the Yuno IT project. It is a Next.js application that uses the HeroUI library for the UI components.
-
-## Environment
-
-The project is built using Node.js and npm. It requires a recent version of Node.js to run.
-
-Environment variables are used to configure the application. The following envirnment are available:
-
-- Development (default)
-- Test
-- Production
-
-Following NODE_ENV environment variable is used to set the environment:
-
-- NODE_ENV=development `next dev`
-- NODE_ENV=test, when running tests with Jest for example
-- NODE_ENV=production `next build && next start`
+This is the frontend of the Yuno IT project: a Next.js application (App Router, every page prerendered) using HeroUI and Tailwind CSS, in French, English and German.
 
 ## Prerequisites
 
-Before you can start using the project, you need to have the following installed:
+- Node.js 24 (the version used by the CI)
+- npm 10 or higher
 
-- Node.js (version 22 or higher)
-- npm (version 10 or higher)
+The contact form needs the `NEXT_PUBLIC_EMAILJS_*` variables in `.env.local`.
 
 ## Getting Started
 
@@ -43,10 +27,10 @@ git clone https://github.com/twentycent/yuno-it.git
 cd frontend
 ```
 
-3. Install the dependencies:
+3. Install the dependencies exactly as locked (`npm install` could rewrite `package-lock.json`):
 
 ```bash
-npm install
+npm ci
 ```
 
 4. Start the development server:
@@ -57,9 +41,9 @@ npm run dev
 
 5. Open your browser and navigate to `http://localhost:3000`.
 
-## Rive player
+## Checks
 
-[lien](https://www.youtube.com/watch?v=MVEAfl-3LKo)
+There is no test runner. Before a commit: `npm run typecheck`, `npm run lint` and `npm run build` (production build, webpack). The CI runs the same on every pull request.
 
 ## Reacts Bits
 

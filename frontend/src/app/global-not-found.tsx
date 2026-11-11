@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { headers } from 'next/headers'
-import SiteShell from 'components/shape/SiteShell'
+import SiteShell from 'components/layout/SiteShell'
 import { getDictionary } from 'i18n/getDictionary'
 import { defaultLocale, isLocale } from 'i18n/locales'
 import { MetadataSite, ViewportSite } from 'seo/MetadataSite'
 
-import Animation404 from 'components/ui/animations/Animation404'
+import Animation404 from 'components/not-found/Animation404'
 
 // Site defaults minus their "index, follow", which would contradict the noindex Next adds
 // to 404s.

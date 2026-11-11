@@ -4,7 +4,6 @@ import { RouterProvider } from '@heroui/react'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 
 import { useRouter } from 'next/navigation'
-import { AppContextProvider } from './AppContextProvider'
 
 // Only if using TypeScript
 declare module '@react-types/shared' {
@@ -17,8 +16,8 @@ type ProvidersProps = {
   children: React.ReactNode
 }
 
-// No TanStack Query provider: no query exists, and it shipped its runtime on every page.
-// Add QueryClientProvider back here when the first server-data fetch is introduced.
+// No TanStack Query: no query existed and it shipped its runtime on every page (package
+// removed 2026-11-11). Reinstall it and add QueryClientProvider here with the first one.
 // Renders on the server too: theme-dependent output must use CSS (`dark:`), not
 // `useTheme()` during render, or hydration mismatches.
 export function Providers({ children }: ProvidersProps) {
@@ -34,7 +33,7 @@ export function Providers({ children }: ProvidersProps) {
           defaultTheme='dark'
           storageKey='theme'
           themes={['dark', 'light']}>
-          <AppContextProvider>{children}</AppContextProvider>
+          {children}
         </NextThemesProvider>
       </RouterProvider>
     </>

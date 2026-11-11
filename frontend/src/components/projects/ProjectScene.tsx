@@ -1,5 +1,6 @@
-import { Dictionary, Phase, Project } from 'types'
-import ProjectCard from 'components/ProjectCard'
+import { Dictionary } from 'i18n/dictionary.types'
+import { Phase, Project } from './project.types'
+import ProjectCard from 'components/projects/ProjectCard'
 import ProjectIllustration from './ProjectIllustration'
 
 type ProjectSceneProps = {

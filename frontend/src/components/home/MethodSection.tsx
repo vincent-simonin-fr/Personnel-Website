@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { useIntersectionObserver } from 'usehooks-ts'
-import { Dictionary, PHASES, Phase } from 'types'
+import { Dictionary } from 'i18n/dictionary.types'
+import { PHASES, Phase } from 'components/projects/project.types'
 
 type Method = Dictionary['homePage']['method']
 

@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 import { getDictionary } from 'i18n/getDictionary'
-import { siteConfig } from 'config/site'
+import { siteConfig } from 'site/siteConfig'
 
 // Generated social preview (og:image, also used by Twitter/X), one per locale.
 export const alt = siteConfig.name
@@ -26,7 +26,7 @@ const OpengraphImage = async ({ params }: Props) => {
         background: '#0a0a0a',
         color: '#f6f6f6',
       }}>
-      <div style={{ width: 120, height: 8, background: siteConfig.color.hex }} />
+      <div style={{ width: 120, height: 8, background: siteConfig.color }} />
       <div style={{ marginTop: 40, fontSize: 84, fontWeight: 700 }}>
         {siteConfig.name}
       </div>
@@ -34,7 +34,7 @@ const OpengraphImage = async ({ params }: Props) => {
         {/* The OG renderer draws soft hyphens (used for narrow screens) as real ones. */}
         {`${hook.before}${hook.accent}${hook.after}`.replaceAll('\u00ad', '')}
       </div>
-      <div style={{ marginTop: 'auto', fontSize: 28, color: siteConfig.color.hex }}>
+      <div style={{ marginTop: 'auto', fontSize: 28, color: siteConfig.color }}>
         {siteConfig.url.replace('https://', '')}
       </div>
     </div>,

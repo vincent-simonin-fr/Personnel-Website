@@ -1,4 +1,5 @@
-import { Dictionary, ILLUSTRATIONS, PHASES, Project } from 'types'
+import { Dictionary } from './dictionary.types'
+import { ILLUSTRATIONS, PHASES, Project } from 'components/projects/project.types'
 import { cache } from 'react'
 import { notFound } from 'next/navigation'
 import { isLocale, Lang } from './locales'
