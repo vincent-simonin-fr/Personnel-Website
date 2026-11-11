@@ -117,9 +117,11 @@ export type Dictionary = {
     notifications: string
   }
   notFound: {
-    /** The page's h1, under the stage scene: "Cette page n'est pas au programme." */
+    /** The page's h1, for screen readers only (the scene shows the 404). */
     tagline: string
     buttonLabel: string
+    /** Sprayed on the wall behind the scene, one sentence per side (2 items). */
+    quote: string[]
   }
   contactForm: {
     title: string
