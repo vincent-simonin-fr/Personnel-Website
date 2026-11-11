@@ -13,9 +13,7 @@ const MetaBalls = lazy(() => import('components/ui/animations/MetaBalls'))
 // free space instead of hiding behind it. Reduced motion: hidden, so OnScreen never
 // mounts it (no WebGL, no render loop).
 const ContactBackdrop = () => (
-  <div
-    aria-hidden
-    className='absolute inset-0 motion-reduce:hidden lg:right-[36rem]'>
+  <div aria-hidden className='absolute inset-0 motion-reduce:hidden lg:right-144'>
     <OnScreen>
       <MetaBalls
         color={siteConfig.color.hex}

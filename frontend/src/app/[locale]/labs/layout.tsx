@@ -11,7 +11,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const dictionary = await getDictionary(locale)
   return {
-    ...pageMetadata(locale, '/labs', dictionary.labs.title),
+    ...pageMetadata(
+      locale,
+      '/labs',
+      dictionary.labs.title,
+      dictionary.homePage.description,
+    ),
     // Object form: a plain string here would drop the template for /labs/[slug].
     title: { default: dictionary.labs.title, template: `%s | ${siteConfig.name}` },
     robots: { index: false, follow: true },

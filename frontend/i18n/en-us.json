@@ -16,19 +16,11 @@
     "labelButtonToSkills": "See the projects",
     "references": {
       "title": "They trusted me",
-      "names": [
-        "Kardham Digital",
-        "APRR",
-        "Inetum",
-        "INRAE"
-      ]
+      "names": ["Kardham Digital", "APRR", "Inetum", "INRAE"]
     },
     "featured": {
       "kicker": "Featured projects",
-      "ids": [
-        "ey-placement",
-        "aprr-traffic"
-      ],
+      "ids": ["ey-placement", "aprr-traffic"],
       "allProjects": "All projects"
     },
     "career": {
@@ -150,39 +142,23 @@
       }
     ]
   },
+  "a11y": {
+    "mainNav": "Main menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "openLanguageMenu": "Change language",
+    "languageMenu": "Languages",
+    "scrollToTop": "Back to top",
+    "lightTheme": "Switch to light theme",
+    "darkTheme": "Switch to dark theme",
+    "github": "GitHub profile (new tab)",
+    "linkedin": "LinkedIn profile (new tab)",
+    "email": "Send me an email",
+    "notifications": "Notifications (Alt+T)"
+  },
   "notFound": {
     "tagline": "This page isn't on the setlist.",
     "buttonLabel": "Return to Home"
-  },
-  "presentation": {
-    "introduction": "As a digital professional, I closely follow the evolution of new technologies. It is above all a passion. With each implementation, it is about striving for excellence. Producing quality deliverables while integrating the most innovative technologies in their respective fields.",
-    "description": "Full Stack Developer and Azure Cloud Developer, expert in IT and new technologies.",
-    "services": [
-      {
-        "title": "Full Stack Development",
-        "description": "Design and implementation of high-performance, secure, and scalable web and mobile applications using the latest technologies. I work with Microsoft technologies, Azure cloud, the .Net platform and React.js. During my training, I became interested in software quality and maintainability, a question mark that raised hundreds of others."
-      },
-      {
-        "title": "Software Design and Analysis",
-        "description": "In-depth analysis of needs, drafting of technical and functional specifications, and design of custom software solutions."
-      },
-      {
-        "title": "Project Industrialization",
-        "description": "Implementation of CI/CD pipelines, automation of tests and deployments, and management of development environments for continuous and reliable delivery. I design and develop projects integrating security from the earliest stages using DevSecOps methodologies."
-      },
-      {
-        "title": "Evolutionary and Corrective Maintenance",
-        "description": "Continuous monitoring and improvement of applications, bug fixing, and adding new features to meet changing user needs."
-      },
-      {
-        "title": "Business Applications and Communication Sites",
-        "description": "Development of specific business applications and communication websites to improve the visibility and efficiency of companies."
-      },
-      {
-        "title": "Training and Coaching",
-        "description": "Training on .NET and React.js technologies, efficient software design, object-oriented programming, PostgreSQL and MongoDB databases. Personalized follow-up and step-by-step learning for all levels."
-      }
-    ]
   },
   "contactForm": {
     "title": "Contact Me",
@@ -216,13 +192,7 @@
         "title": "Building management system control",
         "summary": "Applications that control building management systems, talking to equipment (BMS, IoT, video surveillance and access control). Part of the Smart Building offering, they use occupancy and comfort data to optimize how spaces are used and the well-being of occupants, in support of the WELL label.",
         "role": "Full stack developer: technical architecture, writing specifications, continuous integration and delivery",
-        "phases": [
-          "specify",
-          "design",
-          "build",
-          "ship",
-          "maintain"
-        ],
+        "phases": ["specify", "design", "build", "ship", "maintain"],
         "stack": [
           ".NET",
           "Blazor",
@@ -247,18 +217,8 @@
         "title": "Construction site management module",
         "summary": "Construction site management module, currently in development, built to complete Kardham Digital's Smart Building offering and give EY an advanced solution.",
         "role": "Full stack developer: built the entire module in direct collaboration with the client",
-        "phases": [
-          "specify",
-          "design",
-          "build",
-          "ship"
-        ],
-        "stack": [
-          ".NET",
-          "Blazor",
-          "PostgreSQL",
-          "IIS"
-        ],
+        "phases": ["specify", "design", "build", "ship"],
+        "stack": [".NET", "Blazor", "PostgreSQL", "IIS"],
         "illustration": "schedule"
       },
       {
@@ -269,19 +229,8 @@
         "title": "Automated seating and workspace management module",
         "summary": "Automatically assigns employees to spaces at their workplace according to criteria set by the company, flex office included. The data it produces feeds the decision-making side: space optimization and cost per square meter. It extends Kardham Digital's Smart Building offering.",
         "role": "Full stack developer: built the entire module in direct collaboration with the client",
-        "phases": [
-          "specify",
-          "design",
-          "build",
-          "ship"
-        ],
-        "stack": [
-          ".NET",
-          "Blazor",
-          "Azure",
-          "PostgreSQL",
-          "IIS"
-        ],
+        "phases": ["specify", "design", "build", "ship"],
+        "stack": [".NET", "Blazor", "Azure", "PostgreSQL", "IIS"],
         "illustration": "floorplan"
       },
       {
@@ -291,17 +240,8 @@
         "title": "Traffic management support system",
         "summary": "Evolutive maintenance of a motorway operations application for real-time collection, processing, distribution and visualization of traffic and weather data. End-to-end design and development of new features, from data processing to the interface, within a distributed architecture.",
         "role": "Full stack developer",
-        "phases": [
-          "build",
-          "maintain"
-        ],
-        "stack": [
-          ".NET",
-          "Angular",
-          "PostgreSQL",
-          "Kafka",
-          "RabbitMQ"
-        ],
+        "phases": ["build", "maintain"],
+        "stack": [".NET", "Angular", "PostgreSQL", "Kafka", "RabbitMQ"],
         "illustration": "roads"
       },
       {
@@ -311,15 +251,8 @@
         "title": "Geographic information services",
         "summary": "Mapping service widgets built into the ArcGIS Experience Builder platform, and new features for an AutoCAD Map 3D plug-in.",
         "role": "Full stack developer",
-        "phases": [
-          "build"
-        ],
-        "stack": [
-          ".NET",
-          "React",
-          "ArcGIS Experience Builder",
-          "AutoCAD Map 3D"
-        ],
+        "phases": ["build"],
+        "stack": [".NET", "React", "ArcGIS Experience Builder", "AutoCAD Map 3D"],
         "illustration": "layers"
       },
       {
@@ -329,17 +262,8 @@
         "title": "GREA graphic redesign",
         "summary": "New search interface for GREA, a water and sanitation resource management software, followed by corrective and evolutive maintenance.",
         "role": "Full stack developer",
-        "phases": [
-          "design",
-          "build",
-          "maintain"
-        ],
-        "stack": [
-          ".NET",
-          "PostgreSQL",
-          "Oracle",
-          "Bootstrap"
-        ],
+        "phases": ["design", "build", "maintain"],
+        "stack": [".NET", "PostgreSQL", "Oracle", "Bootstrap"],
         "illustration": "interface"
       }
     ],
@@ -350,32 +274,21 @@
         "period": "2022 – 2024",
         "title": "Blockchain study",
         "description": "Feasibility study of a private blockchain to meet the requirements for certifying point-of-sale software.",
-        "stack": [
-          "Hyperledger Fabric",
-          "Kubernetes"
-        ]
+        "stack": ["Hyperledger Fabric", "Kubernetes"]
       },
       {
         "client": "APRR",
         "period": "2022 – 2024",
         "title": "Real estate asset management",
         "description": "New features for a real estate asset management application.",
-        "stack": [
-          "Java / Spring Boot",
-          "Angular",
-          "PostgreSQL"
-        ]
+        "stack": ["Java / Spring Boot", "Angular", "PostgreSQL"]
       },
       {
         "client": "INRAE",
         "period": "2021",
         "title": "School canteen menus",
         "description": "Desktop application collecting and processing school canteen menus for a study on the nutritional and environmental quality of school catering in France.",
-        "stack": [
-          "Python",
-          "SQL",
-          "Tkinter"
-        ]
+        "stack": ["Python", "SQL", "Tkinter"]
       }
     ]
   },

@@ -16,19 +16,11 @@
     "labelButtonToSkills": "Voir les projets",
     "references": {
       "title": "Ils m'ont fait confiance",
-      "names": [
-        "Kardham Digital",
-        "APRR",
-        "Inetum",
-        "INRAE"
-      ]
+      "names": ["Kardham Digital", "APRR", "Inetum", "INRAE"]
     },
     "featured": {
       "kicker": "Projets phares",
-      "ids": [
-        "ey-placement",
-        "aprr-traffic"
-      ],
+      "ids": ["ey-placement", "aprr-traffic"],
       "allProjects": "Tous les projets"
     },
     "career": {
@@ -150,39 +142,23 @@
       }
     ]
   },
+  "a11y": {
+    "mainNav": "Menu principal",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "openLanguageMenu": "Changer de langue",
+    "languageMenu": "Langues",
+    "scrollToTop": "Revenir en haut de la page",
+    "lightTheme": "Passer au thème clair",
+    "darkTheme": "Passer au thème sombre",
+    "github": "Profil GitHub (nouvel onglet)",
+    "linkedin": "Profil LinkedIn (nouvel onglet)",
+    "email": "M'envoyer un e-mail",
+    "notifications": "Notifications (Alt+T)"
+  },
   "notFound": {
     "tagline": "Cette page n'est pas au programme.",
     "buttonLabel": "Retour à l'Accueil"
-  },
-  "presentation": {
-    "introduction": "En tant que professionnel du digital, je suis avec attention l'évolution des nouvelles technologies. C'est avant tout une passion. À chaque mise en œuvre, il s'agit de rechercher l'excellence. Produire des livrables de qualité tout en intégrant les technologies les plus novatrices dans leurs domaines respectifs.",
-    "description": "Développeur Full Stack et Développeur Azure Cloud, expert en informatique et nouvelles technologies.",
-    "services": [
-      {
-        "title": "Développement Full Stack",
-        "description": "Conception et réalisation d'applications web performantes, sécurisées et évolutives, utilisant les technologies les plus récentes. Je travaille avec la plupart des technologies Microsoft, que ce soit les services Azure, ou la plateforme de développement .Net, ainsi qu'avec l'environnement React.js pour la présentation. Au cours de ma formation, je me suis intéressé à la qualité et à la maintenabilité des logiciels, un point d'interrogation qui m'a permis de développer une approche permettant de garder la maîtrise des coûts d'une application."
-      },
-      {
-        "title": "Étude et Conception Logicielle",
-        "description": "Analyse approfondie des besoins, rédaction de spécifications techniques et fonctionnelles, et conception de solutions logicielles sur mesure."
-      },
-      {
-        "title": "Industrialisation de Projet",
-        "description": "Mise en place de pipelines CI/CD, automatisation des tests et des déploiements, et gestion des environnements de développement pour une livraison continue et fiable. Je conçois et développe des projets en intégrant la sécurité dès les premières étapes grâce aux méthodologies DevSecOps."
-      },
-      {
-        "title": "Maintenance Évolutive et Corrective",
-        "description": "Suivi et amélioration continue des applications, correction des bugs, et ajout de nouvelles fonctionnalités pour répondre aux besoins changeants des utilisateurs."
-      },
-      {
-        "title": "Applications Métiers et Sites de Communication",
-        "description": "Développement d'applications métiers spécifiques et de sites web de communication pour améliorer la visibilité et l'efficacité des entreprises."
-      },
-      {
-        "title": "Formation et Coaching",
-        "description": "Formation sur les technologies .NET et React.js, conception logicielle efficace, programmation orientée objet, bases de données PostgreSQL et MongoDB. Apprentissage par étape avec suivi personnalisé pour tous niveaux."
-      }
-    ]
   },
   "contactForm": {
     "title": "Me Contacter",
@@ -216,13 +192,7 @@
         "title": "Pilotage des systèmes de gestion du bâtiment",
         "summary": "Applications de pilotage des systèmes de gestion du bâtiment, qui dialoguent avec les équipements (GTB, IoT, vidéosurveillance et contrôle d'accès). Au sein de l'offre Smart Building, elles exploitent les données d'occupation et de confort pour optimiser l'usage des espaces et le bien-être des occupants, au service du label WELL.",
         "role": "Développeur full stack : architecture technique, rédaction de spécifications, intégration et déploiement continus",
-        "phases": [
-          "specify",
-          "design",
-          "build",
-          "ship",
-          "maintain"
-        ],
+        "phases": ["specify", "design", "build", "ship", "maintain"],
         "stack": [
           ".NET",
           "Blazor",
@@ -247,18 +217,8 @@
         "title": "Module de gestion de chantier",
         "summary": "Module de gestion de chantier, en cours de réalisation, conçu pour compléter l'offre Smart Building de Kardham Digital et fournir à EY une solution avancée.",
         "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
-        "phases": [
-          "specify",
-          "design",
-          "build",
-          "ship"
-        ],
-        "stack": [
-          ".NET",
-          "Blazor",
-          "PostgreSQL",
-          "IIS"
-        ],
+        "phases": ["specify", "design", "build", "ship"],
+        "stack": [".NET", "Blazor", "PostgreSQL", "IIS"],
         "illustration": "schedule"
       },
       {
@@ -269,19 +229,8 @@
         "title": "Module de placement automatisé et pilotage des espaces",
         "summary": "Affecte automatiquement les collaborateurs aux espaces de leur lieu de travail selon les critères définis par l'entreprise, flex office compris. Les données produites alimentent la partie décisionnelle : optimisation des espaces et coût au m². Il complète l'offre Smart Building de Kardham Digital.",
         "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
-        "phases": [
-          "specify",
-          "design",
-          "build",
-          "ship"
-        ],
-        "stack": [
-          ".NET",
-          "Blazor",
-          "Azure",
-          "PostgreSQL",
-          "IIS"
-        ],
+        "phases": ["specify", "design", "build", "ship"],
+        "stack": [".NET", "Blazor", "Azure", "PostgreSQL", "IIS"],
         "illustration": "floorplan"
       },
       {
@@ -291,17 +240,8 @@
         "title": "Système d'aide à la gestion du trafic",
         "summary": "Maintenance évolutive d'une application d'exploitation autoroutière qui permet la collecte, le traitement, la diffusion et la visualisation en temps réel des données trafic et météo. Conception et développement de nouvelles fonctionnalités de bout en bout, du traitement des données jusqu'à l'interface, au sein d'une architecture distribuée.",
         "role": "Développeur full stack",
-        "phases": [
-          "build",
-          "maintain"
-        ],
-        "stack": [
-          ".NET",
-          "Angular",
-          "PostgreSQL",
-          "Kafka",
-          "RabbitMQ"
-        ],
+        "phases": ["build", "maintain"],
+        "stack": [".NET", "Angular", "PostgreSQL", "Kafka", "RabbitMQ"],
         "illustration": "roads"
       },
       {
@@ -311,15 +251,8 @@
         "title": "Services d'information géographique",
         "summary": "Widgets de services cartographiques intégrés à la plateforme ArcGIS Experience Builder, et nouvelles fonctionnalités d'un plugiciel pour AutoCAD Map 3D.",
         "role": "Développeur full stack",
-        "phases": [
-          "build"
-        ],
-        "stack": [
-          ".NET",
-          "React",
-          "ArcGIS Experience Builder",
-          "AutoCAD Map 3D"
-        ],
+        "phases": ["build"],
+        "stack": [".NET", "React", "ArcGIS Experience Builder", "AutoCAD Map 3D"],
         "illustration": "layers"
       },
       {
@@ -329,17 +262,8 @@
         "title": "Refonte graphique de GREA",
         "summary": "Nouvelle interface de recherche de GREA, logiciel de gestion des ressources eau et assainissement, puis maintenance corrective et évolutive.",
         "role": "Développeur full stack",
-        "phases": [
-          "design",
-          "build",
-          "maintain"
-        ],
-        "stack": [
-          ".NET",
-          "PostgreSQL",
-          "Oracle",
-          "Bootstrap"
-        ],
+        "phases": ["design", "build", "maintain"],
+        "stack": [".NET", "PostgreSQL", "Oracle", "Bootstrap"],
         "illustration": "interface"
       }
     ],
@@ -350,32 +274,21 @@
         "period": "2022 – 2024",
         "title": "Étude blockchain",
         "description": "Étude de faisabilité d'une blockchain privée pour répondre au cahier des charges de la certification des logiciels de caisse.",
-        "stack": [
-          "Hyperledger Fabric",
-          "Kubernetes"
-        ]
+        "stack": ["Hyperledger Fabric", "Kubernetes"]
       },
       {
         "client": "APRR",
         "period": "2022 – 2024",
         "title": "Gestion du patrimoine immobilier",
         "description": "Nouvelles fonctionnalités d'une application de gestion du patrimoine immobilier.",
-        "stack": [
-          "Java / Spring Boot",
-          "Angular",
-          "PostgreSQL"
-        ]
+        "stack": ["Java / Spring Boot", "Angular", "PostgreSQL"]
       },
       {
         "client": "INRAE",
         "period": "2021",
         "title": "Menus de cantines",
         "description": "Application desktop de collecte et de traitement des menus de cantines pour une étude sur la qualité nutritionnelle et environnementale de la restauration scolaire en France.",
-        "stack": [
-          "Python",
-          "SQL",
-          "Tkinter"
-        ]
+        "stack": ["Python", "SQL", "Tkinter"]
       }
     ]
   },

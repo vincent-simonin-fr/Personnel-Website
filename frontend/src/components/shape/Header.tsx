@@ -5,27 +5,25 @@ import Link from 'next/link'
 import LocaleSwitcher from './LocaleSwitcher'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import AppLogo from './AppLogo'
-import { notFound, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { useAppContext } from 'hooks/useAppContext'
 import { siteConfig } from 'config/site'
 import { useMediaQuery } from 'usehooks-ts'
 import ChevronDownSvg from 'components/ui/svg/ChevronDownSvg'
 import { useLocaleContext } from 'hooks/useLocaleContext'
+import { stripLocale } from 'i18n/locales'
 
 type HeaderProps = object
 
 // text-brand: theme-aware fuchsia that passes 4.5:1 for small text (see globals.css).
 const classLinkActive = 'text-brand'
-const SUPPORTED_LOCALES = ['fr', 'en-us', 'de'] as const
-type Locale = (typeof SUPPORTED_LOCALES)[number]
 
 // HeroUI v3 has no Navbar: hand-built with the same layout as the former v2 one
 // (brand | links pushed to the center | switchers on the right; overlay menu on mobile).
 const Header = ({}: HeaderProps) => {
-  const path = usePathname()
-  const segments = path.split('/')
-  const pathname = segments[2] ?? '/'
+  const [, section, subSection] = stripLocale(usePathname()).split('/')
+  const pathname = section || '/'
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const headerRef = useRef<HTMLDivElement>(null)
@@ -76,25 +74,24 @@ const Header = ({}: HeaderProps) => {
     }
   }, [isMobile])
 
-  if (!dictionary || !SUPPORTED_LOCALES.includes(dictionary.locale as Locale)) {
-    notFound()
-  }
   const locale = dictionary.locale
   const closeMenu = () => setIsMenuOpen(false)
 
   return (
     <div
       ref={headerRef}
-      className={`sticky top-0 z-50 h-12 w-full sm:min-w-[640px] md:min-w-[640px]`}
+      className={`sticky top-0 z-50 h-12 w-full sm:min-w-160 md:min-w-160`}
       // Initial width (= server render, scroll 0); the effect above takes over.
       style={{ width: `${headerWidthVw}vw` }}>
       <nav
-        aria-label='Main'
+        aria-label={dictionary.a11y.mainNav}
         className={`flex h-10 w-full items-center gap-4 px-6 ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? '' : 'backdrop-blur-lg backdrop-saturate-150'}`}>
         <div className='flex grow basis-0 justify-start sm:hidden'>
           <button
             type='button'
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={
+              isMenuOpen ? dictionary.a11y.closeMenu : dictionary.a11y.openMenu
+            }
             aria-expanded={isMenuOpen}
             aria-controls='mobile-menu'
             onClick={() => setIsMenuOpen((open) => !open)}
@@ -143,7 +140,7 @@ const Header = ({}: HeaderProps) => {
                     {item.label}
                     <ChevronDownSvg size={16} />
                   </Button>
-                  <Dropdown.Popover className='w-[340px] bg-primary-900'>
+                  <Dropdown.Popover className='w-85 bg-primary-900'>
                     <Dropdown.Menu aria-label={item.label}>
                       {item.items.map((subItem) => (
                         <Dropdown.Item
@@ -152,7 +149,7 @@ const Header = ({}: HeaderProps) => {
                           textValue={subItem.label}
                           href={`/${locale}${subItem.to}`}
                           className={
-                            subItem.to.endsWith(segments[3]) ? classLinkActive : ''
+                            subItem.to.endsWith(subSection) ? classLinkActive : ''
                           }>
                           {subItem.label}
                         </Dropdown.Item>
@@ -189,7 +186,7 @@ const Header = ({}: HeaderProps) => {
                     {item.items.map((subItem) => (
                       <li key={subItem.to}>
                         <Link
-                          className={`ml-4 block ${subItem.to.endsWith(segments[3]) ? classLinkActive : ''}`}
+                          className={`ml-4 block ${subItem.to.endsWith(subSection) ? classLinkActive : ''}`}
                           href={`/${locale}${subItem.to}`}
                           onClick={closeMenu}>
                           {subItem.label}

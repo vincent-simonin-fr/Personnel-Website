@@ -4,6 +4,8 @@ import { Bounce, ToastContainer } from 'react-toastify'
 import { jsonLd, MetadataSite, ViewportSite } from 'seo/MetadataSite'
 import { siteFont } from 'config/siteFont'
 import { headers } from 'next/headers'
+import { defaultLocale, isLocale } from 'i18n/locales'
+import { getDictionary } from 'i18n/getDictionary'
 
 export const metadata = MetadataSite
 
@@ -13,8 +15,11 @@ export const viewport = ViewportSite
 // makes every route dynamic, which the per-request nonce requires anyway.
 const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {
   const headersList = await headers()
-  const locale = headersList.get('x-locale') || 'fr' // Défaut à 'fr' si pas de locale trouvée
+  // Unset when the proxy skips the request (paths with a dot): default language.
+  const header = headersList.get('x-locale') ?? ''
+  const locale = isLocale(header) ? header : defaultLocale
   const nonce = headersList.get('x-nonce')!
+  const { a11y } = await getDictionary(locale)
 
   return (
     // suppressHydrationWarning: next-themes swaps the theme class before hydration.
@@ -38,6 +43,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
           <main className='flex min-h-screen w-screen flex-col items-center justify-center'>
             {children}
             <ToastContainer
+              aria-label={a11y.notifications}
               toastClassName={`${siteFont.className}`}
               position='bottom-right'
               transition={Bounce}

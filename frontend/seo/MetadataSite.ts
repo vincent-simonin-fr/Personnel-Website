@@ -1,5 +1,6 @@
 import { Metadata, Viewport } from 'next'
 import { siteConfig } from 'config/site'
+import { defaultLocale, locales } from 'i18n/locales'
 
 export const ViewportSite: Viewport = {
   width: 'device-width',
@@ -76,39 +77,33 @@ export const MetadataSite: Metadata = {
   },
 }
 
-const ogLocales: Record<string, string> = {
-  fr: 'fr_FR',
-  'en-us': 'en_US',
-  de: 'de_DE',
-}
-
 /** hreflang alternates + canonical for `path` (e.g. '/projects', '' for home). */
 export const localeAlternates = (locale: string, path: string) => ({
   canonical: `/${locale}${path}`,
   languages: {
-    fr: `/fr${path}`,
-    'en-US': `/en-us${path}`,
-    de: `/de${path}`,
-    'x-default': `/fr${path}`,
+    ...Object.fromEntries(locales.map((l) => [l.hreflang, `/${l.key}${path}`])),
+    'x-default': `/${defaultLocale}${path}`,
   },
 })
 
-/** Per-route metadata: localized title, canonical/hreflang, and matching Open Graph. */
+/** Per-route metadata: localized title, canonical/hreflang, and matching Open Graph.
+ *  `description` is required: Next replaces `openGraph` as a whole (no merge with the
+ *  parent's), so without it og:description would fall back to the English default. */
 export const pageMetadata = (
   locale: string,
   path: string,
-  title?: string,
-  description?: string,
+  title: string | undefined,
+  description: string,
 ): Metadata => ({
   ...(title && { title }),
-  ...(description && { description }),
+  description,
   alternates: localeAlternates(locale, path),
   openGraph: {
     ...MetadataSite.openGraph,
     ...(title && { title }),
-    ...(description && { description }),
+    description,
     url: `/${locale}${path}`,
-    locale: ogLocales[locale],
+    locale: locales.find((l) => l.key === locale)?.og,
   },
 })
 
