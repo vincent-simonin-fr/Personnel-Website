@@ -34,7 +34,7 @@ const ProjectScene = ({
       <div
         data-parallax
         data-name={project.client}
-        className='absolute top-[6%] -left-4 text-[clamp(6rem,22vw,19rem)] leading-none font-extrabold tracking-tighter text-primary-700 select-none [--parallax:120px] before:content-[attr(data-name)] max-sm:[--parallax:16px] dark:text-primary-900'
+        className='absolute top-[6%] left-0 text-[clamp(6rem,22vw,19rem)] leading-none font-extrabold tracking-tighter text-primary-700 select-none [--parallax:120px] before:content-[attr(data-name)] max-sm:[--parallax:16px] dark:text-primary-900'
       />
     </div>
 
@@ -63,7 +63,7 @@ const ProjectScene = ({
           aria-hidden
           className='absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgb(217_70_239/0.3),transparent_60%)] blur-2xl'
         />
-        <div className='relative aspect-[4/3] overflow-hidden rounded-3xl border-1 border-primary-800 bg-primary-900/70 text-primary-500 shadow-2xl'>
+        <div className='relative aspect-4/3 overflow-hidden rounded-3xl border border-primary-800 bg-primary-900/70 text-primary-500 shadow-2xl'>
           <ProjectIllustration
             kind={project.illustration}
             className='size-full p-6'
