@@ -130,8 +130,12 @@
     "notifications": "Notifications (Alt+T)"
   },
   "notFound": {
-    "tagline": "This page isn't on the setlist.",
-    "buttonLabel": "Return to Home"
+    "tagline": "Error 404: page not found.",
+    "buttonLabel": "Return to Home",
+    "quote": [
+      "Excellence is not a single act, but a habit.",
+      "You are what you repeatedly do."
+    ]
   },
   "contactForm": {
     "title": "Contact Me",

@@ -130,8 +130,12 @@
     "notifications": "Notifications (Alt+T)"
   },
   "notFound": {
-    "tagline": "Cette page n'est pas au programme.",
-    "buttonLabel": "Retour à l'Accueil"
+    "tagline": "Erreur 404 : page introuvable.",
+    "buttonLabel": "Retour à l'Accueil",
+    "quote": [
+      "L’excellence n’est pas un acte singulier, mais une habitude.",
+      "Vous êtes ce que vous faites régulièrement."
+    ]
   },
   "contactForm": {
     "title": "Me Contacter",

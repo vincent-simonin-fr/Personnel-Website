@@ -130,8 +130,12 @@
     "notifications": "Benachrichtigungen (Alt+T)"
   },
   "notFound": {
-    "tagline": "Diese Seite steht nicht auf dem Programm.",
-    "buttonLabel": "Zurück zur Startseite"
+    "tagline": "Fehler 404: Seite nicht gefunden.",
+    "buttonLabel": "Zurück zur Startseite",
+    "quote": [
+      "Exzellenz ist keine einzelne Handlung, sondern eine Gewohnheit.",
+      "Sie sind, was Sie regelmäßig tun."
+    ]
   },
   "contactForm": {
     "title": "Kontaktieren Sie mich",
