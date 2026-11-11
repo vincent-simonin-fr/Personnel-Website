@@ -9,7 +9,12 @@ type Props = { children: ReactNode; params: Promise<{ locale: string }> }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   const dictionary = await getDictionary(locale)
-  return pageMetadata(locale, '/contact', dictionary.contactForm.title)
+  return pageMetadata(
+    locale,
+    '/contact',
+    dictionary.contactForm.title,
+    dictionary.homePage.description,
+  )
 }
 
 const ContactLayout = ({ children }: Props) => children

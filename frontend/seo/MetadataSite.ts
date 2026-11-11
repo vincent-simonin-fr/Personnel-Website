@@ -86,20 +86,22 @@ export const localeAlternates = (locale: string, path: string) => ({
   },
 })
 
-/** Per-route metadata: localized title, canonical/hreflang, and matching Open Graph. */
+/** Per-route metadata: localized title, canonical/hreflang, and matching Open Graph.
+ *  `description` is required: Next replaces `openGraph` as a whole (no merge with the
+ *  parent's), so without it og:description would fall back to the English default. */
 export const pageMetadata = (
   locale: string,
   path: string,
-  title?: string,
-  description?: string,
+  title: string | undefined,
+  description: string,
 ): Metadata => ({
   ...(title && { title }),
-  ...(description && { description }),
+  description,
   alternates: localeAlternates(locale, path),
   openGraph: {
     ...MetadataSite.openGraph,
     ...(title && { title }),
-    ...(description && { description }),
+    description,
     url: `/${locale}${path}`,
     locale: locales.find((l) => l.key === locale)?.og,
   },

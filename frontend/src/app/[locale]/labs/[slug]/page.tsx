@@ -6,10 +6,15 @@ type LabProps = { params: Promise<{ locale: string; slug: string }> }
 
 export async function generateMetadata({ params }: LabProps): Promise<Metadata> {
   const { locale, slug } = await params
-  const { labs } = await getDictionary(locale)
+  const { labs, homePage } = await getDictionary(locale)
   const lab = labs.items?.find((item) => item.to === `/labs/${slug}`)
   return {
-    ...pageMetadata(locale, `/labs/${slug}`, lab?.title ?? labs.title),
+    ...pageMetadata(
+      locale,
+      `/labs/${slug}`,
+      lab?.title ?? labs.title,
+      homePage.description,
+    ),
     robots: { index: false, follow: true },
   }
 }
