@@ -1,12 +1,12 @@
 'use client'
 
-import { siteConfig } from '../../config/site'
+import { siteConfig } from 'config/site'
 import Link from 'next/link'
 import EmailSvg from 'components/ui/svg/EmailSvg'
 import LinkedinSvg from 'components/ui/svg/LinkedinSvg'
 import GithubSvg from 'components/ui/svg/GithubSvg'
-import FadeInWhenVisible from './ui/animations/FadeInWhenVisible'
-import { useLocaleContext } from 'hooks/useLocaleContext'
+import FadeInWhenVisible from 'components/ui/animations/FadeInWhenVisible'
+import { useLocaleContext } from 'providers/LocaleContextProvider'
 
 type SocialMediaProps = {
   delay?: number

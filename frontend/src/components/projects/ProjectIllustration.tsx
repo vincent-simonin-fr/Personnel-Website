@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import { Illustration } from 'types'
+import { Illustration } from './project.types'
 
 type ProjectIllustrationProps = { kind: Illustration; className?: string }
 

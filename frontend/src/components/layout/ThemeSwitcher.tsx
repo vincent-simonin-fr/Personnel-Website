@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import SunSvg from 'components/ui/svg/SunSvg'
 import MoonSvg from 'components/ui/svg/MoonSvg'
-import { useLocaleContext } from 'hooks/useLocaleContext'
+import { useLocaleContext } from 'providers/LocaleContextProvider'
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false)

@@ -1,12 +1,12 @@
 'use client'
 
 import { Button } from '@heroui/react'
-import SocialMedia from 'components/SocialMedia'
+import SocialMedia from 'components/layout/SocialMedia'
 import FadeInWhenVisible from 'components/ui/animations/FadeInWhenVisible'
 import ArrowUpSvg from 'components/ui/svg/ArrowUpSvg'
-import { siteConfig } from '../../../config/site'
+import { siteConfig } from 'config/site'
 import { useMediaQuery } from 'usehooks-ts'
-import { useLocaleContext } from 'hooks/useLocaleContext'
+import { useLocaleContext } from 'providers/LocaleContextProvider'
 
 type FooterProps = object
 

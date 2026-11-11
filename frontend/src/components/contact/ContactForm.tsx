@@ -13,7 +13,7 @@ import { toast, ToastContentProps } from 'react-toastify' // For notifications
 import emailjs from '@emailjs/browser'
 import { FormEvent, ReactNode, useState } from 'react'
 import { useTheme } from 'next-themes'
-import { useLocaleContext } from 'hooks/useLocaleContext'
+import { useLocaleContext } from 'providers/LocaleContextProvider'
 
 type ContactFormProps = object
 
