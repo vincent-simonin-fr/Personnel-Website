@@ -86,7 +86,7 @@
           "proof": "Collecte, traitement, diffusion et visualisation des données trafic et météo (APRR) · Module de placement automatisé et pilotage des espaces (Kardham Digital x EY)."
         },
         "ship": {
-          "title": "Livrer souvent, livrer sûr",
+          "title": "La mise en production devient une routine",
           "text": "Intégration et déploiement continus, sécurité intégrée dès la conception (DevSecOps), cloud Azure.",
           "proof": "Intégration et déploiement continus chez Kardham Digital · certifications Microsoft Azure Developer Associate (AZ-204), Azure Fundamentals et Azure AI Fundamentals."
         },
@@ -166,8 +166,8 @@
         "id": "kardham-bms",
         "client": "Kardham Digital",
         "period": "2024 – aujourd'hui",
-        "title": "Pilotage des systèmes de gestion du bâtiment",
-        "summary": "Applications de pilotage des systèmes de gestion du bâtiment, qui dialoguent avec les équipements (GTB, IoT, vidéosurveillance et contrôle d'accès). Au sein de l'offre Smart Building, elles exploitent les données d'occupation et de confort pour optimiser l'usage des espaces et le bien-être des occupants, au service du label WELL.",
+        "title": "KD Cockpit : hypervision du bâtiment connecté",
+        "summary": "Le poste de pilotage du bâtiment : il relie les équipements (GTB, IoT, vidéosurveillance, contrôle d'accès) et transforme leurs données en une vision temps réel exploitable par les gestionnaires. Maquette numérique enrichie des capteurs, tableaux de bord, alertes sur seuils et pilotage à distance pour contextualiser les incidents, anticiper les pannes et optimiser la maintenance. Cas d'usage : énergie, maintenance prédictive, patrimoine, confort et qualité de l'air (certification WELL), usage des espaces, bornes de recharge.",
         "role": "Développeur full stack : architecture technique, rédaction de spécifications, intégration et déploiement continus",
         "phases": ["specify", "design", "build", "ship", "maintain"],
         "stack": [
@@ -192,7 +192,7 @@
         "period": "2025 –",
         "status": "En cours",
         "title": "Module de gestion de chantier",
-        "summary": "Module de gestion de chantier, en cours de réalisation, conçu pour compléter l'offre Smart Building de Kardham Digital et fournir à EY une solution avancée.",
+        "summary": "Module de gestion de chantier, en cours de réalisation, qui complète l'offre Smart Building de Kardham Digital pour EY. Il assure la synchronisation des référentiels tout au long de la vie des bâtiments, du chantier à l'exploitation, pour que chaque outil travaille sur des données à jour et cohérentes.",
         "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
         "phases": ["specify", "design", "build", "ship"],
         "stack": [".NET", "Blazor", "PostgreSQL", "IIS"],
@@ -237,7 +237,7 @@
         "client": "Inetum",
         "period": "2022",
         "title": "Refonte graphique de GREA",
-        "summary": "Nouvelle interface de recherche de GREA, logiciel de gestion des ressources eau et assainissement, puis maintenance corrective et évolutive.",
+        "summary": "Nouvelle interface de recherche, maintenance corrective et évolutive de GREA, suite modulaire avec laquelle régies et collectivités gèrent leurs services d'eau et d'assainissement, collectif et non collectif : demandes d'intervention, raccordements, relève des compteurs, contrôles et facturation.",
         "role": "Développeur full stack",
         "phases": ["design", "build", "maintain"],
         "stack": [".NET", "PostgreSQL", "Oracle", "Bootstrap"],
