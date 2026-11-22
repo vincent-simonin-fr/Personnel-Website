@@ -50,14 +50,15 @@ const MethodStep = ({
         data-n={pad(index + 1)}
         className='text-7xl leading-none font-extrabold tracking-tighter text-primary-700 before:content-[attr(data-n)] md:text-8xl dark:text-primary-900'
       />
-      <p className='text-sm tracking-widest text-brand uppercase'>{label}</p>
-      <h3 className='text-2xl font-semibold text-pretty md:text-3xl'>
-        {step.title}
+      {/* Run-in phase name: part of the heading, so screen readers hear it too (the
+          rail is hidden from them). */}
+      <h3 className='text-2xl font-semibold text-balance md:text-3xl'>
+        <span className='text-brand'>{label}.</span> {step.title}
       </h3>
-      <p className='max-w-2xl text-lg leading-relaxed text-pretty text-primary-200'>
+      <p className='max-w-prose text-lg leading-relaxed text-pretty text-primary-200'>
         {step.text}
       </p>
-      <p className='max-w-2xl border-l-2 border-fuchsia-500 pl-3 text-pretty text-primary-100'>
+      <p className='max-w-prose border-l-2 border-fuchsia-500 pl-3 text-pretty text-primary-100'>
         <span className='text-primary-300'>{proofLabel} · </span>
         {step.proof}
       </p>
@@ -67,16 +68,13 @@ const MethodStep = ({
 
 // "How I work": a sticky rail of the 5 phases (desktop) lights up as the matching
 // step reaches the middle of the screen. The rail is decorative: each step carries
-// its own phase label and heading.
+// its phase name in its heading.
 const MethodSection = ({ method, phaseLabels }: MethodSectionProps) => {
   const [active, setActive] = useState(0)
 
   return (
     <section className='flex w-full flex-col gap-6'>
-      <p className='text-sm tracking-widest text-primary-300 uppercase'>
-        {method.kicker}
-      </p>
-      <h2 className='max-w-3xl text-3xl font-semibold text-pretty md:text-5xl'>
+      <h2 className='max-w-3xl text-3xl font-semibold text-balance md:text-5xl'>
         {method.title}
       </h2>
       <div className='md:grid md:grid-cols-[14rem_1fr] md:gap-12'>

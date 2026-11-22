@@ -9,7 +9,6 @@ type FadeInWhenVisibleProps = {
   duration?: number
   delay?: number
   visualDuration?: number
-  bounce?: number
   once?: boolean
 }
 
@@ -23,14 +22,17 @@ const FadeInWhenVisible = ({
   duration = 0.4,
   delay = 0,
   visualDuration = 0.4,
-  bounce = 0.6,
   once = false,
 }: FadeInWhenVisibleProps) => {
+  // Visible in the server HTML: content above the fold shows before (and without) JS, and
+  // the entrance at load is a CSS animation (`fade-in-pop`, globals.css) that needs no JS.
+  // After hydration the observer hides what is off-screen, unseen, so it can pop back in.
   const { ref, isIntersecting: isVisible } = useIntersectionObserver({
     freezeOnceVisible: once,
+    initialIsIntersecting: true,
   })
-  // bounce > 0: overshooting curve approximating the former spring; otherwise ease-out.
-  const scaleEasing = bounce > 0 ? 'cubic-bezier(0.34, 1.56, 0.64, 1)' : 'ease-out'
+  // Slight overshoot, like the former spring: the site's entrance signature.
+  const scaleEasing = 'cubic-bezier(0.34, 1.56, 0.64, 1)'
 
   return (
     <div
@@ -40,6 +42,7 @@ const FadeInWhenVisible = ({
         opacity: isVisible ? 1 : opacityStart,
         transform: `scale(${isVisible ? 1 : scaleStart})`,
         transition: `opacity ${duration}s ease-out ${delay}s, transform ${visualDuration}s ${scaleEasing} ${delay}s`,
+        animationDelay: `${delay}s`,
       }}>
       {children}
     </div>

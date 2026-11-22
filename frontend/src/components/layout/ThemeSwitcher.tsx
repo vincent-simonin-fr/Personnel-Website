@@ -34,12 +34,12 @@ export function ThemeSwitcher() {
         <span aria-hidden className='size-6' />
       ) : isDark ? (
         <SunSvg
-          className='duration-800 ease-soft-spring hover:animate-spinner-ease-spin hover:brightness-[0.8]'
+          className='duration-800 ease-out hover:animate-spinner-ease-spin hover:brightness-[0.8]'
           size={24}
         />
       ) : (
         <MoonSvg
-          className='duration-800 ease-soft-spring hover:animate-spinner-ease-spin hover:brightness-[1.5]'
+          className='duration-800 ease-out hover:animate-spinner-ease-spin hover:brightness-[1.5]'
           size={24}
         />
       )}

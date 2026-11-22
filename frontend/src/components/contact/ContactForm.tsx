@@ -191,7 +191,7 @@ const ContactForm = ({}: ContactFormProps) => {
           </Button>
           <Button
             // Neutral like the v2 flat button (secondary would use the fuchsia accent).
-            className='rounded-full bg-primary-800 text-primary-100'
+            className='rounded-full bg-primary-600 text-primary-100 dark:bg-primary-800'
             isDisabled={isDisabled}
             type='reset'
             variant='secondary'>

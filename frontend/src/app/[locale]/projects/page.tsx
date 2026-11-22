@@ -1,5 +1,6 @@
 import ProjectScene from 'components/projects/ProjectScene'
 import { getDictionary } from 'i18n/getDictionary'
+import './projects.css'
 
 type ProjectsProps = { params: Promise<{ locale: string }> }
 
@@ -36,17 +37,19 @@ const Projects = async ({ params }: ProjectsProps) => {
         <ul className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
           {projects.others.map((other) => (
             // Lighter echo of the project cards: same glass card, a fuchsia hairline on
-            // top and a soft glow in the corner, lifted on hover.
+            // top and a soft glow in the corner that brightens on hover (light, not a lift:
+            // the card is not a link). Rises into view on scroll (projects.css).
             <li
               key={other.title}
-              className='group relative overflow-hidden rounded-3xl border border-primary-800 bg-primary-900/80 p-6 shadow-2xl transition duration-300 hover:-translate-y-1 hover:border-fuchsia-500/50 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-8'>
+              data-reveal
+              className='group relative overflow-hidden rounded-3xl border border-primary-800 bg-primary-900/80 p-6 shadow-2xl sm:p-8'>
               <span
                 aria-hidden
                 className='absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-fuchsia-500/80 to-transparent'
               />
               <span
                 aria-hidden
-                className='pointer-events-none absolute -top-20 -right-20 size-48 rounded-full bg-fuchsia-500/15 opacity-70 blur-3xl transition-opacity duration-300 group-hover:opacity-100'
+                className='pointer-events-none absolute -top-20 -right-20 size-48 rounded-full bg-fuchsia-500/15 opacity-70 blur-3xl transition-opacity duration-300 group-hover:opacity-100 motion-reduce:transition-none'
               />
               <p className='relative text-sm tracking-widest text-primary-300 uppercase'>
                 <span className='font-bold text-brand'>{other.client}</span> ·{' '}
