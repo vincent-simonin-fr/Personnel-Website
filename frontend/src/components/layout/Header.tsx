@@ -25,7 +25,8 @@ const Header = ({}: HeaderProps) => {
   const pathname = section || '/'
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const headerRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLElement>(null)
+  const toggleRef = useRef<HTMLButtonElement>(null)
 
   const minWidth = '640px'
   const headerWidthVw = 76
@@ -37,14 +38,31 @@ const Header = ({}: HeaderProps) => {
 
   const { dictionary } = useLocaleContext()
 
-  // Escape closes the mobile menu.
+  // The open mobile menu covers the page: the page behind it (main, footer: the header's
+  // siblings) turns inert (no Tab, no screen reader) and stops scrolling. Escape closes
+  // the menu and puts focus back on its button (a focused menu link is about to unmount).
+  const menuCoversPage = isMenuOpen && isMobile
   useEffect(() => {
-    if (!isMenuOpen) return
-    const onKeyDown = (e: KeyboardEvent) =>
-      e.key === 'Escape' && setIsMenuOpen(false)
+    const header = headerRef.current
+    if (!menuCoversPage || !header?.parentElement) return
+    const behind = [...header.parentElement.children].filter(
+      (el): el is HTMLElement => el !== header && el instanceof HTMLElement,
+    )
+    behind.forEach((el) => (el.inert = true))
+    const root = document.documentElement
+    root.style.overflow = 'hidden'
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return
+      setIsMenuOpen(false)
+      toggleRef.current?.focus()
+    }
     window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [isMenuOpen])
+    return () => {
+      behind.forEach((el) => (el.inert = false))
+      root.style.overflow = ''
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [menuCoversPage])
 
   // Header shrinks as the page scrolls (desktop). Passive listener + direct style write,
   // batched per frame: zero work while idle and no React re-render (react-spring's
@@ -76,7 +94,7 @@ const Header = ({}: HeaderProps) => {
   const closeMenu = () => setIsMenuOpen(false)
 
   return (
-    <div
+    <header
       ref={headerRef}
       className={`sticky top-0 z-50 h-12 w-full sm:min-w-160 md:min-w-160`}
       // Initial width (= server render, scroll 0); the effect above takes over.
@@ -86,6 +104,7 @@ const Header = ({}: HeaderProps) => {
         className={`flex h-10 w-full items-center gap-4 px-6 ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? '' : 'backdrop-blur-lg backdrop-saturate-150'}`}>
         <div className='flex grow basis-0 justify-start sm:hidden'>
           <button
+            ref={toggleRef}
             type='button'
             aria-label={
               isMenuOpen ? dictionary.a11y.closeMenu : dictionary.a11y.openMenu
@@ -93,7 +112,8 @@ const Header = ({}: HeaderProps) => {
             aria-expanded={isMenuOpen}
             aria-controls='mobile-menu'
             onClick={() => setIsMenuOpen((open) => !open)}
-            className='relative block h-6 w-6 cursor-pointer'>
+            // before:: invisible 44px hit area around the 24px icon (touch target).
+            className="relative block h-6 w-6 cursor-pointer before:absolute before:-inset-2.5 before:content-['']">
             <span
               className={`absolute left-0 h-px w-6 bg-current transition-transform duration-200 ${isMenuOpen ? 'top-3 rotate-45' : 'top-2'}`}
             />
@@ -104,11 +124,12 @@ const Header = ({}: HeaderProps) => {
         </div>
 
         <div className='flex grow basis-0 justify-start sm:grow-0 sm:basis-auto'>
-          <Link href={`/${locale}`} className='flex items-center gap-2'>
+          {/* Hidden below sm, not sr-only: AppLogo is empty, so a mobile link would be a
+              0x0 Tab stop with an invisible focus ring. Home is in the mobile menu. The
+              wrapper stays, keeping the switchers pushed to the right. */}
+          <Link href={`/${locale}`} className='hidden items-center gap-2 sm:flex'>
             <AppLogo />
-            {/* sr-only below sm (not `hidden`): AppLogo is empty, so this text is the
-                link's only accessible name on mobile. */}
-            <span className='sr-only text-xl sm:not-sr-only'>{siteConfig.name}</span>
+            <span className='text-xl'>{siteConfig.name}</span>
           </Link>
         </div>
 
@@ -198,7 +219,7 @@ const Header = ({}: HeaderProps) => {
           </ul>
         </div>
       )}
-    </div>
+    </header>
   )
 }
 

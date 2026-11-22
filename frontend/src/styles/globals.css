@@ -60,8 +60,7 @@
   --radius-medium: 4px;
   --radius-large: 6px;
 
-  /* HeroUI v2 utilities still used by the theme switcher. */
-  --ease-soft-spring: cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  /* HeroUI v2 utility still used by the theme switcher. */
   --animate-spinner-ease-spin: spinner-spin 0.8s ease infinite;
   /* FadeInOnAppear (hero): rise + settle, easeInOutCubic. */
   --animate-fade-in-up: fade-in-up 1s cubic-bezier(0.65, 0, 0.35, 1) both;
@@ -96,10 +95,12 @@
     --foreground: #1e293b;
     --accent: #c026d3;
     --accent-foreground: #ffffff;
-    --focus: #f182f6;
     --brand-text: oklch(
       51.8% 0.253 323.949
     ); /* fuchsia-700: 5.72:1 on the light bg */
+    /* Focus ring = the theme-aware brand shade: ≥ 3:1 (WCAG 1.4.11) on both themes. Resolved
+       on <html>, where .dark also sets --brand-text, so it follows the theme. */
+    --focus: var(--brand-text);
 
     --primary: #475569;
     --primary-foreground: #cbd5e1;
@@ -119,7 +120,6 @@
   .dark {
     --background: #0a0a0a;
     --foreground: #ffffff;
-    --focus: #3d3d3d;
     --brand-text: oklch(66.7% 0.295 322.15); /* fuchsia-500: 5.59:1 on the dark bg */
 
     --primary: #b0b0b0;
@@ -146,6 +146,13 @@
     scrollbar-gutter: stable;
   }
 
+  /* Plain links and native controls: the same ring as HeroUI's buttons instead of the
+     browser's blue (HeroUI components draw theirs with box-shadow and drop the outline). */
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
   .rive-container {
     all: unset;
     position: absolute;
@@ -154,14 +161,38 @@
   }
 }
 
+/* FadeInWhenVisible: entrance at first paint, in CSS so it runs before (and without) JS,
+   with the same curve as its scroll transition (the delay comes inline). `backwards`, not
+   `both`: once played it lets go, and the inline styles drive the scroll transitions. */
+@keyframes fade-in-pop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+[data-fade-in] {
+  animation: fade-in-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
 /* FadeInWhenVisible: no entrance animation for users who ask for reduced motion.
-   !important beats the component's inline styles. */
+   !important beats the component's inline styles and the animation. */
 @media (prefers-reduced-motion: reduce) {
   [data-fade-in] {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+    animation: none !important;
   }
+}
+
+/* Keyboard focus never waits for the fade-in: Tab scrolls to an element still at scale(0)
+   and its focus ring would show only after the delay. :focus-visible is keyboard only, so
+   mouse and scroll keep the exact same effects. */
+[data-fade-in]:has(:focus-visible) {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 }
 
 @keyframes hide {

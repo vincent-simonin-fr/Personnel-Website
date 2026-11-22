@@ -48,11 +48,11 @@ const ProjectCard = ({
           <span className='text-brand'>{pad(index + 1)}</span> / {pad(total)}
         </span>
       )}
-      <Heading className='text-2xl leading-tight font-semibold text-pretty wrap-break-word hyphens-auto text-primary-50 sm:text-3xl'>
+      <Heading className='text-2xl leading-tight font-semibold text-balance wrap-break-word hyphens-auto text-primary-50 sm:text-3xl'>
         {title}
       </Heading>
       <p className='leading-relaxed text-pretty text-primary-200'>{summary}</p>
-      <p className='text-sm text-primary-100'>
+      <p className='text-sm text-pretty text-primary-100'>
         <span className='text-primary-300'>{labels.roleLabel} · </span>
         {role}
       </p>

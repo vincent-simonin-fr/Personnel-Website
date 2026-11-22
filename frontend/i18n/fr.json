@@ -24,7 +24,6 @@
       "allProjects": "Tous les projets"
     },
     "career": {
-      "kicker": "Parcours",
       "title": "De la recherche publique au Smart Building.",
       "text": "Formé au DIIAGE, école partenaire de Microsoft, j'ai travaillé pour la recherche publique, la gestion de l'eau, les autoroutes et le Smart Building, avec toujours les mêmes exigences : des interfaces claires, des services fiables, des applications maintenables et des coûts maîtrisés.",
       "items": [
@@ -66,7 +65,6 @@
       "button": "Me contacter"
     },
     "method": {
-      "kicker": "Ma façon de travailler",
       "title": "Un seul interlocuteur, du besoin à l'application en production.",
       "proofLabel": "En pratique",
       "steps": {

@@ -20,7 +20,6 @@
     ],
     "paths": {
       "components/*": ["./src/components/*"],
-      "assets/*": ["./src/assets/*"],
       "providers/*": ["./src/providers/*"],
       "hooks/*": ["./src/hooks/*"],
       "i18n/*": ["./i18n/*"],

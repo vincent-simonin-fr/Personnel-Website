@@ -19,11 +19,12 @@ const primaryLinkButton = cn(
 )
 const secondaryLinkButton = cn(
   buttonVariants({ variant: 'secondary' }),
-  'rounded-full bg-primary-800 text-primary-100',
+  // primary-800 is the page color in light: one step darker there, or it reads as text.
+  'rounded-full bg-primary-600 text-primary-100 dark:bg-primary-800',
 )
 
 const kicker = 'text-sm tracking-widest text-primary-300 uppercase'
-const sectionTitle = 'max-w-3xl text-3xl font-semibold text-pretty md:text-5xl'
+const sectionTitle = 'max-w-3xl text-3xl font-semibold text-balance md:text-5xl'
 
 type HomePageProps = { params: Promise<{ locale: string }> }
 
@@ -116,9 +117,8 @@ const HomePage = async ({ params }: HomePageProps) => {
         </section>
 
         <section className='flex flex-col gap-6'>
-          <p className={kicker}>{career.kicker}</p>
           <h2 className={sectionTitle}>{career.title}</h2>
-          <p className='max-w-3xl text-lg leading-relaxed text-pretty text-primary-200'>
+          <p className='max-w-prose text-lg leading-relaxed text-pretty text-primary-200'>
             {career.text}
           </p>
           <ol className='mt-6 grid grid-cols-1 md:grid-cols-3 md:gap-y-8 xl:grid-cols-[repeat(6,minmax(min-content,1fr))]'>
@@ -168,7 +168,9 @@ const HomePage = async ({ params }: HomePageProps) => {
               )
             })}
           </ol>
-          <p className='text-sm text-primary-300'>{career.certifications}</p>
+          <p className='text-sm text-pretty text-primary-300'>
+            {career.certifications}
+          </p>
         </section>
       </div>
 

@@ -33,10 +33,12 @@ const SiteShell = ({ locale, dictionary, children }: SiteShellProps) => (
         }}
       />
       <Providers>
-        <main className='flex min-h-screen w-screen flex-col items-center justify-center'>
+        {/* Header and footer sit beside <main>, not in it: they are the page's banner and
+            contentinfo landmarks, and screen readers jump to <main> for the content. */}
+        <div className='flex min-h-screen w-screen flex-col items-center justify-center'>
           <LocaleContextProvider dictionary={dictionary}>
             <Header />
-            {children}
+            <main className='flex w-full flex-col items-center'>{children}</main>
             <Footer />
           </LocaleContextProvider>
           <ToastContainer
@@ -45,7 +47,7 @@ const SiteShell = ({ locale, dictionary, children }: SiteShellProps) => (
             position='bottom-right'
             transition={Bounce}
           />
-        </main>
+        </div>
       </Providers>
     </body>
   </html>

@@ -27,7 +27,6 @@ export type Dictionary = {
     featured: { kicker: string; ids: string[]; allProjects: string }
     /** IT career only (nothing before 2020). */
     career: {
-      kicker: string
       title: string
       text: string
       items: { year: string; title: string; detail: string }[]
@@ -36,7 +35,6 @@ export type Dictionary = {
     contactCta: { text: string; button: string }
     /** "How I work": the 5 phases, each backed by a real project. */
     method: {
-      kicker: string
       title: string
       proofLabel: string
       steps: Record<Phase, { title: string; text: string; proof: string }>

@@ -26,7 +26,7 @@ const Footer = ({}: FooterProps) => {
   }
 
   return (
-    <div className='z-50 flex w-full flex-col'>
+    <footer className='z-50 flex w-full flex-col'>
       <div className='flex w-full items-center justify-between px-1 py-3 md:px-8'>
         <SocialMedia />
         {!isMobile && (
@@ -47,7 +47,7 @@ const Footer = ({}: FooterProps) => {
         </FadeInWhenVisible>
       </div>
       <div className='h-0.75 w-full bg-primary'></div>
-    </div>
+    </footer>
   )
 }
 

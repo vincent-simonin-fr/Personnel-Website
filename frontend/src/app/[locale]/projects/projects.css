@@ -1,0 +1,28 @@
+/* "Other projects" cards: they rise into place as they scroll into view, one column after
+   the other (3-column grid). Scroll-driven, pure CSS: static without support or with
+   reduced motion, and a card already on screen at load is shown as its scroll position says.
+   Ranges end within `entry` (card fully visible): the last row, at the very bottom of the page,
+   can never scroll up to mid-screen and would stay half-revealed with a `cover` range. */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      animation: reveal-up ease-out both;
+      /* After the shorthand, which resets them. */
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    [data-reveal]:nth-child(3n + 2) {
+      animation-range: entry 15% entry 85%;
+    }
+    [data-reveal]:nth-child(3n) {
+      animation-range: entry 30% entry 100%;
+    }
+  }
+}
