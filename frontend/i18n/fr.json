@@ -2,7 +2,7 @@
   "locale": "fr",
   "homePage": {
     "title": "Vincent Simonin - Ingénieur full stack & développeur cloud Azure",
-    "description": "Vincent Simonin, ingénieur logiciel full stack à Dijon : des applications métier en .NET, React, Angular et Azure, de la spécification à la mise en production.",
+    "description": "Vincent Simonin, ingénieur logiciel full stack à Dijon : des applications métier en .NET, React, Angular et Azure, de la spécification à la mise en production.",
     "deployButtonLabel": "Déployez maintenant",
     "firstScreen": {
       "salutation": "Bonjour,",
@@ -25,7 +25,7 @@
     },
     "career": {
       "title": "De la recherche publique au Smart Building.",
-      "text": "Formé au DIIAGE, école partenaire de Microsoft, j'ai travaillé pour la recherche publique, la gestion de l'eau, les autoroutes et le Smart Building, avec toujours les mêmes exigences : des interfaces claires, des services fiables, des applications maintenables et des coûts maîtrisés.",
+      "text": "Formé au DIIAGE, école partenaire de Microsoft, j'ai travaillé pour la recherche publique, la gestion de l'eau, les autoroutes et le Smart Building, avec toujours les mêmes exigences : des interfaces claires, des services fiables, des applications maintenables et des coûts maîtrisés.",
       "items": [
         {
           "year": "2021",
@@ -61,7 +61,7 @@
       "certifications": "Certifications Microsoft Azure Developer Associate (AZ-204), Azure Fundamentals et Azure AI Fundamentals"
     },
     "contactCta": {
-      "text": "Un projet, une question ou une collaboration ? Écrivez-moi, je vous réponds rapidement.",
+      "text": "Un projet, une question ou une collaboration ? Écrivez-moi, je vous réponds rapidement.",
       "button": "Me contacter"
     },
     "method": {
@@ -128,7 +128,7 @@
     "notifications": "Notifications (Alt+T)"
   },
   "notFound": {
-    "tagline": "Erreur 404 : page introuvable.",
+    "tagline": "Erreur 404 : page introuvable.",
     "buttonLabel": "Retour à l'Accueil",
     "quote": [
       "L’excellence n’est pas un acte singulier, mais une habitude.",
@@ -151,14 +151,14 @@
     "lastNamePlaceholder": "Entrez votre nom",
     "emailPlaceholder": "Entrez votre email",
     "messagePlaceholder": "Entrez votre message",
-    "successMessage": "Votre message a bien été envoyé. Merci !",
+    "successMessage": "Votre message a bien été envoyé. Merci !",
     "errorMessage": "Une erreur s'est produite. Veuillez réessayer."
   },
   "projects": {
     "title": "Réalisations",
     "intro": "Des applications métier pour de grands comptes, menées de l'expression du besoin jusqu'à la mise en production.",
     "roleLabel": "Rôle",
-    "phasesLabel": "Phases couvertes :",
+    "phasesLabel": "Phases couvertes :",
     "items": [
       {
         "id": "kardham-bms",
@@ -166,7 +166,7 @@
         "period": "2024 – aujourd'hui",
         "title": "KD Cockpit : hypervision du bâtiment connecté",
         "summary": "Le poste de pilotage du bâtiment : il relie les équipements (GTB, IoT, vidéosurveillance, contrôle d'accès) et transforme leurs données en une vision temps réel exploitable par les gestionnaires. Maquette numérique enrichie des capteurs, tableaux de bord, alertes sur seuils et pilotage à distance pour contextualiser les incidents, anticiper les pannes et optimiser la maintenance. Cas d'usage : énergie, maintenance prédictive, patrimoine, confort et qualité de l'air (certification WELL), usage des espaces, bornes de recharge.",
-        "role": "Développeur full stack : architecture technique, rédaction de spécifications, intégration et déploiement continus",
+        "role": "Développeur full stack : architecture technique, rédaction de spécifications, intégration et déploiement continus",
         "phases": ["specify", "design", "build", "ship", "maintain"],
         "stack": [
           ".NET",
@@ -191,7 +191,7 @@
         "status": "En cours",
         "title": "Module de gestion de chantier",
         "summary": "Module de gestion de chantier, en cours de réalisation, qui complète l'offre Smart Building de Kardham Digital pour EY. Il assure la synchronisation des référentiels tout au long de la vie des bâtiments, du chantier à l'exploitation, pour que chaque outil travaille sur des données à jour et cohérentes.",
-        "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
+        "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
         "phases": ["specify", "design", "build", "ship"],
         "stack": [".NET", "Blazor", "PostgreSQL", "IIS"],
         "illustration": "schedule"
@@ -202,8 +202,8 @@
         "via": "Kardham Digital",
         "period": "2024 – 2025",
         "title": "Module de placement automatisé et pilotage des espaces",
-        "summary": "Affecte automatiquement les collaborateurs aux espaces de leur lieu de travail selon les critères définis par l'entreprise, flex office compris. Les données produites alimentent la partie décisionnelle : optimisation des espaces et coût au m². Il complète l'offre Smart Building de Kardham Digital.",
-        "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
+        "summary": "Affecte automatiquement les collaborateurs aux espaces de leur lieu de travail selon les critères définis par l'entreprise, flex office compris. Les données produites alimentent la partie décisionnelle : optimisation des espaces et coût au m². Il complète l'offre Smart Building de Kardham Digital.",
+        "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
         "phases": ["specify", "design", "build", "ship"],
         "stack": [".NET", "Blazor", "Azure", "PostgreSQL", "IIS"],
         "illustration": "floorplan"
@@ -235,7 +235,7 @@
         "client": "Inetum",
         "period": "2022",
         "title": "Refonte graphique de GREA",
-        "summary": "Nouvelle interface de recherche, maintenance corrective et évolutive de GREA, suite modulaire avec laquelle régies et collectivités gèrent leurs services d'eau et d'assainissement, collectif et non collectif : demandes d'intervention, raccordements, relève des compteurs, contrôles et facturation.",
+        "summary": "Nouvelle interface de recherche, maintenance corrective et évolutive de GREA, suite modulaire avec laquelle régies et collectivités gèrent leurs services d'eau et d'assainissement, collectif et non collectif : demandes d'intervention, raccordements, relève des compteurs, contrôles et facturation.",
         "role": "Développeur full stack",
         "phases": ["design", "build", "maintain"],
         "stack": [".NET", "PostgreSQL", "Oracle", "Bootstrap"],
