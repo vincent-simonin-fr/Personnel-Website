@@ -58,7 +58,7 @@ const MethodStep = ({
       <p className='max-w-prose text-lg leading-relaxed text-pretty text-primary-200'>
         {step.text}
       </p>
-      <p className='max-w-prose border-l-2 border-fuchsia-500 pl-3 text-pretty text-primary-100'>
+      <p className='max-w-prose border-l-2 border-accent pl-3 text-pretty text-primary-100'>
         <span className='text-primary-300'>{proofLabel} · </span>
         {step.proof}
       </p>
@@ -87,7 +87,7 @@ const MethodSection = ({ method, phaseLabels }: MethodSectionProps) => {
               data-active={i <= active || undefined}
               className='flex items-center gap-3 py-2 font-semibold text-primary-300 transition-colors data-active:text-primary-50 motion-reduce:transition-none'>
               <span
-                className={`size-2.5 rounded-full border ${i <= active ? 'border-fuchsia-500 bg-fuchsia-500 shadow-[0_0_10px_rgb(225_42_251/0.7)]' : 'border-primary-500'}`}
+                className={`size-2.5 rounded-full border ${i <= active ? 'border-accent bg-accent shadow-[0_0_10px_color-mix(in_oklab,var(--accent)_70%,transparent)]' : 'border-primary-500'}`}
               />
               {phaseLabels[phase]}
             </li>

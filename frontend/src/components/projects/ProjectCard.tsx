@@ -36,7 +36,7 @@ const ProjectCard = ({
         <span>{via ? `${via} x ${client}` : client}</span>
         <span>· {period}</span>
         {status && (
-          <span className='rounded-full border border-fuchsia-500 px-2 py-0.5 text-xs tracking-normal text-brand normal-case'>
+          <span className='rounded-full border border-accent px-2 py-0.5 text-xs tracking-normal text-brand normal-case'>
             {status}
           </span>
         )}

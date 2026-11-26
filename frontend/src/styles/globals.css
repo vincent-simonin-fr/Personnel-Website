@@ -93,6 +93,8 @@
   :root {
     --background: #f1f5f9;
     --foreground: #1e293b;
+    /* The brand fuchsia, theme-aware: use the accent classes (text-accent, bg-accent,
+       stroke-accent…), never a Tailwind fuchsia-*. #c026d3 = siteConfig.color. */
     --accent: #c026d3;
     --accent-foreground: #ffffff;
     --brand-text: oklch(
@@ -120,7 +122,8 @@
   .dark {
     --background: #0a0a0a;
     --foreground: #ffffff;
-    --brand-text: oklch(66.7% 0.295 322.15); /* fuchsia-500: 5.59:1 on the dark bg */
+    --accent: oklch(66.7% 0.295 322.15); /* fuchsia-500: brighter on the dark bg */
+    --brand-text: var(--accent); /* 5.59:1 on the dark bg */
 
     --primary: #b0b0b0;
     --primary-foreground: #f6f6f6;

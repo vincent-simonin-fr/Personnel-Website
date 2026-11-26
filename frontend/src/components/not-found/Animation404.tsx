@@ -75,7 +75,7 @@ const Rim = ({ d }: { d: string }) => (
     <path
       d={d}
       fill='none'
-      className='stroke-fuchsia-500'
+      className='stroke-accent'
       strokeWidth='3'
       strokeLinecap='round'
     />
@@ -92,7 +92,7 @@ const net =
 const Ball = ({ spin = '' }: { spin?: string }) => (
   <>
     <g className={`origin-center transform-fill ${spin}`}>
-      <circle r='17' className='fill-fuchsia-500' strokeWidth='2.4' />
+      <circle r='17' className='fill-accent' strokeWidth='2.4' />
       <path
         d='M-17 0 H17 M0 -17 V17 M-11.5 -12.5 Q-2.5 0 -11.5 12.5 M11.5 -12.5 Q2.5 0 11.5 12.5'
         fill='none'
@@ -178,7 +178,7 @@ const Animation404 = ({ graffiti }: Animation404Props) => {
             background names). */}
         <span
           aria-hidden
-          className={`${graffitiFont.className} pointer-events-none absolute top-1/2 left-1/2 -translate-1/2 text-[12.6vw] leading-none whitespace-nowrap text-fuchsia-500/25 select-none`}>
+          className={`${graffitiFont.className} pointer-events-none absolute top-1/2 left-1/2 -translate-1/2 text-[12.6vw] leading-none whitespace-nowrap text-accent/25 select-none`}>
           HOOPS
         </span>
         <p

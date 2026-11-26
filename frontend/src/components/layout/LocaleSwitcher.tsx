@@ -49,7 +49,7 @@ const LocaleSwitcher = () => {
             <Dropdown.Item
               id={locale.key}
               textValue={locale.label}
-              className='gap-3 rounded-xl px-3 py-2 text-sm text-primary-100 data-selected:bg-fuchsia-500/10 data-selected:text-brand'>
+              className='gap-3 rounded-xl px-3 py-2 text-sm text-primary-100 data-selected:bg-accent/10 data-selected:text-brand'>
               {/* Autonym: each language in its own name, so `lang` for screen readers. */}
               <span lang={locale.key}>{locale.label}</span>
             </Dropdown.Item>

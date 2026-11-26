@@ -29,7 +29,7 @@ const drawing = (kind: Illustration): ReactElement => {
             width='168'
             height='98'
             rx='4'
-            className='fill-fuchsia-500/15 stroke-fuchsia-500'
+            className='fill-accent/15 stroke-accent'
           />
           <rect
             x='276'
@@ -37,7 +37,7 @@ const drawing = (kind: Illustration): ReactElement => {
             width='78'
             height='98'
             rx='4'
-            className='fill-fuchsia-500/10'
+            className='fill-accent/10'
           />
           {[60, 90, 120, 150].map((x) => (
             <g key={x} stroke='currentColor'>
@@ -53,7 +53,7 @@ const drawing = (kind: Illustration): ReactElement => {
               width='22'
               height='14'
               rx='2'
-              className='stroke-fuchsia-500'
+              className='stroke-accent'
             />
           ))}
         </g>
@@ -84,7 +84,7 @@ const drawing = (kind: Illustration): ReactElement => {
             width='140'
             height='24'
             rx='12'
-            className='fill-fuchsia-500/80'
+            className='fill-accent/80'
           />
           <rect
             x='170'
@@ -101,7 +101,7 @@ const drawing = (kind: Illustration): ReactElement => {
             width='120'
             height='24'
             rx='12'
-            className='fill-fuchsia-500/40'
+            className='fill-accent/40'
           />
           <rect
             x='280'
@@ -115,9 +115,9 @@ const drawing = (kind: Illustration): ReactElement => {
           <path
             d='M215 40v220'
             strokeDasharray='4 6'
-            className='stroke-fuchsia-500'
+            className='stroke-accent'
           />
-          <circle cx='215' cy='40' r='5' className='fill-fuchsia-500' />
+          <circle cx='215' cy='40' r='5' className='fill-accent' />
         </g>
       )
     case 'devices':
@@ -146,16 +146,16 @@ const drawing = (kind: Illustration): ReactElement => {
                 stroke='currentColor'
                 className='fill-background'
               />
-              <circle cx={x + 12} cy={y - 6} r='3' className='fill-fuchsia-500' />
+              <circle cx={x + 12} cy={y - 6} r='3' className='fill-accent' />
             </g>
           ))}
           <circle
             cx='200'
             cy='150'
             r='34'
-            className='fill-fuchsia-500/15 stroke-fuchsia-500'
+            className='fill-accent/15 stroke-accent'
           />
-          <circle cx='200' cy='150' r='10' className='fill-fuchsia-500' />
+          <circle cx='200' cy='150' r='10' className='fill-accent' />
         </g>
       )
     case 'roads':
@@ -172,9 +172,9 @@ const drawing = (kind: Illustration): ReactElement => {
             d='M20 250C90 220 110 150 170 140S260 90 380 40'
             strokeWidth={2.5}
             strokeDasharray='6 6'
-            className='stroke-fuchsia-500'
+            className='stroke-accent'
           />
-          <g strokeWidth={2} className='fill-background stroke-fuchsia-500'>
+          <g strokeWidth={2} className='fill-background stroke-accent'>
             <circle cx='170' cy='140' r='7' />
             <circle cx='260' cy='95' r='5' />
             <circle cx='95' cy='205' r='5' />
@@ -203,16 +203,16 @@ const drawing = (kind: Illustration): ReactElement => {
           />
           <polygon
             points='200,180 330,120 200,60 70,120'
-            className='fill-fuchsia-500/15 stroke-fuchsia-500'
+            className='fill-accent/15 stroke-accent'
           />
           <path
             d='M200 124v106'
             strokeDasharray='3 5'
-            className='stroke-fuchsia-500'
+            className='stroke-accent'
           />
-          <circle cx='200' cy='120' r='4' className='fill-fuchsia-500' />
-          <circle cx='250' cy='120' r='3' className='fill-fuchsia-500/60' />
-          <circle cx='150' cy='120' r='3' className='fill-fuchsia-500/60' />
+          <circle cx='200' cy='120' r='4' className='fill-accent' />
+          <circle cx='250' cy='120' r='3' className='fill-accent/60' />
+          <circle cx='150' cy='120' r='3' className='fill-accent/60' />
         </g>
       )
     case 'interface':
@@ -244,13 +244,13 @@ const drawing = (kind: Illustration): ReactElement => {
             width='280'
             height='30'
             rx='15'
-            className='fill-fuchsia-500/15 stroke-fuchsia-500'
+            className='fill-accent/15 stroke-accent'
           />
-          <circle cx='80' cy='89' r='6' className='stroke-fuchsia-500' />
+          <circle cx='80' cy='89' r='6' className='stroke-accent' />
           <path
             d='M84 93l5 5'
             strokeLinecap='round'
-            className='stroke-fuchsia-500'
+            className='stroke-accent'
           />
           {[126, 150, 174, 198].map((y, i) => (
             <g key={y}>
@@ -261,7 +261,7 @@ const drawing = (kind: Illustration): ReactElement => {
                 height='12'
                 rx='3'
                 stroke='currentColor'
-                className={i < 2 ? 'fill-fuchsia-500/80 stroke-fuchsia-500' : ''}
+                className={i < 2 ? 'fill-accent/80 stroke-accent' : ''}
               />
               <path
                 d={`M80 ${y}h40`}
@@ -280,7 +280,7 @@ const drawing = (kind: Illustration): ReactElement => {
                 height='36'
                 rx='6'
                 stroke='currentColor'
-                className={i === 0 ? 'stroke-fuchsia-500' : ''}
+                className={i === 0 ? 'stroke-accent' : ''}
               />
               <path
                 d={`M154 ${y + 13}h110M154 ${y + 24}h70`}
