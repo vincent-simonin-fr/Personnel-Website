@@ -17,12 +17,16 @@ type SocialMediaProps = {
 const SocialMedia = ({ delay = 0, noDelay = false }: SocialMediaProps) => {
   const { a11y } = useLocaleContext().dictionary
   const size = 30
+  // block: an inline <a> around a block SVG has empty line boxes, so the browser
+  // draws no focus outline (WCAG 2.4.7). As a block it is the icon's 30x30 box.
+  const linkClassName = 'block rounded-sm'
   return (
     <div className='flex gap-3'>
       <FadeInWhenVisible delay={noDelay ? 0 : delay}>
         <div className='transition-transform duration-300 hover:scale-110'>
           <Link
             key='github'
+            className={linkClassName}
             href={siteConfig.links.github}
             target='_blank'
             rel='noopener noreferrer'
@@ -35,6 +39,7 @@ const SocialMedia = ({ delay = 0, noDelay = false }: SocialMediaProps) => {
         <div className='transition-transform duration-300 hover:scale-110'>
           <Link
             key='linkedin'
+            className={linkClassName}
             href={siteConfig.links.linkedin}
             target='_blank'
             rel='noopener noreferrer'
@@ -45,7 +50,11 @@ const SocialMedia = ({ delay = 0, noDelay = false }: SocialMediaProps) => {
       </FadeInWhenVisible>
       <FadeInWhenVisible delay={noDelay ? 0 : 0.4 + delay}>
         <div className='transition-transform duration-300 hover:scale-110'>
-          <Link key='email' href={siteConfig.links.email} aria-label={a11y.email}>
+          <Link
+            key='email'
+            className={linkClassName}
+            href={siteConfig.links.email}
+            aria-label={a11y.email}>
             <EmailSvg size={size} className='text-primary' />
           </Link>
         </div>

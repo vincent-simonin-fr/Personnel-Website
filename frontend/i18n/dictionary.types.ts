@@ -89,11 +89,11 @@ export type Dictionary = {
     lastNameError: string
     emailError: string
     messageError: string
-    firstNamePlaceholder: string
-    lastNamePlaceholder: string
-    emailPlaceholder: string
-    messagePlaceholder: string
     successMessage: string
     errorMessage: string
+    /** One message per minute per browser (EmailJS limitRate, status 429). */
+    rateLimitMessage: string
+    /** Followed by the e-mail address, after errorMessage / rateLimitMessage. */
+    errorFallback: string
   }
 }

@@ -14,6 +14,7 @@ import emailjs from '@emailjs/browser'
 import { FormEvent, ReactNode, useState } from 'react'
 import { useTheme } from 'next-themes'
 import { useLocaleContext } from 'providers/LocaleContextProvider'
+import { siteConfig } from 'site/siteConfig'
 
 type ContactFormProps = object
 
@@ -30,8 +31,15 @@ const emptyInput: UserInput = { firstName: '', lastName: '', email: '', message:
 const labelClassName = 'text-sm text-primary-50'
 const fieldClassName =
   'rounded-xl border-1 border-primary-600 bg-primary-900 text-primary-50 focus:border-transparent focus:ring-1 focus:ring-accent'
-const inputClassName = `${fieldClassName} h-8` // v2 size='sm' height
-const errorClassName = 'text-sm text-danger'
+// Phones: 44px touch target and 16px text (iOS Safari zooms into a focused field
+// whose text is smaller). From sm, the compact desktop look.
+const inputClassName = `${fieldClassName} h-11 text-base sm:h-8 sm:text-sm`
+const errorClassName = 'text-sm text-error'
+// react-toastify sets its own system font in unlayered CSS, which beats utilities: `!`.
+const toastClassName =
+  'shadow-lg text-inherit [font-family:inherit]! rounded-lg flex items-center bg-primary-900 max-w-[96vw]'
+
+const emailAddress = siteConfig.links.email.replace('mailto:', '')
 
 // Field hidden from people (screen, keyboard, screen readers) that form-filling bots fill.
 const HONEYPOT = 'website'
@@ -63,8 +71,7 @@ const ContactForm = ({}: ContactFormProps) => {
       closeButton: true,
       autoClose: 4000,
       data: contactForm.successMessage,
-      className:
-        'shadow-lg text-inherit rounded-lg flex items-center bg-primary-900 max-w-[96vw]',
+      className: toastClassName,
     })
     setUserInput(emptyInput)
   }
@@ -96,15 +103,24 @@ const ContactForm = ({}: ContactFormProps) => {
     } catch (error) {
       // The SDK stores the send time before sending: a failed send (network, EmailJS)
       // must not block the retry for a minute. 429 = the limit itself, keep it.
-      if ((error as { status?: number } | null)?.status !== 429)
-        localStorage.removeItem(RATE_LIMIT_ID)
+      const rateLimited = (error as { status?: number } | null)?.status === 429
+      if (!rateLimited) localStorage.removeItem(RATE_LIMIT_ID)
+      // Stays until closed, with the address as a way out: the typed message is
+      // kept, and the visitor can copy it into an e-mail.
       toast.error(CustomToast, {
         theme: theme,
         closeButton: true,
-        autoClose: 4000,
-        data: contactForm.errorMessage,
-        className:
-          'shadow-lg text-inherit rounded-lg flex items-center bg-primary-900 max-w-[96vw]',
+        autoClose: false,
+        data: (
+          <>
+            {rateLimited ? contactForm.rateLimitMessage : contactForm.errorMessage}{' '}
+            {contactForm.errorFallback}{' '}
+            <a className='text-brand underline' href={siteConfig.links.email}>
+              {emailAddress}
+            </a>
+          </>
+        ),
+        className: toastClassName,
       })
     } finally {
       setIsDisabled(false)
@@ -130,6 +146,7 @@ const ContactForm = ({}: ContactFormProps) => {
             className='flex flex-1 flex-col gap-1'
             name='firstName'
             autoComplete='given-name'
+            maxLength={100}
             value={userInput.firstName}
             onChange={setField('firstName')}>
             <Label className={labelClassName}>{contactForm.firstNameLabel}</Label>
@@ -144,6 +161,7 @@ const ContactForm = ({}: ContactFormProps) => {
             className='flex flex-1 flex-col gap-1'
             name='lastName'
             autoComplete='family-name'
+            maxLength={100}
             value={userInput.lastName}
             onChange={setField('lastName')}>
             <Label className={labelClassName}>{contactForm.lastNameLabel}</Label>
@@ -160,6 +178,7 @@ const ContactForm = ({}: ContactFormProps) => {
           name='email'
           type='email'
           autoComplete='email'
+          maxLength={254}
           value={userInput.email}
           onChange={setField('email')}>
           <Label className={labelClassName}>{contactForm.emailLabel}</Label>
@@ -173,15 +192,22 @@ const ContactForm = ({}: ContactFormProps) => {
           isDisabled={isDisabled}
           className='flex w-full flex-col gap-1'
           name='message'
+          // EmailJS caps a request at 50 KB; well under it.
+          maxLength={5000}
           value={userInput.message}
           onChange={setField('message')}>
           <Label className={labelClassName}>{contactForm.messageLabel}</Label>
-          <TextArea rows={4} className={`${fieldClassName} max-h-40 resize-y`} />
+          <TextArea
+            rows={4}
+            className={`${fieldClassName} max-h-40 resize-y text-base sm:text-sm`}
+          />
           <FieldError className={errorClassName}>
             {contactForm.messageError}
           </FieldError>
         </TextField>
-        <div className='flex gap-2'>
+        {/* Right-aligned pair, Send at the far right. flex-row-reverse keeps Send first
+            in the DOM, so Tab reaches it before Reset. */}
+        <div className='flex w-full flex-row-reverse items-center gap-2'>
           <Button
             className='rounded-full bg-primary-50 text-primary-900'
             isPending={isDisabled}
@@ -189,12 +215,12 @@ const ContactForm = ({}: ContactFormProps) => {
             type='submit'>
             {contactForm.submitButton}
           </Button>
+          {/* Destructive and rarely wanted: a quiet text button. */}
           <Button
-            // Neutral like the v2 flat button (secondary would use the fuchsia accent).
-            className='rounded-full bg-primary-600 text-primary-100 dark:bg-primary-800'
+            className='rounded-full text-primary-300'
             isDisabled={isDisabled}
             type='reset'
-            variant='secondary'>
+            variant='ghost'>
             {contactForm.resetButton}
           </Button>
         </div>

@@ -11,6 +11,7 @@ import HeroThreads from 'components/home/HeroThreads'
 import MethodSection from 'components/home/MethodSection'
 import ProjectCard from 'components/projects/ProjectCard'
 import ContactBackdrop from 'components/contact/ContactBackdrop'
+import ContactCta from 'components/contact/ContactCta'
 
 // HeroUI v3 Button can't render as a link: style a Next Link with the button classes.
 const primaryLinkButton = cn(
@@ -23,8 +24,9 @@ const secondaryLinkButton = cn(
   'rounded-full bg-primary-600 text-primary-100 dark:bg-primary-800',
 )
 
-const kicker = 'text-sm tracking-widest text-primary-300 uppercase'
-const sectionTitle = 'max-w-3xl text-3xl font-semibold text-balance md:text-5xl'
+const kicker = 'text-sm tracking-wider text-primary-300 uppercase'
+const sectionTitle =
+  'max-w-3xl text-3xl font-semibold text-primary-50 text-balance md:text-5xl md:leading-[1.1]'
 
 type HomePageProps = { params: Promise<{ locale: string }> }
 
@@ -45,12 +47,12 @@ const HomePage = async ({ params }: HomePageProps) => {
             </span>
             {firstScreen.salutation}
           </div>
-          <h1 className='max-w-5xl text-4xl font-semibold tracking-tight text-pretty md:text-5xl lg:text-6xl'>
+          <h1 className='max-w-5xl text-4xl font-semibold tracking-tight text-pretty text-primary-50 md:text-5xl md:leading-[1.1] lg:text-6xl'>
             {firstScreen.hook.before}
             <span className='text-accent'>{firstScreen.hook.accent}</span>
             {firstScreen.hook.after}
           </h1>
-          <p className='mt-6 max-w-3xl text-xl text-pretty text-primary-200 md:text-2xl'>
+          <p className='mt-6 max-w-4xl text-xl text-pretty text-primary-200 md:text-2xl'>
             {firstScreen.subline}
           </p>
           {/* Mobile: the two buttons first, full width side by side, icons below. */}
@@ -104,7 +106,6 @@ const HomePage = async ({ params }: HomePageProps) => {
                   project={project}
                   labels={projects}
                   phaseLabels={phases}
-                  index={projects.items.indexOf(project)}
                 />
               </li>
             ))}
@@ -118,7 +119,7 @@ const HomePage = async ({ params }: HomePageProps) => {
 
         <section className='flex flex-col gap-6'>
           <h2 className={sectionTitle}>{career.title}</h2>
-          <p className='max-w-prose text-lg leading-relaxed text-pretty text-primary-200'>
+          <p className='max-w-measure text-lg leading-relaxed text-pretty text-primary-200'>
             {career.text}
           </p>
           <ol className='mt-6 grid grid-cols-1 md:grid-cols-3 md:gap-y-8 xl:grid-cols-[repeat(6,minmax(min-content,1fr))]'>
@@ -160,15 +161,15 @@ const HomePage = async ({ params }: HomePageProps) => {
                     className={`tracking-wide tabular-nums ${last ? 'text-brand' : 'text-primary-300'}`}>
                     {item.year}
                   </p>
-                  <p className='text-lg font-semibold'>{item.title}</p>
-                  <p className='mt-0.5 leading-snug text-pretty wrap-break-word text-primary-200'>
+                  <p className='font-semibold'>{item.title}</p>
+                  <p className='mt-0.5 text-sm text-pretty wrap-break-word text-primary-200'>
                     {item.detail}
                   </p>
                 </li>
               )
             })}
           </ol>
-          <p className='text-sm text-pretty text-primary-300'>
+          <p className='text-base text-pretty text-primary-300'>
             {career.certifications}
           </p>
         </section>
@@ -184,17 +185,13 @@ const HomePage = async ({ params }: HomePageProps) => {
         {/* Call to action only: the form lives on /contact (single source). */}
         {/* Pointer events reach the backdrop (cursor ball), except on the card. */}
         <div className='pointer-events-none absolute inset-0 flex items-center justify-center px-4 md:justify-end md:pr-32'>
-          <div className='pointer-events-auto flex w-full max-w-md flex-col items-start gap-4 rounded-3xl border border-primary-800 bg-background/70 p-6 text-primary-50 shadow-2xl backdrop-blur-xl md:w-1/2'>
-            <h2 className='text-2xl font-semibold'>
-              {dictionary.contactForm.title}
-            </h2>
-            <p className='text-lg text-pretty'>
-              {dictionary.homePage.contactCta.text}
-            </p>
-            <Link className={primaryLinkButton} href={`/${locale}/contact`}>
-              {dictionary.homePage.contactCta.button}
-            </Link>
-          </div>
+          <ContactCta
+            className='pointer-events-auto md:w-1/2'
+            title={dictionary.contactForm.title}
+            text={dictionary.homePage.contactCta.text}
+            button={dictionary.homePage.contactCta.button}
+            href={`/${locale}/contact`}
+          />
         </div>
       </KeyframeCssOnView>
     </div>

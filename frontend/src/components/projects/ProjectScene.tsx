@@ -39,7 +39,7 @@ const ProjectScene = ({
       />
     </div>
 
-    <div className='relative grid w-full grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,44fr)_minmax(0,56fr)] lg:gap-0'>
+    <div className='relative grid w-full grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,50fr)_minmax(0,50fr)] lg:gap-0'>
       {/* Front plane: the project sheet (first, so it leads when stacked). More see-through
           than on the home page, so the client's name shows behind it. */}
       <div

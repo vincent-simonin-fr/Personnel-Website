@@ -101,8 +101,8 @@ const Header = ({}: HeaderProps) => {
       style={{ width: `${headerWidthVw}vw` }}>
       <nav
         aria-label={dictionary.a11y.mainNav}
-        className={`flex h-10 w-full items-center gap-4 px-6 ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? '' : 'backdrop-blur-lg backdrop-saturate-150'}`}>
-        <div className='flex grow basis-0 justify-start sm:hidden'>
+        className={`flex h-9 w-full items-center gap-4 px-6 ${isMobile ? 'rounded-none' : 'rounded-full'} ${isMenuOpen ? '' : 'backdrop-blur-lg backdrop-saturate-150'}`}>
+        <div className='flex sm:hidden'>
           <button
             ref={toggleRef}
             type='button'
@@ -123,13 +123,18 @@ const Header = ({}: HeaderProps) => {
           </button>
         </div>
 
+        {/* The name, right after the menu button on mobile, so a visitor from a CV or
+            LinkedIn sees whose site this is; tapping it also closes the open menu. sm+:
+            brand at the left of the bar. */}
         <div className='flex grow basis-0 justify-start sm:grow-0 sm:basis-auto'>
-          {/* Hidden below sm, not sr-only: AppLogo is empty, so a mobile link would be a
-              0x0 Tab stop with an invisible focus ring. Home is in the mobile menu. The
-              wrapper stays, keeping the switchers pushed to the right. */}
-          <Link href={`/${locale}`} className='hidden items-center gap-2 sm:flex'>
+          <Link
+            href={`/${locale}`}
+            onClick={closeMenu}
+            className='flex items-center sm:gap-2'>
             <AppLogo />
-            <span className='text-xl'>{siteConfig.name}</span>
+            <span className='text-base whitespace-nowrap sm:text-xl'>
+              {siteConfig.name}
+            </span>
           </Link>
         </div>
 

@@ -11,7 +11,7 @@
         "accent": "custom applications",
         "after": "."
       },
-      "subline": "Design – Development – Hosting – Maintenance – Audit"
+      "subline": "Design – Development – Hosting – Maintenance – Audit"
     },
     "labelButtonToSkills": "See the projects",
     "references": {
@@ -35,17 +35,17 @@
         {
           "year": "2021",
           "title": "INRAE",
-          "detail": "Internship – School canteen menu collection application"
+          "detail": "Internship – School canteen menu collection application"
         },
         {
           "year": "2022",
           "title": "Inetum",
-          "detail": "Full stack developer – GREA software (water and sanitation resource management)"
+          "detail": "Full stack developer – GREA software (water and sanitation resource management)"
         },
         {
           "year": "2022 – 2024",
           "title": "APRR",
-          "detail": "Full stack developer – Traffic management support system, GIS software"
+          "detail": "Full stack developer – Traffic management support system, GIS software"
         },
         {
           "year": "2024",
@@ -53,9 +53,9 @@
           "detail": "Engineering degree in computer science, Master's degree"
         },
         {
-          "year": "2024 –",
+          "year": "2024 – today",
           "title": "Kardham Digital",
-          "detail": "Full stack developer – Smart Building solution"
+          "detail": "Full stack developer – Smart Building solution"
         }
       ],
       "certifications": "Microsoft Azure Developer Associate (AZ-204), Azure Fundamentals and Azure AI Fundamentals certifications"
@@ -76,7 +76,7 @@
         "design": {
           "title": "An architecture designed to keep costs under control over time",
           "text": "Performance, observability, scalability and maintainability.",
-          "proof": "Technical architecture of the building management applications (Kardham Digital) · distributed and N-tier architectures (APRR)."
+          "proof": "Technical architecture of the building management applications (Kardham Digital) · distributed and N‑tier architectures (APRR)."
         },
         "build": {
           "title": "From back end to interface",
@@ -109,7 +109,7 @@
     },
     {
       "label": "Contact",
-      "title": "Contact Me",
+      "title": "Contact me",
       "to": "/contact"
     }
   ],
@@ -136,23 +136,21 @@
     ]
   },
   "contactForm": {
-    "title": "Contact Me",
+    "title": "Contact me",
     "firstNameLabel": "First name",
     "lastNameLabel": "Last name",
     "emailLabel": "Email",
     "messageLabel": "Message",
     "submitButton": "Send message",
     "resetButton": "Clear",
-    "firstNameError": "Please enter a valid first name",
-    "lastNameError": "Please enter a valid last name",
-    "emailError": "Please enter a valid email",
+    "firstNameError": "Please enter your first name",
+    "lastNameError": "Please enter your last name",
+    "emailError": "Please enter a valid email address",
     "messageError": "Please enter a message",
-    "firstNamePlaceholder": "Enter your first name",
-    "lastNamePlaceholder": "Enter your last name",
-    "emailPlaceholder": "Enter your email",
-    "messagePlaceholder": "Enter your message",
     "successMessage": "Your message has been sent successfully",
-    "errorMessage": "An error occurred while sending the message"
+    "errorMessage": "Your message could not be sent.",
+    "errorFallback": "You can also email me directly:",
+    "rateLimitMessage": "A message was just sent from this browser: please try again in a minute."
   },
   "projects": {
     "title": "Projects",
@@ -165,7 +163,7 @@
         "client": "Kardham Digital",
         "period": "2024 – today",
         "title": "KD Cockpit: connected building hypervision",
-        "summary": "The building's control room: it connects the equipment (BMS, IoT, video surveillance, access control) and turns its data into an actionable real-time view for facility managers. Digital building model overlaid with sensor data, dashboards, threshold alerts and remote control to put incidents in context, catch failures before they happen and optimize maintenance. Use cases: energy, predictive maintenance, asset management, comfort and indoor air quality (WELL certification), space usage, EV charging.",
+        "summary": "The building's control room: it connects the equipment (BMS, IoT, video surveillance, access control) and turns its data into an actionable real-time view for facility managers. Use cases: energy, predictive maintenance, asset management, comfort and indoor air quality (WELL certification), space usage, EV charging.",
         "role": "Full stack developer: technical architecture, writing specifications, continuous integration and delivery",
         "phases": ["specify", "design", "build", "ship", "maintain"],
         "stack": [
@@ -187,13 +185,13 @@
         "id": "ey-worksite",
         "client": "EY",
         "via": "Kardham Digital",
-        "period": "2025 –",
+        "period": "2025 – today",
         "status": "In progress",
         "title": "Construction site management module",
         "summary": "Construction site management module, currently in development, extending Kardham Digital's Smart Building offering for EY. It keeps the reference data in sync throughout the buildings' life, from construction to operation, so every tool works from the same up-to-date data.",
         "role": "Full stack developer: built the entire module in direct collaboration with the client",
         "phases": ["specify", "design", "build", "ship"],
-        "stack": [".NET", "Blazor", "PostgreSQL", "IIS"],
+        "stack": [".NET", "Blazor", "PostgreSQL", "IIS", "Azure DevOps"],
         "illustration": "schedule"
       },
       {
@@ -205,7 +203,7 @@
         "summary": "Automatically assigns employees to spaces at their workplace according to criteria set by the company, flex office included. The data it produces feeds the decision-making side: space optimization and cost per square meter. It extends Kardham Digital's Smart Building offering.",
         "role": "Full stack developer: built the entire module in direct collaboration with the client",
         "phases": ["specify", "design", "build", "ship"],
-        "stack": [".NET", "Blazor", "Azure", "PostgreSQL", "IIS"],
+        "stack": [".NET", "Blazor", "Azure", "Azure DevOps", "PostgreSQL", "IIS"],
         "illustration": "floorplan"
       },
       {
@@ -242,7 +240,7 @@
         "illustration": "interface"
       }
     ],
-    "othersTitle": "Other work",
+    "othersTitle": "Other projects",
     "others": [
       {
         "client": "APRR",
