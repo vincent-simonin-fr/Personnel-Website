@@ -40,8 +40,8 @@ const Footer = ({}: FooterProps) => {
             </Button>
           </FadeInWhenVisible>
         )}
-        <FadeInWhenVisible delay={0.8}>
-          <div>
+        <FadeInWhenVisible delay={0.8} className='self-end'>
+          <div className='leading-none'>
             © {currentYear} {siteConfig.name}
           </div>
         </FadeInWhenVisible>
