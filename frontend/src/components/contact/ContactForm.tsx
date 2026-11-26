@@ -29,7 +29,7 @@ const emptyInput: UserInput = { firstName: '', lastName: '', email: '', message:
 // Shared field look (DESIGN.md): dark/light primary scale, fuchsia focus ring.
 const labelClassName = 'text-sm text-primary-50'
 const fieldClassName =
-  'rounded-xl border-1 border-primary-600 bg-primary-900 text-primary-50 focus:border-transparent focus:ring-1 focus:ring-fuchsia-600'
+  'rounded-xl border-1 border-primary-600 bg-primary-900 text-primary-50 focus:border-transparent focus:ring-1 focus:ring-accent'
 const inputClassName = `${fieldClassName} h-8` // v2 size='sm' height
 const errorClassName = 'text-sm text-danger'
 

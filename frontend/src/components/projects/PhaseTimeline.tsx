@@ -20,7 +20,7 @@ const PhaseTimeline = ({ phases, labels, srLabel }: PhaseTimelineProps) => (
             key={phase}
             className={`flex items-center gap-1.5 text-xs ${covered ? 'text-primary-50' : 'text-primary-300'}`}>
             <span
-              className={`size-2.5 shrink-0 rounded-full border ${covered ? 'border-fuchsia-500 bg-fuchsia-500 shadow-[0_0_10px_rgb(225_42_251/0.7)]' : 'border-primary-500 bg-background'}`}
+              className={`size-2.5 shrink-0 rounded-full border ${covered ? 'border-accent bg-accent shadow-[0_0_10px_color-mix(in_oklab,var(--accent)_70%,transparent)]' : 'border-primary-500 bg-background'}`}
             />
             {labels[phase]}
           </li>

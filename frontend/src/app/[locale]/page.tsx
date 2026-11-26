@@ -40,14 +40,14 @@ const HomePage = async ({ params }: HomePageProps) => {
       <section className='flex min-h-[calc(100vh-3rem)] w-full flex-col items-center justify-center'>
         <div className='w-[84vw] py-8 sm:px-2'>
           <div className='flex items-center pb-8 text-xl'>
-            <span className='mr-1 text-fuchsia-600'>
+            <span className='mr-1 text-accent'>
               <HandSvg />
             </span>
             {firstScreen.salutation}
           </div>
           <h1 className='max-w-5xl text-4xl font-semibold tracking-tight text-pretty md:text-5xl lg:text-6xl'>
             {firstScreen.hook.before}
-            <span className='text-fuchsia-600'>{firstScreen.hook.accent}</span>
+            <span className='text-accent'>{firstScreen.hook.accent}</span>
             {firstScreen.hook.after}
           </h1>
           <p className='mt-6 max-w-3xl text-xl text-pretty text-primary-200 md:text-2xl'>
@@ -129,7 +129,7 @@ const HomePage = async ({ params }: HomePageProps) => {
               // already tinted, 40%): each item draws its own stretch, from its color to
               // the next one's. The current job is still running, so its stretch fades out.
               const tint = (step: number) =>
-                `color-mix(in oklab, var(--color-fuchsia-500) ${Math.round(40 + (step / (count - 1)) * 60)}%, var(--color-primary-700))`
+                `color-mix(in oklab, var(--accent) ${Math.round(40 + (step / (count - 1)) * 60)}%, var(--color-primary-700))`
               const lineColors = {
                 '--from': tint(i),
                 '--to': last ? 'transparent' : tint(i + 1),
@@ -146,8 +146,8 @@ const HomePage = async ({ params }: HomePageProps) => {
                   {last ? (
                     <span
                       aria-hidden
-                      className='absolute top-1.5 left-[-5.5px] size-3 rounded-full bg-fuchsia-500 shadow-[0_0_12px_rgb(225_42_251/0.8)] md:top-[-5.5px] md:left-0'>
-                      <span className='absolute inset-0 animate-ping rounded-full bg-fuchsia-500/60 motion-reduce:animate-none' />
+                      className='absolute top-1.5 left-[-5.5px] size-3 rounded-full bg-accent shadow-[0_0_12px_color-mix(in_oklab,var(--accent)_80%,transparent)] md:top-[-5.5px] md:left-0'>
+                      <span className='absolute inset-0 animate-ping rounded-full bg-accent/60 motion-reduce:animate-none' />
                     </span>
                   ) : (
                     <span

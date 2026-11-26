@@ -45,11 +45,11 @@ const Projects = async ({ params }: ProjectsProps) => {
               className='group relative overflow-hidden rounded-3xl border border-primary-800 bg-primary-900/80 p-6 shadow-2xl sm:p-8'>
               <span
                 aria-hidden
-                className='absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-fuchsia-500/80 to-transparent'
+                className='absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-accent/80 to-transparent'
               />
               <span
                 aria-hidden
-                className='pointer-events-none absolute -top-20 -right-20 size-48 rounded-full bg-fuchsia-500/15 opacity-70 blur-3xl transition-opacity duration-300 group-hover:opacity-100 motion-reduce:transition-none'
+                className='pointer-events-none absolute -top-20 -right-20 size-48 rounded-full bg-accent/15 opacity-70 blur-3xl transition-opacity duration-300 group-hover:opacity-100 motion-reduce:transition-none'
               />
               <p className='relative text-sm tracking-widest text-primary-300 uppercase'>
                 <span className='font-bold text-brand'>{other.client}</span> ·{' '}

@@ -8,6 +8,6 @@ export const siteConfig = {
     email: 'mailto:vincent.simonin@hotmail.com',
   },
   authors: [{ name: 'Vincent Simonin', url: 'https://vincentsimonin.fr' }],
-  // Brand fuchsia (fuchsia-600) where a class can't reach: OG image, WebGL backdrop.
+  // Brand fuchsia (light theme --accent) where a class can't reach: OG image, WebGL backdrop.
   color: '#c026d3',
 }
