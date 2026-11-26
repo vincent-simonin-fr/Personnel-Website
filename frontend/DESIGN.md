@@ -16,7 +16,7 @@ Police : Geologica (instance unique `siteFont`, `site/siteFont.ts`), graisse 600
 
 | Rôle | Classes |
 |---|---|
-| Accroche (hero `h1`) | `text-4xl md:text-5xl lg:text-6xl md:leading-[1.1] tracking-tight` |
+| Accroche (hero `h1`) | `text-[min(2.25rem,8.8vw)] md:text-5xl lg:text-6xl leading-[1.1] tracking-tight` (fluide sur mobile : « Ingénieur full stack, » tient sur une ligne dès 320 px) |
 | Titre de section (`h2`) | `text-3xl md:text-5xl md:leading-[1.1]` |
 | Titre de carte projet | `text-2xl sm:text-[1.75rem] leading-tight` |
 | Corps large | `text-xl md:text-2xl` |

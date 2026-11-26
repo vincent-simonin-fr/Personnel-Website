@@ -7,7 +7,7 @@
     "firstScreen": {
       "salutation": "Bonjour,",
       "hook": {
-        "before": "Ingénieur full stack, je conçois et réalise vos ",
+        "before": "Ingénieur full stack, je conçois et réalise vos ",
         "accent": "applications sur mesure",
         "after": "."
       },
@@ -40,12 +40,12 @@
         {
           "year": "2022",
           "title": "Inetum",
-          "detail": "Développeur full stack – Logiciel GREA (Gestion des Ressources Eau et Assainissement)"
+          "detail": "Développeur full stack – Logiciel GREA (Gestion des Ressources Eau et Assainissement)"
         },
         {
           "year": "2022 – 2024",
           "title": "APRR",
-          "detail": "Développeur full stack – Système d'aide à la gestion du trafic, logiciel SIG"
+          "detail": "Développeur full stack – Système d'aide à la gestion du trafic, logiciel SIG"
         },
         {
           "year": "2024",
@@ -55,7 +55,7 @@
         {
           "year": "2024 – aujourd'hui",
           "title": "Kardham Digital",
-          "detail": "Développeur full stack – Solution Smart Building"
+          "detail": "Développeur full stack – Solution Smart Building"
         }
       ],
       "certifications": "Certifications Microsoft Azure Developer Associate (AZ-204), Azure Fundamentals et Azure AI Fundamentals"
@@ -164,7 +164,7 @@
         "period": "2024 – aujourd'hui",
         "title": "KD Cockpit : hypervision du bâtiment connecté",
         "summary": "Le poste de pilotage du bâtiment : il relie les équipements (GTB, IoT, vidéosurveillance, contrôle d'accès) et transforme leurs données en une vision temps réel exploitable par les gestionnaires. Cas d'usage : énergie, maintenance prédictive, patrimoine, confort et qualité de l'air (certification WELL), usage des espaces, bornes de recharge.",
-        "role": "Développeur full stack : architecture technique, rédaction de spécifications, intégration et déploiement continus",
+        "role": "Développeur full stack : architecture technique, rédaction de spécifications, intégration et déploiement continus",
         "phases": ["specify", "design", "build", "ship", "maintain"],
         "stack": [
           ".NET",
@@ -189,7 +189,7 @@
         "status": "En cours",
         "title": "Module de gestion de chantier",
         "summary": "Module de gestion de chantier, en cours de réalisation, qui complète l'offre Smart Building de Kardham Digital pour EY. Il assure la synchronisation des référentiels tout au long de la vie des bâtiments, du chantier à l'exploitation, pour que chaque outil travaille sur des données à jour et cohérentes.",
-        "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
+        "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
         "phases": ["specify", "design", "build", "ship"],
         "stack": [".NET", "Blazor", "PostgreSQL", "IIS", "Azure DevOps"],
         "illustration": "schedule"
@@ -201,7 +201,7 @@
         "period": "2024 – 2025",
         "title": "Module de placement automatisé et pilotage des espaces",
         "summary": "Affecte automatiquement les collaborateurs aux espaces de leur lieu de travail selon les critères définis par l'entreprise, flex office compris. Les données produites alimentent la partie décisionnelle : optimisation des espaces et coût au m². Il complète l'offre Smart Building de Kardham Digital.",
-        "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
+        "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
         "phases": ["specify", "design", "build", "ship"],
         "stack": [".NET", "Blazor", "Azure", "Azure DevOps", "PostgreSQL", "IIS"],
         "illustration": "floorplan"
@@ -212,7 +212,7 @@
         "period": "2022 – 2024",
         "title": "Système d'aide à la gestion du trafic",
         "summary": "Maintenance évolutive d'une application d'exploitation autoroutière qui permet la collecte, le traitement, la diffusion et la visualisation en temps réel des données trafic et météo. Conception et développement de nouvelles fonctionnalités de bout en bout, du traitement des données jusqu'à l'interface, au sein d'une architecture distribuée.",
-        "role": "Développeur full stack",
+        "role": "Développeur full stack",
         "phases": ["build", "maintain"],
         "stack": [".NET", "Angular", "PostgreSQL", "Kafka", "RabbitMQ"],
         "illustration": "roads"
@@ -223,7 +223,7 @@
         "period": "2022 – 2024",
         "title": "Services d'information géographique",
         "summary": "Widgets de services cartographiques intégrés à la plateforme ArcGIS Experience Builder, et nouvelles fonctionnalités d'un plugiciel pour AutoCAD Map 3D.",
-        "role": "Développeur full stack",
+        "role": "Développeur full stack",
         "phases": ["build"],
         "stack": [".NET", "React", "ArcGIS Experience Builder", "AutoCAD Map 3D"],
         "illustration": "layers"
@@ -234,7 +234,7 @@
         "period": "2022",
         "title": "Refonte graphique de GREA",
         "summary": "Nouvelle interface de recherche, maintenance corrective et évolutive de GREA, suite modulaire avec laquelle régies et collectivités gèrent leurs services d'eau et d'assainissement, collectif et non collectif : demandes d'intervention, raccordements, relève des compteurs, contrôles et facturation.",
-        "role": "Développeur full stack",
+        "role": "Développeur full stack",
         "phases": ["design", "build", "maintain"],
         "stack": [".NET", "PostgreSQL", "Oracle", "Bootstrap"],
         "illustration": "interface"

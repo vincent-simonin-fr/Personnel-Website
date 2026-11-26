@@ -7,7 +7,7 @@
     "firstScreen": {
       "salutation": "Hello,",
       "hook": {
-        "before": "Full stack engineer, I design and build your ",
+        "before": "Full stack engineer, I design and build your ",
         "accent": "custom applications",
         "after": "."
       },
