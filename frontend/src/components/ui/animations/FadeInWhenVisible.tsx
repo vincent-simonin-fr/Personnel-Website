@@ -10,6 +10,7 @@ type FadeInWhenVisibleProps = {
   delay?: number
   visualDuration?: number
   once?: boolean
+  className?: string
 }
 
 // CSS transitions + IntersectionObserver. Was a motion.div: it pulled the motion library
@@ -23,6 +24,7 @@ const FadeInWhenVisible = ({
   delay = 0,
   visualDuration = 0.4,
   once = false,
+  className,
 }: FadeInWhenVisibleProps) => {
   // Visible in the server HTML: content above the fold shows before (and without) JS, and
   // the entrance at load is a CSS animation (`fade-in-pop`, globals.css) that needs no JS.
@@ -38,6 +40,7 @@ const FadeInWhenVisible = ({
     <div
       ref={ref}
       data-fade-in
+      className={className}
       style={{
         opacity: isVisible ? 1 : opacityStart,
         transform: `scale(${isVisible ? 1 : scaleStart})`,
