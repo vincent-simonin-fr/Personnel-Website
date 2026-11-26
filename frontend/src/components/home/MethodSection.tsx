@@ -43,22 +43,23 @@ const MethodStep = ({
       data-phase={phase}
       // Screen-relative spacing keeps the rail lighting up one step at a time; none
       // after the last one, or it adds to the gap before the next section.
-      className='flex flex-col gap-3 py-10 last:pb-0 md:py-[12vh] md:last:pb-0'>
+      className='flex flex-col gap-3 py-8 last:pb-0 md:py-[6vh] md:last:pb-0'>
       {/* Decorative number drawn by CSS (::before): contrast checkers skip it. */}
       <span
         aria-hidden
         data-n={pad(index + 1)}
-        className='text-7xl leading-none font-extrabold tracking-tighter text-primary-700 before:content-[attr(data-n)] md:text-8xl dark:text-primary-900'
+        className='text-5xl leading-none font-extrabold tracking-tighter text-primary-700 before:content-[attr(data-n)] md:text-6xl dark:text-primary-900'
       />
       {/* Run-in phase name: part of the heading, so screen readers hear it too (the
           rail is hidden from them). */}
-      <h3 className='text-2xl font-semibold text-balance md:text-3xl'>
+      {/* md:pr-6: the long titles move to one line from ~1380px instead of ~1355px. */}
+      <h3 className='text-2xl font-semibold text-pretty text-primary-50 md:pr-6 md:text-3xl'>
         <span className='text-brand'>{label}.</span> {step.title}
       </h3>
-      <p className='max-w-prose text-lg leading-relaxed text-pretty text-primary-200'>
+      <p className='max-w-measure text-lg leading-relaxed text-pretty text-primary-200'>
         {step.text}
       </p>
-      <p className='max-w-prose border-l-2 border-accent pl-3 text-pretty text-primary-100'>
+      <p className='max-w-measure border-l-2 border-accent pl-3 text-pretty text-primary-100'>
         <span className='text-primary-300'>{proofLabel} · </span>
         {step.proof}
       </p>
@@ -74,7 +75,7 @@ const MethodSection = ({ method, phaseLabels }: MethodSectionProps) => {
 
   return (
     <section className='flex w-full flex-col gap-6'>
-      <h2 className='max-w-3xl text-3xl font-semibold text-balance md:text-5xl'>
+      <h2 className='max-w-3xl text-3xl font-semibold text-balance text-primary-50 md:text-5xl md:leading-[1.1]'>
         {method.title}
       </h2>
       <div className='md:grid md:grid-cols-[14rem_1fr] md:gap-12'>

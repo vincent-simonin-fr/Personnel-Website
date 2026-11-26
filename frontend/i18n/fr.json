@@ -11,7 +11,7 @@
         "accent": "applications sur mesure",
         "after": "."
       },
-      "subline": "Conception – Développement – Hébergement – Maintenance – Audit"
+      "subline": "Conception – Développement – Hébergement – Maintenance – Audit"
     },
     "labelButtonToSkills": "Voir les projets",
     "references": {
@@ -35,17 +35,17 @@
         {
           "year": "2021",
           "title": "INRAE",
-          "detail": "Stage – Application de collecte des menus de cantines"
+          "detail": "Stage – Application de collecte des menus de cantines"
         },
         {
           "year": "2022",
           "title": "Inetum",
-          "detail": "Développeur full stack – Logiciel GREA (Gestion des Ressources Eau et Assainissement)"
+          "detail": "Développeur full stack – Logiciel GREA (Gestion des Ressources Eau et Assainissement)"
         },
         {
           "year": "2022 – 2024",
           "title": "APRR",
-          "detail": "Développeur full stack – Système d'aide à la gestion du trafic, logiciel SIG"
+          "detail": "Développeur full stack – Système d'aide à la gestion du trafic, logiciel SIG"
         },
         {
           "year": "2024",
@@ -53,9 +53,9 @@
           "detail": "Diplôme d'ingénierie informatique, Master II"
         },
         {
-          "year": "2024 –",
+          "year": "2024 – aujourd'hui",
           "title": "Kardham Digital",
-          "detail": "Développeur full stack – Solution Smart Building"
+          "detail": "Développeur full stack – Solution Smart Building"
         }
       ],
       "certifications": "Certifications Microsoft Azure Developer Associate (AZ-204), Azure Fundamentals et Azure AI Fundamentals"
@@ -76,10 +76,10 @@
         "design": {
           "title": "Une architecture pensée pour maîtriser les coûts dans la durée",
           "text": "Performance, observabilité, scalabilité et maintenabilité.",
-          "proof": "Architecture technique des applications de pilotage du bâtiment (Kardham Digital) · architectures distribuées et N-tiers (APRR)."
+          "proof": "Architecture technique des applications de pilotage du bâtiment (Kardham Digital) · architectures distribuées et N‑tiers (APRR)."
         },
         "build": {
-          "title": "Du back-end à l'interface",
+          "title": "Du back‑end à l'interface",
           "text": "ASP.NET / Blazor, React, Angular, Java / Spring Boot, services cartographiques (ArcGIS, AutoCAD Map 3D), protocoles industriels (BACnet).",
           "proof": "Collecte, traitement, diffusion et visualisation des données trafic et météo (APRR) · Module de placement automatisé et pilotage des espaces (Kardham Digital x EY)."
         },
@@ -109,7 +109,7 @@
     },
     {
       "label": "Contact",
-      "title": "Me Contacter",
+      "title": "Me contacter",
       "to": "/contact"
     }
   ],
@@ -136,26 +136,24 @@
     ]
   },
   "contactForm": {
-    "title": "Me Contacter",
+    "title": "Me contacter",
     "firstNameLabel": "Prénom",
     "lastNameLabel": "Nom",
-    "emailLabel": "Email",
+    "emailLabel": "E-mail",
     "messageLabel": "Message",
     "submitButton": "Envoyer",
     "resetButton": "Réinitialiser",
-    "firstNameError": "Veuillez entrer un prénom valide",
-    "lastNameError": "Veuillez entrer un nom valide",
-    "emailError": "Veuillez entrer un email valide",
+    "firstNameError": "Veuillez entrer votre prénom",
+    "lastNameError": "Veuillez entrer votre nom",
+    "emailError": "Veuillez entrer une adresse e-mail valide",
     "messageError": "Veuillez entrer un message",
-    "firstNamePlaceholder": "Entrez votre prénom",
-    "lastNamePlaceholder": "Entrez votre nom",
-    "emailPlaceholder": "Entrez votre email",
-    "messagePlaceholder": "Entrez votre message",
     "successMessage": "Votre message a bien été envoyé. Merci !",
-    "errorMessage": "Une erreur s'est produite. Veuillez réessayer."
+    "errorMessage": "Le message n'a pas pu être envoyé.",
+    "errorFallback": "Vous pouvez aussi m'écrire directement :",
+    "rateLimitMessage": "Un message vient d'être envoyé depuis ce navigateur : réessayez dans une minute."
   },
   "projects": {
-    "title": "Réalisations",
+    "title": "Projets",
     "intro": "Des applications métier pour de grands comptes, menées de l'expression du besoin jusqu'à la mise en production.",
     "roleLabel": "Rôle",
     "phasesLabel": "Phases couvertes :",
@@ -165,7 +163,7 @@
         "client": "Kardham Digital",
         "period": "2024 – aujourd'hui",
         "title": "KD Cockpit : hypervision du bâtiment connecté",
-        "summary": "Le poste de pilotage du bâtiment : il relie les équipements (GTB, IoT, vidéosurveillance, contrôle d'accès) et transforme leurs données en une vision temps réel exploitable par les gestionnaires. Maquette numérique enrichie des capteurs, tableaux de bord, alertes sur seuils et pilotage à distance pour contextualiser les incidents, anticiper les pannes et optimiser la maintenance. Cas d'usage : énergie, maintenance prédictive, patrimoine, confort et qualité de l'air (certification WELL), usage des espaces, bornes de recharge.",
+        "summary": "Le poste de pilotage du bâtiment : il relie les équipements (GTB, IoT, vidéosurveillance, contrôle d'accès) et transforme leurs données en une vision temps réel exploitable par les gestionnaires. Cas d'usage : énergie, maintenance prédictive, patrimoine, confort et qualité de l'air (certification WELL), usage des espaces, bornes de recharge.",
         "role": "Développeur full stack : architecture technique, rédaction de spécifications, intégration et déploiement continus",
         "phases": ["specify", "design", "build", "ship", "maintain"],
         "stack": [
@@ -187,13 +185,13 @@
         "id": "ey-worksite",
         "client": "EY",
         "via": "Kardham Digital",
-        "period": "2025 –",
+        "period": "2025 – aujourd'hui",
         "status": "En cours",
         "title": "Module de gestion de chantier",
         "summary": "Module de gestion de chantier, en cours de réalisation, qui complète l'offre Smart Building de Kardham Digital pour EY. Il assure la synchronisation des référentiels tout au long de la vie des bâtiments, du chantier à l'exploitation, pour que chaque outil travaille sur des données à jour et cohérentes.",
         "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
         "phases": ["specify", "design", "build", "ship"],
-        "stack": [".NET", "Blazor", "PostgreSQL", "IIS"],
+        "stack": [".NET", "Blazor", "PostgreSQL", "IIS", "Azure DevOps"],
         "illustration": "schedule"
       },
       {
@@ -205,7 +203,7 @@
         "summary": "Affecte automatiquement les collaborateurs aux espaces de leur lieu de travail selon les critères définis par l'entreprise, flex office compris. Les données produites alimentent la partie décisionnelle : optimisation des espaces et coût au m². Il complète l'offre Smart Building de Kardham Digital.",
         "role": "Développeur full stack : création complète du module en collaboration directe avec le client",
         "phases": ["specify", "design", "build", "ship"],
-        "stack": [".NET", "Blazor", "Azure", "PostgreSQL", "IIS"],
+        "stack": [".NET", "Blazor", "Azure", "Azure DevOps", "PostgreSQL", "IIS"],
         "illustration": "floorplan"
       },
       {
@@ -242,7 +240,7 @@
         "illustration": "interface"
       }
     ],
-    "othersTitle": "Autres réalisations",
+    "othersTitle": "Autres projets",
     "others": [
       {
         "client": "APRR",
