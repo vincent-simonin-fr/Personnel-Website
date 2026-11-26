@@ -47,7 +47,7 @@ const HomePage = async ({ params }: HomePageProps) => {
             </span>
             {firstScreen.salutation}
           </div>
-          <h1 className='max-w-5xl text-4xl font-semibold tracking-tight text-pretty text-primary-50 md:text-5xl md:leading-[1.1] lg:text-6xl'>
+          <h1 className='max-w-5xl text-[min(2.25rem,8.8vw)] leading-[1.1] font-semibold tracking-tight text-pretty text-primary-50 md:text-5xl lg:text-6xl'>
             {firstScreen.hook.before}
             <span className='text-accent'>{firstScreen.hook.accent}</span>
             {firstScreen.hook.after}
